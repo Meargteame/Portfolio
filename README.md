@@ -1,72 +1,106 @@
 # Meareg Teame - Portfolio
 
-Personal portfolio website showcasing my work as a Full Stack & AI Engineer.
+A modern, responsive portfolio website showcasing my work as a Full Stack & AI Engineer.
 
-## About Me
+## 🚀 About Me
 
-I'm a backend-focused Full Stack & AI Engineer who builds scalable, intelligent systems that deliver real impact. With deep expertise in Python (Django, Flask, FastAPI), Golang, and Node.js, paired with modern frontend skills in React, Next.js, and Vue.js, I architect robust APIs, optimize high-performance databases, and seamlessly integrate AI into production applications.
+I'm a backend-heavy Full-Stack Software Engineer with expertise in building scalable, reliable systems. My core strengths include Python (Django, Flask, FastAPI), Golang, and Node.js/Express, complemented by strong frontend capabilities in React, Next.js, and Vue.js.
 
-## Tech Stack
+## 🛠️ Tech Stack
 
-- **Frontend**: React, Vite, Tailwind CSS, Framer Motion
-- **Backend**: Python (Django, Flask, FastAPI), Golang, Node.js/Express
-- **Databases**: MongoDB, PostgreSQL, SQLite, Supabase
-- **AI/ML**: Google Gemini, OpenAI
-- **Other**: Docker, Git, WebSockets, WebRTC
+- **Frontend:** React, Next.js, Vue.js, TypeScript, Tailwind CSS
+- **Backend:** Python (Django, Flask, FastAPI), Golang, Node.js, Express
+- **Databases:** MongoDB, PostgreSQL, MySQL, Supabase, Redis
+- **AI/ML:** OpenAI, Google Gemini, TensorFlow, LangChain
+- **DevOps:** Docker, Git, WebSockets, Prisma, GraphQL
+- **Other:** Chrome Extensions, PWA Development
 
-## Features
+## 📦 Features
 
-- Modern, responsive design with dark/light mode
-- Animated UI components with Framer Motion
-- Project showcase with detailed descriptions
-- Experience timeline
-- Services offered
-- Contact section
-- Downloadable CV
+- ✨ Modern, animated UI with Framer Motion
+- 🎨 Dark/Light mode toggle
+- 📱 Fully responsive design
+- 🚀 Fast performance with Vite
+- 📊 Analytics ready
+- 🎯 SEO optimized
 
-## Getting Started
+## 🏗️ Built With
+
+- [React](https://reactjs.org/) - UI library
+- [Vite](https://vitejs.dev/) - Build tool
+- [Tailwind CSS](https://tailwindcss.com/) - Styling
+- [Framer Motion](https://www.framer.com/motion/) - Animations
+- [Lucide Icons](https://lucide.dev/) - Icons
+
+## 🚀 Getting Started
 
 ### Prerequisites
 
-- Node.js (v18 or higher)
+- Node.js 18+ 
 - npm or yarn
 
 ### Installation
 
-1. Clone the repository
 ```bash
+# Clone the repository
 git clone https://github.com/Meargteame/portfolio.git
+
+# Navigate to project directory
 cd portfolio
-```
 
-2. Install dependencies
-```bash
+# Install dependencies
 npm install
-```
 
-3. Run the development server
-```bash
+# Start development server
 npm run dev
 ```
 
-4. Open [http://localhost:5173](http://localhost:5173) in your browser
-
-## Build for Production
+### Build for Production
 
 ```bash
+# Create production build
 npm run build
+
+# Preview production build
+npm run preview
 ```
 
-The build output will be in the `dist` folder.
+## 📂 Project Structure
 
-## Contact
+```
+portfolio/
+├── public/          # Static assets
+├── src/
+│   ├── assets/      # Images and fonts
+│   ├── components/  # React components
+│   │   ├── common/  # Reusable components
+│   │   └── ui/      # UI components
+│   ├── data/        # Data files (projects, services, tech stack)
+│   ├── hooks/       # Custom React hooks
+│   ├── lib/         # Utility functions
+│   └── router/      # Routing configuration
+├── index.html
+└── vite.config.js
+```
 
-- **Email**: hello.meareg@gmail.com
-- **LinkedIn**: [linkedin.com/in/meareg-teame](https://www.linkedin.com/in/meareg-teame/)
-- **GitHub**: [github.com/Meargteame](https://github.com/Meargteame)
-- **Twitter**: [x.com/meareg_official](https://x.com/meareg_official)
-- **Medium**: [medium.com/@hello.meareg](https://medium.com/@hello.meareg)
+## 🌐 Deployment
 
-## License
+This portfolio is deployed on Vercel. See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed deployment instructions.
 
-© 2026 Meareg Teame. All rights reserved.
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Meargteame/portfolio)
+
+## 📝 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+## 📧 Contact
+
+- **Email:** hello.meareg@gmail.com
+- **GitHub:** [@Meargteame](https://github.com/Meargteame)
+- **LinkedIn:** [Meareg Teame](https://www.linkedin.com/in/meareg-teame/)
+- **Twitter:** [@meareg_official](https://x.com/meareg_official)
+- **Medium:** [@hello.meareg](https://medium.com/@hello.meareg)
+
+---
+
+⭐ Star this repo if you like it!
