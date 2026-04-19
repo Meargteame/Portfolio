@@ -5,7 +5,7 @@ export const About = () => {
   const isMobile = useMobile(768);
 
   return (
-    <section className="py-12 md:py-20">
+    <section className="py-8 sm:py-12 md:py-16 lg:py-20">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
@@ -25,7 +25,7 @@ export const About = () => {
             </div>
           </div>
 
-          <h2 className="text-4xl font-black tracking-tight text-foreground">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black tracking-tight text-foreground">
             ABOUT ME
           </h2>
           <motion.div

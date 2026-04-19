@@ -32,7 +32,7 @@ export const HeroSection = () => {
   const isMobile = useMobile(768);
 
   return (
-    <div className="py-12 md:py-32 relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="py-8 sm:py-12 md:py-20 lg:py-32 relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Ligne décorative top */}
       <motion.div
         className="flex items-center gap-4 mb-10 md:mb-16"
@@ -117,7 +117,7 @@ export const HeroSection = () => {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-foreground leading-[1.05] Handlee-900"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black tracking-tight text-foreground leading-[1.1] Handlee-900"
           >
             Full Stack &{" "}
             <span className="relative inline-block">
@@ -126,18 +126,18 @@ export const HeroSection = () => {
                 initial={{ width: 0, left: "50%" }}
                 animate={{ width: "100%", left: 0 }}
                 transition={{ duration: 0.8, delay: 0.9, ease: "easeInOut" }}
-                className="absolute -bottom-1 h-2 bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-400 rounded-full -skew-x-12"
+                className="absolute -bottom-0.5 md:-bottom-1 h-1.5 md:h-2 bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-400 rounded-full -skew-x-12"
                 style={{ originX: 0 }}
               />
             </span>
-            , Building Scalable & Intelligent Systems.
+            <span className="block mt-1 sm:inline sm:mt-0">, Building Scalable & Intelligent Systems.</span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className={`mt-5 md:mt-7 text-sm sm:text-base leading-relaxed opacity-50 text-foreground max-w-xl ${isMobile ? "mx-auto px-2" : ""}`}
+            className={`mt-4 md:mt-7 text-xs sm:text-sm md:text-base leading-relaxed opacity-50 text-foreground max-w-xl ${isMobile ? "mx-auto px-0" : ""}`}
           >
             I'm a backend-focused Full Stack & AI Engineer who builds scalable, intelligent systems that deliver real impact. With deep expertise in Python (Django, Flask, FastAPI), Golang, and Node.js, paired with modern frontend skills in React, Next.js, and Vue.js, I architect robust APIs, optimize high-performance databases, and seamlessly integrate AI into production applications.
           </motion.p>

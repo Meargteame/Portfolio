@@ -376,9 +376,9 @@ export const Projects = () => {
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, amount: 0.1 }}
       transition={{ duration: 0.5 }}
-      className="py-16 md:py-20"
+      className="py-8 sm:py-12 md:py-16 lg:py-20"
     >
-      <div className="max-w-4xl mx-auto px-4 md:px-0">
+      <div className="max-w-4xl mx-auto px-3 sm:px-4 md:px-0">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -397,7 +397,7 @@ export const Projects = () => {
           </div>
 
           <div className="relative">
-            <h2 className="text-4xl font-black tracking-tight text-foreground leading-none">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black tracking-tight text-foreground leading-none">
               PROJECTS
             </h2>
             <motion.div

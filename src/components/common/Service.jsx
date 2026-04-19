@@ -156,7 +156,7 @@ export const Services = () => {
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, amount: isMobile ? 0.1 : 0.3 }}
       transition={{ duration: 0.5 }}
-      className="py-12 md:py-20"
+      className="py-8 sm:py-12 md:py-16 lg:py-20"
     >
       <div className="max-w-7xl mx-auto">
         <motion.div
@@ -176,7 +176,7 @@ export const Services = () => {
             </div>
           </div>
           <div className="relative">
-            <h2 className="text-4xl font-black tracking-tight text-foreground leading-none">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black tracking-tight text-foreground leading-none">
               SERVICES
             </h2>
             <motion.div

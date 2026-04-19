@@ -120,7 +120,7 @@ export const GetInTouch = () => {
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 0.6 }}
-      className="py-16 md:py-20 relative"
+      className="py-8 sm:py-12 md:py-16 lg:py-20 relative"
     >
       <div className="max-w-7xl mx-auto">
 
@@ -139,7 +139,7 @@ export const GetInTouch = () => {
             <div className="flex-1 h-px bg-foreground opacity-10" />
           </div>
           <div className="relative">
-            <h2 className="text-4xl font-black tracking-tight text-foreground leading-none uppercase">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black tracking-tight text-foreground leading-none uppercase">
               Get in Touch
             </h2>
             <motion.div
