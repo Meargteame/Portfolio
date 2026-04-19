@@ -117,9 +117,7 @@ const ProjectRow = ({ project, index }) => {
 
         <div>
           {/* Main content */}
-          <div
-            className={`flex items-start ${isMobile ? "px-3 py-4" : "px-6 py-5"}`}
-          >
+          <div className={`flex items-start ${isMobile ? "flex-col px-3 py-3 gap-2" : "px-6 py-5"}`}>
             {!isMobile && (
               <>
                 <motion.div
@@ -171,7 +169,15 @@ const ProjectRow = ({ project, index }) => {
             )}
 
             <div className="flex-1 min-w-0">
-              <div className="flex items-center gap-2 mb-1">
+              <div className="flex items-center gap-2 mb-1 flex-wrap">
+                {isMobile && (
+                  <motion.span
+                    className="font-mono text-[9px] tracking-wider opacity-30 text-foreground"
+                    animate={{ opacity: detailsOpen ? 0.5 : 0.3 }}
+                  >
+                    {num}
+                  </motion.span>
+                )}
                 <motion.div
                   className={`font-bold tracking-tight leading-none ${isMobile ? "text-sm" : "text-base"}`}
                   animate={{
@@ -184,15 +190,15 @@ const ProjectRow = ({ project, index }) => {
                 >
                   {project.name}
                 </motion.div>
-                {!isMobile && project.tech && (
+                {project.tech && (
                   <motion.div
-                    className="text-[8px] font-mono tracking-wider px-1.5 py-0.5 rounded-sm"
+                    className={`text-[8px] font-mono tracking-wider px-1.5 py-0.5 rounded-sm ${isMobile ? "ml-auto" : ""}`}
                     animate={{
-                      opacity: hovered ? 0.6 : 0.2,
-                      backgroundColor: hovered
+                      opacity: (hovered || detailsOpen) ? 0.6 : 0.3,
+                      backgroundColor: (hovered || detailsOpen)
                         ? "var(--foreground)"
                         : "transparent",
-                      color: hovered
+                      color: (hovered || detailsOpen)
                         ? "var(--background)"
                         : "var(--foreground)",
                     }}
@@ -204,103 +210,58 @@ const ProjectRow = ({ project, index }) => {
                 )}
               </div>
 
+              {isMobile && project.tag && (
+                <motion.div
+                  className="text-[9px] font-mono tracking-wider mb-1.5 opacity-40"
+                  style={{ color: "var(--foreground)" }}
+                >
+                  {project.tag}
+                </motion.div>
+              )}
+
               <motion.p
-                className="text-xs leading-relaxed mb-2"
-                animate={{ opacity: hovered || detailsOpen ? 0.8 : 0.2 }}
+                className={`${isMobile ? "text-[11px]" : "text-xs"} leading-relaxed ${isMobile ? "mb-2" : "mb-2"}`}
+                animate={{ opacity: hovered || detailsOpen ? 0.8 : 0.4 }}
                 style={{ color: "var(--foreground)" }}
                 transition={{ duration: 0.2 }}
               >
                 {project.description}
               </motion.p>
-
-              {/* Mobile tech badge */}
-              {isMobile && project.tech && (
-                <motion.div
-                  className="text-[8px] font-mono tracking-wider px-1.5 py-0.5 rounded-sm inline-block mt-1"
-                  animate={{ opacity: detailsOpen ? 0.8 : 0.4 }}
-                  style={{
-                    border: "1px solid var(--foreground)",
-                    color: "var(--foreground)",
-                  }}
-                  transition={{ duration: 0.2 }}
-                >
-                  {project.tech}
-                </motion.div>
-              )}
             </div>
 
-            <div className="flex items-center gap-2 ml-3 self-start">
-              {/* Mobile details toggle indicator */}
+            <div className={`flex items-center gap-2 ${isMobile ? "ml-auto self-start" : "ml-3 self-start"}`}>
               {isMobile && (
                 <motion.div
                   animate={{ rotate: detailsOpen ? 180 : 0 }}
                   transition={{ duration: 0.2 }}
                   className="font-mono text-sm"
-                  style={{ color: "var(--foreground)" }}
+                  style={{ color: "var(--foreground)", opacity: 0.5 }}
                 >
-                  {detailsOpen ? "—" : "⋯"}
+                  {detailsOpen ? "−" : "+"}
                 </motion.div>
               )}
 
-              {/* LIVE ICON */}
-              {project.live &&
-                (!isMobile ? (
-                  <motion.button
-                    onClick={handleLiveClick}
-                    className="font-mono text-sm"
-                    animate={{
-                      opacity: hovered ? 0.8 : 0.2,
-                      x: hovered ? 4 : 0,
-                    }}
-                    style={{ color: "var(--foreground)" }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <ExternalLink className="cursor-pointer" />
-                  </motion.button>
-                ) : (
-                  <motion.button
-                    onClick={handleLiveClick}
-                    className="font-mono text-sm p-2 -m-2"
-                    animate={{ opacity: 0.8 }}
-                    style={{ color: "var(--foreground)" }}
-                    whileTap={{ scale: 0.9 }}
-                  >
-                    <ExternalLink size={16} />
-                  </motion.button>
-                ))}
-
-              {/* GITHUB ICON */}
-              {!isMobile ? (
+              {project.live && (
                 <motion.button
-                  onClick={handleGithubClick}
-                  className="font-mono text-sm"
-                  animate={{ opacity: hovered ? 0.8 : 0.2, x: hovered ? 4 : 0 }}
-                  style={{ color: "var(--foreground)" }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <Github className="cursor-pointer" />
-                </motion.button>
-              ) : (
-                <motion.button
-                  onClick={handleGithubClick}
-                  className="font-mono text-sm p-2 -m-2"
-                  animate={{ opacity: 0.8 }}
+                  onClick={handleLiveClick}
+                  className={`font-mono text-sm ${isMobile ? "p-1.5 -m-1.5" : ""}`}
+                  animate={{ opacity: isMobile ? 0.6 : (hovered ? 0.8 : 0.3) }}
                   style={{ color: "var(--foreground)" }}
                   whileTap={{ scale: 0.9 }}
                 >
-                  {/* ton svg existant */}
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  >
-                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
-                  </svg>
+                  <ExternalLink className={isMobile ? "w-4 h-4" : "w-4 h-4"} />
                 </motion.button>
               )}
+
+              <motion.button
+                onClick={handleGithubClick}
+                className={`font-mono text-sm ${isMobile ? "p-1.5 -m-1.5" : ""}`}
+                animate={{ opacity: isMobile ? 0.6 : (hovered ? 0.8 : 0.3) }}
+                style={{ color: "var(--foreground)" }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <Github className={isMobile ? "w-4 h-4" : "w-4 h-4"} />
+              </motion.button>
             </div>
           </div>
 
@@ -316,19 +277,13 @@ const ProjectRow = ({ project, index }) => {
                     className="overflow-hidden"
                   >
                     <motion.div
-                      className="px-3 pb-4 text-[11px] leading-relaxed border-t border-border pt-3 mt-1"
+                      className="px-3 pb-3 text-[10px] leading-relaxed border-t border-border pt-2 mt-1"
                       style={{
                         color: "var(--foreground)",
-                        opacity: 0.9,
+                        opacity: 0.7,
                       }}
                     >
-                      <div className="font-mono text-[9px] tracking-wider mb-2 opacity-40">
-                        TECHNICAL DETAILS
-                      </div>
-                      <p
-                        className="border-l-2 pl-3"
-                        style={{ borderColor: "var(--foreground)" }}
-                      >
+                      <p className="border-l-2 pl-2" style={{ borderColor: "var(--foreground)" }}>
                         {project.details}
                       </p>
                     </motion.div>
@@ -422,10 +377,10 @@ export const Projects = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.5 }}
-          className="mt-6 text-center md:hidden"
+          className="mt-4 text-center md:hidden"
         >
           <div className="font-mono text-[8px] tracking-wider opacity-30 text-foreground">
-            TAP ON CARD FOR DETAILS • TAP GITHUB ICON TO VIEW CODE
+            TAP + TO VIEW DETAILS • TAP ICONS TO OPEN
           </div>
         </motion.div>
       </div>

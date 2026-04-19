@@ -1,13 +1,13 @@
 import { motion, AnimatePresence } from "motion/react";
 import { useState, useEffect } from "react";
 import { useMobile } from "../../hooks/useMobile";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import { Menu, X, Download } from "lucide-react";
 import { ModeToggle } from "./mode-toggle";
 
 const navLinks = [
   { id: "about", label: "About" },
   { id: "services", label: "Services" },
-  { id: "tech", label: "Tech Stack" },
+  { id: "tech", label: "Tech" },
   { id: "projects", label: "Projects" },
   { id: "experience", label: "Experience" },
   { id: "contact", label: "Contact" },
@@ -18,14 +18,12 @@ export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [hoveredLink, setHoveredLink] = useState(null);
-  const [cvHovered, setCvHovered] = useState(false);
   const isMobile = useMobile(768);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
 
-      // Update active section based on scroll position
       const sections = navLinks.map((link) => link.id);
       const current = sections.find((section) => {
         const element = document.getElementById(section);
@@ -68,50 +66,29 @@ export const Navbar = () => {
 
   return (
     <>
-      {/* Desktop Navbar */}
       <motion.nav
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.2 }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled ? "py-3" : "py-4"
+          scrolled ? "py-2" : "py-3"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
           <motion.div
             className="relative overflow-hidden border border-border"
             animate={{
-              backgroundColor: scrolled
-                ? "var(--background)"
-                : "transparent",
+              backgroundColor: scrolled ? "var(--background)" : "transparent",
             }}
             style={{
               backdropFilter: scrolled ? "blur(12px)" : "none",
             }}
             transition={{ duration: 0.3 }}
           >
-            {/* Scanline effect when scrolled */}
-            <AnimatePresence>
-              {scrolled && (
-                <motion.div
-                  className="absolute left-0 right-0 h-px pointer-events-none z-20"
-                  style={{
-                    background:
-                      "linear-gradient(90deg, transparent, var(--foreground), transparent)",
-                    opacity: 0.08,
-                  }}
-                  initial={{ top: 0 }}
-                  animate={{ top: "100%" }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 2, ease: "linear", repeat: Infinity }}
-                />
-              )}
-            </AnimatePresence>
-
-            <div className="flex items-center justify-between px-6 py-3">
+            <div className={`flex items-center justify-between ${isMobile ? "px-3 py-2.5" : "px-6 py-3"}`}>
               {/* Logo */}
               <motion.div
-                className="font-mono text-sm font-black tracking-wider cursor-pointer"
+                className={`font-mono ${isMobile ? "text-xs" : "text-sm"} font-black tracking-wider cursor-pointer`}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
@@ -129,31 +106,10 @@ export const Navbar = () => {
                       onClick={() => scrollToSection(link.id)}
                       onHoverStart={() => setHoveredLink(link.id)}
                       onHoverEnd={() => setHoveredLink(null)}
-                      className="relative px-4 py-2 overflow-hidden"
+                      className="relative px-3 py-2 overflow-hidden"
                     >
-                      <motion.div
-                        className="absolute left-0 top-0 bottom-0 w-px"
-                        animate={{
-                          opacity:
-                            hoveredLink === link.id ||
-                            activeSection === link.id
-                              ? 0.3
-                              : 0,
-                          scaleY:
-                            hoveredLink === link.id ||
-                            activeSection === link.id
-                              ? 1
-                              : 0,
-                        }}
-                        style={{
-                          background: "var(--foreground)",
-                          transformOrigin: "center",
-                        }}
-                        transition={{ duration: 0.2 }}
-                      />
-
                       <motion.span
-                        className="text-xs tracking-[0.15em] font-medium relative"
+                        className="text-[10px] tracking-[0.15em] font-medium relative"
                         animate={{
                           color:
                             activeSection === link.id
@@ -185,54 +141,28 @@ export const Navbar = () => {
                 </div>
               )}
 
-              {/* Right side - CV + Theme Toggle */}
-              <div className="flex items-center gap-3">
+              {/* Right side */}
+              <div className="flex items-center gap-2">
                 <ModeToggle />
 
                 {!isMobile && (
                   <motion.button
                     onClick={handleDownloadCV}
-                    onHoverStart={() => setCvHovered(true)}
-                    onHoverEnd={() => setCvHovered(false)}
                     whileTap={{ scale: 0.97 }}
-                    className="relative flex items-center gap-2 px-3 py-1.5 overflow-hidden border border-border"
+                    className="flex items-center gap-1.5 px-2.5 py-1.5 border border-border text-xs tracking-wider font-bold text-muted-foreground hover:text-foreground transition-colors"
                   >
-                    <motion.span
-                      className="text-xs tracking-[0.15em] font-bold"
-                      animate={{
-                        color: cvHovered
-                          ? "var(--foreground)"
-                          : "var(--muted-foreground)",
-                      }}
-                      transition={{ duration: 0.15 }}
-                    >
-                      CV
-                    </motion.span>
-                    <motion.div
-                      animate={{
-                        opacity: cvHovered ? 0.8 : 0.3,
-                        x: cvHovered ? 1 : 0,
-                        y: cvHovered ? -1 : 0,
-                      }}
-                      transition={{ duration: 0.15 }}
-                    >
-                      <ArrowUpRight className="w-3 h-3 text-foreground" />
-                    </motion.div>
+                    <Download className="w-3 h-3" />
+                    <span>CV</span>
                   </motion.button>
                 )}
 
-                {/* Mobile Menu Button */}
                 {isMobile && (
                   <motion.button
                     onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                     whileTap={{ scale: 0.95 }}
-                    className="p-2 text-foreground"
+                    className="p-1.5 text-foreground"
                   >
-                    {mobileMenuOpen ? (
-                      <X className="w-5 h-5" />
-                    ) : (
-                      <Menu className="w-5 h-5" />
-                    )}
+                    {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
                   </motion.button>
                 )}
               </div>
@@ -244,71 +174,81 @@ export const Navbar = () => {
       {/* Mobile Menu */}
       <AnimatePresence>
         {isMobile && mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.2 }}
-            className="fixed top-[72px] left-0 right-0 z-40 px-4"
-          >
+          <>
+            {/* Backdrop */}
             <motion.div
-              className="border border-border overflow-hidden"
-              style={{
-                backgroundColor: "var(--background)",
-                backdropFilter: "blur(12px)",
-              }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setMobileMenuOpen(false)}
+              className="fixed inset-0 bg-background/80 backdrop-blur-sm z-40"
+              style={{ top: "60px" }}
+            />
+
+            {/* Menu */}
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.2 }}
+              className="fixed top-[60px] left-0 right-0 z-50 px-3 pt-2"
             >
-              <div className="flex flex-col gap-[1px]">
-                {navLinks.map((link, index) => (
+              <motion.div
+                className="border border-border overflow-hidden max-h-[calc(100vh-80px)] overflow-y-auto"
+                style={{
+                  backgroundColor: "var(--background)",
+                }}
+              >
+                <div className="flex flex-col">
+                  {navLinks.map((link, index) => (
+                    <motion.button
+                      key={link.id}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.05 }}
+                      onClick={() => scrollToSection(link.id)}
+                      className="relative px-4 py-3 text-left border-b border-border last:border-b-0"
+                    >
+                      <motion.div
+                        className="absolute left-0 top-0 bottom-0 w-0.5"
+                        animate={{
+                          opacity: activeSection === link.id ? 1 : 0,
+                        }}
+                        style={{
+                          background: "var(--foreground)",
+                        }}
+                        transition={{ duration: 0.2 }}
+                      />
+
+                      <span
+                        className={`text-sm tracking-wide font-medium ${
+                          activeSection === link.id
+                            ? "text-foreground"
+                            : "text-muted-foreground"
+                        }`}
+                      >
+                        {link.label}
+                      </span>
+                    </motion.button>
+                  ))}
+
+                  {/* Mobile CV Button */}
                   <motion.button
-                    key={link.id}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.05 }}
-                    onClick={() => scrollToSection(link.id)}
-                    className="relative px-6 py-4 text-left overflow-hidden border-b border-border last:border-b-0"
+                    transition={{ delay: navLinks.length * 0.05 }}
+                    onClick={handleDownloadCV}
+                    className="relative px-4 py-3 text-left flex items-center justify-between bg-muted/30"
                   >
-                    <motion.div
-                      className="absolute left-0 top-0 bottom-0 w-px"
-                      animate={{
-                        opacity: activeSection === link.id ? 0.5 : 0,
-                        scaleY: activeSection === link.id ? 1 : 0,
-                      }}
-                      style={{
-                        background: "var(--foreground)",
-                        transformOrigin: "center",
-                      }}
-                      transition={{ duration: 0.2 }}
-                    />
-
-                    <span
-                      className={`text-sm tracking-[0.15em] font-medium ${
-                        activeSection === link.id
-                          ? "text-foreground"
-                          : "text-muted-foreground"
-                      }`}
-                    >
-                      {link.label}
+                    <span className="text-sm tracking-wide font-bold text-foreground">
+                      Download CV
                     </span>
+                    <Download className="w-4 h-4 text-foreground opacity-70" />
                   </motion.button>
-                ))}
-
-                {/* Mobile CV Button */}
-                <motion.button
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: navLinks.length * 0.05 }}
-                  onClick={handleDownloadCV}
-                  className="relative px-6 py-4 text-left flex items-center justify-between"
-                >
-                  <span className="text-sm tracking-[0.15em] font-bold text-foreground">
-                    Download CV
-                  </span>
-                  <ArrowUpRight className="w-4 h-4 text-foreground opacity-50" />
-                </motion.button>
-              </div>
+                </div>
+              </motion.div>
             </motion.div>
-          </motion.div>
+          </>
         )}
       </AnimatePresence>
     </>
