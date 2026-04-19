@@ -1,0 +1,316 @@
+import { motion, AnimatePresence } from "motion/react";
+import { useState, useEffect } from "react";
+import { useMobile } from "../../hooks/useMobile";
+import { Menu, X, ArrowUpRight } from "lucide-react";
+import { ModeToggle } from "./mode-toggle";
+
+const navLinks = [
+  { id: "about", label: "About" },
+  { id: "services", label: "Services" },
+  { id: "tech", label: "Tech Stack" },
+  { id: "projects", label: "Projects" },
+  { id: "experience", label: "Experience" },
+  { id: "contact", label: "Contact" },
+];
+
+export const Navbar = () => {
+  const [activeSection, setActiveSection] = useState("about");
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [hoveredLink, setHoveredLink] = useState(null);
+  const [cvHovered, setCvHovered] = useState(false);
+  const isMobile = useMobile(768);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+
+      // Update active section based on scroll position
+      const sections = navLinks.map((link) => link.id);
+      const current = sections.find((section) => {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          return rect.top <= 150 && rect.bottom >= 150;
+        }
+        return false;
+      });
+      if (current) setActiveSection(current);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      const offset = 80;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
+    setMobileMenuOpen(false);
+  };
+
+  const handleDownloadCV = () => {
+    const link = document.createElement("a");
+    link.href = "/CV.pdf";
+    link.download = "Meareg_Teame_CV.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  return (
+    <>
+      {/* Desktop Navbar */}
+      <motion.nav
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          scrolled ? "py-3" : "py-4"
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            className="relative overflow-hidden border border-border"
+            animate={{
+              backgroundColor: scrolled
+                ? "var(--background)"
+                : "transparent",
+            }}
+            style={{
+              backdropFilter: scrolled ? "blur(12px)" : "none",
+            }}
+            transition={{ duration: 0.3 }}
+          >
+            {/* Scanline effect when scrolled */}
+            <AnimatePresence>
+              {scrolled && (
+                <motion.div
+                  className="absolute left-0 right-0 h-px pointer-events-none z-20"
+                  style={{
+                    background:
+                      "linear-gradient(90deg, transparent, var(--foreground), transparent)",
+                    opacity: 0.08,
+                  }}
+                  initial={{ top: 0 }}
+                  animate={{ top: "100%" }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 2, ease: "linear", repeat: Infinity }}
+                />
+              )}
+            </AnimatePresence>
+
+            <div className="flex items-center justify-between px-6 py-3">
+              {/* Logo */}
+              <motion.div
+                className="font-mono text-sm font-black tracking-wider cursor-pointer"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              >
+                <span className="text-foreground">MEAREG</span>
+                <span className="text-muted-foreground opacity-40">.DEV</span>
+              </motion.div>
+
+              {/* Desktop Nav Links */}
+              {!isMobile && (
+                <div className="flex items-center gap-[1px]">
+                  {navLinks.map((link) => (
+                    <motion.button
+                      key={link.id}
+                      onClick={() => scrollToSection(link.id)}
+                      onHoverStart={() => setHoveredLink(link.id)}
+                      onHoverEnd={() => setHoveredLink(null)}
+                      className="relative px-4 py-2 overflow-hidden"
+                    >
+                      <motion.div
+                        className="absolute left-0 top-0 bottom-0 w-px"
+                        animate={{
+                          opacity:
+                            hoveredLink === link.id ||
+                            activeSection === link.id
+                              ? 0.3
+                              : 0,
+                          scaleY:
+                            hoveredLink === link.id ||
+                            activeSection === link.id
+                              ? 1
+                              : 0,
+                        }}
+                        style={{
+                          background: "var(--foreground)",
+                          transformOrigin: "center",
+                        }}
+                        transition={{ duration: 0.2 }}
+                      />
+
+                      <motion.span
+                        className="text-xs tracking-[0.15em] font-medium relative"
+                        animate={{
+                          color:
+                            activeSection === link.id
+                              ? "var(--foreground)"
+                              : hoveredLink === link.id
+                                ? "var(--foreground)"
+                                : "var(--muted-foreground)",
+                          opacity: activeSection === link.id ? 1 : 0.6,
+                        }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        {link.label}
+                      </motion.span>
+
+                      {activeSection === link.id && (
+                        <motion.div
+                          layoutId="activeIndicator"
+                          className="absolute bottom-0 left-0 right-0 h-px bg-foreground"
+                          initial={false}
+                          transition={{
+                            type: "spring",
+                            stiffness: 380,
+                            damping: 30,
+                          }}
+                        />
+                      )}
+                    </motion.button>
+                  ))}
+                </div>
+              )}
+
+              {/* Right side - CV + Theme Toggle */}
+              <div className="flex items-center gap-3">
+                <ModeToggle />
+
+                {!isMobile && (
+                  <motion.button
+                    onClick={handleDownloadCV}
+                    onHoverStart={() => setCvHovered(true)}
+                    onHoverEnd={() => setCvHovered(false)}
+                    whileTap={{ scale: 0.97 }}
+                    className="relative flex items-center gap-2 px-3 py-1.5 overflow-hidden border border-border"
+                  >
+                    <motion.span
+                      className="text-xs tracking-[0.15em] font-bold"
+                      animate={{
+                        color: cvHovered
+                          ? "var(--foreground)"
+                          : "var(--muted-foreground)",
+                      }}
+                      transition={{ duration: 0.15 }}
+                    >
+                      CV
+                    </motion.span>
+                    <motion.div
+                      animate={{
+                        opacity: cvHovered ? 0.8 : 0.3,
+                        x: cvHovered ? 1 : 0,
+                        y: cvHovered ? -1 : 0,
+                      }}
+                      transition={{ duration: 0.15 }}
+                    >
+                      <ArrowUpRight className="w-3 h-3 text-foreground" />
+                    </motion.div>
+                  </motion.button>
+                )}
+
+                {/* Mobile Menu Button */}
+                {isMobile && (
+                  <motion.button
+                    onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                    whileTap={{ scale: 0.95 }}
+                    className="p-2 text-foreground"
+                  >
+                    {mobileMenuOpen ? (
+                      <X className="w-5 h-5" />
+                    ) : (
+                      <Menu className="w-5 h-5" />
+                    )}
+                  </motion.button>
+                )}
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </motion.nav>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isMobile && mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.2 }}
+            className="fixed top-[72px] left-0 right-0 z-40 px-4"
+          >
+            <motion.div
+              className="border border-border overflow-hidden"
+              style={{
+                backgroundColor: "var(--background)",
+                backdropFilter: "blur(12px)",
+              }}
+            >
+              <div className="flex flex-col gap-[1px]">
+                {navLinks.map((link, index) => (
+                  <motion.button
+                    key={link.id}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.05 }}
+                    onClick={() => scrollToSection(link.id)}
+                    className="relative px-6 py-4 text-left overflow-hidden border-b border-border last:border-b-0"
+                  >
+                    <motion.div
+                      className="absolute left-0 top-0 bottom-0 w-px"
+                      animate={{
+                        opacity: activeSection === link.id ? 0.5 : 0,
+                        scaleY: activeSection === link.id ? 1 : 0,
+                      }}
+                      style={{
+                        background: "var(--foreground)",
+                        transformOrigin: "center",
+                      }}
+                      transition={{ duration: 0.2 }}
+                    />
+
+                    <span
+                      className={`text-sm tracking-[0.15em] font-medium ${
+                        activeSection === link.id
+                          ? "text-foreground"
+                          : "text-muted-foreground"
+                      }`}
+                    >
+                      {link.label}
+                    </span>
+                  </motion.button>
+                ))}
+
+                {/* Mobile CV Button */}
+                <motion.button
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: navLinks.length * 0.05 }}
+                  onClick={handleDownloadCV}
+                  className="relative px-6 py-4 text-left flex items-center justify-between"
+                >
+                  <span className="text-sm tracking-[0.15em] font-bold text-foreground">
+                    Download CV
+                  </span>
+                  <ArrowUpRight className="w-4 h-4 text-foreground opacity-50" />
+                </motion.button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
+  );
+};
