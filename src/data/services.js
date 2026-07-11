@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import { Server, Cpu, Code, Zap } from "lucide-react";
-=======
 import { Server, Cpu, Code, Zap, Cloud, Chrome, Smartphone, Database, Bot } from "lucide-react";
->>>>>>> 8369e6ebd4276dcb34e204f9c5abc8a794c1fddd
 
 export const services = [
   {
@@ -37,8 +33,6 @@ export const services = [
     icon: Zap,
     tag: "WEBSOCKETS · WEBRTC · REAL-TIME",
   },
-<<<<<<< HEAD
-=======
   {
     id: 5,
     title: "SaaS Product Development",
@@ -79,5 +73,4 @@ export const services = [
     icon: Bot,
     tag: "LLM · AGENTS · AUTOMATION",
   },
->>>>>>> 8369e6ebd4276dcb34e204f9c5abc8a794c1fddd
 ];

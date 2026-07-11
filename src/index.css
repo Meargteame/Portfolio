@@ -27,14 +27,14 @@
 }
 
 :root {
-  --background: #050505;
-  --foreground: #ffffff;
-  --card: rgba(255, 255, 255, 0.03);
-  --card-foreground: #ffffff;
-  --muted: #7a7a7a;
-  --muted-foreground: #b5b5b5;
-  --border: rgba(255, 255, 255, 0.08);
-  --ring: rgba(255, 255, 255, 0.12);
+  --background: #111111;
+  --foreground: #f0f0f0;
+  --card: rgba(255, 255, 255, 0.04);
+  --card-foreground: #f0f0f0;
+  --muted: #3a3a3a;
+  --muted-foreground: #a0a0a0;
+  --border: rgba(255, 255, 255, 0.09);
+  --ring: rgba(255, 255, 255, 0.14);
 }
 
 .light {
@@ -93,13 +93,6 @@
   }
 }
 
-<<<<<<< HEAD
-.heading-display {
-  font-family: "Bricolage Grotesque", sans-serif;
-  font-weight: 800;
-  font-style: normal;
-  letter-spacing: -0.03em;
-=======
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -157,5 +150,4 @@
   .film-grain::after {
     display: none;
   }
->>>>>>> 8369e6ebd4276dcb34e204f9c5abc8a794c1fddd
 }

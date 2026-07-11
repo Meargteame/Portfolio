@@ -1,14 +1,6 @@
 import { motion } from "motion/react";
-<<<<<<< HEAD
-import { useState } from "react";
-import { useMobile } from "../../hooks/useMobile";
-import { techs } from "../../data/techStack.jsx";
-import { CornerBrackets } from "../ui/CornerBrackets";
-import { Scanline, LeftAccentBar } from "../ui/Scanline";
-=======
 import { techs } from "../../data/techStack.jsx";
 import { GlassCard } from "../effects/GlassCard";
->>>>>>> 8369e6ebd4276dcb34e204f9c5abc8a794c1fddd
 
 const categories = [
   { label: "Backend", ids: [1, 2, 3, 4, 5, 6, 7] },
@@ -29,27 +21,6 @@ const TechCategory = ({ category, index }) => {
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.5, delay: index * 0.08, ease: [0.25, 0, 0, 1] }}
     >
-<<<<<<< HEAD
-      <motion.div
-        className="relative overflow-hidden border border-border flex items-center gap-2.5 px-4 py-2.5 cursor-default"
-        animate={{ backgroundColor: hovered ? "var(--muted)" : "transparent" }}
-        transition={{ duration: 0.2 }}
-      >
-        <CornerBrackets active={hovered} size="w-3" />
-        <Scanline active={hovered} duration={0.35} />
-        <LeftAccentBar active={hovered} />
-
-        <span className="text-base leading-none">{tech.icon}</span>
-
-        <motion.span
-          className="text-sm font-bold tracking-tight"
-          animate={{ color: hovered ? "var(--foreground)" : "var(--muted-foreground)" }}
-          transition={{ duration: 0.2 }}
-        >
-          {tech.name}
-        </motion.span>
-      </motion.div>
-=======
       <div className="flex items-center gap-3 mb-4">
         <span className="text-[10px] font-mono tracking-[0.2em] text-muted-foreground font-medium">
           {category.label}
@@ -73,7 +44,6 @@ const TechCategory = ({ category, index }) => {
           </motion.div>
         ))}
       </div>
->>>>>>> 8369e6ebd4276dcb34e204f9c5abc8a794c1fddd
     </motion.div>
   );
 };
@@ -109,23 +79,6 @@ export const TechStack = () => {
             <TechCategory key={category.label} category={category} index={index} />
           ))}
         </div>
-<<<<<<< HEAD
-
-        {/* Footer */}
-        {/* <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.5 }}
-          className="mt-6 flex items-center gap-3 px-1"
-        >
-          <div className="flex-1 h-px bg-foreground opacity-10" />
-          <div className="text-[10px] tracking-[0.2em] opacity-20 text-foreground">
-            END OF INDEX
-          </div>
-        </motion.div> */}
-=======
->>>>>>> 8369e6ebd4276dcb34e204f9c5abc8a794c1fddd
       </div>
     </section>
   );

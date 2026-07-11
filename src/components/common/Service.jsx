@@ -1,14 +1,6 @@
 import { motion } from "motion/react";
-<<<<<<< HEAD
-import { useState } from "react";
-import { useMobile } from "../../hooks/useMobile";
-import { services } from "../../data/services";
-import { CornerBrackets } from "../ui/CornerBrackets";
-import { Scanline, LeftAccentBar } from "../ui/Scanline";
-=======
 import { services } from "../../data/services";
 import { GlassCard } from "../effects/GlassCard";
->>>>>>> 8369e6ebd4276dcb34e204f9c5abc8a794c1fddd
 
 const ServiceCard = ({ service, index }) => {
   const Icon = service.icon;
@@ -17,45 +9,6 @@ const ServiceCard = ({ service, index }) => {
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-<<<<<<< HEAD
-      viewport={{ once: true, amount: 0.3 }}
-      transition={{
-        duration: 0.35,
-        delay: index * 0.08,
-        ease: [0.25, 0, 0, 1],
-      }}
-      onHoverStart={() => setHovered(true)}
-      onHoverEnd={() => setHovered(false)}
-      className="relative"
-      role="article"
-      aria-label={`Service: ${service.title}`}
-    >
-      <motion.div
-        className="relative overflow-hidden border border-border h-full flex flex-col p-6"
-        animate={{ backgroundColor: hovered ? "var(--muted)" : "transparent" }}
-        transition={{ duration: 0.2 }}
-      >
-        <CornerBrackets active={hovered} />
-        <Scanline active={hovered} duration={0.5} />
-
-        <div className="flex items-center justify-between mb-6">
-          <motion.span
-            className="font-mono text-4xl font-black select-none leading-none"
-            animate={{ opacity: hovered ? 0.12 : 0.04 }}
-            style={{ color: "var(--foreground)" }}
-            transition={{ duration: 0.2 }}
-          >
-            {num}
-          </motion.span>
-          <motion.span
-            className="font-mono text-[10px] tracking-[0.2em]"
-            animate={{ opacity: hovered ? 0.7 : 0.2 }}
-            style={{ color: "var(--foreground)" }}
-            transition={{ duration: 0.2 }}
-          >
-            {service.tag}
-          </motion.span>
-=======
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.6, delay: index * 0.06, ease: [0.25, 0, 0, 1] }}
     >
@@ -67,7 +20,6 @@ const ServiceCard = ({ service, index }) => {
           <span className="font-mono text-[10px] text-muted-foreground/30 select-none">
             {String(index + 1).padStart(2, "0")}
           </span>
->>>>>>> 8369e6ebd4276dcb34e204f9c5abc8a794c1fddd
         </div>
 
         <h3 className="text-base font-semibold tracking-tight text-foreground mb-2">
