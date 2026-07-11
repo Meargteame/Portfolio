@@ -71,10 +71,13 @@ export const HeroSection = () => {
             className="flex justify-center mb-3"
           >
             <span className="inline-flex items-center gap-2 px-3 py-1 text-[11px] tracking-widest text-foreground border border-border rounded-full opacity-70">
-              <span className="relative flex h-1.5 w-1.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-foreground opacity-50" />
-                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-foreground" />
-              </span>
+              <motion.span
+                className="relative flex h-1.5 w-1.5"
+                animate={{ opacity: [0.4, 1, 0.4] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <span className="inline-flex rounded-full h-1.5 w-1.5 bg-foreground" />
+              </motion.span>
               AVAILABLE FOR WORK
             </span>
           </motion.div>
@@ -117,7 +120,7 @@ export const HeroSection = () => {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black tracking-tight text-foreground leading-[1.1] Handlee-900"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black tracking-tight text-foreground leading-[1.1] heading-display"
           >
             Full Stack &{" "}
             <span className="relative inline-block">
@@ -130,7 +133,14 @@ export const HeroSection = () => {
                 style={{ originX: 0 }}
               />
             </span>
-            <span className="block mt-1 sm:inline sm:mt-0">, Building Scalable & Intelligent Systems.</span>
+            <motion.span
+              className="block mt-1 sm:inline sm:mt-0 overflow-hidden"
+              initial={{ clipPath: "inset(0 100% 0 0)" }}
+              animate={{ clipPath: "inset(0 0% 0 0)" }}
+              transition={{ duration: 1, delay: 1.2, ease: [0.25, 0, 0, 1] }}
+            >
+              , Building Scalable & Intelligent Systems.
+            </motion.span>
           </motion.h1>
 
           <motion.p
@@ -160,8 +170,9 @@ export const HeroSection = () => {
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 0.3, y: 0 }}
                 transition={{ delay: 0.9 + index * 0.08 }}
-                whileHover={{ y: -3, opacity: 0.8 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ y: -3, scale: 1.15, opacity: 0.8 }}
+                whileTap={{ scale: 0.9 }}
+                transition={{ type: "spring", stiffness: 400, damping: 15 }}
               >
                 <social.icon className="w-5 h-5" />
               </motion.a>

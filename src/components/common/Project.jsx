@@ -3,43 +3,8 @@ import { useState } from "react";
 import { useMobile } from "../../hooks/useMobile";
 import { Github, ExternalLink } from "lucide-react";
 import { projects } from "../../data/projects";
-
-const CornerBrackets = ({ active }) => (
-  <>
-    <motion.div
-      className="absolute top-0 left-0 w-4 h-4 pointer-events-none"
-      animate={{ opacity: active ? 1 : 0 }}
-      transition={{ duration: 0.15 }}
-    >
-      <div className="absolute top-0 left-0 w-full h-px bg-foreground" />
-      <div className="absolute top-0 left-0 h-full w-px bg-foreground" />
-    </motion.div>
-    <motion.div
-      className="absolute top-0 right-0 w-4 h-4 pointer-events-none"
-      animate={{ opacity: active ? 1 : 0 }}
-      transition={{ duration: 0.15 }}
-    >
-      <div className="absolute top-0 right-0 w-full h-px bg-foreground" />
-      <div className="absolute top-0 right-0 h-full w-px bg-foreground" />
-    </motion.div>
-    <motion.div
-      className="absolute bottom-0 left-0 w-4 h-4 pointer-events-none"
-      animate={{ opacity: active ? 1 : 0 }}
-      transition={{ duration: 0.15 }}
-    >
-      <div className="absolute bottom-0 left-0 w-full h-px bg-foreground" />
-      <div className="absolute bottom-0 left-0 h-full w-px bg-foreground" />
-    </motion.div>
-    <motion.div
-      className="absolute bottom-0 right-0 w-4 h-4 pointer-events-none"
-      animate={{ opacity: active ? 1 : 0 }}
-      transition={{ duration: 0.15 }}
-    >
-      <div className="absolute bottom-0 right-0 w-full h-px bg-foreground" />
-      <div className="absolute bottom-0 right-0 h-full w-px bg-foreground" />
-    </motion.div>
-  </>
-);
+import { CornerBrackets } from "../ui/CornerBrackets";
+import { Scanline, LeftAccentBar } from "../ui/Scanline";
 
 const ProjectRow = ({ project, index }) => {
   const [hovered, setHovered] = useState(false);
@@ -77,6 +42,8 @@ const ProjectRow = ({ project, index }) => {
         ease: [0.25, 0, 0, 1],
       }}
       className="relative block"
+      role="article"
+      aria-label={`Project: ${project.name}`}
     >
       <motion.div
         className="relative overflow-hidden border border-border"
@@ -87,33 +54,8 @@ const ProjectRow = ({ project, index }) => {
         onClick={handleCardClick}
       >
         <CornerBrackets active={hovered || detailsOpen} />
-
-        <AnimatePresence>
-          {(hovered || detailsOpen) && (
-            <motion.div
-              className="absolute left-0 right-0 h-px pointer-events-none z-20"
-              style={{
-                background:
-                  "linear-gradient(90deg, transparent, var(--foreground), transparent)",
-                opacity: 0.12,
-              }}
-              initial={{ top: 0 }}
-              animate={{ top: "100%" }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.45, ease: "linear" }}
-            />
-          )}
-        </AnimatePresence>
-
-        <motion.div
-          className="absolute left-0 top-0 bottom-0 w-px"
-          animate={{
-            opacity: hovered || detailsOpen ? 0.5 : 0,
-            scaleY: hovered || detailsOpen ? 1 : 0,
-          }}
-          style={{ background: "var(--foreground)", transformOrigin: "center" }}
-          transition={{ duration: 0.2 }}
-        />
+        <Scanline active={hovered || detailsOpen} />
+        <LeftAccentBar active={hovered || detailsOpen} />
 
         <div>
           {/* Main content */}
@@ -172,7 +114,7 @@ const ProjectRow = ({ project, index }) => {
               <div className="flex items-center gap-2 mb-1 flex-wrap">
                 {isMobile && (
                   <motion.span
-                    className="font-mono text-[9px] tracking-wider opacity-30 text-foreground"
+                    className="font-mono text-[10px] tracking-wider opacity-30 text-foreground"
                     animate={{ opacity: detailsOpen ? 0.5 : 0.3 }}
                   >
                     {num}
@@ -192,7 +134,7 @@ const ProjectRow = ({ project, index }) => {
                 </motion.div>
                 {project.tech && (
                   <motion.div
-                    className={`text-[8px] font-mono tracking-wider px-1.5 py-0.5 rounded-sm ${isMobile ? "ml-auto" : ""}`}
+                    className={`text-[10px] font-mono tracking-wider px-1.5 py-0.5 rounded-sm ${isMobile ? "ml-auto" : ""}`}
                     animate={{
                       opacity: (hovered || detailsOpen) ? 0.6 : 0.3,
                       backgroundColor: (hovered || detailsOpen)
@@ -212,7 +154,7 @@ const ProjectRow = ({ project, index }) => {
 
               {isMobile && project.tag && (
                 <motion.div
-                  className="text-[9px] font-mono tracking-wider mb-1.5 opacity-40"
+                  className="text-[10px] font-mono tracking-wider mb-1.5 opacity-40"
                   style={{ color: "var(--foreground)" }}
                 >
                   {project.tag}
@@ -305,7 +247,7 @@ const ProjectRow = ({ project, index }) => {
                         opacity: 0.9,
                       }}
                     >
-                      <div className="font-mono text-[9px] tracking-wider mb-2 opacity-40">
+                      <div className="font-mono text-[10px] tracking-wider mb-2 opacity-40">
                         TECHNICAL DEEP DIVE
                       </div>
                       <p
@@ -379,7 +321,7 @@ export const Projects = () => {
           transition={{ delay: 0.5 }}
           className="mt-4 text-center md:hidden"
         >
-          <div className="font-mono text-[8px] tracking-wider opacity-30 text-foreground">
+          <div className="font-mono text-[10px] tracking-wider opacity-30 text-foreground">
             TAP + TO VIEW DETAILS • TAP ICONS TO OPEN
           </div>
         </motion.div>

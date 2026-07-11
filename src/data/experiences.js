@@ -1,10 +1,14 @@
-import Avatar from "../assets/avatar.jpeg";
+// Drop real logo images into src/assets/ and update the paths below.
+// Until you do, a styled initials fallback will be used.
+import leonsLabLogo from "../assets/leons-lab.png";
+import ensightLogo from "../assets/ensight.png";
+import swenetixLogo from "../assets/swenetix.png";
 
 export const experiences = [
   {
     id: 1,
     company: "Leons Lab",
-    logo: Avatar,
+    logo: leonsLabLogo,
     role: "Product Developer / Builder",
     date: "Apr 2024 — Present",
     description:
@@ -14,7 +18,7 @@ export const experiences = [
   {
     id: 2,
     company: "Ensight Global Consultancy",
-    logo: Avatar,
+    logo: ensightLogo,
     role: "Web Application Developer",
     date: "Jun 2025 — Present",
     description:
@@ -24,7 +28,7 @@ export const experiences = [
   {
     id: 3,
     company: "SWENETIX TECH",
-    logo: Avatar,
+    logo: swenetixLogo,
     role: "Software Engineer Intern",
     date: "Jul 2025 — Sep 2025",
     description:

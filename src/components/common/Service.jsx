@@ -1,44 +1,9 @@
-import { motion, AnimatePresence } from "motion/react";
+import { motion } from "motion/react";
 import { useState } from "react";
 import { useMobile } from "../../hooks/useMobile";
 import { services } from "../../data/services";
-
-const CornerBrackets = ({ active }) => (
-  <>
-    <motion.div
-      className="absolute top-0 left-0 w-4 h-4 pointer-events-none"
-      animate={{ opacity: active ? 1 : 0 }}
-      transition={{ duration: 0.15 }}
-    >
-      <div className="absolute top-0 left-0 w-full h-px bg-foreground" />
-      <div className="absolute top-0 left-0 h-full w-px bg-foreground" />
-    </motion.div>
-    <motion.div
-      className="absolute top-0 right-0 w-4 h-4 pointer-events-none"
-      animate={{ opacity: active ? 1 : 0 }}
-      transition={{ duration: 0.15 }}
-    >
-      <div className="absolute top-0 right-0 w-full h-px bg-foreground" />
-      <div className="absolute top-0 right-0 h-full w-px bg-foreground" />
-    </motion.div>
-    <motion.div
-      className="absolute bottom-0 left-0 w-4 h-4 pointer-events-none"
-      animate={{ opacity: active ? 1 : 0 }}
-      transition={{ duration: 0.15 }}
-    >
-      <div className="absolute bottom-0 left-0 w-full h-px bg-foreground" />
-      <div className="absolute bottom-0 left-0 h-full w-px bg-foreground" />
-    </motion.div>
-    <motion.div
-      className="absolute bottom-0 right-0 w-4 h-4 pointer-events-none"
-      animate={{ opacity: active ? 1 : 0 }}
-      transition={{ duration: 0.15 }}
-    >
-      <div className="absolute bottom-0 right-0 w-full h-px bg-foreground" />
-      <div className="absolute bottom-0 right-0 h-full w-px bg-foreground" />
-    </motion.div>
-  </>
-);
+import { CornerBrackets } from "../ui/CornerBrackets";
+import { Scanline, LeftAccentBar } from "../ui/Scanline";
 
 const ServiceCard = ({ service, index }) => {
   const [hovered, setHovered] = useState(false);
@@ -58,6 +23,8 @@ const ServiceCard = ({ service, index }) => {
       onHoverStart={() => setHovered(true)}
       onHoverEnd={() => setHovered(false)}
       className="relative"
+      role="article"
+      aria-label={`Service: ${service.title}`}
     >
       <motion.div
         className="relative overflow-hidden border border-border h-full flex flex-col p-6"
@@ -65,23 +32,7 @@ const ServiceCard = ({ service, index }) => {
         transition={{ duration: 0.2 }}
       >
         <CornerBrackets active={hovered} />
-
-        <AnimatePresence>
-          {hovered && (
-            <motion.div
-              className="absolute left-0 right-0 h-px pointer-events-none z-20"
-              style={{
-                background:
-                  "linear-gradient(90deg, transparent, var(--foreground), transparent)",
-                opacity: 0.12,
-              }}
-              initial={{ top: 0 }}
-              animate={{ top: "100%" }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.5, ease: "linear" }}
-            />
-          )}
-        </AnimatePresence>
+        <Scanline active={hovered} duration={0.5} />
 
         <div className="flex items-center justify-between mb-6">
           <motion.span

@@ -1,114 +1,201 @@
 import { motion, AnimatePresence } from "motion/react";
-import { useState } from "react";
-import { Mail, Linkedin } from "lucide-react";
+import { useState, useRef } from "react";
+import { Mail, Linkedin, Send, Check } from "lucide-react";
+import emailjs from "@emailjs/browser";
+import { CornerBrackets } from "../ui/CornerBrackets";
+import { Scanline, LeftAccentBar } from "../ui/Scanline";
 import Avatar from "../../assets/image.png";
 
-/* ── Human silhouette outline ── */
-const HumanSilhouette = () => (
-  <svg viewBox="0 0 46 56" width="46" height="56" fill="none">
-    {/* Head */}
-    <circle
-      cx="23" cy="12" r="9"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      opacity={0.5}
-    />
-    {/* Body / shoulders */}
-    <path
-      d="M6 50 C6 36 10 30 23 30 C36 30 40 36 40 50"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      opacity={0.5}
-    />
-  </svg>
-);
+// EmailJS config — replace with your own keys from https://www.emailjs.com
+const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID";
+const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";
+const EMAILJS_PUBLIC_KEY = "YOUR_PUBLIC_KEY";
 
-/* ── Contact illustration ── */
-const ContactIllustration = () => (
+/* ── Animated envelope illustration (simplified) ── */
+const EnvelopeIllustration = () => (
   <div
-    className="relative w-full flex items-center justify-between"
-    style={{ height: "100px", color: "var(--foreground)" }}
+    className="relative w-full flex items-center justify-center"
+    style={{ height: "60px", color: "var(--foreground)" }}
   >
-    {/* Visitor sender */}
+    <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 40" preserveAspectRatio="none">
+      <motion.path
+        d="M10 30 Q50 5 90 30"
+        stroke="currentColor"
+        strokeWidth="0.6"
+        strokeDasharray="3 3"
+        fill="none"
+        animate={{ opacity: [0.08, 0.15, 0.08] }}
+        transition={{ duration: 4, repeat: Infinity }}
+      />
+    </svg>
     <motion.div
-      className="flex flex-col items-center gap-1 flex-shrink-0"
-      animate={{ y: [-1.5, 1.5, -1.5] }}
-      transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut" }}
+      className="absolute"
+      animate={{
+        left: ["15%", "85%", "85%"],
+        top: ["60%", "25%", "25%"],
+        opacity: [0, 0.8, 0],
+        rotate: [0, -6, -6],
+      }}
+      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", times: [0, 0.6, 1] }}
+      style={{ transform: "translate(-50%, -50%)" }}
     >
-      <HumanSilhouette />
-      <span className="text-[7px] tracking-[0.18em] opacity-20">YOU</span>
-    </motion.div>
-
-    {/* Middle: path + envelope */}
-    <div className="flex-1 relative mx-2" style={{ height: "100px" }}>
-      <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 60" preserveAspectRatio="none">
-        <motion.path
-          d="M4 48 Q50 8 96 32"
-          stroke="currentColor"
-          strokeWidth="0.7"
-          strokeDasharray="3 3.5"
-          fill="none"
-          animate={{ opacity: [0.07, 0.2, 0.07] }}
-          transition={{ duration: 3, repeat: Infinity }}
-        />
+      <svg viewBox="0 0 24 16" width="24" height="16">
+        <rect x="0" y="0" width="24" height="16" rx="2" fill="currentColor" opacity={0.12} stroke="currentColor" strokeWidth="0.8" />
+        <path d="M0 0 L12 9 L24 0" stroke="currentColor" strokeWidth="0.8" fill="none" opacity={0.4} />
       </svg>
-      <motion.div
-        className="absolute"
-        animate={{
-          left: ["2%", "88%", "88%"],
-          top: ["58%", "28%", "28%"],
-          opacity: [0, 1, 0],
-          rotate: [0, -8, -8],
-        }}
-        transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut", times: [0, 0.62, 1] }}
-        style={{ transform: "translate(-50%, -50%)" }}
-      >
-        <svg viewBox="0 0 26 18" width="26" height="18">
-          <rect x="0" y="0" width="26" height="18" rx="2" fill="currentColor" opacity={0.16} stroke="currentColor" strokeWidth="0.8" />
-          <path d="M0 0 L13 11 L26 0" stroke="currentColor" strokeWidth="0.8" fill="none" opacity={0.5} />
-          <line x1="-3" y1="6" x2="-9" y2="6" stroke="currentColor" strokeWidth="0.6" opacity={0.3} />
-          <line x1="-3" y1="10" x2="-12" y2="10" stroke="currentColor" strokeWidth="0.5" opacity={0.2} />
-          <line x1="-3" y1="14" x2="-7" y2="14" stroke="currentColor" strokeWidth="0.4" opacity={0.15} />
-        </svg>
-      </motion.div>
-    </div>
-
-    {/* Real avatar receiver */}
-    <motion.div
-      className="flex flex-col items-center gap-1 flex-shrink-0 relative"
-      animate={{ y: [-1.5, 1.5, -1.5] }}
-      transition={{ duration: 3.8, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
-    >
-      <div className="relative">
-        <motion.div
-          className="absolute rounded-full border"
-          style={{ inset: "-4px", borderColor: "currentColor" }}
-          animate={{ scale: [1, 1.55], opacity: [0.25, 0] }}
-          transition={{ duration: 1.4, repeat: Infinity, delay: 1.6 }}
-        />
-        <motion.div
-          className="absolute rounded-full border"
-          style={{ inset: "-4px", borderColor: "currentColor" }}
-          animate={{ scale: [1, 1.9], opacity: [0.15, 0] }}
-          transition={{ duration: 1.8, repeat: Infinity, delay: 1.9 }}
-        />
-        <img
-          src={Avatar}
-          alt="Meareg Teame"
-          className="rounded-full block"
-          style={{
-            width: "46px",
-            height: "46px",
-            objectFit: "cover",
-            filter: "grayscale(100%) contrast(1.05) brightness(0.95)",
-            opacity: 0.82,
-          }}
-        />
-      </div>
-      <span className="text-[7px] tracking-[0.18em] opacity-20">ME</span>
     </motion.div>
   </div>
+);
+
+/* ── Form field component ── */
+const FormField = ({ label, type = "text", name, value, onChange, required, textarea }) => {
+  const [focused, setFocused] = useState(false);
+
+  return (
+    <div className="relative">
+      <motion.label
+        className="block text-[10px] tracking-[0.2em] mb-2 opacity-40 text-foreground"
+        animate={{ opacity: focused ? 0.7 : 0.4 }}
+        transition={{ duration: 0.2 }}
+      >
+        {label.toUpperCase()}
+      </motion.label>
+      <div className="relative">
+        <motion.div
+          className="absolute inset-0 border border-border pointer-events-none"
+          animate={{ borderColor: focused ? "var(--foreground)" : "var(--border)" }}
+          transition={{ duration: 0.2 }}
+        />
+        <CornerBrackets active={focused} size="w-3" />
+        {textarea ? (
+          <textarea
+            name={name}
+            value={value}
+            onChange={onChange}
+            required={required}
+            rows={4}
+            onFocus={() => setFocused(true)}
+            onBlur={() => setFocused(false)}
+            className="w-full bg-transparent px-4 py-3 text-sm text-foreground outline-none resize-none"
+          />
+        ) : (
+          <input
+            type={type}
+            name={name}
+            value={value}
+            onChange={onChange}
+            required={required}
+            onFocus={() => setFocused(true)}
+            onBlur={() => setFocused(false)}
+            className="w-full bg-transparent px-4 py-3 text-sm text-foreground outline-none"
+          />
+        )}
+      </div>
+    </div>
+  );
+};
+
+/* ── Contact Form ── */
+const ContactForm = () => {
+  const formRef = useRef(null);
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [status, setStatus] = useState("idle"); // idle | sending | success | error
+
+  const handleChange = (e) => {
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus("sending");
+
+    try {
+      await emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, formRef.current, EMAILJS_PUBLIC_KEY);
+      setStatus("success");
+      setFormData({ name: "", email: "", message: "" });
+      setTimeout(() => setStatus("idle"), 3000);
+    } catch {
+      setStatus("error");
+      setTimeout(() => setStatus("idle"), 3000);
+    }
+  };
+
+  return (
+    <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-4">
+      <FormField label="Name" name="name" value={formData.name} onChange={handleChange} required />
+      <FormField label="Email" type="email" name="email" value={formData.email} onChange={handleChange} required />
+      <FormField label="Message" name="message" value={formData.message} onChange={handleChange} required textarea />
+
+      <motion.button
+        type="submit"
+        disabled={status === "sending" || status === "success"}
+        whileTap={{ scale: 0.98 }}
+        className="relative flex items-center justify-center gap-2 border border-border px-6 py-3 text-sm font-bold tracking-wider text-foreground hover:bg-muted transition-colors disabled:opacity-50"
+      >
+        <CornerBrackets active size="w-3" />
+        {status === "idle" && (
+          <>
+            <Send className="w-4 h-4" />
+            <span>SEND MESSAGE</span>
+          </>
+        )}
+        {status === "sending" && <span className="tracking-widest">SENDING...</span>}
+        {status === "success" && (
+          <>
+            <Check className="w-4 h-4" />
+            <span>SENT</span>
+          </>
+        )}
+        {status === "error" && <span className="tracking-widest">TRY AGAIN</span>}
+      </motion.button>
+    </form>
+  );
+};
+
+/* ── Contact Link Row ── */
+const ContactLink = ({ href, icon: Icon, label, value, hoveredLink, setHoveredLink, id }) => (
+  <motion.a
+    href={href}
+    target={href.startsWith("mailto") ? undefined : "_blank"}
+    rel="noopener noreferrer"
+    initial={{ opacity: 0, y: 12 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.4, delay: 0.5 }}
+    onHoverStart={() => setHoveredLink(id)}
+    onHoverEnd={() => setHoveredLink(null)}
+    className="relative block"
+  >
+    <motion.div
+      className="relative overflow-hidden p-5 flex items-center gap-4"
+      animate={{ backgroundColor: hoveredLink === id ? "var(--muted)" : "transparent" }}
+      transition={{ duration: 0.2 }}
+    >
+      <Scanline active={hoveredLink === id} duration={0.4} />
+      <LeftAccentBar active={hoveredLink === id} />
+      <motion.div animate={{ opacity: hoveredLink === id ? 1 : 0.3 }} transition={{ duration: 0.2 }}>
+        <Icon className="w-5 h-5 text-foreground" />
+      </motion.div>
+      <div className="flex-1 min-w-0">
+        <div className="text-[10px] tracking-[0.2em] mb-0.5 opacity-30 text-foreground">{label}</div>
+        <motion.div
+          className="text-sm font-bold tracking-tight truncate"
+          animate={{ color: hoveredLink === id ? "var(--foreground)" : "var(--muted-foreground)" }}
+          transition={{ duration: 0.2 }}
+        >
+          {value}
+        </motion.div>
+      </div>
+      <motion.div
+        className="text-sm flex-shrink-0"
+        animate={{ opacity: hoveredLink === id ? 0.8 : 0.2, x: hoveredLink === id ? 4 : 0 }}
+        style={{ color: "var(--foreground)" }}
+        transition={{ duration: 0.2 }}
+      >
+        ↗
+      </motion.div>
+    </motion.div>
+  </motion.a>
 );
 
 export const GetInTouch = () => {
@@ -123,7 +210,6 @@ export const GetInTouch = () => {
       className="py-8 sm:py-12 md:py-16 lg:py-20 relative"
     >
       <div className="max-w-7xl mx-auto">
-
         {/* Header */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -152,10 +238,9 @@ export const GetInTouch = () => {
           </div>
         </motion.div>
 
-        {/* Contenu principal */}
+        {/* Main content */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-
-          {/* Colonne gauche */}
+          {/* Left column */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -163,173 +248,67 @@ export const GetInTouch = () => {
             transition={{ duration: 0.4, delay: 0.2 }}
             className="flex flex-col gap-6"
           >
-            <motion.div
-              initial={{ opacity: 0, y: -6 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.35 }}
-            >
-              <ContactIllustration />
-            </motion.div>
+            <EnvelopeIllustration />
 
             <p className="text-sm leading-relaxed opacity-40 text-foreground max-w-sm">
-              Want to collaborate on a project, discuss an opportunity, or just say hi? 
+              Want to collaborate on a project, discuss an opportunity, or just say hi?
               Drop me a message and I'll get back to you as soon as possible.
             </p>
+
+            {/* Avatar badge */}
+            <div className="flex items-center gap-3">
+              <div className="relative">
+                <img
+                  src={Avatar}
+                  alt="Meareg Teame"
+                  className="rounded-full block"
+                  style={{
+                    width: "36px",
+                    height: "36px",
+                    objectFit: "cover",
+                    filter: "grayscale(100%) contrast(1.05) brightness(0.95)",
+                    opacity: 0.82,
+                  }}
+                />
+              </div>
+              <div>
+                <div className="text-sm font-bold tracking-tight text-foreground">Meareg Teame</div>
+                <div className="text-[10px] tracking-widest opacity-30 text-foreground">FULL STACK & AI ENGINEER</div>
+              </div>
+            </div>
           </motion.div>
 
-          {/* Colonne droite */}
+          {/* Right column - Form + Links */}
           <div className="flex flex-col gap-4">
+            <ContactForm />
 
-            {/* Email */}
-            <motion.a
+            {/* Divider */}
+            <div className="flex items-center gap-3 my-2">
+              <div className="flex-1 h-px bg-foreground opacity-10" />
+              <span className="text-[10px] tracking-[0.2em] opacity-20 text-foreground">OR</span>
+              <div className="flex-1 h-px bg-foreground opacity-10" />
+            </div>
+
+            <ContactLink
               href="mailto:hello.meareg@gmail.com"
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: 0.3 }}
-              onHoverStart={() => setHoveredLink("email")}
-              onHoverEnd={() => setHoveredLink(null)}
-              className="relative block"
-            >
-              <motion.div
-                className="relative overflow-hidden p-6 flex items-center gap-5"
-                animate={{ backgroundColor: hoveredLink === "email" ? "var(--muted)" : "transparent" }}
-                transition={{ duration: 0.2 }}
-              >
-                <AnimatePresence>
-                  {hoveredLink === "email" && (
-                    <motion.div
-                      className="absolute left-0 right-0 h-px pointer-events-none z-20"
-                      style={{ background: "linear-gradient(90deg, transparent, var(--foreground), transparent)", opacity: 0.12 }}
-                      initial={{ top: 0 }}
-                      animate={{ top: "100%" }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.4, ease: "linear" }}
-                    />
-                  )}
-                </AnimatePresence>
-                <motion.div
-                  className="absolute left-0 top-0 bottom-0 w-px"
-                  animate={{ opacity: hoveredLink === "email" ? 0.5 : 0, scaleY: hoveredLink === "email" ? 1 : 0 }}
-                  style={{ background: "var(--foreground)", transformOrigin: "center" }}
-                  transition={{ duration: 0.2 }}
-                />
-                <motion.div animate={{ opacity: hoveredLink === "email" ? 1 : 0.3 }} transition={{ duration: 0.2 }}>
-                  <Mail className="w-5 h-5 text-foreground" />
-                </motion.div>
-                <div className="flex-1 min-w-0">
-                  <motion.div
-                    className="text-[10px] tracking-[0.2em] mb-1"
-                    animate={{ opacity: hoveredLink === "email" ? 0.4 : 0.2 }}
-                    style={{ color: "var(--foreground)" }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    EMAIL
-                  </motion.div>
-                  <motion.div
-                    className="text-sm font-bold tracking-tight truncate"
-                    animate={{ color: hoveredLink === "email" ? "var(--foreground)" : "var(--muted-foreground)" }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    hello.meareg@gmail.com
-                  </motion.div>
-                </div>
-                <motion.div
-                  className="text-sm flex-shrink-0"
-                  animate={{ opacity: hoveredLink === "email" ? 0.8 : 0.2, x: hoveredLink === "email" ? 4 : 0 }}
-                  style={{ color: "var(--foreground)" }}
-                  transition={{ duration: 0.2 }}
-                >
-                  ↗
-                </motion.div>
-              </motion.div>
-            </motion.a>
-
-            {/* LinkedIn */}
-            <motion.a
+              icon={Mail}
+              label="EMAIL"
+              value="hello.meareg@gmail.com"
+              hoveredLink={hoveredLink}
+              setHoveredLink={setHoveredLink}
+              id="email"
+            />
+            <ContactLink
               href="https://www.linkedin.com/in/meareg-teame/"
-              target="_blank"
-              rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: 0.4 }}
-              onHoverStart={() => setHoveredLink("linkedin")}
-              onHoverEnd={() => setHoveredLink(null)}
-              className="relative block"
-            >
-              <motion.div
-                className="relative overflow-hidden p-6 flex items-center gap-5"
-                animate={{ backgroundColor: hoveredLink === "linkedin" ? "var(--muted)" : "transparent" }}
-                transition={{ duration: 0.2 }}
-              >
-                <AnimatePresence>
-                  {hoveredLink === "linkedin" && (
-                    <motion.div
-                      className="absolute left-0 right-0 h-px pointer-events-none z-20"
-                      style={{ background: "linear-gradient(90deg, transparent, var(--foreground), transparent)", opacity: 0.12 }}
-                      initial={{ top: 0 }}
-                      animate={{ top: "100%" }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.4, ease: "linear" }}
-                    />
-                  )}
-                </AnimatePresence>
-                <motion.div
-                  className="absolute left-0 top-0 bottom-0 w-px"
-                  animate={{ opacity: hoveredLink === "linkedin" ? 0.5 : 0, scaleY: hoveredLink === "linkedin" ? 1 : 0 }}
-                  style={{ background: "var(--foreground)", transformOrigin: "center" }}
-                  transition={{ duration: 0.2 }}
-                />
-                <motion.div animate={{ opacity: hoveredLink === "linkedin" ? 1 : 0.3 }} transition={{ duration: 0.2 }}>
-                  <Linkedin className="w-5 h-5 text-foreground" />
-                </motion.div>
-                <div className="flex-1 min-w-0">
-                  <motion.div
-                    className="text-[10px] tracking-[0.2em] mb-1"
-                    animate={{ opacity: hoveredLink === "linkedin" ? 0.4 : 0.2 }}
-                    style={{ color: "var(--foreground)" }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    LINKEDIN
-                  </motion.div>
-                  <motion.div
-                    className="text-sm font-bold tracking-tight"
-                    animate={{ color: hoveredLink === "linkedin" ? "var(--foreground)" : "var(--muted-foreground)" }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    meareg-teame
-                  </motion.div>
-                </div>
-                <motion.div
-                  className="text-sm flex-shrink-0"
-                  animate={{ opacity: hoveredLink === "linkedin" ? 0.8 : 0.2, x: hoveredLink === "linkedin" ? 4 : 0 }}
-                  style={{ color: "var(--foreground)" }}
-                  transition={{ duration: 0.2 }}
-                >
-                  ↗
-                </motion.div>
-              </motion.div>
-            </motion.a>
-
+              icon={Linkedin}
+              label="LINKEDIN"
+              value="meareg-teame"
+              hoveredLink={hoveredLink}
+              setHoveredLink={setHoveredLink}
+              id="linkedin"
+            />
           </div>
         </div>
-
-        {/* Footer */}
-        {/* <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.5 }}
-          className="mt-6 flex items-center gap-3 px-1"
-        >
-          <div className="flex-1 h-px bg-foreground opacity-10" />
-          <div className="text-[9px] tracking-[0.2em] opacity-20 text-foreground">
-            END OF INDEX
-          </div>
-        </motion.div> */}
-
       </div>
     </motion.div>
   );

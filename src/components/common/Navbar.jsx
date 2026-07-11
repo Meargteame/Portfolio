@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from "motion/react";
 import { useState, useEffect } from "react";
 import { useMobile } from "../../hooks/useMobile";
-import { Menu, X, Download } from "lucide-react";
+import { Menu, X, Download, ArrowUp } from "lucide-react";
 import { ModeToggle } from "./mode-toggle";
 
 const navLinks = [
@@ -16,13 +16,22 @@ const navLinks = [
 export const Navbar = () => {
   const [activeSection, setActiveSection] = useState("about");
   const [scrolled, setScrolled] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [showBackToTop, setShowBackToTop] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [hoveredLink, setHoveredLink] = useState(null);
   const isMobile = useMobile(768);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      const scrollY = window.scrollY;
+      setScrolled(scrollY > 50);
+      setShowBackToTop(scrollY > 600);
+
+      // Calculate scroll progress
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? (scrollY / docHeight) * 100 : 0;
+      setScrollProgress(progress);
 
       const sections = navLinks.map((link) => link.id);
       const current = sections.find((section) => {
@@ -66,6 +75,14 @@ export const Navbar = () => {
 
   return (
     <>
+      {/* Scroll progress bar */}
+      <div className="fixed top-0 left-0 right-0 z-[60] h-[2px]">
+        <motion.div
+          className="h-full bg-foreground origin-left"
+          style={{ scaleX: scrollProgress / 100 }}
+        />
+      </div>
+
       <motion.nav
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -249,6 +266,23 @@ export const Navbar = () => {
               </motion.div>
             </motion.div>
           </>
+        )}
+      </AnimatePresence>
+
+      {/* Back to top button */}
+      <AnimatePresence>
+        {showBackToTop && (
+          <motion.button
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            transition={{ duration: 0.2 }}
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="fixed bottom-6 right-6 z-50 p-2.5 border border-border bg-background/80 backdrop-blur-sm text-foreground hover:bg-muted transition-colors"
+            aria-label="Back to top"
+          >
+            <ArrowUp className="w-4 h-4" />
+          </motion.button>
         )}
       </AnimatePresence>
     </>

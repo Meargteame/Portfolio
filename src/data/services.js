@@ -1,4 +1,4 @@
-import { Server, Cpu, Code, Zap, Cloud, Chrome, Smartphone } from "lucide-react";
+import { Server, Cpu, Code, Zap } from "lucide-react";
 
 export const services = [
   {
@@ -32,29 +32,5 @@ export const services = [
       "Building real-time features using WebSockets, WebRTC, and event-driven architectures. Perfect for chat apps, collaborative tools, and live dashboards.",
     icon: Zap,
     tag: "WEBSOCKETS · WEBRTC · REAL-TIME",
-  },
-  {
-    id: 5,
-    title: "SaaS Product Development",
-    description:
-      "Developing scalable SaaS platforms from concept to launch. Including authentication, subscription management, analytics, and multi-tenancy.",
-    icon: Cloud,
-    tag: "SAAS · MULTI-TENANT · SCALABLE",
-  },
-  {
-    id: 6,
-    title: "Chrome Extension Development",
-    description:
-      "Creating powerful Chrome extensions that enhance browser functionality. From productivity tools to content scrapers and automation.",
-    icon: Chrome,
-    tag: "CHROME · EXTENSIONS · AUTOMATION",
-  },
-  {
-    id: 7,
-    title: "Progressive Web Apps (PWA)",
-    description:
-      "Building progressive web apps that work offline, load fast, and provide native-like experiences across all devices.",
-    icon: Smartphone,
-    tag: "PWA · OFFLINE · MOBILE-FIRST",
   },
 ];

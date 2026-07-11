@@ -1,4 +1,4 @@
-import { Github, Linkedin, Twitter, Mail } from "lucide-react";
+import { Github, Linkedin, Twitter, Mail, MapPin } from "lucide-react";
 import { motion } from "motion/react";
 import { useState } from "react";
 
@@ -59,15 +59,21 @@ export const Footer = () => {
         />
 
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-          {/* Copyright */}
+          {/* Copyright + Location */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-[11px] tracking-[0.2em] opacity-25 text-foreground order-2 md:order-1"
+            className="flex flex-col items-center md:items-start gap-2 order-2 md:order-1"
           >
-            © {currentYear} · MEAREG TEAME
+            <div className="text-[11px] tracking-[0.2em] opacity-25 text-foreground">
+              © {currentYear} · MEAREG TEAME
+            </div>
+            <div className="flex items-center gap-1.5 text-[10px] tracking-widest opacity-20 text-foreground">
+              <MapPin className="w-3 h-3" />
+              <span>Addis Ababa, Ethiopia</span>
+            </div>
           </motion.div>
 
           {/* Socials */}
@@ -131,16 +137,29 @@ export const Footer = () => {
           </motion.div>
         </div>
 
-        {/* Ligne bottom / END */}
+        {/* Built with credit */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.45 }}
+          className="mt-4 text-center"
+        >
+          <div className="text-[10px] tracking-widest opacity-15 text-foreground">
+            Built with React + Vite + Tailwind CSS
+          </div>
+        </motion.div>
+
+        {/* END */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.5 }}
-          className="mt-8 flex items-center gap-3"
+          className="mt-4 flex items-center gap-3"
         >
           <div className="flex-1 h-px bg-foreground opacity-10" />
-          <div className="text-[9px] tracking-[0.2em] opacity-20 text-foreground">
+          <div className="text-[10px] tracking-[0.2em] opacity-20 text-foreground">
             END OF PAGE
           </div>
         </motion.div>
