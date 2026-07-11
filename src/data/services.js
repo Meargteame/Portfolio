@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { Server, Cpu, Code, Zap } from "lucide-react";
+=======
+import { Server, Cpu, Code, Zap, Cloud, Chrome, Smartphone, Database, Bot } from "lucide-react";
+>>>>>>> 8369e6ebd4276dcb34e204f9c5abc8a794c1fddd
 
 export const services = [
   {
@@ -33,4 +37,47 @@ export const services = [
     icon: Zap,
     tag: "WEBSOCKETS · WEBRTC · REAL-TIME",
   },
+<<<<<<< HEAD
+=======
+  {
+    id: 5,
+    title: "SaaS Product Development",
+    description:
+      "Developing scalable SaaS platforms from concept to launch. Including authentication, subscription management, analytics, and multi-tenancy.",
+    icon: Cloud,
+    tag: "SAAS · MULTI-TENANT · SCALABLE",
+  },
+  {
+    id: 6,
+    title: "Chrome Extension Development",
+    description:
+      "Creating powerful Chrome extensions that enhance browser functionality. From productivity tools to content scrapers and automation.",
+    icon: Chrome,
+    tag: "CHROME · EXTENSIONS · AUTOMATION",
+  },
+  {
+    id: 7,
+    title: "Progressive Web Apps (PWA)",
+    description:
+      "Building progressive web apps that work offline, load fast, and provide native-like experiences across all devices.",
+    icon: Smartphone,
+    tag: "PWA · OFFLINE · MOBILE-FIRST",
+  },
+  {
+    id: 8,
+    title: "Database Design & Optimization",
+    description:
+      "Designing efficient schemas and tuning queries for speed and scale. Indexing, caching, and safe migrations across PostgreSQL, MongoDB, and Redis.",
+    icon: Database,
+    tag: "POSTGRESQL · MONGODB · REDIS",
+  },
+  {
+    id: 9,
+    title: "AI Agents & Automation",
+    description:
+      "Building autonomous AI agents and workflow automations that connect LLMs to real tools, APIs, and data — removing repetitive manual work.",
+    icon: Bot,
+    tag: "LLM · AGENTS · AUTOMATION",
+  },
+>>>>>>> 8369e6ebd4276dcb34e204f9c5abc8a794c1fddd
 ];

@@ -1,7 +1,29 @@
 import { lazy, Suspense } from "react";
 import { HeroSection } from "./HeroSection";
+<<<<<<< HEAD
 import HeroSvg from "../../assets/hero-section.svg";
+=======
+import { Projects } from "./Project";
+import { Experience } from "./Experience";
+import { GetInTouch } from "./GetInTouch";
+import { Footer } from "./Footer";
+import { Services } from "./Service";
+import { TechStack } from "./TechStack";
+import { About } from "./About";
+>>>>>>> 8369e6ebd4276dcb34e204f9c5abc8a794c1fddd
 import { Navbar } from "./Navbar";
+import { motion } from "motion/react";
+
+const SectionDivider = () => (
+  <motion.div
+    initial={{ opacity: 0 }}
+    whileInView={{ opacity: 1 }}
+    viewport={{ once: true }}
+    className="w-full max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8"
+  >
+    <div className="h-px bg-border" />
+  </motion.div>
+);
 
 // Lazy load below-the-fold sections for performance
 const About = lazy(() => import("./About").then((m) => ({ default: m.About })));
@@ -20,6 +42,7 @@ const SectionFallback = () => (
 
 export const Home = () => {
   return (
+<<<<<<< HEAD
     <div className="min-h-screen relative overflow-x-hidden">
       <Navbar />
 
@@ -96,6 +119,25 @@ export const Home = () => {
             </div>
           </div>
         </Suspense>
+=======
+    <div className="min-h-screen bg-background">
+      <Navbar />
+      <main>
+        <HeroSection />
+        <SectionDivider />
+        <div id="about"><About /></div>
+        <SectionDivider />
+        <div id="experience"><Experience /></div>
+        <SectionDivider />
+        <div id="projects"><Projects /></div>
+        <SectionDivider />
+        <div id="services"><Services /></div>
+        <SectionDivider />
+        <div id="tech"><TechStack /></div>
+        <SectionDivider />
+        <div id="contact"><GetInTouch /></div>
+        <Footer />
+>>>>>>> 8369e6ebd4276dcb34e204f9c5abc8a794c1fddd
       </main>
     </div>
   );

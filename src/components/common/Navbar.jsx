@@ -1,29 +1,32 @@
 import { motion, AnimatePresence } from "motion/react";
 import { useState, useEffect } from "react";
+<<<<<<< HEAD
 import { useMobile } from "../../hooks/useMobile";
 import { Menu, X, Download, ArrowUp } from "lucide-react";
+=======
+import { Menu, X, Download } from "lucide-react";
+>>>>>>> 8369e6ebd4276dcb34e204f9c5abc8a794c1fddd
 import { ModeToggle } from "./mode-toggle";
 
 const navLinks = [
   { id: "about", label: "About" },
+  { id: "experience", label: "Experience" },
+  { id: "projects", label: "Projects" },
   { id: "services", label: "Services" },
   { id: "tech", label: "Tech" },
-  { id: "projects", label: "Projects" },
-  { id: "experience", label: "Experience" },
   { id: "contact", label: "Contact" },
 ];
 
 export const Navbar = () => {
-  const [activeSection, setActiveSection] = useState("about");
   const [scrolled, setScrolled] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [hoveredLink, setHoveredLink] = useState(null);
-  const isMobile = useMobile(768);
+  const [activeSection, setActiveSection] = useState("about");
 
   useEffect(() => {
     const handleScroll = () => {
+<<<<<<< HEAD
       const scrollY = window.scrollY;
       setScrolled(scrollY > 50);
       setShowBackToTop(scrollY > 600);
@@ -34,43 +37,28 @@ export const Navbar = () => {
       setScrollProgress(progress);
 
       const sections = navLinks.map((link) => link.id);
+=======
+      setScrolled(window.scrollY > 100);
+      const sections = navLinks.map((l) => l.id);
+>>>>>>> 8369e6ebd4276dcb34e204f9c5abc8a794c1fddd
       const current = sections.find((section) => {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          return rect.top <= 150 && rect.bottom >= 150;
+        const el = document.getElementById(section);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          return rect.top <= window.innerHeight * 0.3 && rect.bottom >= window.innerHeight * 0.3;
         }
         return false;
       });
       if (current) setActiveSection(current);
     };
-
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToSection = (id) => {
-    const element = document.getElementById(id);
-    if (element) {
-      const offset = 80;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
-    }
+  const scrollTo = (id) => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
     setMobileMenuOpen(false);
-  };
-
-  const handleDownloadCV = () => {
-    const link = document.createElement("a");
-    link.href = "/CV.pdf";
-    link.download = "Meareg_Teame_CV.pdf";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
   };
 
   return (
@@ -84,186 +72,127 @@ export const Navbar = () => {
       </div>
 
       <motion.nav
-        initial={{ y: -100, opacity: 0 }}
+        initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.2 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled ? "py-2" : "py-3"
-        }`}
+        transition={{ duration: 0.6, ease: [0.25, 0, 0, 1] }}
+        className="fixed top-0 left-0 right-0 z-50"
       >
-        <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
+        <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            className="relative overflow-hidden border border-border"
-            animate={{
-              backgroundColor: scrolled ? "var(--background)" : "transparent",
-            }}
-            style={{
-              backdropFilter: scrolled ? "blur(12px)" : "none",
-            }}
-            transition={{ duration: 0.3 }}
+            className={`flex items-center justify-between transition-all duration-500 ${
+              scrolled
+                ? "mt-3 rounded-full border border-border bg-background/70 backdrop-blur-xl shadow-lg shadow-black/5 px-4 py-2"
+                : "mt-6 px-0 py-2"
+            }`}
           >
-            <div className={`flex items-center justify-between ${isMobile ? "px-3 py-2.5" : "px-6 py-3"}`}>
-              {/* Logo */}
-              <motion.div
-                className={`font-mono ${isMobile ? "text-xs" : "text-sm"} font-black tracking-wider cursor-pointer`}
+            <motion.button
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              className="flex items-center gap-2"
+              whileHover={{ opacity: 0.7 }}
+            >
+              <span className="text-sm font-medium tracking-widest text-foreground">MEAREG</span>
+              <span className="w-1 h-1 rounded-full bg-foreground/40" />
+              <span className="text-xs text-muted-foreground tracking-wide">TECH</span>
+            </motion.button>
+
+            <div className="hidden md:flex items-center gap-1">
+              {navLinks.map((link) => {
+                const isActive = activeSection === link.id;
+                return (
+                  <button
+                    key={link.id}
+                    onClick={() => scrollTo(link.id)}
+                    className="relative px-4 py-2 group"
+                  >
+                    <span className={`relative text-sm tracking-wide transition-colors duration-300 ${
+                      isActive ? "text-foreground" : "text-muted-foreground group-hover:text-foreground"
+                    }`}>
+                      {link.label}
+                    </span>
+                    {isActive && (
+                      <motion.div
+                        layoutId="navIndicator"
+                        className="absolute -bottom-0.5 left-4 right-4 h-px bg-foreground/40"
+                        transition={{ type: "spring", stiffness: 200, damping: 25 }}
+                      />
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+
+            <div className="flex items-center gap-3">
+              <ModeToggle />
+              <motion.a
+                href="/CV.pdf"
+                download
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                className="hidden md:flex items-center gap-2 px-4 py-2 rounded-full bg-foreground text-background text-sm font-medium tracking-wide hover:opacity-90 transition-opacity"
               >
-                <span className="text-foreground">MEAREG</span>
-                <span className="text-muted-foreground opacity-40">.DEV</span>
-              </motion.div>
-
-              {/* Desktop Nav Links */}
-              {!isMobile && (
-                <div className="flex items-center gap-[1px]">
-                  {navLinks.map((link) => (
-                    <motion.button
-                      key={link.id}
-                      onClick={() => scrollToSection(link.id)}
-                      onHoverStart={() => setHoveredLink(link.id)}
-                      onHoverEnd={() => setHoveredLink(null)}
-                      className="relative px-3 py-2 overflow-hidden"
-                    >
-                      <motion.span
-                        className="text-[10px] tracking-[0.15em] font-medium relative"
-                        animate={{
-                          color:
-                            activeSection === link.id
-                              ? "var(--foreground)"
-                              : hoveredLink === link.id
-                                ? "var(--foreground)"
-                                : "var(--muted-foreground)",
-                          opacity: activeSection === link.id ? 1 : 0.6,
-                        }}
-                        transition={{ duration: 0.2 }}
-                      >
-                        {link.label}
-                      </motion.span>
-
-                      {activeSection === link.id && (
-                        <motion.div
-                          layoutId="activeIndicator"
-                          className="absolute bottom-0 left-0 right-0 h-px bg-foreground"
-                          initial={false}
-                          transition={{
-                            type: "spring",
-                            stiffness: 380,
-                            damping: 30,
-                          }}
-                        />
-                      )}
-                    </motion.button>
-                  ))}
-                </div>
-              )}
-
-              {/* Right side */}
-              <div className="flex items-center gap-2">
-                <ModeToggle />
-
-                {!isMobile && (
-                  <motion.button
-                    onClick={handleDownloadCV}
-                    whileTap={{ scale: 0.97 }}
-                    className="flex items-center gap-1.5 px-2.5 py-1.5 border border-border text-xs tracking-wider font-bold text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    <Download className="w-3 h-3" />
-                    <span>CV</span>
-                  </motion.button>
-                )}
-
-                {isMobile && (
-                  <motion.button
-                    onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                    whileTap={{ scale: 0.95 }}
-                    className="p-1.5 text-foreground"
-                  >
-                    {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-                  </motion.button>
-                )}
-              </div>
+                <Download className="w-3.5 h-3.5" />
+                CV
+              </motion.a>
+              <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="md:hidden flex items-center justify-center w-9 h-9 rounded-full border border-border text-foreground"
+                aria-label="Toggle menu"
+              >
+                {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+              </button>
             </div>
           </motion.div>
         </div>
       </motion.nav>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
-        {isMobile && mobileMenuOpen && (
+        {mobileMenuOpen && (
           <>
-            {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setMobileMenuOpen(false)}
-              className="fixed inset-0 bg-background/80 backdrop-blur-sm z-40"
-              style={{ top: "60px" }}
+              className="md:hidden fixed inset-0 bg-background/60 backdrop-blur-sm z-40"
             />
-
-            {/* Menu */}
             <motion.div
-              initial={{ opacity: 0, y: -20 }}
+              initial={{ opacity: 0, y: -12 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
+              exit={{ opacity: 0, y: -12 }}
               transition={{ duration: 0.2 }}
-              className="fixed top-[60px] left-0 right-0 z-50 px-3 pt-2"
+              className="md:hidden fixed top-20 left-4 right-4 z-50"
             >
-              <motion.div
-                className="border border-border overflow-hidden max-h-[calc(100vh-80px)] overflow-y-auto"
-                style={{
-                  backgroundColor: "var(--background)",
-                }}
-              >
-                <div className="flex flex-col">
-                  {navLinks.map((link, index) => (
+              <div className="rounded-2xl border border-border bg-background/90 backdrop-blur-xl overflow-hidden shadow-xl shadow-black/10">
+                <div className="flex flex-col p-2">
+                  {navLinks.map((link, i) => (
                     <motion.button
                       key={link.id}
-                      initial={{ opacity: 0, x: -20 }}
+                      initial={{ opacity: 0, x: -12 }}
                       animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.05 }}
-                      onClick={() => scrollToSection(link.id)}
-                      className="relative px-4 py-3 text-left border-b border-border last:border-b-0"
+                      transition={{ delay: i * 0.04 }}
+                      onClick={() => scrollTo(link.id)}
+                      className={`px-4 py-3 text-left rounded-xl transition-colors ${
+                        activeSection === link.id ? "bg-white/5" : ""
+                      }`}
                     >
-                      <motion.div
-                        className="absolute left-0 top-0 bottom-0 w-0.5"
-                        animate={{
-                          opacity: activeSection === link.id ? 1 : 0,
-                        }}
-                        style={{
-                          background: "var(--foreground)",
-                        }}
-                        transition={{ duration: 0.2 }}
-                      />
-
-                      <span
-                        className={`text-sm tracking-wide font-medium ${
-                          activeSection === link.id
-                            ? "text-foreground"
-                            : "text-muted-foreground"
-                        }`}
-                      >
+                      <span className={`text-sm tracking-wide ${activeSection === link.id ? "text-foreground" : "text-muted-foreground"}`}>
                         {link.label}
                       </span>
                     </motion.button>
                   ))}
-
-                  {/* Mobile CV Button */}
-                  <motion.button
-                    initial={{ opacity: 0, x: -20 }}
+                  <motion.a
+                    href="/CV.pdf"
+                    download
+                    initial={{ opacity: 0, x: -12 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: navLinks.length * 0.05 }}
-                    onClick={handleDownloadCV}
-                    className="relative px-4 py-3 text-left flex items-center justify-between bg-muted/30"
+                    transition={{ delay: navLinks.length * 0.04 }}
+                    className="mt-1 px-4 py-3 rounded-xl bg-foreground text-background flex items-center justify-between text-sm font-medium"
                   >
-                    <span className="text-sm tracking-wide font-bold text-foreground">
-                      Download CV
-                    </span>
-                    <Download className="w-4 h-4 text-foreground opacity-70" />
-                  </motion.button>
+                    Download CV
+                    <Download className="w-4 h-4" />
+                  </motion.a>
                 </div>
-              </motion.div>
+              </div>
             </motion.div>
           </>
         )}

@@ -1,75 +1,50 @@
-import Avatar from "../../assets/avatar.jpeg";
-import { Github, Linkedin, Twitter, Mail } from "lucide-react";
 import { motion } from "motion/react";
-import { useMobile } from "../../hooks/useMobile";
-
-const MaltIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M21.956 12.005a9.951 9.951 0 0 1-2.922 7.033c-.05.05-.1.1-.152.148L12 12.314l-1.882 1.882 5.98 5.98a9.992 9.992 0 0 1-4.093.862C6.56 21.038 2 16.477 2 10.993a9.993 9.993 0 0 1 9.999-9.993c2.76 0 5.262 1.116 7.074 2.922l-5.09 5.09 1.881 1.881 4.97-4.97c.717 1.4 1.122 2.986 1.122 4.082z" />
-  </svg>
-);
+import { ArrowRight, Github, Linkedin, Twitter, Mail } from "lucide-react";
+import { Suspense, lazy } from "react";
+import { TextReveal, CharReveal } from "../effects/TextReveal";
+const HeroScene = lazy(() => import("../three/HeroScene").then((m) => ({ default: m.HeroScene })));
 
 const socials = [
-  {
-    href: "https://github.com/Meargteame",
-    icon: Github,
-    label: "GitHub",
-  },
-  {
-    href: "https://www.linkedin.com/in/meareg-teame/",
-    icon: Linkedin,
-    label: "LinkedIn",
-  },
-  {
-    href: "https://x.com/meareg_official",
-    icon: Twitter,
-    label: "Twitter",
-  },
+  { href: "https://github.com/Meargteame", icon: Github, label: "GitHub" },
+  { href: "https://www.linkedin.com/in/meareg-teame/", icon: Linkedin, label: "LinkedIn" },
+  { href: "https://x.com/meareg_official", icon: Twitter, label: "Twitter" },
   { href: "mailto:hello.meareg@gmail.com", icon: Mail, label: "Email" },
 ];
 
+const containerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.06, delayChildren: 0.1 } },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0, 0, 1] } },
+};
+
 export const HeroSection = () => {
-  const isMobile = useMobile(768);
-
   return (
-    <div className="py-8 sm:py-12 md:py-20 lg:py-32 relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      {/* Ligne décorative top */}
+    <section className="relative min-h-screen flex items-center pt-24 pb-16 overflow-hidden">
       <motion.div
-        className="flex items-center gap-4 mb-10 md:mb-16"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
-      >
-        <div className="h-px flex-1 bg-foreground opacity-10" />
-        <motion.span
-          className="text-[10px] tracking-[0.3em] opacity-30 text-foreground"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.3 }}
-          transition={{ delay: 0.3 }}
-        >
-          PORTFOLIO
-        </motion.span>
-        <div className="h-px flex-1 bg-foreground opacity-10" />
-      </motion.div>
+        className="absolute inset-0 opacity-[0.03] pointer-events-none"
+        animate={{
+          background: [
+            "radial-gradient(ellipse at 30% 50%, rgba(255,255,255,0.3) 0%, transparent 60%)",
+            "radial-gradient(ellipse at 70% 50%, rgba(255,255,255,0.3) 0%, transparent 60%)",
+            "radial-gradient(ellipse at 30% 50%, rgba(255,255,255,0.3) 0%, transparent 60%)",
+          ],
+        }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+      />
 
-      {/* Main content — relative so astronaut can anchor to it */}
-      <div
-        className={`relative flex ${isMobile ? "flex-col items-center" : "flex-row items-start gap-12"}`}
-      >
-        {/* Avatar */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className={`relative flex-shrink-0 flex flex-col ${isMobile ? "items-center w-full" : "items-start"}`}
-        >
-          {/* Badge available */}
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <motion.div
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.4 }}
-            className="flex justify-center mb-3"
+            className="relative z-10"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
           >
+<<<<<<< HEAD
             <span className="inline-flex items-center gap-2 px-3 py-1 text-[11px] tracking-widest text-foreground border border-border rounded-full opacity-70">
               <motion.span
                 className="relative flex h-1.5 w-1.5"
@@ -153,12 +128,74 @@ export const HeroSection = () => {
           </motion.p>
 
           {/* Socials — no separator line */}
+=======
+            <motion.div variants={itemVariants} className="flex items-center gap-3 mb-8">
+              <span className="w-1.5 h-1.5 rounded-full bg-foreground/40 animate-pulse" />
+              <span className="text-xs tracking-[0.2em] text-muted-foreground font-medium">
+                FULL STACK & AI ENGINEER
+              </span>
+            </motion.div>
+
+            <CharReveal
+              as="h1"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-[1.05] font-bricolage text-foreground"
+              delay={0.2}
+            >
+              Building Intelligent Systems.
+            </CharReveal>
+
+            <motion.p
+              variants={itemVariants}
+              className="mt-6 text-base sm:text-lg leading-relaxed text-muted-foreground max-w-md"
+            >
+              <TextReveal delay={0.5} stagger={0.02}>
+                I architect scalable backends, production-ready AI features, and modern full-stack applications. Python, Go, Node.js — from clean APIs to intelligent agents.
+              </TextReveal>
+            </motion.p>
+
+            <motion.div variants={itemVariants} className="flex items-center gap-4 mt-8">
+              <motion.a
+                href="#contact"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="group inline-flex items-center gap-2 px-6 py-3 rounded-full bg-foreground text-background text-sm font-medium tracking-wide hover:opacity-90 transition-all"
+              >
+                Get in touch
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+              </motion.a>
+              <a
+                href="#projects"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-border text-sm font-medium tracking-wide text-foreground hover:bg-white/5 transition-colors"
+              >
+                View work
+              </a>
+            </motion.div>
+
+            <motion.div variants={itemVariants} className="flex items-center gap-5 mt-10">
+              {socials.map((social, _i) => (
+                <motion.a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
+                  whileHover={{ y: -2, scale: 1.1 }}
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  <social.icon className="w-4 h-4" />
+                </motion.a>
+              ))}
+            </motion.div>
+          </motion.div>
+
+>>>>>>> 8369e6ebd4276dcb34e204f9c5abc8a794c1fddd
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.8 }}
-            className={`flex gap-5 mt-6 md:mt-8 ${isMobile ? "justify-center" : ""}`}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.3, ease: [0.25, 0, 0, 1] }}
+            className="relative h-[400px] sm:h-[500px] lg:h-[600px] hidden lg:block"
           >
+<<<<<<< HEAD
             {socials.map((social, index) => (
               <motion.a
                 key={social.label}
@@ -177,23 +214,30 @@ export const HeroSection = () => {
                 <social.icon className="w-5 h-5" />
               </motion.a>
             ))}
+=======
+            <Suspense fallback={null}>
+              <HeroScene />
+            </Suspense>
+>>>>>>> 8369e6ebd4276dcb34e204f9c5abc8a794c1fddd
           </motion.div>
         </div>
       </div>
 
-      {/* Ligne décorative bottom */}
       <motion.div
-        className="flex items-center gap-4 mt-5 md:mt-16"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.5, delay: 1.1 }}
+        transition={{ delay: 1.5 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
       >
-        <div className="h-px flex-1 bg-foreground opacity-10" />
-        <span className="text-[10px] tracking-[0.3em] opacity-20 text-foreground">
+        <span className="text-[10px] tracking-[0.3em] text-muted-foreground/40 font-mono">
           SCROLL
         </span>
-        <div className="h-px flex-1 bg-foreground opacity-10" />
+        <motion.div
+          animate={{ y: [0, 6, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          className="w-px h-8 bg-gradient-to-b from-muted-foreground/40 to-transparent"
+        />
       </motion.div>
-    </div>
+    </section>
   );
 };

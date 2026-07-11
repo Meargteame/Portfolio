@@ -1,44 +1,15 @@
 import { Github, Linkedin, Twitter, Mail, MapPin } from "lucide-react";
 import { motion } from "motion/react";
-import { useState } from "react";
-
-const MediumIcon = () => (
-  <svg width="20" height="16" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/>
-  </svg>
-);
 
 const socialLinks = [
-  {
-    href: "https://www.linkedin.com/in/meareg-teame/",
-    icon: Linkedin,
-    label: "LinkedIn",
-  },
-  {
-    href: "https://github.com/Meargteame",
-    icon: Github,
-    label: "GitHub",
-  },
-  {
-    href: "https://x.com/meareg_official",
-    icon: Twitter,
-    label: "Twitter",
-  },
-  {
-    href: "https://medium.com/@hello.meareg",
-    icon: MediumIcon,
-    label: "Medium",
-  },
-  {
-    href: "mailto:hello.meareg@gmail.com",
-    icon: Mail,
-    label: "Email",
-  },
+  { href: "https://www.linkedin.com/in/meareg-teame/", icon: Linkedin, label: "LinkedIn" },
+  { href: "https://github.com/Meargteame", icon: Github, label: "GitHub" },
+  { href: "https://x.com/meareg_official", icon: Twitter, label: "Twitter" },
+  { href: "mailto:hello.meareg@gmail.com", icon: Mail, label: "Email" },
 ];
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
-  const [hoveredLink, setHoveredLink] = useState(null);
 
   return (
     <motion.footer
@@ -46,24 +17,36 @@ export const Footer = () => {
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 0.5 }}
-      className="pb-12 md:pb-16"
+      className="relative pb-12 md:pb-16 overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto">
-        {/* Ligne top */}
+      <motion.div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: "radial-gradient(ellipse at bottom, rgba(255,255,255,0.015) 0%, transparent 60%)",
+        }}
+        animate={{ opacity: [0.3, 0.6, 0.3] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+      />
+
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ scaleX: 0 }}
           whileInView={{ scaleX: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: "easeInOut" }}
-          className="w-full h-px bg-foreground opacity-10 mb-8 origin-left"
+          className="w-full h-px bg-border mb-8 origin-left"
         />
 
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+<<<<<<< HEAD
           {/* Copyright + Location */}
+=======
+>>>>>>> 8369e6ebd4276dcb34e204f9c5abc8a794c1fddd
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+<<<<<<< HEAD
             transition={{ delay: 0.2 }}
             className="flex flex-col items-center md:items-start gap-2 order-2 md:order-1"
           >
@@ -74,68 +57,41 @@ export const Footer = () => {
               <MapPin className="w-3 h-3" />
               <span>Addis Ababa, Ethiopia</span>
             </div>
+=======
+            transition={{ delay: 0.15 }}
+            className="text-xs tracking-wide text-muted-foreground order-2 md:order-1"
+          >
+            &copy; {currentYear} Meareg Teame
+>>>>>>> 8369e6ebd4276dcb34e204f9c5abc8a794c1fddd
           </motion.div>
 
-          {/* Socials */}
           <motion.div
-            className="flex items-center gap-[1px] order-1 md:order-2"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.3 }}
+            transition={{ delay: 0.25 }}
+            className="flex items-center gap-6 order-1 md:order-2"
           >
-            {socialLinks.map((social, index) => (
+            {socialLinks.map((social, i) => (
               <motion.a
                 key={social.label}
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={social.label}
-                onHoverStart={() => setHoveredLink(social.label)}
-                onHoverEnd={() => setHoveredLink(null)}
-                initial={{ opacity: 0, y: 10 }}
+                initial={{ opacity: 0, y: 8 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.3 + index * 0.07 }}
-                className="relative block"
+                transition={{ delay: 0.25 + i * 0.06 }}
+                whileHover={{ y: -3, scale: 1.1 }}
+                className="text-muted-foreground hover:text-foreground transition-colors"
               >
-                <motion.div
-                  className="relative px-4 py-3 border border-border overflow-hidden"
-                  animate={{
-                    backgroundColor:
-                      hoveredLink === social.label
-                        ? "var(--muted)"
-                        : "transparent",
-                  }}
-                  transition={{ duration: 0.15 }}
-                >
-                  {/* Left bar */}
-                  <motion.div
-                    className="absolute left-0 top-0 bottom-0 w-px"
-                    animate={{
-                      opacity: hoveredLink === social.label ? 0.5 : 0,
-                      scaleY: hoveredLink === social.label ? 1 : 0,
-                    }}
-                    style={{
-                      background: "var(--foreground)",
-                      transformOrigin: "center",
-                    }}
-                    transition={{ duration: 0.15 }}
-                  />
-
-                  <motion.div
-                    animate={{
-                      opacity: hoveredLink === social.label ? 1 : 0.25,
-                    }}
-                    transition={{ duration: 0.15 }}
-                  >
-                    <social.icon className="w-4 h-4 text-foreground" />
-                  </motion.div>
-                </motion.div>
+                <social.icon className="w-4 h-4" />
               </motion.a>
             ))}
           </motion.div>
         </div>
+<<<<<<< HEAD
 
         {/* Built with credit */}
         <motion.div
@@ -163,6 +119,8 @@ export const Footer = () => {
             END OF PAGE
           </div>
         </motion.div>
+=======
+>>>>>>> 8369e6ebd4276dcb34e204f9c5abc8a794c1fddd
       </div>
     </motion.footer>
   );
