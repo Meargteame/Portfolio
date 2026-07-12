@@ -35,7 +35,7 @@ export function TextReveal({ children, className, delay = 0, stagger = 0.03, ...
 }
 
 export function CharReveal({ children, className, delay = 0, ...props }) {
-  const chars = useMemo(() => children.split(""), [children]);
+  const words = useMemo(() => children.split(" "), [children]);
   const Tag = props.as || "h2";
 
   return (
@@ -47,18 +47,25 @@ export function CharReveal({ children, className, delay = 0, ...props }) {
         transition={{ staggerChildren: 0.02, delayChildren: delay }}
         className="inline"
       >
-        {chars.map((char, i) => (
-          <motion.span
-            key={i}
-            className="inline-block"
-            variants={{
-              hidden: { opacity: 0, y: 40, rotateX: -90 },
-              visible: { opacity: 1, y: 0, rotateX: 0 },
-            }}
-            transition={{ duration: 0.4, ease: [0.25, 0, 0, 1] }}
-          >
-            {char === " " ? "\u00A0" : char}
-          </motion.span>
+        {words.map((word, wIndex) => (
+          <span key={wIndex} className="inline-block whitespace-nowrap">
+            {word.split("").map((char, cIndex) => (
+              <motion.span
+                key={cIndex}
+                className="inline-block"
+                variants={{
+                  hidden: { opacity: 0, y: 40, rotateX: -90 },
+                  visible: { opacity: 1, y: 0, rotateX: 0 },
+                }}
+                transition={{ duration: 0.4, ease: [0.25, 0, 0, 1] }}
+              >
+                {char}
+              </motion.span>
+            ))}
+            {wIndex < words.length - 1 && (
+              <span className="inline-block">&nbsp;</span>
+            )}
+          </span>
         ))}
       </motion.span>
     </Tag>

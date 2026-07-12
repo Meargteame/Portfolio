@@ -17,16 +17,16 @@ const ExperienceItem = ({ exp, index }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.6, delay: index * 0.1, ease: [0.25, 0, 0, 1] }}
-      className="relative pl-8 sm:pl-12 group"
+      className="relative pl-6 sm:pl-12 group"
     >
       {/* Connector Line Dot */}
-      <div className="absolute left-0 top-1.5 w-4 h-4 rounded-full border border-border bg-background flex items-center justify-center -translate-x-[9px] group-hover:border-foreground/40 transition-colors z-10">
+      <div className="absolute left-0 top-1.5 w-4 h-4 rounded-full border border-border bg-background flex items-center justify-center -translate-x-1/2 group-hover:border-foreground/40 transition-colors z-10">
         <div className="w-1.5 h-1.5 rounded-full bg-muted-foreground/40 group-hover:bg-foreground transition-colors" />
       </div>
 
-      <GlassCard className="p-6 md:p-8" intensity={6}>
+      <GlassCard className="p-4 sm:p-6 md:p-8" intensity={6}>
         <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
-          <div className="flex items-start gap-4">
+          <div className="flex items-start gap-3 sm:gap-4">
             {/* Fallback Initials Badge or Logo */}
             <div className="w-12 h-12 rounded-full border border-border overflow-hidden flex items-center justify-center bg-card flex-shrink-0 text-sm font-mono font-bold tracking-tight text-foreground/80">
               {exp.logo ? (

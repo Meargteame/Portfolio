@@ -37,7 +37,7 @@ export const HeroSection = () => {
 
       <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 flex flex-col items-center justify-center text-center">
         <motion.div
-          className="relative z-10 max-w-4xl flex flex-col items-center"
+          className="relative z-10 max-w-6xl w-full flex flex-col items-center"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -49,25 +49,18 @@ export const HeroSection = () => {
             </span>
           </motion.div>
 
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-[1.05] font-bricolage text-foreground flex flex-col items-center">
+          <h1 className="text-[28px] sm:text-5xl md:text-6xl lg:text-7xl xl:text-[80px] font-bold tracking-tight leading-[1.05] font-bricolage text-foreground flex flex-col items-center">
             <CharReveal
               as="span"
               className="block"
-              delay={0.1}
+              delay={0.2}
             >
-              Building
-            </CharReveal>
-            <CharReveal
-              as="span"
-              className="block mt-1"
-              delay={0.3}
-            >
-              Scalable &amp; Intelligent
+              Building Scalable &amp; Intelligent
             </CharReveal>
             <CharReveal
               as="span"
               className="block mt-2 text-foreground"
-              delay={0.8}
+              delay={0.7}
             >
               Systems.
             </CharReveal>
