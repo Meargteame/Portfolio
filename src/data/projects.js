@@ -1,11 +1,14 @@
-import ensightImg from "../assets/egc.png";
 import torraRealestateImg from "../assets/torra-realstate.webp";
 import torraParkingImg from "../assets/torra-parking.webp";
 import ecommerceWebImg from "../assets/ecommerce-web.png";
 import yarichoHomeCareImg from "../assets/yaricho-senior-home-care.webp";
+import ensightImg from "../assets/egc.png";
+import create4meImg from "../assets/create4me.png";
+import trustgridImg from "../assets/trustgrid.png";
+import deepworkImg from "../assets/deepwork.jpg";
+import meridianImg from "../assets/meridian.jpg";
 
 // Main work — real client / contract projects, rendered as full detail cards.
-// Add an `image` path to show a thumbnail banner; cards gracefully fall back to text-only when `image` is "".
 export const projects = [
   {
     id: 1,
@@ -74,34 +77,58 @@ export const projects = [
   },
 ];
 
-// Personal products & side projects — rendered as a compact card grid.
+// Personal products & side projects — rendered as a compact card grid with images.
 export const moreProjects = [
   {
     id: 6,
-    name: "Meridian AI",
-    repo: "https://github.com/Meargteame/careerguide-ai",
-    live: "https://meridian-beta-coral.vercel.app",
-    tech: "React · TypeScript · Supabase · Gemini",
+    name: "Create4Me",
+    description: "AI-powered content creation platform for creators and businesses",
+    details:
+      "A full-stack content creation SaaS platform where users can generate, edit, and publish AI-assisted content. Built with the MERN stack and MongoDB for data persistence.",
+    repo: "https://github.com/Meargteame/create4me",
+    live: "https://create4me.netlify.app/",
+    tag: "AI · SAAS",
+    wip: false,
+    image: create4meImg,
+    tech: "MERN · MongoDB · Express",
   },
   {
     id: 7,
     name: "TrustGrid Ethiopia",
+    description: "Trust verification and identity management platform for Ethiopia",
+    details:
+      "A trust and identity verification platform built for Ethiopian enterprises. Features trust scoring, identity verification, and real-time data analytics powered by Supabase and Gemini AI.",
     repo: "https://github.com/Meargteame/trustgrid-ethiopia",
     live: "https://trustgrid.vercel.app",
+    tag: "FINTECH · IDENTITY",
+    wip: false,
+    image: trustgridImg,
     tech: "React · TypeScript · Supabase · Gemini",
   },
   {
     id: 8,
-    name: "Create4Me",
-    repo: "https://github.com/Meargteame/create4me",
-    live: "https://create4me.vercel.app",
-    tech: "MERN · MongoDB · Express",
+    name: "Meridian AI",
+    description: "AI-powered career guidance and professional development platform",
+    details:
+      "An AI-driven career guidance platform that provides personalized career recommendations, skill gap analysis, and professional development roadmaps using advanced machine learning.",
+    repo: "https://github.com/Meargteame/careerguide-ai",
+    live: "https://meridian-beta-coral.vercel.app",
+    tag: "AI · CAREER",
+    wip: false,
+    image: meridianImg,
+    tech: "React · TypeScript · Supabase · Gemini",
   },
   {
-    id: 9,
-    name: "Neurofeedback MVP",
-    repo: "https://github.com/Meargteame/neurofeedback-mvp",
-    live: "https://neurofeedback-mvp.vercel.app",
-    tech: "Next.js · Express · SQLite",
+    id: 10,
+    name: "DeepWork",
+    description: "Productivity and focus management application",
+    details:
+      "A productivity app designed to help users manage deep work sessions, track focus time, and build better work habits with analytics and insights.",
+    repo: "#",
+    live: "#",
+    tag: "PRODUCTIVITY",
+    wip: true,
+    image: deepworkImg,
+    tech: "React · TypeScript",
   },
 ];

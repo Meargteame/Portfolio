@@ -1,6 +1,5 @@
 import { motion } from "motion/react";
 import { techs } from "../../data/techStack.jsx";
-import { GlassCard } from "../effects/GlassCard";
 
 const categories = [
   { label: "Backend", ids: [1, 2, 3, 4, 5, 6, 7] },
@@ -49,6 +48,15 @@ const TechCategory = ({ category, index }) => {
 };
 
 export const TechStack = () => {
+  // Split all techs into two rows for the marquee
+  const midIndex = Math.ceil(techs.length / 2);
+  const row1Techs = techs.slice(0, midIndex);
+  const row2Techs = techs.slice(midIndex);
+
+  // Duplicate items for seamless looping
+  const marquee1 = [...row1Techs, ...row1Techs, ...row1Techs];
+  const marquee2 = [...row2Techs, ...row2Techs, ...row2Techs];
+
   return (
     <section className="relative py-24 sm:py-32 lg:py-40 overflow-hidden">
       <motion.div
@@ -74,10 +82,51 @@ export const TechStack = () => {
           <div className="mt-2 w-12 h-px bg-foreground/20" />
         </motion.div>
 
-        <div className="mt-16">
-          {categories.map((category, index) => (
-            <TechCategory key={category.label} category={category} index={index} />
-          ))}
+        {/* Infinite Scrolling Tech Marquees */}
+        <div className="relative w-full mt-16 overflow-hidden py-4 flex flex-col gap-4 z-10 pointer-events-auto">
+          {/* Row 1 - Left to Right */}
+          <div className="w-full overflow-hidden flex [mask-image:linear-gradient(to_right,transparent,white_15%,white_85%,transparent)]">
+            <div className="animate-marquee flex gap-3 pr-3">
+              {marquee1.map((tech, idx) => (
+                <div
+                  key={`${tech.id}-m1-${idx}`}
+                  className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl border border-border bg-card hover:border-foreground/30 hover:bg-white/[0.04] transition-all duration-300 cursor-default flex-shrink-0"
+                >
+                  <span className="text-lg">{tech.icon}</span>
+                  <span className="text-sm text-foreground/80 font-medium">{tech.name}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Row 2 - Right to Left */}
+          <div className="w-full overflow-hidden flex [mask-image:linear-gradient(to_right,transparent,white_15%,white_85%,transparent)]">
+            <div className="animate-marquee-reverse flex gap-3 pr-3">
+              {marquee2.map((tech, idx) => (
+                <div
+                  key={`${tech.id}-m2-${idx}`}
+                  className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl border border-border bg-card hover:border-foreground/30 hover:bg-white/[0.04] transition-all duration-300 cursor-default flex-shrink-0"
+                >
+                  <span className="text-lg">{tech.icon}</span>
+                  <span className="text-sm text-foreground/80 font-medium">{tech.name}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Detailed Categories grid */}
+        <div className="mt-24">
+          <div className="mb-10">
+            <span className="text-xs tracking-[0.2em] text-muted-foreground/60 font-mono font-medium">
+              CATEGORIZED VIEW
+            </span>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4">
+            {categories.map((category, index) => (
+              <TechCategory key={category.label} category={category} index={index} />
+            ))}
+          </div>
         </div>
       </div>
     </section>

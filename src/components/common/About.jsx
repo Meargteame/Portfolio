@@ -1,12 +1,13 @@
-import { motion } from "motion/react";
+import { motion, useInView } from "motion/react";
+import { useRef, useEffect, useState } from "react";
 import { TextReveal, ScaleReveal } from "../effects/TextReveal";
 import { GlassCard } from "../effects/GlassCard";
 
 const stats = [
-  { value: "10+", label: "Projects shipped" },
-  { value: "4", label: "Production AI integrations" },
-  { value: "Full Stack", label: "Backend → Frontend" },
-  { value: "Open", label: "To new opportunities" },
+  { value: 10, suffix: "+", label: "Projects shipped" },
+  { value: 4, suffix: "", label: "Production AI integrations" },
+  { value: 3, suffix: "+", label: "Years building" },
+  { value: 1, suffix: "", label: "Open to opportunities" },
 ];
 
 const items = [
@@ -15,9 +16,42 @@ const items = [
   "I'm currently open to Full Stack & AI Engineering roles where I can architect scalable systems and ship AI-driven products.",
 ];
 
+function AnimatedCounter({ target, suffix, duration = 1500 }) {
+  const [count, setCount] = useState(0);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.5 });
+
+  useEffect(() => {
+    if (!isInView) return;
+    let start = 0;
+    const steps = 60;
+    const step = target / steps;
+    const interval = duration / steps;
+    const timer = setInterval(() => {
+      start += step;
+      if (start >= target) {
+        setCount(target);
+        clearInterval(timer);
+      } else {
+        setCount(Math.floor(start));
+      }
+    }, interval);
+    return () => clearInterval(timer);
+  }, [isInView, target, duration]);
+
+  return (
+    <span ref={ref} className="tabular-nums">
+      {count}{suffix}
+    </span>
+  );
+}
+
 export const About = () => {
   return (
     <section className="relative py-24 sm:py-32 lg:py-40 overflow-hidden">
+      {/* Background Grid Mesh for About section */}
+      <div className="absolute inset-0 bg-grid-pattern pointer-events-none opacity-40" />
+
       <motion.div
         className="absolute top-0 right-0 w-[600px] h-[600px] pointer-events-none"
         style={{
@@ -66,6 +100,7 @@ export const About = () => {
           </div>
         </div>
 
+        {/* Animated stat counters */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -83,7 +118,7 @@ export const About = () => {
             >
               <GlassCard className="p-6 sm:p-8 text-center" intensity={5}>
                 <div className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground font-bricolage">
-                  {stat.value}
+                  <AnimatedCounter target={stat.value} suffix={stat.suffix} />
                 </div>
                 <div className="mt-1.5 text-xs tracking-wide text-muted-foreground">
                   {stat.label}

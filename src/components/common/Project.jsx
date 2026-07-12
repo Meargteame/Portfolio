@@ -29,7 +29,7 @@ const ProjectCard = ({ project, index }) => {
       viewport={{ once: true, amount: 0.1 }}
       transition={{ duration: 0.6, delay: index * 0.1, ease: [0.25, 0, 0, 1] }}
     >
-      <GlassCard className="overflow-hidden" intensity={6}>
+      <GlassCard className="overflow-hidden group" intensity={6}>
         <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
           {/* Image side */}
           {project.image && (
@@ -38,13 +38,11 @@ const ProjectCard = ({ project, index }) => {
                 isOdd ? "lg:order-2 border-b lg:border-b-0 lg:border-l" : "border-b lg:border-b-0 lg:border-r"
               } border-border`}
             >
-              <motion.img
+              <img
                 src={project.image}
                 alt={`${project.name} preview`}
                 loading="lazy"
-                className="absolute inset-0 w-full h-full object-cover"
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.5 }}
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04] group-hover:rotate-0.5"
               />
             </div>
           )}
@@ -145,26 +143,60 @@ const MoreProjectCard = ({ project, index }) => (
     viewport={{ once: true, amount: 0.3 }}
     transition={{ duration: 0.4, delay: index * 0.05, ease: [0.25, 0, 0, 1] }}
   >
-    <GlassCard className="p-4" intensity={4}>
-      <div className="flex items-center justify-between gap-3">
-        <div className="min-w-0">
-          <div className="text-sm font-semibold tracking-tight text-foreground truncate">
-            {project.name}
-          </div>
-          <div className="mt-0.5 text-xs font-mono text-muted-foreground truncate">
-            {project.tech}
-          </div>
+    <GlassCard className={`overflow-hidden h-full ${project.image ? "" : "p-4"}`} intensity={4}>
+      {project.image && (
+        <div className="relative overflow-hidden h-40">
+          <img
+            src={project.image}
+            alt={`${project.name} preview`}
+            loading="lazy"
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
         </div>
-        <div className="flex items-center gap-2 flex-shrink-0">
-          {project.live && (
-            <IconLink href={project.live} label={`${project.name} live site`}>
-              <ExternalLink className="w-3 h-3" />
+      )}
+      <div className={project.image ? "p-4" : ""}>
+        <div className="flex items-center justify-between gap-3">
+          <div className="min-w-0">
+            <div className="text-sm font-semibold tracking-tight text-foreground truncate">
+              {project.name}
+            </div>
+            {project.tag && (
+              <div className="mt-0.5 text-[10px] font-mono text-muted-foreground tracking-wide">
+                {project.tag}
+              </div>
+            )}
+            {!project.tag && (
+              <div className="mt-0.5 text-xs font-mono text-muted-foreground truncate">
+                {project.tech}
+              </div>
+            )}
+          </div>
+          <div className="flex items-center gap-2 flex-shrink-0">
+            {project.live && (
+              <IconLink href={project.live} label={`${project.name} live site`}>
+                <ExternalLink className="w-3 h-3" />
+              </IconLink>
+            )}
+            <IconLink href={project.repo} label={`${project.name} repository`}>
+              <Github className="w-3 h-3" />
             </IconLink>
-          )}
-          <IconLink href={project.repo} label={`${project.name} repository`}>
-            <Github className="w-3 h-3" />
-          </IconLink>
+          </div>
         </div>
+        {project.description && (
+          <p className="mt-2 text-xs leading-relaxed text-muted-foreground line-clamp-2">
+            {project.description}
+          </p>
+        )}
+        {project.image && project.tech && (
+          <div className="mt-3 flex flex-wrap gap-1">
+            {project.tech.split("·").map((t) => t.trim()).filter(Boolean).slice(0, 3).map((tech) => (
+              <span key={tech} className="px-2 py-0.5 rounded-full border border-border text-[10px] text-muted-foreground font-mono">
+                {tech}
+              </span>
+            ))}
+          </div>
+        )}
       </div>
     </GlassCard>
   </motion.div>
