@@ -2,12 +2,12 @@ import { motion } from "motion/react";
 import { techs } from "../../data/techStack.jsx";
 
 const categories = [
-  { label: "Backend", ids: [1, 2, 3, 4, 5, 6, 7] },
-  { label: "Frontend", ids: [8, 9, 10, 11, 12, 20] },
-  { label: "Databases", ids: [13, 14, 15, 16, 17] },
-  { label: "DevOps & Tools", ids: [18, 19, 21, 22, 23, 24] },
+  { label: "Backend & APIs", ids: [1, 2, 3, 4, 5, 6, 7] },
+  { label: "Frontend & Web", ids: [8, 9, 10, 11, 12, 20] },
+  { label: "Mobile (Cross-Platform)", ids: [31, 32] },
+  { label: "Databases & Storage", ids: [13, 14, 15, 16, 17] },
+  { label: "DevOps & Cloud", ids: [18, 19, 21, 22, 23, 24] },
   { label: "AI & ML", ids: [25, 26, 27, 28] },
-  { label: "Extensions & PWA", ids: [29, 30] },
 ];
 
 const TechCategory = ({ category, index }) => {

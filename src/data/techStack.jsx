@@ -306,4 +306,25 @@ export const techs = [
     ),
     color: "#5A0FC8"
   },
+  // Mobile Development
+  {
+    id: 31,
+    name: "Flutter",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+        <path d="M14.314 0L2.3 12 6 15.7 21.684.013h-7.37zM14.314 11.232L7.33 18.216 11.03 21.916 21.684 11.262h-7.37zM21.684 15.424h-7.37l-3.328 3.328 3.328 3.328h7.37l-3.328-3.328 3.328-3.328z"/>
+      </svg>
+    ),
+    color: "#02569B"
+  },
+  {
+    id: 32,
+    name: "Dart",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+        <path d="M4.105 4.105v15.79h15.79V4.105H4.105zm14.474 14.474H5.421V5.421h13.158v13.158zM12 7.053l-4.947 4.947 4.947 4.947 4.947-4.947L12 7.053z"/>
+      </svg>
+    ),
+    color: "#0175C2"
+  },
 ];

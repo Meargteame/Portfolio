@@ -1,16 +1,9 @@
 import { motion } from "motion/react";
-import { experiences } from "../../data/experiences";
+import { educations } from "../../data/education";
 import { GlassCard } from "../effects/GlassCard";
-import { Briefcase, MapPin, ArrowUpRight } from "lucide-react";
+import { GraduationCap, Award, CheckCircle2, MapPin } from "lucide-react";
 
-const ExperienceItem = ({ exp, index }) => {
-  const initials = exp.company
-    .split(" ")
-    .map((word) => word[0])
-    .join("")
-    .slice(0, 2)
-    .toUpperCase();
-
+const EducationItem = ({ edu, index }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -27,58 +20,45 @@ const ExperienceItem = ({ exp, index }) => {
       <GlassCard className="p-5 sm:p-7 md:p-8" intensity={5}>
         <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
           <div className="flex items-start gap-4 flex-1">
-            {/* Fallback Initials Badge */}
-            <div className="w-11 h-11 rounded-xl border border-border overflow-hidden flex items-center justify-center bg-card flex-shrink-0 text-xs font-mono font-bold tracking-tight text-foreground/90 shadow-sm">
-              {exp.logo ? (
-                <img src={exp.logo} alt={exp.company} className="w-full h-full object-cover" />
+            <div className="w-11 h-11 rounded-xl border border-border overflow-hidden flex items-center justify-center bg-card flex-shrink-0 text-foreground/80 shadow-sm">
+              {edu.tag === "DEGREE" ? (
+                <GraduationCap className="w-5 h-5" />
               ) : (
-                <span>{initials}</span>
+                <Award className="w-5 h-5 text-amber-400/80" />
               )}
             </div>
 
             <div className="flex-1">
               <div className="flex items-center gap-2.5 flex-wrap">
-                {exp.website ? (
-                  <a
-                    href={exp.website}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group/link inline-flex items-center gap-1.5 text-lg font-semibold text-foreground hover:text-foreground/80 tracking-tight transition-colors"
-                  >
-                    <span>{exp.company}</span>
-                    <ArrowUpRight className="w-4 h-4 text-muted-foreground group-hover/link:text-foreground group-hover/link:translate-x-0.5 transition-all" />
-                  </a>
-                ) : (
-                  <h3 className="text-lg font-semibold text-foreground tracking-tight">{exp.company}</h3>
-                )}
+                <h3 className="text-lg font-semibold text-foreground tracking-tight">
+                  {edu.institution}
+                </h3>
                 <span className="text-[10px] font-mono tracking-wider text-muted-foreground border border-border rounded-full px-2.5 py-0.5 bg-card/60">
-                  {exp.tag}
+                  {edu.tag}
                 </span>
               </div>
-              
+
               <div className="flex items-center gap-3 mt-1 text-xs text-muted-foreground flex-wrap">
-                <span className="font-medium text-foreground/80">{exp.role}</span>
-                {exp.location && (
+                <span className="font-medium text-foreground/90">{edu.degree}</span>
+                {edu.location && (
                   <span className="flex items-center gap-1 text-muted-foreground/60 font-mono text-[11px]">
                     <MapPin className="w-3 h-3" />
-                    {exp.location}
+                    {edu.location}
                   </span>
                 )}
               </div>
 
-              <p className="mt-3.5 text-sm leading-relaxed text-muted-foreground">
-                {exp.description}
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground/90">
+                {edu.summary}
               </p>
 
-              {exp.tech && (
-                <div className="mt-4 flex flex-wrap gap-1.5">
-                  {exp.tech.map((t) => (
-                    <span
-                      key={t}
-                      className="px-2 py-0.5 rounded-md border border-border/80 bg-white/[0.02] text-[11px] font-mono text-muted-foreground hover:text-foreground transition-colors"
-                    >
-                      {t}
-                    </span>
+              {edu.highlights && (
+                <div className="mt-4 space-y-2">
+                  {edu.highlights.map((h, i) => (
+                    <div key={i} className="flex items-start gap-2 text-xs leading-relaxed text-muted-foreground">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-foreground/60 mt-0.5 flex-shrink-0" />
+                      <span>{h}</span>
+                    </div>
                   ))}
                 </div>
               )}
@@ -86,7 +66,7 @@ const ExperienceItem = ({ exp, index }) => {
           </div>
 
           <div className="text-xs font-mono tracking-wide text-muted-foreground/70 md:text-right whitespace-nowrap self-start mt-1 md:mt-0 px-2.5 py-1 rounded-md bg-white/[0.02] border border-border/50">
-            {exp.date}
+            {edu.date}
           </div>
         </div>
       </GlassCard>
@@ -94,9 +74,9 @@ const ExperienceItem = ({ exp, index }) => {
   );
 };
 
-export const Experience = () => {
+export const Education = () => {
   return (
-    <section id="experience" className="relative py-20 sm:py-28 lg:py-32 overflow-hidden">
+    <section id="education" className="relative py-20 sm:py-28 lg:py-32 overflow-hidden">
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -106,13 +86,13 @@ export const Experience = () => {
           className="text-center flex flex-col items-center"
         >
           <span className="text-xs tracking-[0.2em] text-muted-foreground font-medium">
-            WORK EXPERIENCE
+            ACADEMIC &amp; FELLOWSHIPS
           </span>
           <h2 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground font-bricolage leading-[1.1]">
-            Engineering experience.
+            Education &amp; training.
           </h2>
           <p className="mt-3 text-sm text-muted-foreground max-w-xl">
-            Track record of building high-concurrency backends, 0-to-1 product architectures, and enterprise security modules.
+            Computer science foundation, competitive programming excellence (300+ DSA problems), and low-level systems engineering.
           </p>
           <div className="mt-4 w-12 h-px bg-foreground/20" />
         </motion.div>
@@ -123,8 +103,8 @@ export const Experience = () => {
           <div className="absolute left-0 top-3 bottom-3 w-px bg-border/60" />
 
           <div className="space-y-8">
-            {experiences.map((exp, index) => (
-              <ExperienceItem key={exp.id} exp={exp} index={index} />
+            {educations.map((edu, index) => (
+              <EducationItem key={edu.id} edu={edu} index={index} />
             ))}
           </div>
         </div>

@@ -51,11 +51,11 @@ export const services = [
   },
   {
     id: 7,
-    title: "Progressive Web Apps (PWA)",
+    title: "Cross-Platform Mobile Apps (Flutter)",
     description:
-      "Building progressive web apps that work offline, load fast, and provide native-like experiences across all devices.",
+      "Developing cross-platform mobile apps for iOS and Android with Flutter & Dart. Clean state management, native device capabilities, offline caching, and responsive UI.",
     icon: Smartphone,
-    tag: "PWA · OFFLINE · MOBILE-FIRST",
+    tag: "FLUTTER · DART · IOS · ANDROID",
   },
   {
     id: 8,

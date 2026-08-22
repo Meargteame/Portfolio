@@ -1,13 +1,7 @@
 import { AppRouter } from './router/AppRouter';
-import { CustomCursor } from './components/effects/CustomCursor';
 
 function App() {
-  return (
-    <>
-      <CustomCursor />
-      <AppRouter />
-    </>
-  );
+  return <AppRouter />;
 }
 
 export default App;
