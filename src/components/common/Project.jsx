@@ -79,6 +79,11 @@ const ProjectCard = ({ project, index }) => {
             <div className="flex items-start justify-between gap-4">
               <div className="min-w-0 flex-1">
                 <div className="flex items-center gap-2.5 flex-wrap">
+                  {project.logo && (
+                    <div className="w-7 h-7 rounded-lg border border-border/80 bg-white p-0.5 overflow-hidden flex items-center justify-center flex-shrink-0 shadow-sm">
+                      <img src={project.logo} alt="" className="w-full h-full object-contain" />
+                    </div>
+                  )}
                   <h3 className="text-xl md:text-2xl font-bold tracking-tight text-foreground font-bricolage">
                     {project.name}
                   </h3>
@@ -94,14 +99,16 @@ const ProjectCard = ({ project, index }) => {
                 </div>
               </div>
               <div className="flex items-center gap-2 flex-shrink-0">
-                {project.live && (
+                {project.live && project.live !== "#" && (
                   <IconLink href={project.live} label={`${project.name} live site`}>
                     <ExternalLink className="w-3.5 h-3.5" />
                   </IconLink>
                 )}
-                <IconLink href={project.repo} label={`${project.name} repository`}>
-                  <Github className="w-3.5 h-3.5" />
-                </IconLink>
+                {project.repo && project.repo !== "#" && (
+                  <IconLink href={project.repo} label={`${project.name} repository`}>
+                    <Github className="w-3.5 h-3.5" />
+                  </IconLink>
+                )}
               </div>
             </div>
 
@@ -181,8 +188,13 @@ const MoreProjectCard = ({ project, index }) => (
       <div className={`flex flex-col flex-1 ${project.image ? "p-4" : ""}`}>
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0">
-            <div className="text-sm font-semibold tracking-tight text-foreground truncate">
-              {project.name}
+            <div className="text-sm font-semibold tracking-tight text-foreground truncate flex items-center gap-2">
+              {project.logo && (
+                <div className="w-5 h-5 rounded border border-border/80 bg-white p-0.5 overflow-hidden flex items-center justify-center flex-shrink-0">
+                  <img src={project.logo} alt="" className="w-full h-full object-contain" />
+                </div>
+              )}
+              <span className="truncate">{project.name}</span>
             </div>
             {project.tag && (
               <div className="mt-0.5 text-[10px] font-mono text-muted-foreground tracking-wider">
@@ -191,14 +203,16 @@ const MoreProjectCard = ({ project, index }) => (
             )}
           </div>
           <div className="flex items-center gap-1.5 flex-shrink-0">
-            {project.live && (
+            {project.live && project.live !== "#" && (
               <IconLink href={project.live} label={`${project.name} live site`}>
                 <ExternalLink className="w-3 h-3" />
               </IconLink>
             )}
-            <IconLink href={project.repo} label={`${project.name} repository`}>
-              <Github className="w-3 h-3" />
-            </IconLink>
+            {project.repo && project.repo !== "#" && (
+              <IconLink href={project.repo} label={`${project.name} repository`}>
+                <Github className="w-3 h-3" />
+              </IconLink>
+            )}
           </div>
         </div>
 

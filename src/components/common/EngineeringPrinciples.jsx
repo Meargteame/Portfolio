@@ -36,7 +36,7 @@ const principles = [
 const faqs = [
   {
     q: "What roles are you open to?",
-    a: "I am actively open to Full-time, Contract, and Founding Engineer roles across Full-Stack Web (Next.js/React, Python, Go, Node.js) and Mobile Development (Flutter).",
+    a: "I am actively open to Full-time, Contract, and Founding Engineer roles across Full-Stack Web (Next.js/React, Python, Go, Node.js), API Architecture, and AI Engineering.",
   },
   {
     q: "How do you handle remote collaboration?",

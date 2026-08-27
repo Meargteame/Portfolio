@@ -83,7 +83,7 @@ export const HeroSection = () => {
           {/* Role Supertitle */}
           <motion.div variants={itemVariants} className="mb-3">
             <span className="text-xs sm:text-sm tracking-[0.25em] text-muted-foreground font-mono font-medium">
-              FULL-STACK &amp; MOBILE DEVELOPER · 0-TO-1 BUILDER
+              FULL-STACK &amp; AI ENGINEER · 0-TO-1 BUILDER
             </span>
           </motion.div>
 
@@ -93,7 +93,7 @@ export const HeroSection = () => {
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.08] font-bricolage text-foreground"
           >
             Building Scalable Web &amp; <br className="hidden sm:inline" />
-            Mobile Applications.
+            Intelligent Systems.
           </motion.h1>
 
           {/* Subtitle / Bio */}
@@ -101,7 +101,7 @@ export const HeroSection = () => {
             variants={itemVariants}
             className="mt-6 text-base sm:text-lg leading-relaxed text-muted-foreground max-w-2xl mx-auto"
           >
-            Product-minded engineer with a B.Sc. in IT and a strong algorithmic foundation (<span className="text-foreground/90 font-medium">A2SV Fellow, 300+ DSA</span>). Building responsive web and cross-platform mobile apps with <span className="text-foreground/90 font-medium">Next.js, React, Flutter, Python (FastAPI/Django), and Go</span>.
+            Product-minded engineer with a B.Sc. in IT and a strong algorithmic foundation (<span className="text-foreground/90 font-medium">A2SV Fellow, 300+ DSA</span>). Building high-performance SaaS platforms, robust APIs, and intelligent AI features with <span className="text-foreground/90 font-medium">Next.js, React, Python (FastAPI/Django), Go, and Node.js</span>.
           </motion.p>
 
           {/* Primary Action Buttons */}

@@ -1,7 +1,12 @@
+import bduLogo from "../assets/bahir_dar_university_logo.jpg";
+import holbertonLogo from "../assets/holberton_school_logo.jpg";
+import a2svLogo from "../assets/1691678724367.jpg";
+
 export const educations = [
   {
     id: 1,
     institution: "Bahir Dar University (BDU)",
+    logo: bduLogo,
     degree: "B.Sc. in Information Technology",
     date: "Graduation: Jun 2026",
     location: "Bahir Dar, Ethiopia",
@@ -16,6 +21,7 @@ export const educations = [
   {
     id: 2,
     institution: "A2SV (Africa to Silicon Valley)",
+    logo: a2svLogo,
     degree: "Competitive Programming Fellow",
     date: "Graduation: Jan 2026",
     location: "Remote / Silicon Valley Program",
@@ -30,6 +36,7 @@ export const educations = [
   {
     id: 3,
     institution: "Holberton School (ALX)",
+    logo: holbertonLogo,
     degree: "Software Engineering Program",
     date: "Graduation: Jan 2026",
     location: "Remote / International",

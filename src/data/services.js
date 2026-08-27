@@ -51,11 +51,11 @@ export const services = [
   },
   {
     id: 7,
-    title: "Cross-Platform Mobile Apps (Flutter)",
+    title: "Cloud Infrastructure & DevOps",
     description:
-      "Developing cross-platform mobile apps for iOS and Android with Flutter & Dart. Clean state management, native device capabilities, offline caching, and responsive UI.",
-    icon: Smartphone,
-    tag: "FLUTTER · DART · IOS · ANDROID",
+      "Deploying high-availability web applications and databases with CI/CD pipelines, containerization (Docker), and optimized cloud environments on Vercel, Supabase, and AWS.",
+    icon: Cloud,
+    tag: "DEVOPS · CI/CD · DOCKER · CLOUD",
   },
   {
     id: 8,

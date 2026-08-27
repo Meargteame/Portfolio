@@ -20,11 +20,13 @@ const EducationItem = ({ edu, index }) => {
       <GlassCard className="p-5 sm:p-7 md:p-8" intensity={5}>
         <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
           <div className="flex items-start gap-4 flex-1">
-            <div className="w-11 h-11 rounded-xl border border-border overflow-hidden flex items-center justify-center bg-card flex-shrink-0 text-foreground/80 shadow-sm">
-              {edu.tag === "DEGREE" ? (
-                <GraduationCap className="w-5 h-5" />
+            <div className="w-11 h-11 rounded-xl border border-border overflow-hidden flex items-center justify-center bg-white p-1 flex-shrink-0 text-foreground/80 shadow-sm">
+              {edu.logo ? (
+                <img src={edu.logo} alt={edu.institution} className="w-full h-full object-contain" />
+              ) : edu.tag === "DEGREE" ? (
+                <GraduationCap className="w-5 h-5 text-neutral-800" />
               ) : (
-                <Award className="w-5 h-5 text-amber-400/80" />
+                <Award className="w-5 h-5 text-amber-500" />
               )}
             </div>
 

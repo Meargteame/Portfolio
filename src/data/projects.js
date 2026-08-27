@@ -6,24 +6,54 @@ import ensightImg from "../assets/egc.png";
 import create4meImg from "../assets/create4me.png";
 import trustgridImg from "../assets/trustgrid.png";
 import meridianImg from "../assets/meridian.jpg";
+import leonsLabLogo from "../assets/leons_lab_logo.jpg";
+import ensightLogo from "../assets/ensight_global_consultancy.jpg";
 
 // Featured Engineering Projects — live apps with real users, verified proof, and modern stacks
 export const projects = [
   {
     id: 1,
+    name: "Create4Me",
+    logo: leonsLabLogo,
+    description: "Creator Marketplace & Influencer Booking SaaS Platform",
+    details:
+      "A production-grade creator economy SaaS platform built under software studio Leons Lab connecting brands with verified Ethiopian TikTok and Instagram creators. Features transparent rate cards, campaign management, creator discovery, and escrow payments via Telebirr & CBE.",
+    repo: "https://github.com/Meargteame/create4me",
+    live: "https://create4me.leonslab.tech",
+    tag: "LEONS LAB · SAAS · CREATOR MARKETPLACE",
+    wip: false,
+    image: create4meImg,
+    tech: "React · TypeScript · Tailwind CSS · Node.js · Telebirr Escrow",
+  },
+  {
+    id: 2,
     name: "TrustGrid",
+    logo: leonsLabLogo,
     description: "Verified Social Proof & Cryptographic Identity Wall",
     details:
-      "A social proof and review verification platform that turns authentic reviews into high-converting proof walls verified via real Telegram identity. Architected strict PostgreSQL Row Level Security (RLS) data isolation and cryptographic proof routines to guarantee multi-tenant integrity.",
+      "A trust verification and social proof SaaS platform built under software studio Leons Lab. Turns authentic customer reviews into high-converting proof walls verified via real Telegram identity. Architected with PostgreSQL Row Level Security (RLS) and cryptographic verification routines.",
     repo: "https://github.com/Meargteame/trustgrid-ethiopia",
     live: "https://trustgrid.leonslab.tech/",
-    tag: "TELEGRAM VERIFIED · POSTGRES RLS · FINTECH",
+    tag: "LEONS LAB · SAAS · FINTECH",
     wip: false,
     image: trustgridImg,
     tech: "PostgreSQL RLS · Next.js · FastAPI · Supabase · Tailwind CSS",
   },
   {
-    id: 2,
+    id: 3,
+    name: "Meridian AI / CareerGuide AI",
+    description: "Career Architect & Interactive Evaluation Assistant",
+    details:
+      "An interactive AI evaluation assistant rendering streaming UI feedback widgets, real-time response scoring, and dynamic learning roadmaps with Gemini 2.5 Flash and Neo-Brutalism UI styling.",
+    repo: "https://github.com/Meargteame/careerguide-ai",
+    live: "https://meridian-beta-coral.vercel.app",
+    tag: "GEMINI 2.5 · STREAMING UI · NEXT.JS",
+    wip: false,
+    image: meridianImg,
+    tech: "FastAPI · Gemini 2.5 Flash · Next.js · Neo-Brutalism UI · Supabase",
+  },
+  {
+    id: 4,
     name: "Torra Realestate",
     description: "Modern Real Estate Listing & Property Management Platform",
     details:
@@ -36,7 +66,7 @@ export const projects = [
     tech: "Next.js · TypeScript · Tailwind CSS · SEO",
   },
   {
-    id: 3,
+    id: 5,
     name: "Torra Parking",
     description: "Parking Management Platform with Booking & Admin Dashboard",
     details:
@@ -47,32 +77,6 @@ export const projects = [
     wip: false,
     image: torraParkingImg,
     tech: "Next.js · TypeScript · Tailwind CSS",
-  },
-  {
-    id: 4,
-    name: "Create4Me",
-    description: "AI-Assisted Content Creation Platform for Creators",
-    details:
-      "A full-stack content creation SaaS platform where users can generate, edit, and publish AI-assisted marketing content and campaigns. Built with MERN stack and MongoDB for data persistence.",
-    repo: "https://github.com/Meargteame/create4me",
-    live: "https://create4me.netlify.app/",
-    tag: "SAAS · MERN · AI CREATION",
-    wip: false,
-    image: create4meImg,
-    tech: "MERN · MongoDB · Express · React · Node.js",
-  },
-  {
-    id: 5,
-    name: "Meridian AI / CareerGuide AI",
-    description: "Career Architect & Interactive Evaluation Assistant",
-    details:
-      "An interactive AI evaluation assistant rendering streaming UI feedback widgets, real-time response scoring, and dynamic learning roadmaps with Gemini 2.5 Flash and Neo-Brutalism UI styling.",
-    repo: "https://github.com/Meargteame/careerguide-ai",
-    live: "https://meridian-beta-coral.vercel.app",
-    tag: "GEMINI 2.5 · STREAMING UI · NEXT.JS",
-    wip: false,
-    image: meridianImg,
-    tech: "FastAPI · Gemini 2.5 Flash · Next.js · Neo-Brutalism UI · Supabase",
   },
 ];
 
@@ -107,6 +111,7 @@ export const moreProjects = [
   {
     id: 8,
     name: "Ensight Global Consultancy",
+    logo: ensightLogo,
     description: "Consultancy Website Rebuilt on Headless WordPress CMS",
     details:
       "Rebuilt the company's consultancy website from the ground up using Next.js and WordPress (Headless CMS). Implemented a modern, high-performance frontend with server-side rendering (SSR) and an optimized SEO structure.",

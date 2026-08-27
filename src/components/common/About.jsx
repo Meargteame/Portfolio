@@ -1,12 +1,12 @@
 import { motion, useInView } from "motion/react";
 import { useRef, useEffect, useState } from "react";
 import { GlassCard } from "../effects/GlassCard";
-import { Code2, Smartphone, Database, Zap, Cpu, Layers } from "lucide-react";
+import { Code2, Cloud, Database, Zap, Cpu, Layers } from "lucide-react";
 import mearegPhoto from "../../assets/meareg-photo.png";
 
 const stats = [
   { value: 300, suffix: "+", label: "DSA Problems Solved (A2SV / LeetCode)" },
-  { value: 10, suffix: "+", label: "Web & Mobile Apps Shipped" },
+  { value: 10, suffix: "+", label: "Web & SaaS Apps Shipped" },
   { value: 45, suffix: "%", label: "P99 Latency Reduction (Redis / Async)" },
   { value: 100, suffix: "%", label: "0-to-1 Product Ownership" },
 ];
@@ -19,10 +19,10 @@ const pillars = [
       "Building high-performance, pixel-perfect web platforms with Next.js (App Router, SSR), React, TypeScript, and Tailwind CSS backed by Python and Go.",
   },
   {
-    icon: Smartphone,
-    title: "Mobile App Development",
+    icon: Cloud,
+    title: "Cloud & DevOps Architecture",
     description:
-      "Developing sleek, responsive cross-platform mobile apps for iOS and Android using Flutter & Dart, integrated with real-time backends and offline sync.",
+      "Deploying resilient web services and databases with Docker, CI/CD pipelines, automated testing, and optimized environments on Supabase, Vercel, and AWS.",
   },
   {
     icon: Database,
@@ -91,10 +91,10 @@ export const About = () => {
 
             <div className="mt-6 space-y-4 text-base sm:text-lg leading-relaxed text-muted-foreground">
               <p>
-                I'm a <span className="text-foreground font-medium">Full-Stack &amp; Mobile Developer</span> based in Addis Ababa, Ethiopia (UTC+3 / Open to Global Remote). I hold a B.Sc. in Information Technology from Bahir Dar University and honed my algorithmic problem-solving through elite programs like <span className="text-foreground font-medium">A2SV</span> and <span className="text-foreground font-medium">Holberton School</span>.
+                I'm a <span className="text-foreground font-medium">Full-Stack &amp; AI Engineer</span> based in Addis Ababa, Ethiopia (UTC+3 / Open to Global Remote). I hold a B.Sc. in Information Technology from Bahir Dar University and honed my algorithmic problem-solving through elite programs like <span className="text-foreground font-medium">A2SV</span> and <span className="text-foreground font-medium">Holberton School</span>.
               </p>
               <p>
-                I specialize in building complete digital products—from responsive web apps in <span className="text-foreground font-medium">Next.js &amp; React</span>, cross-platform mobile apps in <span className="text-foreground font-medium">Flutter</span>, to resilient backend APIs in <span className="text-foreground font-medium">Python (FastAPI/Django), Go, and Node.js</span> with PostgreSQL and Redis.
+                I specialize in building complete digital products—from responsive web apps in <span className="text-foreground font-medium">Next.js &amp; React</span>, intelligent AI features with Gemini, to resilient backend APIs in <span className="text-foreground font-medium">Python (FastAPI/Django), Go, and Node.js</span> with PostgreSQL and Redis.
               </p>
               <p>
                 I love working with fast-moving startup teams where developers take 0-to-1 ownership of user experiences, databases, and shipping features that users love.
