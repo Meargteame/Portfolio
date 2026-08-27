@@ -32,7 +32,7 @@ export const experiences = [
   {
     id: 3,
     company: "SWENETIX TECH (formerly Addis Software)",
-    website: null,
+    website: "https://swenetix.com/",
     logo: addisSoftwareLogo,
     role: "Software Engineer Intern",
     date: "Jul 2025 — Sep 2025",
