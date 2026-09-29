@@ -1,49 +1,32 @@
-import { HeroSection } from "./HeroSection";
-import { Projects } from "./Project";
-import { Experience } from "./Experience";
-import { Education } from "./Education";
-import { Services } from "./Service";
-import { EngineeringPrinciples } from "./EngineeringPrinciples";
-import { TechStack } from "./TechStack";
-import { About } from "./About";
-import { GetInTouch } from "./GetInTouch";
-import { Footer } from "./Footer";
-import { Navbar } from "./Navbar";
-import { motion } from "motion/react";
-
-const SectionDivider = () => (
-  <motion.div
-    initial={{ opacity: 0 }}
-    whileInView={{ opacity: 1 }}
-    viewport={{ once: true }}
-    className="w-full max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8"
-  >
-    <div className="h-px bg-border/60" />
-  </motion.div>
-);
+import { Navbar }               from "./Navbar";
+import { Footer }               from "./Footer";
+import { HeroSection }          from "./HeroSection";
+import { HomePhilosophy }       from "./HomePhilosophy";
+import { HomeWorkPreview }      from "./HomeWorkPreview";
+import { HomeProcess }          from "./HomeProcess";
+import { HomeServicesSnapshot } from "./HomeServicesSnapshot";
+import { HomeFAQ }              from "./HomeFAQ";
+import { HomeContactCallout }   from "./HomeContactCallout";
 
 export const Home = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background relative selection:bg-rose-500/20 overflow-x-hidden">
+      
+      {/* Continuous Left & Right Architectural Framing Lines */}
+      <div className="absolute top-0 bottom-0 left-6 sm:left-10 lg:left-16 w-[1px] bg-border/40 dark:bg-white/[0.06] pointer-events-none z-30" />
+      <div className="absolute top-0 bottom-0 right-6 sm:right-10 lg:right-16 w-[1px] bg-border/40 dark:bg-white/[0.06] pointer-events-none z-30" />
+      {/* Top Framing Hairline */}
+      <div className="absolute top-24 left-0 right-0 h-[1px] bg-border/30 dark:bg-white/[0.05] pointer-events-none z-30" />
+
       <Navbar />
-      <main>
+      <main className="relative z-10">
         <HeroSection />
-        <SectionDivider />
-        <div id="about"><About /></div>
-        <SectionDivider />
-        <div id="experience"><Experience /></div>
-        <SectionDivider />
-        <div id="education"><Education /></div>
-        <SectionDivider />
-        <div id="projects"><Projects /></div>
-        <SectionDivider />
-        <div id="services"><Services /></div>
-        <SectionDivider />
-        <div id="principles"><EngineeringPrinciples /></div>
-        <SectionDivider />
-        <div id="tech"><TechStack /></div>
-        <SectionDivider />
-        <div id="contact"><GetInTouch /></div>
+        <HomePhilosophy />
+        <HomeWorkPreview />
+        <HomeProcess />
+        <HomeServicesSnapshot />
+        <HomeFAQ />
+        <HomeContactCallout />
         <Footer />
       </main>
     </div>

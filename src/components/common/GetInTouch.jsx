@@ -46,7 +46,7 @@ export const GetInTouch = () => {
             Get in touch.
           </h2>
           <p className="mt-3 text-sm text-muted-foreground max-w-xl">
-            Open to Full-Stack &amp; Mobile Development roles, remote US/EU opportunities, and 0-to-1 product collaborations.
+            Open to Full-Stack Web Engineering roles, remote US/EU opportunities, and 0-to-1 product collaborations.
           </p>
           <div className="mt-4 w-12 h-px bg-foreground/20" />
         </motion.div>

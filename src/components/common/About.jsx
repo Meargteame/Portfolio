@@ -31,10 +31,10 @@ const pillars = [
       "Architecting fast REST & gRPC services in Python (FastAPI/Django) and Go. PostgreSQL modeling, Row-Level Security (RLS), Supabase, and Redis caching.",
   },
   {
-    icon: Cpu,
-    title: "AI Integration & Real-Time",
+    icon: Zap,
+    title: "Real-Time & Performance",
     description:
-      "Orchestrating production AI features with the Gemini API (structured JSON output), WebSockets for sub-50ms live state sync, and WebRTC streaming.",
+      "Building sub-50ms live features with WebSockets and event-driven architectures. Optimizing performance with Redis caching, CDN strategies, and query tuning.",
   },
 ];
 
@@ -91,10 +91,10 @@ export const About = () => {
 
             <div className="mt-6 space-y-4 text-base sm:text-lg leading-relaxed text-muted-foreground">
               <p>
-                I'm a <span className="text-foreground font-medium">Full-Stack &amp; AI Engineer</span> based in Addis Ababa, Ethiopia (UTC+3 / Open to Global Remote). I hold a B.Sc. in Information Technology from Bahir Dar University and honed my algorithmic problem-solving through elite programs like <span className="text-foreground font-medium">A2SV</span> and <span className="text-foreground font-medium">Holberton School</span>.
+                I'm a <span className="text-foreground font-medium">Full-Stack Web Engineer</span> based in Addis Ababa, Ethiopia (UTC+3 / Open to Global Remote). I hold a B.Sc. in Information Technology from Bahir Dar University and honed my algorithmic problem-solving through elite programs like <span className="text-foreground font-medium">A2SV</span> and <span className="text-foreground font-medium">Holberton School</span>.
               </p>
               <p>
-                I specialize in building complete digital products—from responsive web apps in <span className="text-foreground font-medium">Next.js &amp; React</span>, intelligent AI features with Gemini, to resilient backend APIs in <span className="text-foreground font-medium">Python (FastAPI/Django), Go, and Node.js</span> with PostgreSQL and Redis.
+                I specialize in building complete digital products—from responsive web apps in <span className="text-foreground font-medium">Next.js &amp; React</span> to resilient backend APIs in <span className="text-foreground font-medium">Python (FastAPI/Django), Go, and Node.js</span> with PostgreSQL and Redis.
               </p>
               <p>
                 I love working with fast-moving startup teams where developers take 0-to-1 ownership of user experiences, databases, and shipping features that users love.
@@ -120,7 +120,7 @@ export const About = () => {
                 <div>
                   <h3 className="text-lg font-bold text-foreground font-bricolage">Meareg Teame</h3>
                   <p className="text-xs font-mono text-muted-foreground mt-0.5">
-                    Full-Stack &amp; Mobile Developer
+                    Full-Stack Web Engineer
                   </p>
                   <p className="text-xs text-muted-foreground/80 font-mono mt-0.5">
                     Addis Ababa, Ethiopia (UTC+3)
@@ -141,13 +141,9 @@ export const About = () => {
                   <span className="text-muted-foreground">Web &amp; Frontend</span>
                   <span className="text-foreground font-medium">Next.js, React, TypeScript</span>
                 </div>
-                <div className="flex justify-between py-1.5 border-b border-border/50">
-                  <span className="text-muted-foreground">Mobile App Dev</span>
-                  <span className="text-foreground font-medium">Flutter, Dart</span>
-                </div>
                 <div className="flex justify-between py-1.5">
-                  <span className="text-muted-foreground">Backend &amp; DB</span>
-                  <span className="text-foreground font-medium">Python, Go, PostgreSQL, Redis</span>
+                   <span className="text-muted-foreground">Backend &amp; DB</span>
+                   <span className="text-foreground font-medium">Python, Go, PostgreSQL, Redis</span>
                 </div>
               </div>
             </GlassCard>

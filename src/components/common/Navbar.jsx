@@ -1,169 +1,163 @@
 import { motion, AnimatePresence } from "motion/react";
 import { useState, useEffect } from "react";
-import { Menu, X, Download } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import { NavLink, Link } from "react-router";
 import { ModeToggle } from "./mode-toggle";
+import mearegPhoto from "../../assets/meareg-photo.png";
 
 const navLinks = [
-  { id: "about", label: "About" },
-  { id: "experience", label: "Experience" },
-  { id: "education", label: "Education" },
-  { id: "projects", label: "Projects" },
-  { id: "services", label: "Services" },
-  { id: "tech", label: "Tech" },
-  { id: "contact", label: "Contact" },
+  { to: "/work",     label: "Work" },
+  { to: "/services", label: "Services" },
+  { to: "/about",    label: "About" },
+  { to: "/contact",  label: "Contact" },
 ];
 
 export const Navbar = () => {
-  const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("about");
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 80);
-      const sections = navLinks.map((l) => l.id);
-      const current = sections.find((section) => {
-        const el = document.getElementById(section);
-        if (el) {
-          const rect = el.getBoundingClientRect();
-          return rect.top <= window.innerHeight * 0.35 && rect.bottom >= window.innerHeight * 0.35;
-        }
-        return false;
-      });
-      if (current) setActiveSection(current);
+      setIsScrolled(window.scrollY > 60);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollTo = (id) => {
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-    setMobileMenuOpen(false);
+  const handleAvatarClick = (e) => {
+    if (window.location.pathname === "/") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   };
+
+  const activeCls = "text-foreground font-bold";
+  const inactiveCls = "text-foreground/75 hover:text-foreground font-bold";
 
   return (
     <>
-      <motion.nav
-        initial={{ y: -20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5, ease: [0.25, 0, 0, 1] }}
-        className="fixed top-0 left-0 right-0 z-50"
-      >
-        <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            className={`flex items-center justify-between transition-all duration-300 ${
-              scrolled
-                ? "mt-2.5 rounded-full border border-border bg-background/80 backdrop-blur-xl shadow-lg shadow-black/5 px-4 py-2"
-                : "mt-5 px-0 py-2"
+      <nav className="fixed top-5 left-1/2 -translate-x-1/2 z-50 w-auto max-w-[95vw] transition-all duration-300 ease-out">
+        <div
+          className={`flex items-center rounded-full border border-border/80 bg-background/90 backdrop-blur-xl shadow-lg shadow-black/5 transition-all duration-300 ease-out ${
+            isScrolled
+              ? "gap-2.5 px-3 py-2"
+              : "gap-4 sm:gap-6 px-4 sm:px-6 py-2.5 sm:py-3"
+          }`}
+        >
+          {/* Logo / Profile Avatar (Left item circled by user) */}
+          <Link
+            to="/"
+            onClick={handleAvatarClick}
+            className="flex items-center cursor-pointer group flex-shrink-0"
+            title="Meareg Teame"
+          >
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full overflow-hidden border-2 border-border/80 group-hover:border-foreground/40 transition-colors shadow-sm">
+              <img src={mearegPhoto} alt="Meareg Teame" className="w-full h-full object-cover" />
+            </div>
+          </Link>
+
+          {/* Desktop Nav Links (Smooth slide out on scroll without jitter) */}
+          <div
+            className={`hidden md:flex items-center gap-2 sm:gap-4 overflow-hidden whitespace-nowrap transition-all duration-300 ease-out ${
+              isScrolled
+                ? "max-w-0 opacity-0 pointer-events-none -ml-2"
+                : "max-w-[450px] opacity-100 border-l border-border/60 pl-4 sm:pl-5"
             }`}
           >
-            <motion.button
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="flex items-center gap-2 cursor-pointer"
-              whileHover={{ opacity: 0.8 }}
-            >
-              <span className="text-sm font-semibold tracking-widest text-foreground">MEAREG</span>
-              <span className="w-1 h-1 rounded-full bg-foreground/40" />
-              <span className="text-xs text-muted-foreground font-mono tracking-wide">DEV</span>
-            </motion.button>
-
-            <div className="hidden md:flex items-center gap-0.5">
-              {navLinks.map((link) => {
-                const isActive = activeSection === link.id;
-                return (
-                  <button
-                    key={link.id}
-                    onClick={() => scrollTo(link.id)}
-                    className="relative px-3.5 py-1.5 cursor-pointer group"
+            {navLinks.map((link) => (
+              <NavLink key={link.to} to={link.to}>
+                {({ isActive }) => (
+                  <span
+                    className={`relative block px-3 py-1.5 text-sm sm:text-[15px] font-bold tracking-tight transition-colors duration-200 cursor-pointer ${
+                      isActive ? activeCls : inactiveCls
+                    }`}
                   >
-                    <span className={`relative text-xs tracking-wide transition-colors duration-200 ${
-                      isActive ? "text-foreground font-medium" : "text-muted-foreground group-hover:text-foreground"
-                    }`}>
-                      {link.label}
-                    </span>
+                    {link.label}
                     {isActive && (
-                      <motion.div
-                        layoutId="navIndicator"
-                        className="absolute -bottom-0.5 left-3.5 right-3.5 h-px bg-foreground"
-                        transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                      />
+                      <div className="absolute -bottom-0.5 left-3 right-3 h-[2px] bg-foreground rounded-full" />
                     )}
-                  </button>
-                );
-              })}
-            </div>
+                  </span>
+                )}
+              </NavLink>
+            ))}
+          </div>
 
-            <div className="flex items-center gap-3">
-              <ModeToggle />
-              <motion.a
-                href="/CV.pdf"
-                download
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="hidden md:flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-foreground text-background text-xs font-medium tracking-wide hover:opacity-90 transition-opacity"
-              >
-                <Download className="w-3.5 h-3.5" />
-                Resume
-              </motion.a>
+          {/* Actions: Mode Toggle + Get Started CTA (Right items circled by user) */}
+          <div
+            className={`flex items-center gap-2 sm:gap-3 transition-all duration-300 ${
+              !isScrolled ? "border-l border-border/60 pl-3.5 sm:pl-4" : "pl-1"
+            }`}
+          >
+            <ModeToggle />
+            <a
+              href="https://cal.com/meareg/15min"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex"
+            >
+              <span className="inline-flex items-center justify-center px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-foreground text-background text-xs sm:text-sm font-bold tracking-tight hover:opacity-90 transition-all cursor-pointer whitespace-nowrap">
+                Get Started
+              </span>
+            </a>
+            {!isScrolled && (
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="md:hidden flex items-center justify-center w-9 h-9 rounded-full border border-border text-foreground"
+                className="md:hidden flex items-center justify-center w-8 h-8 rounded-full border border-border text-foreground"
                 aria-label="Toggle menu"
               >
                 {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
               </button>
-            </div>
-          </motion.div>
+            )}
+          </div>
         </div>
-      </motion.nav>
+      </nav>
 
+      {/* Mobile menu */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <>
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
+              initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
               onClick={() => setMobileMenuOpen(false)}
               className="md:hidden fixed inset-0 bg-background/60 backdrop-blur-sm z-40"
             />
             <motion.div
-              initial={{ opacity: 0, y: -12 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -12 }}
+              initial={{ opacity: 0, y: -12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }}
               transition={{ duration: 0.2 }}
-              className="md:hidden fixed top-20 left-4 right-4 z-50"
+              className="md:hidden fixed top-20 left-4 right-4 z-50 max-w-sm mx-auto"
             >
               <div className="rounded-2xl border border-border bg-background/95 backdrop-blur-xl overflow-hidden shadow-xl shadow-black/10">
                 <div className="flex flex-col p-2">
                   {navLinks.map((link, i) => (
-                    <motion.button
-                      key={link.id}
-                      initial={{ opacity: 0, x: -12 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: i * 0.03 }}
-                      onClick={() => scrollTo(link.id)}
-                      className={`px-4 py-2.5 text-left rounded-xl transition-colors ${
-                        activeSection === link.id ? "bg-white/5 font-medium text-foreground" : "text-muted-foreground"
-                      }`}
-                    >
-                      <span className="text-sm tracking-wide">
-                        {link.label}
-                      </span>
-                    </motion.button>
+                    <NavLink key={link.to} to={link.to} onClick={() => setMobileMenuOpen(false)}>
+                      {({ isActive }) => (
+                        <motion.div
+                          initial={{ opacity: 0, x: -12 }} animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: i * 0.03 }}
+                          className={`px-4 py-2.5 rounded-xl transition-colors ${
+                            isActive ? "bg-white/5 font-medium text-foreground" : "text-muted-foreground"
+                          }`}
+                        >
+                          <span className="text-sm tracking-wide">{link.label}</span>
+                        </motion.div>
+                      )}
+                    </NavLink>
                   ))}
-                  <motion.a
-                    href="/CV.pdf"
-                    download
-                    initial={{ opacity: 0, x: -12 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: navLinks.length * 0.03 }}
-                    className="mt-1 px-4 py-2.5 rounded-xl bg-foreground text-background flex items-center justify-between text-xs font-medium"
+                  <a
+                    href="https://cal.com/meareg/15min"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setMobileMenuOpen(false)}
                   >
-                    Download Resume
-                    <Download className="w-4 h-4" />
-                  </motion.a>
+                    <motion.div
+                      initial={{ opacity: 0, x: -12 }} animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: navLinks.length * 0.03 }}
+                      className="mt-1 px-4 py-2.5 rounded-full bg-foreground text-background flex items-center justify-center text-xs font-semibold"
+                    >
+                      Get Started
+                    </motion.div>
+                  </a>
                 </div>
               </div>
             </motion.div>

@@ -1,177 +1,85 @@
 import { motion } from "motion/react";
-import { ArrowRight, Github, Linkedin, Twitter, Mail, ArrowUpRight, ShieldCheck } from "lucide-react";
-import mearegPhoto from "../../assets/meareg-photo.png";
+import { ArrowUpRight, Zap, Rocket, Award } from "lucide-react";
 
-const socials = [
-  { 
-    href: "https://github.com/Meargteame", 
-    icon: Github, 
-    label: "GitHub",
-    hoverColor: "hover:text-foreground hover:border-foreground/30 hover:bg-white/5"
-  },
-  { 
-    href: "https://www.linkedin.com/in/meareg", 
-    icon: Linkedin, 
-    label: "LinkedIn",
-    hoverColor: "hover:text-[#0a66c2] hover:border-[#0a66c2]/40 hover:bg-[#0a66c2]/10"
-  },
-  { 
-    href: "https://x.com/meareg_official", 
-    icon: Twitter, 
-    label: "Twitter",
-    hoverColor: "hover:text-foreground hover:border-foreground/30 hover:bg-white/5"
-  },
-  { 
-    href: "mailto:hello.meareg@gmail.com", 
-    icon: Mail, 
-    label: "Email",
-    hoverColor: "hover:text-[#ea4335] hover:border-[#ea4335]/40 hover:bg-[#ea4335]/10"
-  },
+const metrics = [
+  { icon: Rocket,     value: "10+ Shipped Apps", label: "Production web platforms" },
+  { icon: Zap,        value: "2–4 Weeks",        label: "Average 0-to-1 MVP delivery" },
+  { icon: Award,      value: "A2SV Fellow",      label: "Top 1% engineer in Africa" },
 ];
-
-const containerVariants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 15 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: [0.25, 0, 0, 1] } },
-};
 
 export const HeroSection = () => {
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center pt-28 pb-16 overflow-hidden">
-      {/* Background Tech Grid Mesh */}
-      <div className="absolute inset-0 bg-grid-pattern pointer-events-none opacity-60" />
-
-      {/* Subtle center ambient radial glow */}
-      <div
-        className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-30"
-        style={{
-          background: "radial-gradient(circle, rgba(255, 255, 255, 0.04) 0%, transparent 70%)",
-        }}
-      />
-
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 flex flex-col items-center text-center">
-        <motion.div
-          className="max-w-4xl w-full flex flex-col items-center"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          {/* Avatar and Availability Badge */}
-          <motion.div variants={itemVariants} className="flex flex-col items-center gap-3 mb-6">
-            <div className="relative group">
-              <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full p-1 border-2 border-border/80 bg-card shadow-2xl relative z-10 overflow-hidden">
-                <img
-                  src={mearegPhoto}
-                  alt="Meareg Teame"
-                  className="w-full h-full object-cover rounded-full transition-transform duration-500 group-hover:scale-105"
-                  loading="eager"
-                />
-              </div>
-              <span className="absolute bottom-1 right-1 w-4 h-4 rounded-full bg-emerald-500 border-2 border-background z-20" />
-            </div>
-
-            <div className="flex items-center gap-2 px-3 py-1 rounded-full border border-border/80 bg-card/80 backdrop-blur-sm text-[11px] font-mono tracking-wider text-muted-foreground">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span>OPEN TO GLOBAL REMOTE &amp; US/EU ROLES</span>
-            </div>
-          </motion.div>
-
-          {/* Role Supertitle */}
-          <motion.div variants={itemVariants} className="mb-3">
-            <span className="text-xs sm:text-sm tracking-[0.25em] text-muted-foreground font-mono font-medium">
-              FULL-STACK &amp; AI ENGINEER · 0-TO-1 BUILDER
-            </span>
-          </motion.div>
-
+    <section className="relative pt-36 sm:pt-40 md:pt-44 pb-12 sm:pb-16 flex flex-col justify-center overflow-hidden">
+      <div className="max-w-[1200px] mx-auto px-6 sm:px-8 w-full relative z-10">
+        
+        {/* Centered Hero Header */}
+        <div className="max-w-3xl mx-auto text-center flex flex-col items-center">
+          
           {/* Main Headline */}
           <motion.h1
-            variants={itemVariants}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.08] font-bricolage text-foreground"
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55, delay: 0.1 }}
+            className="text-4xl sm:text-5xl lg:text-[54px] font-bricolage tracking-tight leading-[1.12]"
           >
-            Building Scalable Web &amp; <br className="hidden sm:inline" />
-            Intelligent Systems.
+            <span className="text-muted-foreground/60 font-normal">I turn </span>
+            <span className="text-foreground font-bold">promising ideas </span>
+            <span className="text-muted-foreground/60 font-normal">into </span>
+            <span className="text-foreground font-bold">Web Apps !</span>
           </motion.h1>
 
-          {/* Subtitle / Bio */}
+          {/* Subtitle */}
           <motion.p
-            variants={itemVariants}
-            className="mt-6 text-base sm:text-lg leading-relaxed text-muted-foreground max-w-2xl mx-auto"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="mt-5 text-base sm:text-lg text-muted-foreground max-w-lg font-normal"
           >
-            Product-minded engineer with a B.Sc. in IT and a strong algorithmic foundation (<span className="text-foreground/90 font-medium">A2SV Fellow, 300+ DSA</span>). Building high-performance SaaS platforms, robust APIs, and intelligent AI features with <span className="text-foreground/90 font-medium">Next.js, React, Python (FastAPI/Django), Go, and Node.js</span>.
+            From idea → launch, I handle the tech.
           </motion.p>
 
-          {/* Primary Action Buttons */}
-          <motion.div variants={itemVariants} className="flex flex-wrap items-center justify-center gap-3.5 mt-8">
-            <motion.a
-              href="#contact"
-              whileHover={{ scale: 1.02, y: -2 }}
-              whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-foreground text-background text-sm font-medium tracking-wide hover:opacity-90 transition-all shadow-lg"
+          {/* Clean Solid Hero Red CTA Button (No Glow, No Shadow) */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="mt-7 sm:mt-8"
+          >
+            <a
+              href="https://cal.com/meareg/15min"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block"
             >
-              Get in touch
-              <ArrowRight className="w-4 h-4" />
-            </motion.a>
-
-            <motion.a
-              href="#projects"
-              whileHover={{ scale: 1.02, y: -2 }}
-              whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-border text-sm font-medium tracking-wide text-foreground hover:bg-white/5 transition-all"
-            >
-              Featured work
-            </motion.a>
-
-            <motion.a
-              href="/CV.pdf"
-              download
-              whileHover={{ scale: 1.02, y: -2 }}
-              whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-border/80 bg-card text-sm font-mono tracking-wide text-muted-foreground hover:text-foreground hover:border-foreground/40 transition-all"
-            >
-              Resume / CV
-              <ArrowUpRight className="w-3.5 h-3.5" />
-            </motion.a>
-          </motion.div>
-
-          {/* Social Icons */}
-          <motion.div variants={itemVariants} className="flex items-center justify-center gap-3 mt-8">
-            {socials.map((social) => (
-              <motion.a
-                key={social.label}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={social.label}
-                whileHover={{ y: -3 }}
-                className={`p-2.5 rounded-full border border-border/70 bg-card text-muted-foreground transition-all duration-200 ${social.hoverColor}`}
+              <motion.span
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="inline-flex items-center gap-2 px-7 py-3.5 sm:px-8 sm:py-3.5 rounded-2xl bg-[#e11d48] text-white text-sm sm:text-base font-semibold tracking-tight hover:bg-[#be123c] transition-all duration-200 cursor-pointer shadow-none border-0"
               >
-                <social.icon className="w-4 h-4" />
-              </motion.a>
-            ))}
+                Book Discovery Call
+                <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.5]" />
+              </motion.span>
+            </a>
           </motion.div>
-        </motion.div>
-      </div>
+        </div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2 }}
-        className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5"
-      >
-        <span className="text-[10px] tracking-[0.25em] text-muted-foreground/50 font-mono">
-          SCROLL
-        </span>
+        {/* Proof Metrics Bar (Full card comfortably visible on all laptop screens with clean breathing space) */}
         <motion.div
-          animate={{ y: [0, 5, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="w-px h-6 bg-gradient-to-b from-muted-foreground/40 to-transparent"
-        />
-      </motion.div>
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.55, delay: 0.4 }}
+          className="mt-14 sm:mt-16 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 p-3.5 sm:p-5 rounded-2xl sm:rounded-3xl border border-border/70 bg-card/60 backdrop-blur-xl shadow-sm"
+        >
+          {metrics.map((m) => (
+            <div key={m.value} className="p-2 sm:p-2.5 flex flex-col items-center text-center">
+              <m.icon className="w-4 h-4 text-muted-foreground mb-1.5" />
+              <div className="text-base sm:text-lg font-bold font-bricolage text-foreground">{m.value}</div>
+              <div className="text-[11px] sm:text-xs text-muted-foreground mt-0.5">{m.label}</div>
+            </div>
+          ))}
+        </motion.div>
+
+      </div>
     </section>
   );
 };
