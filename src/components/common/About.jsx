@@ -2,7 +2,7 @@ import { motion, useInView } from "motion/react";
 import { useRef, useEffect, useState } from "react";
 import { GlassCard } from "../effects/GlassCard";
 import { Code2, Cloud, Database, Zap, Cpu, Layers } from "lucide-react";
-import mearegPhoto from "../../assets/meareg-photo.png";
+import mearegPhoto from "../../assets/meareg-photo.webp";
 
 const stats = [
   { value: 300, suffix: "+", label: "DSA Problems Solved (A2SV / LeetCode)" },

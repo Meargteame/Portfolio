@@ -41,9 +41,9 @@ export const HomeContactCallout = () => {
             <motion.div
               whileHover={{ scale: 1.04, y: -2 }}
               whileTap={{ scale: 0.98 }}
-              className="relative px-14 sm:px-28 py-5 sm:py-7 rounded-[48px] sm:rounded-[60px] bg-gradient-to-b from-[#18181b] via-[#09090b] to-[#000000] border-[3.5px] border-[#eab308] shadow-[0_12px_40px_rgba(234,179,8,0.35),inset_0_2px_4px_rgba(255,255,255,0.15)] group-hover:shadow-[0_20px_50px_rgba(234,179,8,0.5)] transition-all duration-300 flex items-center justify-center cursor-pointer"
+              className="relative px-8 sm:px-24 md:px-28 py-4 sm:py-7 rounded-[48px] sm:rounded-[60px] bg-gradient-to-b from-[#18181b] via-[#09090b] to-[#000000] border-[3.5px] border-[#eab308] shadow-[0_12px_40px_rgba(234,179,8,0.35),inset_0_2px_4px_rgba(255,255,255,0.15)] group-hover:shadow-[0_20px_50px_rgba(234,179,8,0.5)] transition-all duration-300 flex items-center justify-center cursor-pointer"
             >
-              <span className="text-4xl sm:text-7xl font-bold tracking-tight text-[#facc15] font-bricolage drop-shadow-[0_2px_10px_rgba(250,204,21,0.3)]">
+              <span className="text-3xl sm:text-6xl md:text-7xl font-bold tracking-tight text-[#facc15] font-bricolage drop-shadow-[0_2px_10px_rgba(250,204,21,0.3)]">
                 Connect
               </span>
             </motion.div>

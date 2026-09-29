@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { Github, Linkedin, Twitter } from "lucide-react";
-import mearegPhoto from "../../assets/meareg-photo.png";
+import mearegPhoto from "../../assets/meareg-photo.webp";
 
 export const HomePhilosophy = () => {
   return (
@@ -15,7 +15,7 @@ export const HomePhilosophy = () => {
           transition={{ duration: 0.6 }}
           className="mb-16 sm:mb-20"
         >
-          <h2 className="text-4xl sm:text-6xl font-bricolage tracking-tight leading-[1.08]">
+          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-bricolage tracking-tight leading-[1.08]">
             <span className="text-muted-foreground/60 font-normal">Product thinking, </span>
             <br />
             <span className="text-foreground font-bold">built into every app.</span>
@@ -45,6 +45,8 @@ export const HomePhilosophy = () => {
                 <img
                   src={mearegPhoto}
                   alt="Meareg Teame"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
                 />
 

@@ -69,11 +69,11 @@ export const HomeFAQ = () => {
               >
                 <button
                   onClick={() => toggle(i)}
-                  className="w-full px-6 py-5 flex items-center justify-between text-left gap-4 cursor-pointer"
+                  className="w-full px-4 py-4 sm:px-6 sm:py-5 flex items-center justify-between text-left gap-4 cursor-pointer"
                   aria-expanded={isOpen}
                   aria-controls={faqId}
                 >
-                  <div className="flex items-center gap-3.5">
+                  <div className="flex items-center gap-3">
                     <span className="w-5 h-5 flex items-center justify-center text-rose-500 font-bold flex-shrink-0">
                       {isOpen ? <Minus className="w-4 h-4 stroke-[2.5]" /> : <Plus className="w-4 h-4 stroke-[2.5]" />}
                     </span>
@@ -92,7 +92,7 @@ export const HomeFAQ = () => {
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.25 }}
                     >
-                      <div className="px-6 pb-6 pt-1 text-sm sm:text-base leading-relaxed text-muted-foreground border-t border-border/40 pl-12">
+                      <div className="px-4 sm:px-6 pb-5 sm:pb-6 pt-1 text-sm sm:text-base leading-relaxed text-muted-foreground border-t border-border/40 pl-9 sm:pl-12">
                         {faq.a}
                       </div>
                     </motion.div>

@@ -9,7 +9,7 @@ const metrics = [
 
 export const HeroSection = () => {
   return (
-    <section className="relative pt-36 sm:pt-40 md:pt-44 pb-12 sm:pb-16 flex flex-col justify-center overflow-hidden">
+    <section className="relative pt-28 sm:pt-36 md:pt-44 pb-12 sm:pb-16 flex flex-col justify-center overflow-hidden">
       <div className="max-w-[1200px] mx-auto px-6 sm:px-8 w-full relative z-10">
         
         {/* Centered Hero Header */}
@@ -20,7 +20,7 @@ export const HeroSection = () => {
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, delay: 0.1 }}
-            className="text-4xl sm:text-5xl lg:text-[54px] font-bricolage tracking-tight leading-[1.12]"
+            className="text-3xl sm:text-5xl lg:text-[54px] font-bricolage tracking-tight leading-[1.12]"
           >
             <span className="text-muted-foreground/60 font-normal">I turn </span>
             <span className="text-foreground font-bold">promising ideas </span>

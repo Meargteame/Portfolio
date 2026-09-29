@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { NavLink, Link } from "react-router";
 import { ModeToggle } from "./mode-toggle";
-import mearegPhoto from "../../assets/meareg-photo.png";
+import mearegPhoto from "../../assets/meareg-photo.webp";
 
 const navLinks = [
   { to: "/work",     label: "Work" },
@@ -94,21 +94,19 @@ export const Navbar = () => {
               href="https://cal.com/meareg/15min"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex"
+              className="hidden sm:flex"
             >
               <span className="inline-flex items-center justify-center px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-foreground text-background text-xs sm:text-sm font-bold tracking-tight hover:opacity-90 transition-all cursor-pointer whitespace-nowrap">
                 Get Started
               </span>
             </a>
-            {!isScrolled && (
-              <button
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="md:hidden flex items-center justify-center w-8 h-8 rounded-full border border-border text-foreground"
-                aria-label="Toggle menu"
-              >
-                {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
-              </button>
-            )}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="md:hidden flex items-center justify-center w-8 h-8 rounded-full border border-border text-foreground"
+              aria-label="Toggle menu"
+            >
+              {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+            </button>
           </div>
         </div>
       </nav>

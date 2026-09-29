@@ -15,7 +15,7 @@ const FlagshipCard = ({ project, index }) => {
       <div className="grid grid-cols-1 lg:grid-cols-12">
         {/* Visual Preview */}
         <div
-          className={`lg:col-span-6 overflow-hidden bg-muted/20 p-4 sm:p-6 flex items-center justify-center min-h-[240px] sm:min-h-[300px] lg:min-h-[380px] ${
+          className={`lg:col-span-6 overflow-hidden bg-muted/20 p-4 sm:p-6 flex items-center justify-center min-h-[200px] sm:min-h-[300px] lg:min-h-[380px] ${
             isOdd ? "lg:order-2" : "lg:order-1"
           }`}
         >
@@ -24,13 +24,14 @@ const FlagshipCard = ({ project, index }) => {
               src={project.image}
               alt={`${project.name} preview`}
               loading="lazy"
+              decoding="async"
               className="w-full h-auto max-h-[360px] object-contain rounded-lg transition-transform duration-700 ease-out group-hover:scale-[1.02]"
             />
           )}
         </div>
 
         {/* Content Section */}
-        <div className={`p-8 sm:p-10 lg:p-12 flex flex-col justify-center lg:col-span-6 ${isOdd ? "lg:order-1" : "lg:order-2"}`}>
+        <div className={`p-5 sm:p-8 lg:p-12 flex flex-col justify-center lg:col-span-6 ${isOdd ? "lg:order-1" : "lg:order-2"}`}>
           {/* Title */}
           <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground font-bricolage mb-2">
             {project.name}
