@@ -1,8 +1,7 @@
 import { motion, AnimatePresence } from "motion/react";
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
-import { NavLink, Link } from "react-router";
-import { ModeToggle } from "./mode-toggle";
+import { Menu, X, ArrowUpRight } from "lucide-react";
+import { NavLink, Link, useLocation } from "react-router";
 import mearegPhoto from "../../assets/meareg-photo.webp";
 
 const navLinks = [
@@ -14,149 +13,110 @@ const navLinks = [
 
 export const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 60);
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const handleAvatarClick = (e) => {
-    if (window.location.pathname === "/") {
-      e.preventDefault();
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-  };
-
-  const activeCls = "text-foreground font-bold";
-  const inactiveCls = "text-foreground/75 hover:text-foreground font-bold";
+    setMobileMenuOpen(false);
+  }, [location.pathname]);
 
   return (
     <>
-      <nav className="fixed top-5 left-1/2 -translate-x-1/2 z-50 w-auto max-w-[95vw] transition-all duration-300 ease-out">
-        <div
-          className={`flex items-center rounded-full border border-border/80 bg-background/90 backdrop-blur-xl shadow-lg shadow-black/5 transition-all duration-300 ease-out ${
-            isScrolled
-              ? "gap-2.5 px-3 py-2"
-              : "gap-4 sm:gap-6 px-4 sm:px-6 py-2.5 sm:py-3"
-          }`}
-        >
-          {/* Logo / Profile Avatar (Left item circled by user) */}
+      {/* Centered Floating Pill Navbar */}
+      <header className="fixed top-5 left-1/2 -translate-x-1/2 z-50 w-auto max-w-[95vw] select-none">
+        <div className="flex items-center gap-2 sm:gap-3.5 px-2.5 sm:px-3.5 py-2 rounded-full border border-white/[0.12] bg-[#09090b]/85 backdrop-blur-xl shadow-2xl shadow-black/50">
+          
+          {/* Circular Photo Icon (No names, purely circled) */}
           <Link
             to="/"
-            onClick={handleAvatarClick}
-            className="flex items-center cursor-pointer group flex-shrink-0"
-            title="Meareg Teame"
+            className="flex items-center cursor-pointer group shrink-0"
+            title="Home"
           >
-            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full overflow-hidden border-2 border-border/80 group-hover:border-foreground/40 transition-colors shadow-sm">
-              <img src={mearegPhoto} alt="Meareg Teame" className="w-full h-full object-cover" />
+            <div className="w-8 h-8 rounded-full overflow-hidden border border-white/25 group-hover:border-white/60 transition-colors shadow-sm">
+              <img
+                src={mearegPhoto}
+                alt="Meareg"
+                className="w-full h-full object-cover"
+              />
             </div>
           </Link>
 
-          {/* Desktop Nav Links (Smooth slide out on scroll without jitter) */}
-          <div
-            className={`hidden md:flex items-center gap-2 sm:gap-4 overflow-hidden whitespace-nowrap transition-all duration-300 ease-out ${
-              isScrolled
-                ? "max-w-0 opacity-0 pointer-events-none -ml-2"
-                : "max-w-[450px] opacity-100 border-l border-border/60 pl-4 sm:pl-5"
-            }`}
-          >
+          {/* Desktop Nav Links */}
+          <nav className="hidden md:flex items-center gap-0.5 border-l border-white/[0.10] pl-2 sm:pl-3">
             {navLinks.map((link) => (
-              <NavLink key={link.to} to={link.to}>
-                {({ isActive }) => (
-                  <span
-                    className={`relative block px-3 py-1.5 text-sm sm:text-[15px] font-bold tracking-tight transition-colors duration-200 cursor-pointer ${
-                      isActive ? activeCls : inactiveCls
-                    }`}
-                  >
-                    {link.label}
-                    {isActive && (
-                      <div className="absolute -bottom-0.5 left-3 right-3 h-[2px] bg-foreground rounded-full" />
-                    )}
-                  </span>
-                )}
+              <NavLink
+                key={link.to}
+                to={link.to}
+                className={({ isActive }) =>
+                  `px-3 py-1.5 rounded-full text-xs sm:text-sm font-medium transition-all ${
+                    isActive
+                      ? "text-foreground bg-white/[0.08] shadow-sm font-semibold"
+                      : "text-muted-foreground hover:text-foreground hover:bg-white/[0.04]"
+                  }`
+                }
+              >
+                {link.label}
               </NavLink>
             ))}
-          </div>
+          </nav>
 
-          {/* Actions: Mode Toggle + Get Started CTA (Right items circled by user) */}
-          <div
-            className={`flex items-center gap-2 sm:gap-3 transition-all duration-300 ${
-              !isScrolled ? "border-l border-border/60 pl-3.5 sm:pl-4" : "pl-1"
-            }`}
-          >
-            <ModeToggle />
-            <a
-              href="https://cal.com/meareg/15min"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden sm:flex"
+          {/* CTA: Start a Project (New UI pill with arrow) */}
+          <div className="flex items-center gap-1.5 border-l border-white/[0.10] pl-2 sm:pl-3">
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-1.5 rounded-full bg-foreground text-background text-xs sm:text-sm font-semibold tracking-tight hover:opacity-90 transition-opacity shadow-sm whitespace-nowrap"
             >
-              <span className="inline-flex items-center justify-center px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-foreground text-background text-xs sm:text-sm font-bold tracking-tight hover:opacity-90 transition-all cursor-pointer whitespace-nowrap">
-                Get Started
-              </span>
-            </a>
+              <span>Start a Project</span>
+              <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
+            </Link>
+
+            {/* Mobile Hamburger Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden flex items-center justify-center w-8 h-8 rounded-full border border-border text-foreground"
+              className="md:hidden flex items-center justify-center w-8 h-8 rounded-full text-foreground hover:bg-white/10 transition-colors"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
             </button>
           </div>
-        </div>
-      </nav>
 
-      {/* Mobile menu */}
+        </div>
+      </header>
+
+      {/* Mobile Menu Dropdown */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <>
             <motion.div
-              initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
               onClick={() => setMobileMenuOpen(false)}
-              className="md:hidden fixed inset-0 bg-background/60 backdrop-blur-sm z-40"
+              className="md:hidden fixed inset-0 bg-background/80 backdrop-blur-md z-40"
             />
             <motion.div
-              initial={{ opacity: 0, y: -12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }}
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.2 }}
-              className="md:hidden fixed top-20 left-4 right-4 z-50 max-w-sm mx-auto"
+              className="md:hidden fixed top-20 left-4 right-4 z-50 max-w-xs mx-auto"
             >
-              <div className="rounded-2xl border border-border bg-background/95 backdrop-blur-xl overflow-hidden shadow-xl shadow-black/10">
-                <div className="flex flex-col p-2">
-                  {navLinks.map((link, i) => (
-                    <NavLink key={link.to} to={link.to} onClick={() => setMobileMenuOpen(false)}>
-                      {({ isActive }) => (
-                        <motion.div
-                          initial={{ opacity: 0, x: -12 }} animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: i * 0.03 }}
-                          className={`px-4 py-2.5 rounded-xl transition-colors ${
-                            isActive ? "bg-white/5 font-medium text-foreground" : "text-muted-foreground"
-                          }`}
-                        >
-                          <span className="text-sm tracking-wide">{link.label}</span>
-                        </motion.div>
-                      )}
-                    </NavLink>
-                  ))}
-                  <a
-                    href="https://cal.com/meareg/15min"
-                    target="_blank"
-                    rel="noopener noreferrer"
+              <div className="rounded-2xl border border-white/[0.12] bg-[#09090b]/95 backdrop-blur-xl p-3 shadow-2xl space-y-1">
+                {navLinks.map((link) => (
+                  <NavLink
+                    key={link.to}
+                    to={link.to}
                     onClick={() => setMobileMenuOpen(false)}
+                    className={({ isActive }) =>
+                      `block px-4 py-2.5 rounded-xl text-sm font-medium transition-colors ${
+                        isActive
+                          ? "bg-white/[0.08] text-foreground font-semibold"
+                          : "text-muted-foreground hover:text-foreground hover:bg-white/[0.04]"
+                      }`
+                    }
                   >
-                    <motion.div
-                      initial={{ opacity: 0, x: -12 }} animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: navLinks.length * 0.03 }}
-                      className="mt-1 px-4 py-2.5 rounded-full bg-foreground text-background flex items-center justify-center text-xs font-semibold"
-                    >
-                      Get Started
-                    </motion.div>
-                  </a>
-                </div>
+                    {link.label}
+                  </NavLink>
+                ))}
               </div>
             </motion.div>
           </>

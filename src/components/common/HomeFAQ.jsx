@@ -4,24 +4,24 @@ import { Plus, Minus } from "lucide-react";
 
 const faqs = [
   {
-    q: "How long does it take to build the web app?",
-    a: "Most 0-to-1 production web MVPs are built and shipped in 2 to 4 weeks. Before starting, we lock in scope, wireframes, and architecture milestones so you have a crystal-clear delivery timeline with zero surprises.",
+    q: "How does pricing work?",
+    a: "I work primarily on milestone-based fixed project pricing for clearly scoped builds (websites, MVPs, integrations), so you know the exact cost before work begins. For ongoing engineering partnerships or evolving products, we can also agree on sprint-based weekly rates. No hidden fees or surprise invoices.",
   },
   {
-    q: "Can you start right away?",
-    a: "Yes. I intentionally take on only 1 or 2 builds simultaneously under Leons Lab to give each project complete engineering dedication. After our 15-minute discovery call, we can kick off within 48 to 72 hours.",
+    q: "How long does a typical build take?",
+    a: "A focused 0-to-1 MVP or custom web application typically ships in 2 to 4 weeks. Standard business websites and landing page builds usually take 1 to 2 weeks. Before starting, we lock in milestones and delivery dates so you always know what to expect.",
   },
   {
-    q: "Will I own 100% of the code and intellectual property?",
-    a: "Absolutely. You retain full ownership of the GitHub codebase, database schemas, API credentials, and all assets. Upon milestone completion, everything is transferred directly to your organization.",
+    q: "Who owns the code and intellectual property?",
+    a: "You do — 100%. Upon completion and milestone settlement, the full GitHub repository, database schemas, hosting accounts, and documentation are transferred completely to you. I retain no claim on your IP.",
   },
   {
-    q: "Do you provide support after launch?",
-    a: "Yes. Every build includes 30 days of post-launch warranty and bug fixes at zero extra cost. For teams seeking continuous feature development and maintenance, I also offer ongoing monthly retainer agreements.",
+    q: "Do I need a finished design or technical specification first?",
+    a: "Not necessarily. If you already have Figma designs, I will implement them cleanly. If you only have a rough concept, notes, or an existing manual process, we will scope the requirements together during the discovery phase before writing any code.",
   },
   {
-    q: "What tech stack do you recommend?",
-    a: "For fast, scalable web products, I typically build with Next.js or React on the frontend, Tailwind CSS for styling, and FastAPI, Node.js, or Go for high-concurrency backends, paired with PostgreSQL/Supabase and Stripe/Telebirr for payments.",
+    q: "What happens after launch?",
+    a: "Every build includes post-launch warranty and bug-fix support to ensure your application runs smoothly in production with real users. If you need ongoing maintenance, new features, or server monitoring, we can set up an ongoing support arrangement.",
   },
 ];
 
@@ -33,72 +33,53 @@ export const HomeFAQ = () => {
   };
 
   return (
-    <section className="py-24 sm:py-32 border-t border-border/60">
+    <section className="py-20 sm:py-28 border-t border-border/60">
       <div className="max-w-[840px] mx-auto px-6 sm:px-8">
         
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-14 sm:mb-18"
-        >
-          <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-foreground font-bricolage">
-            Still got questions?
+        {/* Section Header */}
+        <div className="mb-12 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl font-bold font-bricolage text-foreground tracking-tight">
+            Frequently asked questions.
           </h2>
-        </motion.div>
+          <p className="mt-2 text-sm text-muted-foreground">
+            Clear, candid answers to common questions about working together.
+          </p>
+        </div>
 
-        {/* Accordion Pills */}
-        <div className="space-y-3.5">
+        {/* Clean Hairline Accordion (No Heavy Rounded Cards) */}
+        <div className="border-t border-border/60 divide-y divide-border/60">
           {faqs.map((faq, i) => {
             const isOpen = openIndex === i;
-            const faqId = `faq-answer-${i}`;
             return (
-              <motion.div
-                key={faq.q}
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.06 }}
-                className={`rounded-2xl border transition-all duration-200 overflow-hidden ${
-                  isOpen
-                    ? "border-foreground/30 bg-card/90 shadow-md"
-                    : "border-border/70 bg-card/40 hover:bg-card/70"
-                }`}
-              >
+              <div key={faq.q} className="py-5">
                 <button
                   onClick={() => toggle(i)}
-                  className="w-full px-4 py-4 sm:px-6 sm:py-5 flex items-center justify-between text-left gap-4 cursor-pointer"
-                  aria-expanded={isOpen}
-                  aria-controls={faqId}
+                  className="w-full flex items-center justify-between text-left gap-4 cursor-pointer group"
                 >
-                  <div className="flex items-center gap-3">
-                    <span className="w-5 h-5 flex items-center justify-center text-rose-500 font-bold flex-shrink-0">
-                      {isOpen ? <Minus className="w-4 h-4 stroke-[2.5]" /> : <Plus className="w-4 h-4 stroke-[2.5]" />}
-                    </span>
-                    <span className="text-base sm:text-lg font-medium text-foreground">
-                      {faq.q}
-                    </span>
-                  </div>
+                  <span className="text-base sm:text-lg font-bold font-bricolage text-foreground group-hover:text-foreground/80 transition-colors">
+                    {faq.q}
+                  </span>
+                  <span className="text-muted-foreground group-hover:text-foreground transition-colors shrink-0">
+                    {isOpen ? <Minus className="w-4 h-4 stroke-[2]" /> : <Plus className="w-4 h-4 stroke-[2]" />}
+                  </span>
                 </button>
 
                 <AnimatePresence>
                   {isOpen && (
                     <motion.div
-                      id={faqId}
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.25 }}
+                      transition={{ duration: 0.2 }}
+                      className="overflow-hidden"
                     >
-                      <div className="px-4 sm:px-6 pb-5 sm:pb-6 pt-1 text-sm sm:text-base leading-relaxed text-muted-foreground border-t border-border/40 pl-9 sm:pl-12">
+                      <p className="pt-3 text-sm leading-relaxed text-muted-foreground max-w-2xl">
                         {faq.a}
-                      </div>
+                      </p>
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </motion.div>
+              </div>
             );
           })}
         </div>

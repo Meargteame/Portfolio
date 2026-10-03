@@ -1,83 +1,78 @@
 import { motion } from "motion/react";
-import { ArrowUpRight, Zap, Rocket, Award } from "lucide-react";
-
-const metrics = [
-  { icon: Rocket,     value: "10+ Shipped Apps", label: "Production web platforms" },
-  { icon: Zap,        value: "2–4 Weeks",        label: "Average 0-to-1 MVP delivery" },
-  { icon: Award,      value: "A2SV Fellow",      label: "Top 1% engineer in Africa" },
-];
+import { ArrowUpRight } from "lucide-react";
+import { Link } from "react-router";
+import { useMagnet } from "../../hooks/useMagnet";
+import { SilkWaveBackground } from "../effects/SilkWaveBackground";
 
 export const HeroSection = () => {
+  const magnet = useMagnet({ radius: 80, strength: 8 });
+
   return (
-    <section className="relative pt-28 sm:pt-36 md:pt-44 pb-12 sm:pb-16 flex flex-col justify-center overflow-hidden">
-      <div className="max-w-[1200px] mx-auto px-6 sm:px-8 w-full relative z-10">
+    <section className="relative pt-36 sm:pt-44 md:pt-48 pb-20 sm:pb-28 overflow-hidden">
+      
+      {/* Ambient Fluid Silk Wave Background (inspired by bilt.nogs.dev) */}
+      <div className="absolute inset-0 -top-16 sm:-top-24 pointer-events-none overflow-hidden select-none -z-10">
+        <div className="absolute inset-0 w-full h-full opacity-90">
+          <SilkWaveBackground
+            speed={0.4}
+            className="w-full h-full"
+          />
+        </div>
+        {/* Subtle fade to page background at the bottom edge */}
+        <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-b from-transparent via-background/60 to-background pointer-events-none" />
+      </div>
+
+      <div className="max-w-5xl mx-auto px-6 sm:px-8 text-center relative z-10">
         
-        {/* Centered Hero Header */}
-        <div className="max-w-3xl mx-auto text-center flex flex-col items-center">
-          
-          {/* Main Headline */}
-          <motion.h1
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, delay: 0.1 }}
-            className="text-3xl sm:text-5xl lg:text-[54px] font-bricolage tracking-tight leading-[1.12]"
-          >
-            <span className="text-muted-foreground/60 font-normal">I turn </span>
-            <span className="text-foreground font-bold">promising ideas </span>
-            <span className="text-muted-foreground/60 font-normal">into </span>
-            <span className="text-foreground font-bold">Web Apps !</span>
-          </motion.h1>
+        {/* Main Headline */}
+        <h1 className="text-4xl sm:text-6xl md:text-7xl font-bricolage font-bold tracking-tight text-foreground leading-[1.08] max-w-4xl mx-auto">
+          Websites, web apps &amp; systems that{" "}
+          <span className="inline-block px-2.5 sm:px-3.5 py-0.5 rounded-sm bg-white/[0.06] border border-white/[0.14] text-foreground shadow-sm align-baseline">
+            actually get used.
+          </span>
+        </h1>
 
-          {/* Subtitle */}
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="mt-5 text-base sm:text-lg text-muted-foreground max-w-lg font-normal"
-          >
-            From idea → launch, I handle the tech.
-          </motion.p>
+        {/* Subheadline */}
+        <p className="mt-6 sm:mt-7 text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto font-normal">
+          I help businesses and startups turn ideas, manual processes, and existing designs into reliable web applications — from first build to live production.
+        </p>
 
-          {/* Clean Solid Hero Red CTA Button (No Glow, No Shadow) */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="mt-7 sm:mt-8"
-          >
-            <a
-              href="https://cal.com/meareg/15min"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block"
+        {/* Dual CTAs */}
+        <div
+          className="mt-9 sm:mt-11 flex flex-wrap items-center justify-center gap-4"
+          onMouseMove={magnet.handlers.onMouseMove}
+          onMouseLeave={magnet.handlers.onMouseLeave}
+        >
+          <Link to="/contact">
+            <motion.span
+              ref={magnet.ref}
+              style={{ x: magnet.x, y: magnet.y }}
+              whileTap={{ scale: 0.98 }}
+              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-foreground text-background text-sm sm:text-base font-semibold tracking-tight hover:opacity-90 transition-opacity cursor-pointer shadow-md"
             >
-              <motion.span
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="inline-flex items-center gap-2 px-7 py-3.5 sm:px-8 sm:py-3.5 rounded-2xl bg-[#e11d48] text-white text-sm sm:text-base font-semibold tracking-tight hover:bg-[#be123c] transition-all duration-200 cursor-pointer shadow-none border-0"
-              >
-                Book Discovery Call
-                <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.5]" />
-              </motion.span>
-            </a>
-          </motion.div>
+              Start a Project
+              <ArrowUpRight className="w-4 h-4 stroke-[2.5]" />
+            </motion.span>
+          </Link>
+
+          <Link
+            to="/work"
+            className="inline-flex items-center gap-1.5 px-6 py-3.5 rounded-full border border-border/80 text-foreground text-sm sm:text-base font-medium hover:border-foreground/40 transition-colors"
+          >
+            See My Work
+          </Link>
         </div>
 
-        {/* Proof Metrics Bar (Full card comfortably visible on all laptop screens with clean breathing space) */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.55, delay: 0.4 }}
-          className="mt-14 sm:mt-16 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 p-3.5 sm:p-5 rounded-2xl sm:rounded-3xl border border-border/70 bg-card/60 backdrop-blur-xl shadow-sm"
-        >
-          {metrics.map((m) => (
-            <div key={m.value} className="p-2 sm:p-2.5 flex flex-col items-center text-center">
-              <m.icon className="w-4 h-4 text-muted-foreground mb-1.5" />
-              <div className="text-base sm:text-lg font-bold font-bricolage text-foreground">{m.value}</div>
-              <div className="text-[11px] sm:text-xs text-muted-foreground mt-0.5">{m.label}</div>
-            </div>
-          ))}
-        </motion.div>
+        {/* Proof line */}
+        <div className="mt-14 pt-8 border-t border-border/50 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs sm:text-sm text-muted-foreground">
+          <span className="text-foreground font-medium">10+ Shipped Applications</span>
+          <span className="text-border">•</span>
+          <span>2–4 Week MVP Turnaround</span>
+          <span className="text-border">•</span>
+          <span>Full-Stack Implementation</span>
+          <span className="text-border">•</span>
+          <span>Direct Communication</span>
+        </div>
 
       </div>
     </section>

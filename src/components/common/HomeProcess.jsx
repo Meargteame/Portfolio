@@ -1,120 +1,72 @@
-import { motion } from "motion/react";
 import { Link } from "react-router";
-import { Search, Compass, Rocket, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 const steps = [
   {
-    step: "Step 1",
-    title: "Discover & Define",
-    desc: "I nail down your users, core features, and what 'done' looks like — before a single line of code gets written.",
-    icon: Search,
-    color: "from-blue-500/10 to-transparent",
-    tag: "SCOPING & ROADMAP",
+    num: "1",
+    title: "Tell me what you need",
+    desc: "Share your product concept, Figma file, existing website, or manual process. You don't need a technical spec — just explain what you want your software to accomplish.",
   },
   {
-    step: "Step 2",
-    title: "Architecture & Prototype",
-    desc: "You see real screens, API contracts, and database schemas before heavy engineering begins. Flows get validated early so nothing gets built twice.",
-    icon: Compass,
-    color: "from-purple-500/10 to-transparent",
-    tag: "SCHEMA & UI FLOWS",
+    num: "2",
+    title: "Define scope & timeline",
+    desc: "We agree on exactly what gets built, delivery milestones (typically 2 to 4 weeks for core builds), and clear expectations before writing any code.",
   },
   {
-    step: "Step 3",
-    title: "Build & Ship",
-    desc: "Clean, scalable full-stack code in Next.js, React, and Go. Tested end-to-end, integrated with real payment gateways, and deployed to production.",
-    icon: Rocket,
-    color: "from-emerald-500/10 to-transparent",
-    tag: "PRODUCTION DEPLOY",
+    num: "3",
+    title: "Build & weekly demos",
+    desc: "Frontend, backend APIs, database, and integrations. You receive regular live preview links and progress demos as features are completed.",
+  },
+  {
+    num: "4",
+    title: "Launch & handoff",
+    desc: "Deployment to production, 100% repository and intellectual property transfer, a walkthrough session, and 30-day post-launch warranty.",
   },
 ];
 
 export const HomeProcess = () => {
   return (
-    <section className="py-24 sm:py-32 border-t border-border/60">
-      <div className="max-w-[1200px] mx-auto px-6 sm:px-8 text-center">
+    <section className="py-20 sm:py-28 border-t border-border/60">
+      <div className="max-w-[1100px] mx-auto px-6 sm:px-8">
         
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="max-w-2xl mx-auto"
-        >
-          <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-foreground font-bricolage">
-            Idea to launch in weeks,
-            <br />
-            Not months
+        {/* Section Header */}
+        <div className="max-w-2xl mb-14 sm:mb-20">
+          <h2 className="text-3xl sm:text-4xl font-bold font-bricolage text-foreground tracking-tight leading-tight">
+            How we take your project from idea to launch.
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-muted-foreground">
-            Three focused phases. No fluff, no delays.
+          <p className="mt-3 text-sm sm:text-base text-muted-foreground">
+            A simple, predictable process designed to remove the friction and uncertainty of hiring an independent developer.
           </p>
-        </motion.div>
+        </div>
 
-        {/* 3 Steps Grid */}
-        <div className="mt-16 sm:mt-20 grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 text-left">
-          {steps.map((item, i) => (
-            <motion.div
-              key={item.step}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.15 }}
-              className="relative p-6 sm:p-8 rounded-3xl border border-border/80 bg-card/60 backdrop-blur-xl flex flex-col justify-between group hover:border-foreground/30 transition-colors shadow-sm"
-            >
-              <div>
-                <div className="flex items-center justify-between mb-6">
-                  <span className="text-xs font-mono font-semibold tracking-wider text-rose-500 uppercase">
-                    {item.step}
-                  </span>
-                  <div className="w-10 h-10 rounded-xl border border-border/80 bg-muted/50 flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <item.icon className="w-5 h-5 text-muted-foreground group-hover:text-foreground transition-colors" />
-                  </div>
-                </div>
-
-                <h3 className="text-xl font-bold tracking-tight text-foreground font-bricolage mb-3">
-                  {item.title}
-                </h3>
-                <p className="text-sm leading-relaxed text-muted-foreground">
-                  {item.desc}
-                </p>
-              </div>
-
-              <div className="mt-8 pt-4 border-t border-border/60 flex items-center justify-between text-[11px] font-mono text-muted-foreground/70">
-                <span>{item.tag}</span>
-                <span className="text-emerald-500 font-bold">✓</span>
-              </div>
-            </motion.div>
+        {/* Clean Sequential Flow (No Boxes, No Icons in Squares) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
+          {steps.map((item) => (
+            <div key={item.num} className="space-y-3">
+              <span className="text-xs font-mono font-bold text-muted-foreground/60 block">
+                0{item.num}
+              </span>
+              <h3 className="text-lg font-bold font-bricolage text-foreground tracking-tight">
+                {item.title}
+              </h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                {item.desc}
+              </p>
+            </div>
           ))}
         </div>
 
-        {/* Process CTA Bottom */}
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="mt-14 sm:mt-16 flex flex-col items-center"
-        >
-          <p className="text-sm text-muted-foreground mb-4">
-            Ready to bring your web app idea to life?
-          </p>
-          <a
-            href="https://cal.com/meareg/15min"
-            target="_blank"
-            rel="noopener noreferrer"
+        {/* Quiet Reassurance Strip */}
+        <div className="mt-14 sm:mt-16 pt-8 border-t border-border/60 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs sm:text-sm text-muted-foreground">
+          <span>You own 100% of the code, IP, and database from day one.</span>
+          <Link
+            to="/contact"
+            className="inline-flex items-center gap-1 font-semibold text-foreground hover:underline"
           >
-            <motion.span
-              whileHover={{ scale: 1.04, y: -2 }}
-              whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-foreground text-background text-sm font-semibold tracking-wide hover:opacity-90 transition-all shadow-sm cursor-pointer"
-            >
-              Start your Project
-              <ArrowUpRight className="w-4 h-4 text-rose-500" />
-            </motion.span>
-          </a>
-        </motion.div>
+            Start with a quick message
+            <ArrowUpRight className="w-3.5 h-3.5" />
+          </Link>
+        </div>
 
       </div>
     </section>

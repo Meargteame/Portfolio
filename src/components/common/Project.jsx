@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "motion/react";
 import { useState } from "react";
-import { Github, ExternalLink, ChevronDown, Terminal, Layers } from "lucide-react";
+import { Github, ExternalLink, ChevronDown, Layers, ArrowUpRight } from "lucide-react";
 import { projects, moreProjects } from "../../data/projects";
 import { GlassCard } from "../effects/GlassCard";
 
@@ -40,6 +40,7 @@ const SystemSnippetVisual = ({ project }) => {
 
 const ProjectCard = ({ project, index }) => {
   const [open, setOpen] = useState(false);
+  const [hovered, setHovered] = useState(false);
   const techList = (project.tech || "").split("·").map((t) => t.trim()).filter(Boolean);
   const isOdd = index % 2 === 1;
 
@@ -49,22 +50,52 @@ const ProjectCard = ({ project, index }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.1 }}
       transition={{ duration: 0.5, delay: index * 0.08, ease: [0.25, 0, 0, 1] }}
+      onHoverStart={() => setHovered(true)}
+      onHoverEnd={() => setHovered(false)}
+      data-cursor="VIEW"
+      className="project-card"
     >
       <GlassCard className="overflow-hidden group" intensity={5}>
         <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch min-h-[340px]">
-          {/* Visual side (Screenshot or Architecture code block) */}
+
+          {/* Visual side */}
           <div
             className={`lg:col-span-6 relative overflow-hidden min-h-[240px] sm:min-h-[300px] lg:min-h-[340px] ${
               isOdd ? "lg:order-2 border-b lg:border-b-0 lg:border-l" : "border-b lg:border-b-0 lg:border-r"
             } border-border`}
           >
             {project.image ? (
-              <img
-                src={project.image}
-                alt={`${project.name} preview`}
-                loading="lazy"
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-              />
+              <>
+                <img
+                  src={project.image}
+                  alt={`${project.name} preview`}
+                  loading="lazy"
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                />
+                {/* Hover overlay strip */}
+                <motion.div
+                  initial={{ y: "100%" }}
+                  animate={{ y: hovered ? "0%" : "100%" }}
+                  transition={{ duration: 0.3, ease: [0.25, 0, 0, 1] }}
+                  className="absolute bottom-0 left-0 right-0 h-14 bg-background/90 backdrop-blur-md border-t border-border/60 flex items-center justify-between px-5"
+                >
+                  <span className="text-xs font-mono tracking-widest text-muted-foreground">
+                    {project.tag}
+                  </span>
+                  {project.live && project.live !== "#" && (
+                    <a
+                      href={project.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="flex items-center gap-1.5 text-xs font-semibold text-foreground hover:text-foreground/70 transition-colors"
+                    >
+                      Visit live
+                      <ArrowUpRight className="w-3.5 h-3.5" />
+                    </a>
+                  )}
+                </motion.div>
+              </>
             ) : (
               <SystemSnippetVisual project={project} />
             )}
@@ -72,10 +103,18 @@ const ProjectCard = ({ project, index }) => {
 
           {/* Details side */}
           <div
-            className={`p-6 sm:p-8 lg:p-10 flex flex-col justify-center lg:col-span-6 ${
+            className={`p-6 sm:p-8 lg:p-10 flex flex-col justify-center lg:col-span-6 relative ${
               isOdd ? "lg:order-1" : "lg:order-2"
             }`}
           >
+            {/* Animated left border accent */}
+            <motion.div
+              className="absolute left-0 top-8 bottom-8 w-[2px] bg-foreground/30 rounded-full origin-top"
+              initial={{ scaleY: 0 }}
+              animate={{ scaleY: hovered ? 1 : 0 }}
+              transition={{ duration: 0.35, ease: [0.25, 0, 0, 1] }}
+            />
+
             <div className="flex items-start justify-between gap-4">
               <div className="min-w-0 flex-1">
                 <div className="flex items-center gap-2.5 flex-wrap">
@@ -172,15 +211,18 @@ const MoreProjectCard = ({ project, index }) => (
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true, amount: 0.2 }}
     transition={{ duration: 0.4, delay: index * 0.05, ease: [0.25, 0, 0, 1] }}
+    whileHover={{ y: -4 }}
+    data-cursor="VIEW"
+    className="project-card"
   >
     <GlassCard className={`overflow-hidden h-full flex flex-col ${project.image ? "" : "p-5"}`} intensity={4}>
       {project.image && (
-        <div className="relative overflow-hidden h-36 border-b border-border/50">
+        <div className="relative overflow-hidden h-36 border-b border-border/50 group">
           <img
             src={project.image}
             alt={`${project.name} preview`}
             loading="lazy"
-            className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.05]"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
         </div>
@@ -246,7 +288,7 @@ const MoreProjectCard = ({ project, index }) => (
 
 export const Projects = () => {
   return (
-    <section id="projects" className="relative py-20 sm:py-28 lg:py-32 overflow-hidden">
+    <section id="projects" className="relative py-12 sm:py-16 overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -259,16 +301,16 @@ export const Projects = () => {
             FEATURED ENGINEERING
           </span>
           <h2 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground font-bricolage leading-[1.1]">
-            Web &amp; Mobile projects.
+            Featured Applications.
           </h2>
           <p className="mt-3 text-sm text-muted-foreground max-w-xl">
-            Selected full-stack platforms, cross-platform mobile apps, and scalable web applications.
+            Selected full-stack platforms, SaaS applications, and custom business systems built and deployed for real users.
           </p>
           <div className="mt-4 w-12 h-px bg-foreground/20" />
         </motion.div>
 
         {/* Alternating single column list */}
-        <div className="grid grid-cols-1 gap-6 lg:gap-8 mt-16">
+        <div className="grid grid-cols-1 gap-6 lg:gap-8 mt-14">
           {projects.map((project, index) => (
             <ProjectCard key={project.id} project={project} index={index} />
           ))}
@@ -277,7 +319,7 @@ export const Projects = () => {
         <div className="mt-20">
           <div className="flex items-center gap-4 mb-8">
             <span className="text-xs tracking-[0.2em] text-muted-foreground font-mono font-medium">
-              ADDITIONAL PRODUCTION WORK &amp; APPS
+              ADDITIONAL PRODUCTION WORK &amp; CLIENT SYSTEMS
             </span>
             <div className="flex-1 h-px bg-border" />
           </div>

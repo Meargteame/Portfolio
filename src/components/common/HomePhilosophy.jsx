@@ -47,6 +47,7 @@ export const HomePhilosophy = () => {
                   alt="Meareg Teame"
                   loading="lazy"
                   decoding="async"
+                  data-cursor="ABOUT"
                   className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
                 />
 
