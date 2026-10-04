@@ -1,15 +1,27 @@
 import { useState, useEffect } from "react";
-import { Mail, Github, Linkedin, Send, Download, ArrowUpRight } from "lucide-react";
+import {
+  FolderKanban,
+  Briefcase,
+  GraduationCap,
+  Cpu,
+  User,
+  Mail,
+  Github,
+  Linkedin,
+  Send,
+  Download,
+  ArrowUpRight,
+} from "lucide-react";
 import { ModeToggle } from "./mode-toggle";
 import mearegPhoto from "../../assets/meareg-photo.webp";
 
 const navItems = [
-  { id: "work",       label: "Work",       index: "01" },
-  { id: "experience", label: "Experience", index: "02" },
-  { id: "education",  label: "Education",  index: "03" },
-  { id: "stack",      label: "Tech Stack", index: "04" },
-  { id: "about",      label: "About",      index: "05" },
-  { id: "contact",    label: "Contact",    index: "06" },
+  { id: "work",       label: "Work",        icon: FolderKanban },
+  { id: "experience", label: "Experience",  icon: Briefcase },
+  { id: "education",  label: "Education",   icon: GraduationCap },
+  { id: "stack",      label: "Tech Stack",  icon: Cpu },
+  { id: "about",      label: "About",       icon: User },
+  { id: "contact",    label: "Contact",     icon: Mail },
 ];
 
 export const Navbar = () => {
@@ -18,6 +30,12 @@ export const Navbar = () => {
   // Track active section on scroll
   useEffect(() => {
     const handleScroll = () => {
+      // If reached bottom of page, highlight contact
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 60) {
+        setActiveSection("contact");
+        return;
+      }
+
       const scrollPos = window.scrollY + 180;
       for (const item of navItems) {
         const el = document.getElementById(item.id);
@@ -52,121 +70,154 @@ export const Navbar = () => {
   return (
     <>
       {/* Mobile Header (< lg) */}
-      <header className="lg:hidden w-full pb-6 mb-8 border-b border-border">
-        <div className="flex items-center justify-between gap-4">
+      <header className="lg:hidden w-full pb-5 mb-8 border-b border-border">
+        <div className="flex items-center justify-between gap-3">
           <div className="flex items-center gap-3">
-            <img
-              src={mearegPhoto}
-              alt="Meareg Teame"
-              className="w-10 h-10 rounded-full object-cover border border-border shrink-0 shadow-xs"
-            />
+            <div className="relative shrink-0">
+              <img
+                src={mearegPhoto}
+                alt="Meareg Teame"
+                className="w-11 h-11 rounded-xl object-cover border border-border shadow-xs"
+              />
+              <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-emerald-500 border-2 border-background" />
+            </div>
             <div>
               <h1 className="font-bold text-base tracking-tight font-bricolage text-foreground">
                 Meareg Teame
               </h1>
-              <p className="text-xs text-muted-foreground font-mono">Dansha, Ethiopia</p>
+              <p className="text-xs text-muted-foreground font-mono">Full-Stack Developer · Dansha</p>
             </div>
           </div>
-          <ModeToggle />
+
+          <div className="flex items-center gap-2">
+            <a
+              href="/CV.pdf"
+              download
+              title="Download Résumé"
+              className="p-2 rounded-lg border border-border bg-card text-foreground hover:bg-muted transition-colors shadow-xs"
+            >
+              <Download className="w-4 h-4" />
+            </a>
+            <ModeToggle />
+          </div>
         </div>
 
         {/* Mobile Jump Links */}
         <nav className="mt-4 flex items-center gap-1.5 overflow-x-auto pb-1 no-scrollbar">
-          {navItems.map((item) => (
-            <a
-              key={item.id}
-              href={`#${item.id}`}
-              onClick={(e) => scrollTo(e, item.id)}
-              className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-colors shrink-0 ${
-                activeSection === item.id
-                  ? "bg-foreground text-background font-semibold"
-                  : "bg-card border border-border text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              {item.label}
-            </a>
-          ))}
-          <a
-            href="/CV.pdf"
-            download
-            className="ml-auto inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-border bg-card text-xs font-mono text-muted-foreground hover:text-foreground shrink-0"
-          >
-            <Download className="w-3 h-3" />
-            <span>CV</span>
-          </a>
-        </nav>
-      </header>
-
-      {/* Desktop Left Sidebar (lg+) — Styled as a Unified Framed Card */}
-      <aside className="hidden lg:flex lg:sticky lg:top-8 lg:w-72 xl:w-80 shrink-0 flex-col rounded-2xl border border-border bg-card/70 p-5 sm:p-6 shadow-xs space-y-5">
-        
-        {/* Profile Header */}
-        <div className="space-y-3">
-          <div className="flex items-center gap-3.5">
-            <div className="w-12 h-12 rounded-xl overflow-hidden border border-border bg-card shadow-xs shrink-0">
-              <img
-                src={mearegPhoto}
-                alt="Meareg Teame"
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="min-w-0">
-              <h1 className="text-xl font-bold font-bricolage tracking-tight text-foreground truncate">
-                Meareg Teame
-              </h1>
-              <p className="text-xs font-medium text-foreground/80 truncate">
-                Full-Stack Developer
-              </p>
-              <p className="text-[11px] text-muted-foreground font-mono truncate">
-                Dansha, Ethiopia (UTC+3)
-              </p>
-            </div>
-          </div>
-
-          <p className="text-xs text-muted-foreground leading-relaxed pt-0.5">
-            I build reliable web applications, client portals, and APIs with React, Next.js, TypeScript, and Python.
-          </p>
-        </div>
-
-        {/* Clean, Refined Navigation Menu */}
-        <nav className="space-y-1">
           {navItems.map((item) => {
+            const Icon = item.icon;
             const isActive = activeSection === item.id;
             return (
               <a
                 key={item.id}
                 href={`#${item.id}`}
                 onClick={(e) => scrollTo(e, item.id)}
-                className={`group flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium transition-all cursor-pointer ${
+                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all shrink-0 ${
                   isActive
                     ? "bg-foreground text-background font-semibold shadow-xs"
-                    : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                    : "bg-card border border-border text-muted-foreground hover:text-foreground"
                 }`}
               >
+                <Icon className="w-3.5 h-3.5" />
                 <span>{item.label}</span>
-                <span
-                  className={`text-[10px] font-mono transition-opacity ${
-                    isActive ? "text-background/80" : "text-muted-foreground/50 group-hover:text-foreground/70"
-                  }`}
-                >
-                  {item.index}
-                </span>
               </a>
             );
           })}
         </nav>
+      </header>
 
-        {/* Bottom Actions: Social Icons + Résumé & Theme (Always visible inside card) */}
+      {/* Desktop Left Sidebar (lg+) — Bespoke, Cohesive, Never Clipped */}
+      <aside className="hidden lg:flex lg:sticky lg:top-10 lg:h-[calc(100vh-5rem)] lg:max-h-[640px] lg:w-72 xl:w-80 shrink-0 flex-col justify-between py-1">
+        
+        {/* Top: Photo, Status, Name, Bio */}
+        <div className="space-y-4">
+          <div className="flex items-center gap-3.5">
+            <div className="relative shrink-0">
+              <img
+                src={mearegPhoto}
+                alt="Meareg Teame"
+                className="w-13 h-13 rounded-2xl object-cover border border-border shadow-xs"
+              />
+              <span
+                className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-emerald-500 border-2 border-background ring-1 ring-emerald-500/20"
+                title="Available for projects"
+              />
+            </div>
+            <div>
+              <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-mono font-medium bg-emerald-500/10 text-emerald-800 dark:text-emerald-400 border border-emerald-500/25">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                <span>Available for work</span>
+              </div>
+              <p className="text-xs text-muted-foreground font-mono mt-1">Dansha, Ethiopia (UTC+3)</p>
+            </div>
+          </div>
+
+          <div>
+            <h1 className="text-2xl xl:text-3xl font-bold font-bricolage tracking-tight text-foreground leading-tight">
+              Meareg Teame
+            </h1>
+            <p className="text-xs sm:text-sm font-medium text-foreground/80 mt-1">
+              Full-Stack Software Developer
+            </p>
+          </div>
+
+          <p className="text-xs xl:text-sm text-muted-foreground leading-relaxed">
+            Building reliable web applications, client portals, and production APIs with React, TypeScript, and Python.
+          </p>
+
+          {/* Interactive Navigation Menu */}
+          <nav className="pt-2 space-y-1">
+            {navItems.map((item) => {
+              const Icon = item.icon;
+              const isActive = activeSection === item.id;
+              return (
+                <a
+                  key={item.id}
+                  href={`#${item.id}`}
+                  onClick={(e) => scrollTo(e, item.id)}
+                  className={`group flex items-center justify-between px-3 py-2 rounded-xl text-sm transition-all duration-150 cursor-pointer ${
+                    isActive
+                      ? "bg-card border border-border text-foreground font-semibold shadow-xs"
+                      : "text-muted-foreground hover:text-foreground hover:bg-card/50 font-normal"
+                  }`}
+                >
+                  <div className="flex items-center gap-2.5">
+                    <div
+                      className={`w-7 h-7 rounded-lg flex items-center justify-center transition-colors ${
+                        isActive
+                          ? "bg-foreground text-background"
+                          : "bg-muted/40 text-muted-foreground group-hover:text-foreground group-hover:bg-muted"
+                      }`}
+                    >
+                      <Icon className="w-3.5 h-3.5" />
+                    </div>
+                    <span className="text-[13px] tracking-tight">{item.label}</span>
+                  </div>
+
+                  <div
+                    className={`w-1.5 h-1.5 rounded-full transition-all duration-200 ${
+                      isActive
+                        ? "bg-foreground scale-100"
+                        : "scale-0 opacity-0 group-hover:opacity-40 group-hover:scale-75 bg-muted-foreground"
+                    }`}
+                  />
+                </a>
+              );
+            })}
+          </nav>
+        </div>
+
+        {/* Bottom Actions: Social Icons + Résumé & Theme (Always visible on any display) */}
         <div className="pt-4 border-t border-border space-y-3">
-          {/* Social Links */}
-          <div className="grid grid-cols-4 gap-2">
+          {/* Social Icons */}
+          <div className="flex items-center gap-2">
             <a
               href="mailto:hello.meareg@gmail.com"
               aria-label="Email"
               title="Email Me"
-              className="py-2 rounded-lg border border-border bg-card flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-foreground/40 transition-colors shadow-xs"
+              className="w-9 h-9 rounded-lg border border-border bg-card/70 flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-foreground/40 transition-colors shadow-xs"
             >
-              <Mail className="w-3.5 h-3.5" />
+              <Mail className="w-4 h-4" />
             </a>
             <a
               href="https://github.com/Meargteame"
@@ -174,9 +225,9 @@ export const Navbar = () => {
               rel="noopener noreferrer"
               aria-label="GitHub"
               title="GitHub Repositories"
-              className="py-2 rounded-lg border border-border bg-card flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-foreground/40 transition-colors shadow-xs"
+              className="w-9 h-9 rounded-lg border border-border bg-card/70 flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-foreground/40 transition-colors shadow-xs"
             >
-              <Github className="w-3.5 h-3.5" />
+              <Github className="w-4 h-4" />
             </a>
             <a
               href="https://www.linkedin.com/in/meareg"
@@ -184,9 +235,9 @@ export const Navbar = () => {
               rel="noopener noreferrer"
               aria-label="LinkedIn"
               title="LinkedIn Profile"
-              className="py-2 rounded-lg border border-border bg-card flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-foreground/40 transition-colors shadow-xs"
+              className="w-9 h-9 rounded-lg border border-border bg-card/70 flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-foreground/40 transition-colors shadow-xs"
             >
-              <Linkedin className="w-3.5 h-3.5" />
+              <Linkedin className="w-4 h-4" />
             </a>
             <a
               href="https://t.me/meareg_teame"
@@ -194,9 +245,9 @@ export const Navbar = () => {
               rel="noopener noreferrer"
               aria-label="Telegram"
               title="Telegram Chat"
-              className="py-2 rounded-lg border border-border bg-card flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-foreground/40 transition-colors shadow-xs"
+              className="w-9 h-9 rounded-lg border border-border bg-card/70 flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-foreground/40 transition-colors shadow-xs"
             >
-              <Send className="w-3.5 h-3.5" />
+              <Send className="w-4 h-4" />
             </a>
           </div>
 
@@ -205,15 +256,14 @@ export const Navbar = () => {
             <a
               href="/CV.pdf"
               download
-              className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg border border-border bg-card text-xs font-mono text-foreground hover:bg-muted hover:border-foreground/40 transition-colors shadow-xs font-medium"
+              className="flex-1 inline-flex items-center justify-center gap-2 h-9 px-3 rounded-lg border border-border bg-card/70 text-xs font-mono font-medium text-foreground hover:bg-card hover:border-foreground/40 transition-colors shadow-xs"
             >
-              <Download className="w-3.5 h-3.5" />
+              <Download className="w-3.5 h-3.5 text-muted-foreground" />
               <span>Résumé (PDF)</span>
               <ArrowUpRight className="w-3 h-3 text-muted-foreground" />
             </a>
 
-            <div className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-border bg-card shadow-xs">
-              <span className="text-[10px] font-mono text-muted-foreground">Theme</span>
+            <div className="shrink-0">
               <ModeToggle />
             </div>
           </div>
