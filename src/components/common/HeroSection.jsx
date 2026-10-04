@@ -4,11 +4,6 @@ export const HeroSection = () => {
   return (
     <section className="pt-2 sm:pt-4 pb-12 sm:pb-16 border-b border-border">
       <div className="space-y-6 max-w-2xl">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-border bg-card text-xs font-mono text-muted-foreground shadow-xs">
-          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-          <span>Available for select contract &amp; full-time roles</span>
-        </div>
-
         <h2 className="text-3xl sm:text-4xl font-bold font-bricolage text-foreground tracking-tight leading-snug">
           Building web software with precision, speed, and care.
         </h2>
