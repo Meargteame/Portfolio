@@ -2,41 +2,46 @@ import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router';
 import { AppRouter } from './router/AppRouter';
 
-// Maps old hash anchors to clean routes
-const HASH_REDIRECTS = {
-  '#projects': '/work',
-  '#work':     '/work',
-  '#services': '/services',
-  '#about':    '/about',
-  '#education':'/about',
-  '#experience':'/about',
-  '#tech':     '/about',
-  '#principles':'/about',
-  '#contact':  '/contact',
+const PATH_TO_HASH = {
+  '/work': '#work',
+  '/projects': '#work',
+  '/services': '#services',
+  '/about': '#about',
+  '/contact': '#contact',
 };
 
-function ScrollToTop() {
-  const { pathname } = useLocation();
-  useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
-  return null;
-}
-
-function HashRedirector() {
+function SpaHashHandler() {
+  const { pathname, hash } = useLocation();
   const navigate = useNavigate();
+
   useEffect(() => {
-    const hash = window.location.hash;
-    if (hash && HASH_REDIRECTS[hash]) {
-      navigate(HASH_REDIRECTS[hash], { replace: true });
+    // If user lands on a legacy subpath like /work, redirect to /#work
+    if (PATH_TO_HASH[pathname]) {
+      const targetHash = PATH_TO_HASH[pathname];
+      navigate(`/${targetHash}`, { replace: true });
+      setTimeout(() => {
+        const el = document.getElementById(targetHash.replace('#', ''));
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+      return;
     }
-  }, [navigate]);
+
+    // If user lands directly with a hash like /#services
+    if (hash) {
+      setTimeout(() => {
+        const el = document.getElementById(hash.replace('#', ''));
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    }
+  }, [pathname, hash, navigate]);
+
   return null;
 }
 
 function App() {
   return (
     <>
-      <ScrollToTop />
-      <HashRedirector />
+      <SpaHashHandler />
       <AppRouter />
     </>
   );

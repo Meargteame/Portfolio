@@ -3,10 +3,21 @@ import { projects } from "../../data/projects";
 
 export const Projects = () => {
   return (
-    <section id="projects" className="py-8 sm:py-14">
+    <section id="work" className="py-16 sm:py-24 border-t border-border scroll-mt-16">
       <div className="max-w-5xl mx-auto px-6">
         
-        {/* Single-Column Vertical List (Not Cards) */}
+        {/* Section Header */}
+        <div className="max-w-2xl mb-12 sm:mb-16">
+          <span className="text-xs font-mono font-medium tracking-[0.2em] text-muted-foreground uppercase">
+            Proof of Execution
+          </span>
+          <h2 className="mt-2 text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground font-bricolage leading-tight">
+            Selected Production Work.
+          </h2>
+          <p className="mt-4 text-base sm:text-lg text-muted-foreground leading-relaxed">
+            Real platforms, SaaS applications, and business systems built 0-to-1 and deployed to production. Every build demonstrates full-stack execution, database design, and working business logic.
+          </p>
+        </div>
         <div className="divide-y divide-border">
           {projects.map((project, index) => {
             const isOdd = index % 2 === 1;
