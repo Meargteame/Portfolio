@@ -3,7 +3,7 @@ import {
   FolderKanban,
   Briefcase,
   GraduationCap,
-  Cpu,
+  Layers,
   User,
   Mail,
   Github,
@@ -19,7 +19,7 @@ const navItems = [
   { id: "work",       label: "Work",        icon: FolderKanban },
   { id: "experience", label: "Experience",  icon: Briefcase },
   { id: "education",  label: "Education",   icon: GraduationCap },
-  { id: "stack",      label: "Tech Stack",  icon: Cpu },
+  { id: "stack",      label: "Tech Stack",  icon: Layers },
   { id: "about",      label: "About",       icon: User },
   { id: "contact",    label: "Contact",     icon: Mail },
 ];
@@ -73,14 +73,11 @@ export const Navbar = () => {
       <header className="lg:hidden w-full pb-5 mb-8 border-b border-border">
         <div className="flex items-center justify-between gap-3">
           <div className="flex items-center gap-3">
-            <div className="relative shrink-0">
-              <img
-                src={mearegPhoto}
-                alt="Meareg Teame"
-                className="w-11 h-11 rounded-xl object-cover border border-border shadow-xs"
-              />
-              <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-emerald-500 border-2 border-background" />
-            </div>
+            <img
+              src={mearegPhoto}
+              alt="Meareg Teame"
+              className="w-11 h-11 rounded-xl object-cover border border-border shadow-xs shrink-0"
+            />
             <div>
               <h1 className="font-bold text-base tracking-tight font-bricolage text-foreground">
                 Meareg Teame
@@ -131,34 +128,23 @@ export const Navbar = () => {
         
         {/* Top: Photo, Status, Name, Bio */}
         <div className="space-y-4">
-          <div className="flex items-center gap-3.5">
-            <div className="relative shrink-0">
-              <img
-                src={mearegPhoto}
-                alt="Meareg Teame"
-                className="w-13 h-13 rounded-2xl object-cover border border-border shadow-xs"
-              />
-              <span
-                className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-emerald-500 border-2 border-background ring-1 ring-emerald-500/20"
-                title="Available for projects"
-              />
-            </div>
+          <div className="flex items-center gap-4">
+            <img
+              src={mearegPhoto}
+              alt="Meareg Teame"
+              className="w-14 h-14 rounded-2xl object-cover border border-border shadow-xs shrink-0"
+            />
             <div>
-              <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-mono font-medium bg-emerald-500/10 text-emerald-800 dark:text-emerald-400 border border-emerald-500/25">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                <span>Available for work</span>
-              </div>
-              <p className="text-xs text-muted-foreground font-mono mt-1">Dansha, Ethiopia (UTC+3)</p>
+              <h1 className="text-2xl font-bold font-bricolage tracking-tight text-foreground leading-snug">
+                Meareg Teame
+              </h1>
+              <p className="text-xs sm:text-sm font-medium text-foreground/80">
+                Full-Stack Software Developer
+              </p>
+              <p className="text-xs text-muted-foreground font-mono mt-0.5">
+                Dansha, Ethiopia (UTC+3)
+              </p>
             </div>
-          </div>
-
-          <div>
-            <h1 className="text-2xl xl:text-3xl font-bold font-bricolage tracking-tight text-foreground leading-tight">
-              Meareg Teame
-            </h1>
-            <p className="text-xs sm:text-sm font-medium text-foreground/80 mt-1">
-              Full-Stack Software Developer
-            </p>
           </div>
 
           <p className="text-xs xl:text-sm text-muted-foreground leading-relaxed">

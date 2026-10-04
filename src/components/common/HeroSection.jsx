@@ -32,18 +32,7 @@ export const HeroSection = () => {
           </a>
         </div>
 
-        {/* Core Stack */}
-        <div className="pt-4 flex flex-wrap items-center gap-2 text-xs font-mono text-muted-foreground">
-          <span className="text-foreground font-semibold">Technologies:</span>
-          {["React", "Next.js", "TypeScript", "Python", "FastAPI", "Node.js", "PostgreSQL", "Tailwind CSS"].map((tech) => (
-            <span
-              key={tech}
-              className="px-2 py-0.5 rounded-md border border-border bg-card text-[11px]"
-            >
-              {tech}
-            </span>
-          ))}
-        </div>
+
       </div>
     </section>
   );
