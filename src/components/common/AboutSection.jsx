@@ -1,20 +1,17 @@
-import { CheckCircle2, Zap, ShieldCheck, Download, ArrowUpRight } from "lucide-react";
+import { Download, ArrowUpRight } from "lucide-react";
 
 export const AboutSection = () => {
   return (
-    <section id="about" className="scroll-mt-8 space-y-8">
+    <section id="about" className="scroll-mt-8 space-y-6">
       {/* Section Header */}
       <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4">
-        <div className="space-y-1.5">
+        <div className="space-y-1">
           <span className="text-xs font-mono tracking-widest text-muted-foreground uppercase font-semibold">
-            05 // About & Value
+            05 // About
           </span>
           <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground font-bricolage">
-            Engineering with Ownership.
+            A bit about me.
           </h2>
-          <p className="text-sm text-muted-foreground leading-relaxed max-w-xl">
-            Software engineering centered on business impact, direct technical ownership, and production reliability.
-          </p>
         </div>
 
         <a
@@ -28,69 +25,45 @@ export const AboutSection = () => {
         </a>
       </div>
 
-      {/* Sellable Proposition Lead */}
-      <div className="rounded-2xl border border-border bg-card/60 p-6 sm:p-7 space-y-3 shadow-xs">
-        <p className="text-base sm:text-lg text-foreground font-semibold leading-relaxed font-bricolage">
-          “I don’t just write code—I solve business bottlenecks through clean architecture, high-converting interfaces, and resilient backend systems.”
+      {/* Human, authentic narrative */}
+      <div className="space-y-4 text-sm sm:text-base text-foreground/80 leading-relaxed font-normal">
+        <p>
+          I started programming out of curiosity about how software actually works under the hood. That curiosity quickly turned into building real things: from low-level systems in C and Python during my intensive software engineering program at ALX and Holberton School, to shipping full-stack production platforms for clients.
         </p>
-        <p className="text-sm text-muted-foreground leading-relaxed">
-          Over the past three years, I have helped founders, startups, and consulting firms turn ambitious ideas into live revenue-generating platforms. I bridge the gap between pixel-perfect frontend engineering, scalable database modeling, and automated cloud deployments.
+
+        <p>
+          Today, most of my work centers around TypeScript, React, Next.js, and Python (FastAPI). I enjoy working across the whole stack: designing relational database models, writing clean and tested APIs, and building fast, accessible web interfaces that load without lag.
+        </p>
+
+        <p>
+          Over the past few years, I have built and deployed several live products, including a creator marketplace with Telebirr and CBE escrow payments (<span className="text-foreground font-medium">Create4Me</span>), a cryptographic verification wall using PostgreSQL Row-Level Security (<span className="text-foreground font-medium">TrustGrid</span>), and headless platforms for consultancies and real estate firms.
+        </p>
+
+        <p>
+          I am based in Dansha, Ethiopia, working remotely with founders and engineering teams. When I am not coding, I spend time exploring open-source codebases, reading technical books, and experimenting with new web tools.
         </p>
       </div>
 
-      {/* 3 Core Value Pillars (Why Work With Me) */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div className="rounded-2xl border border-border bg-card/40 p-5 space-y-3 shadow-2xs hover:border-foreground/30 transition-colors">
-          <div className="w-9 h-9 rounded-xl bg-background border border-border flex items-center justify-center text-foreground shadow-2xs">
-            <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-          </div>
-          <h3 className="font-bold font-bricolage text-base text-foreground tracking-tight">
-            Full-Cycle Ownership
-          </h3>
-          <p className="text-xs text-muted-foreground leading-relaxed">
-            From schema design and authentication to responsive Next.js UIs and server hosting. You work with one accountable engineer who delivers end-to-end.
-          </p>
+      {/* Clean Quick Facts Bar */}
+      <div className="pt-6 border-t border-border grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs font-mono text-muted-foreground">
+        <div>
+          <span className="block text-foreground font-semibold text-[11px] uppercase tracking-wider">Location</span>
+          <span className="text-muted-foreground mt-0.5 block">Dansha, Ethiopia</span>
         </div>
-
-        <div className="rounded-2xl border border-border bg-card/40 p-5 space-y-3 shadow-2xs hover:border-foreground/30 transition-colors">
-          <div className="w-9 h-9 rounded-xl bg-background border border-border flex items-center justify-center text-foreground shadow-2xs">
-            <Zap className="w-4 h-4 text-amber-600 dark:text-amber-400" />
-          </div>
-          <h3 className="font-bold font-bricolage text-base text-foreground tracking-tight">
-            Performance First
-          </h3>
-          <p className="text-xs text-muted-foreground leading-relaxed">
-            Sub-second API latency with FastAPI, optimized PostgreSQL queries with Row-Level Security, and lightweight bundles that load fast anywhere in the world.
-          </p>
+        <div>
+          <span className="block text-foreground font-semibold text-[11px] uppercase tracking-wider">Timezone</span>
+          <span className="text-muted-foreground mt-0.5 block">UTC+3 (East Africa)</span>
         </div>
-
-        <div className="rounded-2xl border border-border bg-card/40 p-5 space-y-3 shadow-2xs hover:border-foreground/30 transition-colors">
-          <div className="w-9 h-9 rounded-xl bg-background border border-border flex items-center justify-center text-foreground shadow-2xs">
-            <ShieldCheck className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-          </div>
-          <h3 className="font-bold font-bricolage text-base text-foreground tracking-tight">
-            Clear Communication
-          </h3>
-          <p className="text-xs text-muted-foreground leading-relaxed">
-            No jargon, no hand-waving, no ghosting. Transparent technical milestones, clean Git pull requests, and prompt async updates across timezones.
-          </p>
+        <div>
+          <span className="block text-foreground font-semibold text-[11px] uppercase tracking-wider">Education</span>
+          <span className="text-muted-foreground mt-0.5 block">ALX / Holberton &amp; BDU</span>
         </div>
-      </div>
-
-      {/* Snapshot / Quick Facts */}
-      <div className="rounded-xl border border-border/80 bg-background/60 p-4 sm:p-5 flex flex-wrap items-center justify-between gap-4 text-xs font-mono">
-        <div className="flex items-center gap-2 text-muted-foreground">
-          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-          <span className="text-foreground font-semibold">Status:</span>
-          <span>Available for select projects & contracts</span>
-        </div>
-        <div className="flex items-center gap-2 text-muted-foreground">
-          <span className="text-foreground font-semibold">Timezone:</span>
-          <span>Dansha (UTC+3) · Flexible overlap with US & EU</span>
-        </div>
-        <div className="flex items-center gap-2 text-muted-foreground">
-          <span className="text-foreground font-semibold">Focus:</span>
-          <span>SaaS, Client Portals, Fintech Escrows & APIs</span>
+        <div>
+          <span className="block text-foreground font-semibold text-[11px] uppercase tracking-wider">Status</span>
+          <span className="text-emerald-700 dark:text-emerald-400 font-medium mt-0.5 flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+            Open for roles
+          </span>
         </div>
       </div>
     </section>
