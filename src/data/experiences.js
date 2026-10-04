@@ -19,7 +19,7 @@ export const experiences = [
   {
     id: 2,
     company: "Ensight Global Consultancy",
-    website: "https://senior-homecare-consultancy.vercel.app",
+    website: "http://ensightglobalconsultancy.com/",
     logo: ensightLogo,
     role: "Web Application Developer",
     date: "Jun 2025 — Present",
