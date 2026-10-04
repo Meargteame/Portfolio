@@ -5,7 +5,7 @@ import { AppRouter } from './router/AppRouter';
 const PATH_TO_HASH = {
   '/work': '#work',
   '/projects': '#work',
-  '/services': '#services',
+  '/services': '#work',
   '/about': '#about',
   '/contact': '#contact',
 };

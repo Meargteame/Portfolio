@@ -1,36 +1,34 @@
 import { useState, useEffect } from "react";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import { Mail, Github, Linkedin, Send, Download, ArrowUpRight } from "lucide-react";
 import { ModeToggle } from "./mode-toggle";
 import mearegPhoto from "../../assets/meareg-photo.webp";
 
-const navLinks = [
-  { href: "#work",     label: "Work",     id: "work" },
-  { href: "#services", label: "Services", id: "services" },
-  { href: "#about",    label: "About",    id: "about" },
-  { href: "#contact",  label: "Contact",  id: "contact" },
+const navItems = [
+  { id: "work", label: "Work", index: "01" },
+  { id: "about", label: "About", index: "02" },
+  { id: "contact", label: "Contact", index: "03" },
 ];
 
 export const Navbar = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("");
+  const [activeSection, setActiveSection] = useState("work");
 
-  // Track active section as user scrolls
+  // Track active section on scroll
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPos = window.scrollY + 120;
-      for (const link of navLinks) {
-        const el = document.getElementById(link.id);
+      const scrollPos = window.scrollY + 200;
+      for (const item of navItems) {
+        const el = document.getElementById(item.id);
         if (el) {
           const top = el.offsetTop;
           const height = el.offsetHeight;
           if (scrollPos >= top && scrollPos < top + height) {
-            setActiveSection(link.id);
+            setActiveSection(item.id);
             return;
           }
         }
       }
-      if (window.scrollY < 200) {
-        setActiveSection("");
+      if (window.scrollY < 150) {
+        setActiveSection("work");
       }
     };
 
@@ -41,12 +39,6 @@ export const Navbar = () => {
 
   const scrollTo = (e, targetId) => {
     e.preventDefault();
-    setMobileMenuOpen(false);
-    if (!targetId) {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-      history.pushState(null, "", "/");
-      return;
-    }
     const el = document.getElementById(targetId);
     if (el) {
       el.scrollIntoView({ behavior: "smooth" });
@@ -55,106 +47,173 @@ export const Navbar = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur-md transition-colors duration-200">
-      <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-        
-        {/* Brand Name & Avatar (Scrolls to top) */}
-        <a
-          href="#"
-          onClick={(e) => scrollTo(e, "")}
-          className="flex items-center gap-2.5 text-foreground hover:opacity-80 transition-opacity cursor-pointer"
-        >
-          <img
-            src={mearegPhoto}
-            alt="Meareg Teame"
-            className="w-8 h-8 rounded-full object-cover border border-border shrink-0 shadow-xs"
-          />
-          <span className="font-semibold text-sm sm:text-base tracking-tight">
-            Meareg Teame
-          </span>
-          <span className="hidden sm:inline-block text-xs text-muted-foreground font-normal">
-            / Full-Stack Developer
-          </span>
-        </a>
-
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-6">
-          {navLinks.map((link) => {
-            const isActive = activeSection === link.id;
-            return (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={(e) => scrollTo(e, link.id)}
-                className={`text-sm transition-colors cursor-pointer ${
-                  isActive
-                    ? "text-foreground font-semibold"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                {link.label}
-              </a>
-            );
-          })}
-
-          {/* Theme Toggle (White / Dark mode) */}
+    <>
+      {/* Mobile Header (< lg) */}
+      <header className="lg:hidden w-full pb-8 mb-8 border-b border-border">
+        <div className="flex items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <img
+              src={mearegPhoto}
+              alt="Meareg Teame"
+              className="w-10 h-10 rounded-full object-cover border border-border shrink-0 shadow-xs"
+            />
+            <div>
+              <h1 className="font-bold text-base tracking-tight font-bricolage text-foreground">
+                Meareg Teame
+              </h1>
+              <p className="text-xs text-muted-foreground">Full-Stack Developer</p>
+            </div>
+          </div>
           <ModeToggle />
+        </div>
 
-          {/* Direct CTA (Scrolls to contact) */}
+        {/* Mobile Jump Links */}
+        <nav className="mt-4 flex items-center gap-2 overflow-x-auto pb-1">
+          {navItems.map((item) => (
+            <a
+              key={item.id}
+              href={`#${item.id}`}
+              onClick={(e) => scrollTo(e, item.id)}
+              className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-colors ${
+                activeSection === item.id
+                  ? "bg-foreground text-background font-semibold"
+                  : "bg-card border border-border text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              {item.label}
+            </a>
+          ))}
           <a
-            href="#contact"
-            onClick={(e) => scrollTo(e, "contact")}
-            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-foreground text-background text-xs font-semibold hover:opacity-90 transition-opacity shadow-xs cursor-pointer"
+            href="/CV.pdf"
+            download
+            className="ml-auto inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-border bg-card text-xs font-mono text-muted-foreground hover:text-foreground shrink-0"
           >
-            <span>Get in touch</span>
-            <ArrowUpRight className="w-3.5 h-3.5" />
+            <Download className="w-3 h-3" />
+            <span>CV</span>
           </a>
         </nav>
+      </header>
 
-        {/* Mobile Actions: ModeToggle + Hamburger Button */}
-        <div className="md:hidden flex items-center gap-2">
-          <ModeToggle />
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="flex items-center justify-center w-9 h-9 rounded-lg border border-border text-foreground hover:bg-muted transition-colors cursor-pointer"
-            aria-label="Toggle menu"
-          >
-            {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
-          </button>
+      {/* Desktop Left Sidebar (lg+) */}
+      <aside className="hidden lg:flex lg:sticky lg:top-16 lg:h-[calc(100vh-8rem)] lg:w-72 xl:w-80 shrink-0 flex-col justify-between py-2">
+        {/* Top: Photo, Name, Bio */}
+        <div className="space-y-6">
+          <div className="w-20 h-20 rounded-2xl overflow-hidden border border-border bg-card shadow-sm">
+            <img
+              src={mearegPhoto}
+              alt="Meareg Teame"
+              className="w-full h-full object-cover"
+            />
+          </div>
+
+          <div>
+            <h1 className="text-3xl font-bold font-bricolage tracking-tight text-foreground">
+              Meareg Teame
+            </h1>
+            <p className="text-sm font-medium text-foreground/80 mt-1">
+              Full-Stack Developer
+            </p>
+            <p className="text-xs text-muted-foreground mt-0.5 font-mono">
+              Addis Ababa, Ethiopia (UTC+3)
+            </p>
+          </div>
+
+          <p className="text-sm text-muted-foreground leading-relaxed">
+            I build reliable web applications, client portals, and APIs with React, Next.js, TypeScript, and Python.
+          </p>
+
+          {/* Classic Left Navigation Rail */}
+          <nav className="pt-4 space-y-3">
+            {navItems.map((item) => {
+              const isActive = activeSection === item.id;
+              return (
+                <a
+                  key={item.id}
+                  href={`#${item.id}`}
+                  onClick={(e) => scrollTo(e, item.id)}
+                  className={`group flex items-center gap-3 py-1 transition-all ${
+                    isActive ? "text-foreground font-semibold" : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  <span
+                    className={`h-[1px] transition-all duration-300 ${
+                      isActive
+                        ? "w-10 bg-foreground"
+                        : "w-5 bg-border group-hover:w-8 group-hover:bg-foreground/60"
+                    }`}
+                  />
+                  <span className="text-xs font-mono tracking-wider uppercase">
+                    {item.index} // {item.label}
+                  </span>
+                </a>
+              );
+            })}
+          </nav>
         </div>
-      </div>
 
-      {/* Mobile Menu Dropdown */}
-      {mobileMenuOpen && (
-        <div className="md:hidden border-b border-border bg-background px-6 py-4 space-y-3 animate-in slide-in-from-top-2 duration-150">
-          {navLinks.map((link) => {
-            const isActive = activeSection === link.id;
-            return (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={(e) => scrollTo(e, link.id)}
-                className={`block text-sm py-1.5 transition-colors cursor-pointer ${
-                  isActive
-                    ? "text-foreground font-semibold"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                {link.label}
-              </a>
-            );
-          })}
-          <div className="pt-3 border-t border-border flex items-center justify-between">
+        {/* Bottom: Social Links, CV, Mode Toggle */}
+        <div className="space-y-5 pt-8 border-t border-border">
+          {/* Social Icons */}
+          <div className="flex items-center gap-3 text-muted-foreground">
             <a
-              href="#contact"
-              onClick={(e) => scrollTo(e, "contact")}
-              className="inline-flex items-center gap-1.5 text-sm font-semibold text-foreground hover:underline cursor-pointer"
+              href="mailto:hello.meareg@gmail.com"
+              aria-label="Email"
+              title="Email Me"
+              className="p-2 rounded-lg border border-border bg-card hover:text-foreground hover:border-foreground/40 transition-colors shadow-xs"
             >
-              Get in touch <ArrowUpRight className="w-3.5 h-3.5" />
+              <Mail className="w-4 h-4" />
+            </a>
+            <a
+              href="https://github.com/Meargteame"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+              title="GitHub Repositories"
+              className="p-2 rounded-lg border border-border bg-card hover:text-foreground hover:border-foreground/40 transition-colors shadow-xs"
+            >
+              <Github className="w-4 h-4" />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/meareg"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              title="LinkedIn Profile"
+              className="p-2 rounded-lg border border-border bg-card hover:text-foreground hover:border-foreground/40 transition-colors shadow-xs"
+            >
+              <Linkedin className="w-4 h-4" />
+            </a>
+            <a
+              href="https://t.me/meareg_teame"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Telegram"
+              title="Telegram Chat"
+              className="p-2 rounded-lg border border-border bg-card hover:text-foreground hover:border-foreground/40 transition-colors shadow-xs"
+            >
+              <Send className="w-4 h-4" />
             </a>
           </div>
+
+          {/* Download Résumé & Theme Switcher */}
+          <div className="flex items-center justify-between gap-3">
+            <a
+              href="/CV.pdf"
+              download
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border bg-card text-xs font-mono text-muted-foreground hover:text-foreground hover:border-foreground/40 transition-colors shadow-xs"
+            >
+              <Download className="w-3.5 h-3.5" />
+              <span>Résumé (PDF)</span>
+              <ArrowUpRight className="w-3 h-3 text-muted-foreground/60" />
+            </a>
+
+            <div className="flex items-center gap-2">
+              <span className="text-[11px] font-mono text-muted-foreground">Theme</span>
+              <ModeToggle />
+            </div>
+          </div>
         </div>
-      )}
-    </header>
+      </aside>
+    </>
   );
 };
