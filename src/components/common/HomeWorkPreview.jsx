@@ -42,23 +42,23 @@ const caseStudies = [
 
 export const HomeWorkPreview = () => {
   return (
-    <section id="work" className="py-16 sm:py-24 border-t border-neutral-800/80">
+    <section id="work" className="py-16 sm:py-24 border-t border-border">
       <div className="max-w-5xl mx-auto px-6">
         
         {/* Section Header */}
         <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4 mb-12 sm:mb-16">
           <div>
-            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-white">
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground font-bricolage">
               Selected Projects.
             </h2>
-            <p className="mt-2 text-sm sm:text-base text-neutral-400 max-w-xl">
+            <p className="mt-2 text-sm sm:text-base text-muted-foreground max-w-xl">
               Production web applications built 0-to-1 with real business logic, authentication, and live users.
             </p>
           </div>
 
           <Link
             to="/work"
-            className="inline-flex items-center gap-1 text-xs sm:text-sm font-medium text-neutral-300 hover:text-white hover:underline shrink-0"
+            className="inline-flex items-center gap-1 text-xs sm:text-sm font-semibold text-foreground hover:underline shrink-0"
           >
             <span>All 10+ projects</span>
             <ArrowUpRight className="w-3.5 h-3.5" />
@@ -75,7 +75,7 @@ export const HomeWorkPreview = () => {
                 
                 {/* Visual Preview */}
                 <div
-                  className={`lg:col-span-7 rounded-xl border border-neutral-800 bg-neutral-900/60 p-2 sm:p-4 overflow-hidden ${
+                  className={`lg:col-span-7 rounded-xl border border-border bg-card p-2 sm:p-4 overflow-hidden shadow-xs ${
                     isOdd ? "lg:order-2" : "lg:order-1"
                   }`}
                 >
@@ -95,19 +95,19 @@ export const HomeWorkPreview = () => {
                   }`}
                 >
                   <div>
-                    <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+                    <h3 className="text-xl sm:text-2xl font-bold text-foreground font-bricolage tracking-tight">
                       {project.name}
                     </h3>
-                    <p className="text-xs sm:text-sm text-neutral-400 mt-1">
+                    <p className="text-xs sm:text-sm text-muted-foreground mt-1">
                       {project.subtitle}
                     </p>
                   </div>
 
-                  <p className="text-sm leading-relaxed text-neutral-400">
+                  <p className="text-sm leading-relaxed text-muted-foreground">
                     {project.narrative}
                   </p>
 
-                  <div className="pt-1 text-xs font-mono text-neutral-400">
+                  <div className="pt-1 text-xs font-mono text-muted-foreground">
                     {project.stack}
                   </div>
 
@@ -118,7 +118,7 @@ export const HomeWorkPreview = () => {
                         href={project.live}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-white text-neutral-950 text-xs font-medium hover:bg-neutral-200 transition-colors shadow-sm"
+                        className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-foreground text-background text-xs font-semibold hover:opacity-90 transition-opacity shadow-xs"
                       >
                         <span>Live Demo</span>
                         <ExternalLink className="w-3 h-3" />
@@ -129,7 +129,7 @@ export const HomeWorkPreview = () => {
                         href={project.repo}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg border border-neutral-800 bg-neutral-900/60 text-xs font-medium text-neutral-300 hover:text-white hover:border-neutral-700 transition-colors"
+                        className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg border border-border bg-card text-xs font-medium text-foreground hover:bg-muted transition-colors shadow-xs"
                       >
                         <Github className="w-3.5 h-3.5" />
                         <span>Source</span>

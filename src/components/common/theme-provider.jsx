@@ -1,7 +1,7 @@
-import { createContext, useContext, useEffect } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 const initialState = {
-  theme: "dark",
+  theme: "light",
   setTheme: () => null,
 };
 
@@ -9,18 +9,32 @@ const ThemeProviderContext = createContext(initialState);
 
 export function ThemeProvider({
   children,
+  defaultTheme = "light",
+  storageKey = "portfolio-theme",
   ...props
 }) {
+  const [theme, setTheme] = useState(() => {
+    try {
+      return localStorage.getItem(storageKey) || defaultTheme;
+    } catch {
+      return defaultTheme;
+    }
+  });
+
   useEffect(() => {
     const root = window.document.documentElement;
-    root.classList.remove("light");
-    root.classList.add("dark");
-    localStorage.setItem("portfolio-theme", "dark");
-  }, []);
+    root.classList.remove("light", "dark");
+    root.classList.add(theme);
+    try {
+      localStorage.setItem(storageKey, theme);
+    } catch {
+      // ignore
+    }
+  }, [theme, storageKey]);
 
   const value = {
-    theme: "dark",
-    setTheme: () => null,
+    theme,
+    setTheme: (newTheme) => setTheme(newTheme),
   };
 
   return (

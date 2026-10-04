@@ -10,7 +10,7 @@ import { Analytics } from '@vercel/analytics/react';
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
-      <ThemeProvider defaultTheme="dark" storageKey="portfolio-theme">
+      <ThemeProvider defaultTheme="light" storageKey="portfolio-theme">
         <MotionConfig reducedMotion="user">
           <App />
           <Analytics />

@@ -31,32 +31,32 @@ const scenarios = [
 
 export const HomeProblems = () => {
   return (
-    <section className="py-16 sm:py-20 border-t border-neutral-800/80">
+    <section className="py-16 sm:py-20 border-t border-border">
       <div className="max-w-5xl mx-auto px-6">
         
         {/* Section Header */}
         <div className="max-w-xl mb-12">
-          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-white">
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground font-bricolage">
             What I help with.
           </h2>
-          <p className="mt-2 text-sm sm:text-base text-neutral-400">
+          <p className="mt-2 text-sm sm:text-base text-muted-foreground">
             You don't need a detailed engineering spec. Explain the problem you're solving, and I handle the technical implementation from database to live deployment.
           </p>
         </div>
 
         {/* Clean Typographic Rows */}
-        <div className="divide-y divide-neutral-800/70">
+        <div className="divide-y divide-border">
           {scenarios.map((item) => (
             <div key={item.title} className="py-6 first:pt-0 last:pb-0">
               <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-2">
-                <h3 className="text-lg font-semibold text-neutral-100">
+                <h3 className="text-lg font-semibold text-foreground font-bricolage">
                   {item.title}
                 </h3>
-                <span className="text-xs text-neutral-400">
+                <span className="text-xs text-muted-foreground font-mono">
                   {item.problem}
                 </span>
               </div>
-              <p className="text-sm text-neutral-400 leading-relaxed max-w-2xl">
+              <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl">
                 {item.detail}
               </p>
             </div>
@@ -64,13 +64,13 @@ export const HomeProblems = () => {
         </div>
 
         {/* Link to Contact */}
-        <div className="mt-10 pt-6 border-t border-neutral-800/60 flex items-center justify-between text-sm">
-          <span className="text-neutral-400">
+        <div className="mt-10 pt-6 border-t border-border flex items-center justify-between text-sm">
+          <span className="text-muted-foreground">
             Have a project in mind?
           </span>
           <Link
             to="/contact"
-            className="inline-flex items-center gap-1 font-medium text-white hover:underline"
+            className="inline-flex items-center gap-1 font-semibold text-foreground hover:underline"
           >
             <span>Let's talk about your build</span>
             <ArrowUpRight className="w-4 h-4" />

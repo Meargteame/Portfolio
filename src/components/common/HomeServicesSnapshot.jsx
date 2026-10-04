@@ -34,23 +34,23 @@ const services = [
 
 export const HomeServicesSnapshot = () => {
   return (
-    <section className="py-16 sm:py-20 border-t border-neutral-800/80">
+    <section className="py-16 sm:py-20 border-t border-border">
       <div className="max-w-5xl mx-auto px-6">
         
         {/* Section Header */}
         <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4 mb-10">
           <div>
-            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-white">
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground font-bricolage">
               Services &amp; Scope.
             </h2>
-            <p className="mt-2 text-sm sm:text-base text-neutral-400">
+            <p className="mt-2 text-sm sm:text-base text-muted-foreground">
               Clear deliverables, fixed estimates, and direct communication with zero agency overhead.
             </p>
           </div>
 
           <Link
             to="/services"
-            className="inline-flex items-center gap-1 text-xs sm:text-sm font-medium text-neutral-300 hover:text-white hover:underline shrink-0"
+            className="inline-flex items-center gap-1 text-xs sm:text-sm font-semibold text-foreground hover:underline shrink-0"
           >
             <span>Full scope &amp; pricing</span>
             <ArrowUpRight className="w-3.5 h-3.5" />
@@ -62,23 +62,23 @@ export const HomeServicesSnapshot = () => {
           {services.map((item) => (
             <div
               key={item.num}
-              className="p-6 rounded-xl border border-neutral-800/80 bg-neutral-900/40 space-y-3"
+              className="p-6 rounded-xl border border-border bg-card shadow-xs space-y-3"
             >
               <div className="flex items-center justify-between">
-                <span className="text-xs font-mono text-neutral-400">
+                <span className="text-xs font-mono text-muted-foreground">
                   {item.num}
                 </span>
-                <span className="text-xs text-neutral-400 font-mono">
+                <span className="text-xs text-muted-foreground font-mono">
                   {item.timeline}
                 </span>
               </div>
-              <h3 className="text-lg font-semibold text-white">
+              <h3 className="text-lg font-semibold text-foreground font-bricolage">
                 {item.title}
               </h3>
-              <p className="text-sm text-neutral-400 leading-relaxed">
+              <p className="text-sm text-muted-foreground leading-relaxed">
                 {item.description}
               </p>
-              <div className="pt-2 text-xs font-mono text-neutral-400">
+              <div className="pt-2 text-xs font-mono text-muted-foreground">
                 {item.stack}
               </div>
             </div>

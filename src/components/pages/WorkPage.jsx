@@ -24,7 +24,7 @@ export const WorkPage = () => {
         <Projects />
 
         {/* Bottom CTA on Work Page */}
-        <section className="py-20 max-w-5xl mx-auto px-6 text-center border-t border-neutral-800">
+        <section className="py-20 max-w-5xl mx-auto px-6 text-center border-t border-border">
           <h2 className="text-2xl sm:text-3xl font-bold font-bricolage text-foreground mb-3">
             Have a project similar to these?
           </h2>

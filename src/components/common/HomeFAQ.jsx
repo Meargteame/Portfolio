@@ -32,21 +32,21 @@ export const HomeFAQ = () => {
   };
 
   return (
-    <section className="py-16 sm:py-20 border-t border-neutral-800/80">
+    <section className="py-16 sm:py-20 border-t border-border">
       <div className="max-w-3xl mx-auto px-6">
         
         {/* Section Header */}
         <div className="mb-10 text-center sm:text-left">
-          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-white">
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground font-bricolage">
             Frequently Asked Questions.
           </h2>
-          <p className="mt-2 text-sm text-neutral-400">
+          <p className="mt-2 text-sm text-muted-foreground">
             Clear, straightforward answers about how we work together.
           </p>
         </div>
 
         {/* Clean Hairline Accordion */}
-        <div className="border-t border-neutral-800/80 divide-y divide-neutral-800/70">
+        <div className="border-t border-border divide-y divide-border">
           {faqs.map((faq, i) => {
             const isOpen = openIndex === i;
             return (
@@ -55,16 +55,16 @@ export const HomeFAQ = () => {
                   onClick={() => toggle(i)}
                   className="w-full flex items-center justify-between text-left gap-4 cursor-pointer"
                 >
-                  <span className="text-base font-semibold text-neutral-100 hover:text-white transition-colors">
+                  <span className="text-base font-semibold text-foreground font-bricolage hover:opacity-80 transition-opacity">
                     {faq.q}
                   </span>
-                  <span className="text-neutral-400 shrink-0">
+                  <span className="text-muted-foreground shrink-0">
                     {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
                   </span>
                 </button>
 
                 {isOpen && (
-                  <p className="mt-3 text-sm text-neutral-400 leading-relaxed pr-6">
+                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed pr-6">
                     {faq.a}
                   </p>
                 )}

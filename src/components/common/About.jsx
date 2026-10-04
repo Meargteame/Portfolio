@@ -141,7 +141,7 @@ export const About = () => {
         </div>
 
         {/* 4 Working Principles */}
-        <div className="mt-16 sm:mt-24 pt-16 border-t border-neutral-800">
+        <div className="mt-16 sm:mt-24 pt-16 border-t border-border">
           <div className="max-w-2xl mb-12">
             <span className="text-xs font-mono font-medium tracking-[0.2em] text-muted-foreground uppercase">
               Approach

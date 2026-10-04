@@ -19,8 +19,8 @@ const IconLink = ({ href, label, children }) => (
 
 const SystemSnippetVisual = ({ project }) => {
   return (
-    <div className="w-full h-full bg-[#0d0e12] p-6 font-mono text-xs text-muted-foreground flex flex-col justify-center border-l border-border/40">
-      <div className="flex items-center gap-2 mb-4 pb-2 border-b border-border/40 text-[11px] text-foreground/70">
+    <div className="w-full h-full bg-muted/40 p-6 font-mono text-xs text-muted-foreground flex flex-col justify-center border-l border-border">
+      <div className="flex items-center gap-2 mb-4 pb-2 border-b border-border text-[11px] text-foreground/70">
         <Layers className="w-3.5 h-3.5 text-amber-400" />
         <span>pipeline/engine.py</span>
         <span className="ml-auto text-[10px] text-amber-400 font-mono">JSON Schema</span>

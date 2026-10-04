@@ -62,7 +62,7 @@ export const AboutPage = () => {
         <About />
 
         {/* Global Remote Availability & Timezone Overlap */}
-        <section className="py-20 sm:py-24 border-t border-neutral-800">
+        <section className="py-20 sm:py-24 border-t border-border">
           <div className="max-w-5xl mx-auto px-6">
             <div className="flex items-center gap-2 text-xs font-mono text-muted-foreground uppercase tracking-wider mb-2">
               <Globe className="w-4 h-4 text-emerald-500" />
@@ -98,7 +98,7 @@ export const AboutPage = () => {
         <TechStack />
 
         {/* Bottom CTA */}
-        <section className="py-20 max-w-5xl mx-auto px-6 text-center border-t border-neutral-800">
+        <section className="py-20 max-w-5xl mx-auto px-6 text-center border-t border-border">
           <h2 className="text-2xl sm:text-3xl font-bold font-bricolage text-foreground mb-3">
             Interested in working together?
           </h2>
