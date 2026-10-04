@@ -29,7 +29,7 @@ export const ContactSection = () => {
       {/* Section Header */}
       <div className="space-y-1.5">
         <span className="text-xs font-mono tracking-widest text-muted-foreground uppercase font-semibold">
-          03 // Get In Touch
+          06 // Get In Touch
         </span>
         <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground font-bricolage">
           Let's Connect.

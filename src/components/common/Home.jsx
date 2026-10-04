@@ -1,6 +1,9 @@
 import { Navbar }         from "./Navbar";
 import { HeroSection }    from "./HeroSection";
 import { Projects }       from "./Project";
+import { Experience }     from "./Experience";
+import { Education }      from "./Education";
+import { TechStack }      from "./TechStack";
 import { AboutSection }   from "./AboutSection";
 import { ContactSection } from "./ContactSection";
 import { Footer }         from "./Footer";
@@ -18,6 +21,9 @@ export const Home = () => {
           <main className="lg:flex-1 min-w-0 space-y-20 sm:space-y-28">
             <HeroSection />
             <Projects />
+            <Experience />
+            <Education />
+            <TechStack />
             <AboutSection />
             <ContactSection />
             <Footer />

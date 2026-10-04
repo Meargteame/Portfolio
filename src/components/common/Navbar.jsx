@@ -4,9 +4,12 @@ import { ModeToggle } from "./mode-toggle";
 import mearegPhoto from "../../assets/meareg-photo.webp";
 
 const navItems = [
-  { id: "work", label: "Work", index: "01" },
-  { id: "about", label: "About", index: "02" },
-  { id: "contact", label: "Contact", index: "03" },
+  { id: "work",       label: "Work",       index: "01" },
+  { id: "experience", label: "Experience", index: "02" },
+  { id: "education",  label: "Education",  index: "03" },
+  { id: "stack",      label: "Tech Stack", index: "04" },
+  { id: "about",      label: "About",      index: "05" },
+  { id: "contact",    label: "Contact",    index: "06" },
 ];
 
 export const Navbar = () => {
