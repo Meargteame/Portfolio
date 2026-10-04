@@ -226,7 +226,7 @@ export const Navbar = () => {
               <Linkedin className="w-4 h-4" />
             </a>
             <a
-              href="https://t.me/meareg_teame"
+              href="https://t.me/meareg_official"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Telegram"

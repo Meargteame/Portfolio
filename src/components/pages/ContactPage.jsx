@@ -25,8 +25,8 @@ const directLinks = [
     desc: "Direct email — replies within 24h",
   },
   {
-    label: "t.me/meareg_teame",
-    href: "https://t.me/meareg_teame",
+    label: "t.me/meareg_official",
+    href: "https://t.me/meareg_official",
     icon: Send,
     desc: "Telegram for fast async chat",
   },

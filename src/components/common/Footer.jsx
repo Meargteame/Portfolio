@@ -2,7 +2,7 @@ import { Github, Linkedin, Twitter, Mail, Send } from "lucide-react";
 
 const socialLinks = [
   { href: "mailto:hello.meareg@gmail.com",       label: "Email",    icon: Mail },
-  { href: "https://t.me/meareg_teame",          label: "Telegram", icon: Send },
+  { href: "https://t.me/meareg_official",       label: "Telegram", icon: Send },
   { href: "https://www.linkedin.com/in/meareg", label: "LinkedIn", icon: Linkedin },
   { href: "https://github.com/Meargteame",      label: "GitHub",   icon: Github },
 ];

@@ -84,14 +84,14 @@ export const ContactSection = () => {
 
               {/* Telegram */}
               <a
-                href="https://t.me/meareg_teame"
+                href="https://t.me/meareg_official"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-between p-2.5 rounded-lg border border-border bg-card text-foreground hover:border-foreground/40 transition-colors"
               >
                 <div className="flex items-center gap-2">
                   <Send className="w-3.5 h-3.5 text-muted-foreground" />
-                  <span>@meareg_teame</span>
+                  <span>@meareg_official</span>
                 </div>
                 <ArrowUpRight className="w-3 h-3 text-muted-foreground" />
               </a>
