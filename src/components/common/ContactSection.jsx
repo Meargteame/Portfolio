@@ -115,7 +115,7 @@ export const ContactSection = () => {
             </div>
 
             <p className="text-xs text-muted-foreground pt-1 leading-relaxed">
-              Based in Addis Ababa, Ethiopia (UTC+3). I reply to all inquiries within 24 hours.
+              Based in Dansha, Ethiopia (UTC+3). I reply to all inquiries within 24 hours.
             </p>
           </div>
         </div>

@@ -30,7 +30,7 @@ export const AboutSection = () => {
       {/* Human Bio Paragraphs */}
       <div className="space-y-4 text-sm sm:text-base text-muted-foreground leading-relaxed">
         <p>
-          I am a full-stack developer based in Addis Ababa, Ethiopia, with a deep focus on building scalable web applications and clean user experiences. Over the past three years, I've developed and shipped production systems for international clients, startups, and local enterprises.
+          I am a full-stack developer based in Dansha, Ethiopia, with a deep focus on building scalable web applications and clean user experiences. Over the past three years, I've developed and shipped production systems for international clients, startups, and local enterprises.
         </p>
         <p>
           My technical journey combines a formal degree in Information Technology with intensive competitive programming. Through the <strong className="text-foreground font-semibold">A2SV (Africa to Silicon Valley)</strong> fellowship, I trained rigorously in data structures, algorithms, and systems optimization, solving over 300 algorithmic problems under strict space/time complexity constraints.

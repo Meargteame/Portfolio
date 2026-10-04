@@ -9,7 +9,7 @@ export const HeroSection = () => {
         </h2>
 
         <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
-          I am a software developer based in Addis Ababa, Ethiopia. I build end-to-end web applications, client portals, and APIs—taking projects from initial concept through architecture, database modeling, and live production deployment.
+          I am a software developer based in Dansha, Ethiopia. I build end-to-end web applications, client portals, and APIs—taking projects from initial concept through architecture, database modeling, and live production deployment.
         </p>
 
         {/* Quick Action Links */}

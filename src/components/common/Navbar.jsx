@@ -114,7 +114,7 @@ export const Navbar = () => {
               Full-Stack Developer
             </p>
             <p className="text-xs text-muted-foreground mt-0.5 font-mono">
-              Addis Ababa, Ethiopia (UTC+3)
+              Dansha, Ethiopia (UTC+3)
             </p>
           </div>
 
