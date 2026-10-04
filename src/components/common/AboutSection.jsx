@@ -74,27 +74,36 @@ export const AboutSection = () => {
                 {edu.summary}
               </p>
 
-              {edu.certificateUrl && (
-                <div className="pt-2 flex flex-wrap items-center gap-3">
+              {edu.certificateImg && (
+                <div className="pt-3 space-y-2">
                   <a
-                    href={edu.certificateUrl}
+                    href={edu.certificateUrl || edu.certificateImg}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border bg-card text-foreground text-xs font-mono hover:bg-muted hover:border-foreground/40 transition-colors shadow-xs"
+                    className="block group/cert overflow-hidden rounded-xl border border-border bg-background p-2 transition-all hover:border-foreground/50 shadow-xs"
+                    title="Click to verify official certificate"
                   >
-                    <span>Verify Certificate</span>
-                    <ArrowUpRight className="w-3.5 h-3.5 text-muted-foreground" />
+                    <img
+                      src={edu.certificateImg}
+                      alt={`${edu.institution} Certificate`}
+                      loading="lazy"
+                      className="w-full h-auto object-contain block rounded-lg transition-transform duration-300 group-hover/cert:scale-[1.005]"
+                    />
                   </a>
-                  {edu.certificateImg && (
-                    <a
-                      href={edu.certificateImg}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-xs font-mono text-muted-foreground hover:text-foreground underline underline-offset-4 transition-colors"
-                    >
-                      View Certificate Image ↗
-                    </a>
-                  )}
+                  <div className="flex items-center justify-between text-xs font-mono text-muted-foreground pt-0.5">
+                    <span>Issued Feb 2025 · ALX &amp; Holberton</span>
+                    {edu.certificateUrl && (
+                      <a
+                        href={edu.certificateUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-foreground hover:underline font-medium"
+                      >
+                        <span>Verify Credential</span>
+                        <ArrowUpRight className="w-3 h-3" />
+                      </a>
+                    )}
+                  </div>
                 </div>
               )}
             </div>
