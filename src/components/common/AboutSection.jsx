@@ -73,6 +73,30 @@ export const AboutSection = () => {
               <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed pt-1">
                 {edu.summary}
               </p>
+
+              {edu.certificateUrl && (
+                <div className="pt-2 flex flex-wrap items-center gap-3">
+                  <a
+                    href={edu.certificateUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border bg-card text-foreground text-xs font-mono hover:bg-muted hover:border-foreground/40 transition-colors shadow-xs"
+                  >
+                    <span>Verify Certificate</span>
+                    <ArrowUpRight className="w-3.5 h-3.5 text-muted-foreground" />
+                  </a>
+                  {edu.certificateImg && (
+                    <a
+                      href={edu.certificateImg}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs font-mono text-muted-foreground hover:text-foreground underline underline-offset-4 transition-colors"
+                    >
+                      View Certificate Image ↗
+                    </a>
+                  )}
+                </div>
+              )}
             </div>
           ))}
         </div>

@@ -35,17 +35,20 @@ export const educations = [
   },
   {
     id: 3,
-    institution: "Holberton School (ALX)",
+    institution: "ALX / Holberton School",
     logo: holbertonLogo,
-    degree: "Software Engineering Program",
-    date: "Graduation: Jan 2026",
+    degree: "Software Engineering Programme (Back-end Specialization)",
+    date: "Completed: Feb 2025",
     location: "Remote / International",
-    tag: "INTENSIVE PROGRAM",
+    tag: "CERTIFIED",
+    certificateUrl: "https://intranet.alxswe.com/certificates/BHMz2Y9C38",
+    certificateImg: "/alx-certificate.png",
     summary:
-      "Comprehensive systems engineering curriculum with an emphasis on low-level programming, memory safety, and infrastructure.",
+      "Rigorous 12-month software engineering programme with a specialization in back-end engineering, systems architecture, databases, and low-level programming.",
     highlights: [
-      "Low-Level Systems & Ops: Deep dive into C programming, memory management (valgrind, pointers), Unix/Linux kernel concepts, POSIX syscalls, and custom shell implementation.",
-      "Infrastructure & DevOps: Web servers (NGINX), automated testing, CI/CD pipelines, SSL/TLS, and load balancing.",
+      "Back-End Specialization: Advanced Python, Node.js, REST APIs, database modeling, and server architecture.",
+      "Systems Engineering: Deep dive into C, memory management, POSIX syscalls, and custom Unix shell.",
+      "DevOps: NGINX configuration, CI/CD, SSL/TLS, and web infrastructure.",
     ],
   },
 ];
