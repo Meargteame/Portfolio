@@ -3,7 +3,6 @@ import yarichoHomeCareImg from "../assets/yaricho-senior-home-care.webp";
 import ensightImg from "../assets/egc.webp";
 import create4meImg from "../assets/create4me.png";
 import trustgridImg from "../assets/trustgrid.png";
-import meridianImg from "../assets/meridian.jpg";
 import leonsLabLogo from "../assets/leons_lab_logo.jpg";
 import ensightLogo from "../assets/ensight_global_consultancy.jpg";
 
@@ -36,18 +35,6 @@ export const projects = [
   },
   {
     id: 3,
-    name: "Meridian AI",
-    tagline: "Career Architect & Real-Time Evaluation Assistant",
-    description:
-      "An interactive assessment platform streaming personalized career evaluations token-by-token using Gemini 2.5 Flash, generating dynamic skill scorecards and learning roadmaps.",
-    repo: "https://github.com/Meargteame/careerguide-ai",
-    live: "https://meridian-beta-coral.vercel.app",
-    tag: "AI · STREAMING UI",
-    image: meridianImg,
-    tech: ["Next.js", "FastAPI", "Gemini 2.5 Flash", "Supabase", "Tailwind CSS"],
-  },
-  {
-    id: 4,
     name: "Torra Realestate",
     tagline: "Property Management & Real Estate Platform",
     description:
@@ -59,20 +46,20 @@ export const projects = [
     tech: ["Next.js", "TypeScript", "Tailwind CSS", "SEO"],
   },
   {
-    id: 5,
+    id: 4,
     name: "Ensight Global Consultancy",
     logo: ensightLogo,
     tagline: "Consultancy Website Rebuilt on Headless CMS",
     description:
       "A high-performance corporate platform with server-side rendering (SSR), optimized SEO architecture, and dynamic content management powered by Headless WordPress.",
     repo: "https://github.com/Meargteame/senior-homecare-consultancy",
-    live: "https://senior-homecare-consultancy.vercel.app",
+    live: "http://ensightglobalconsultancy.com/",
     tag: "HEADLESS CMS · SSR",
     image: ensightImg,
     tech: ["Next.js", "Headless WordPress", "Tailwind CSS", "SEO"],
   },
   {
-    id: 6,
+    id: 5,
     name: "Yaricho Senior Home Care",
     tagline: "Healthcare Services & Patient Inquiry Portal",
     description:

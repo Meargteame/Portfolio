@@ -2,7 +2,7 @@ import { Link } from "react-router";
 import { ExternalLink, Github, ArrowUpRight } from "lucide-react";
 import create4meImg from "../../assets/create4me.png";
 import trustgridImg from "../../assets/trustgrid.png";
-import meridianImg from "../../assets/meridian.jpg";
+import torraRealestateImg from "../../assets/torra-realstate.webp";
 
 const caseStudies = [
   {
@@ -29,14 +29,14 @@ const caseStudies = [
   },
   {
     id: 3,
-    name: "Meridian AI",
-    subtitle: "Real-time AI career evaluation & personalized roadmap assistant",
+    name: "Torra Realestate",
+    subtitle: "Modern property management & real estate listing platform",
     narrative:
-      "An interactive assessment platform streaming personalized career evaluations token-by-token using Gemini 2.5 Flash, generating dynamic skill scorecards and structured learning roadmaps with strict JSON validation.",
-    stack: "FastAPI · Gemini 2.5 Flash · Next.js · Tailwind CSS",
-    image: meridianImg,
-    live: "https://meridian-beta-coral.vercel.app",
-    repo: "https://github.com/Meargteame/careerguide-ai",
+      "A full-featured real estate platform with advanced search filters, property listings, and client inquiry management. Built using Next.js for server-side rendering (SSR) and optimized SEO.",
+    stack: "Next.js · TypeScript · Tailwind CSS · SEO",
+    image: torraRealestateImg,
+    live: "https://torrarealestate.cloud/",
+    repo: "https://github.com/Meargteame/torra-realestate",
   },
 ];
 
