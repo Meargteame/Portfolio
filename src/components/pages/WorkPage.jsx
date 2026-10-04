@@ -1,4 +1,3 @@
-import { Navbar }   from "../common/Navbar";
 import { Footer }   from "../common/Footer";
 import { Projects } from "../common/Project";
 import { Link }     from "react-router";
@@ -6,11 +5,10 @@ import { ArrowUpRight } from "lucide-react";
 
 export const WorkPage = () => {
   return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
+    <div>
       <main>
         {/* Work Page Header */}
-        <section className="pt-32 sm:pt-40 pb-6 max-w-[1200px] mx-auto px-6 sm:px-8">
+        <section className="pt-12 sm:pt-16 pb-6 max-w-5xl mx-auto px-6">
           <span className="text-xs font-mono font-medium tracking-[0.2em] text-muted-foreground uppercase">
             Proof of Execution
           </span>
@@ -26,7 +24,7 @@ export const WorkPage = () => {
         <Projects />
 
         {/* Bottom CTA on Work Page */}
-        <section className="py-20 max-w-[1200px] mx-auto px-6 sm:px-8 text-center border-t border-border/60">
+        <section className="py-20 max-w-5xl mx-auto px-6 text-center border-t border-neutral-800">
           <h2 className="text-2xl sm:text-3xl font-bold font-bricolage text-foreground mb-3">
             Have a project similar to these?
           </h2>

@@ -1,4 +1,3 @@
-import { Navbar }               from "./Navbar";
 import { Footer }               from "./Footer";
 import { HeroSection }          from "./HeroSection";
 import { HomeProblems }         from "./HomeProblems";
@@ -12,10 +11,7 @@ import { HomeContactCallout }   from "./HomeContactCallout";
 
 export const Home = () => {
   return (
-    <div className="min-h-screen bg-background relative selection:bg-foreground/15 overflow-x-hidden">
-      
-
-      <Navbar />
+    <div className="relative selection:bg-foreground/15 overflow-x-hidden">
       <main className="relative z-10">
         <HeroSection />
         <HomeProblems />

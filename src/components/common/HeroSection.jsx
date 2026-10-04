@@ -1,77 +1,81 @@
-import { motion } from "motion/react";
-import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router";
-import { useMagnet } from "../../hooks/useMagnet";
-import { SilkWaveBackground } from "../effects/SilkWaveBackground";
+import { ArrowUpRight, Mail } from "lucide-react";
+import mearegPhoto from "../../assets/meareg-photo.webp";
 
 export const HeroSection = () => {
-  const magnet = useMagnet({ radius: 80, strength: 8 });
-
   return (
-    <section className="relative pt-36 sm:pt-44 md:pt-48 pb-20 sm:pb-28 overflow-hidden">
-      
-      {/* Ambient Fluid Silk Wave Background (inspired by bilt.nogs.dev) */}
-      <div className="absolute inset-0 -top-16 sm:-top-24 pointer-events-none overflow-hidden select-none -z-10">
-        <div className="absolute inset-0 w-full h-full opacity-90">
-          <SilkWaveBackground
-            speed={0.4}
-            className="w-full h-full"
-          />
-        </div>
-        {/* Subtle fade to page background at the bottom edge */}
-        <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-b from-transparent via-background/60 to-background pointer-events-none" />
-      </div>
-
-      <div className="max-w-5xl mx-auto px-6 sm:px-8 text-center relative z-10">
+    <section className="pt-12 sm:pt-16 pb-14 sm:pb-18">
+      <div className="max-w-5xl mx-auto px-6">
         
-        {/* Main Headline */}
-        <h1 className="text-4xl sm:text-6xl md:text-7xl font-bricolage font-bold tracking-tight text-foreground leading-[1.08] max-w-4xl mx-auto">
-          Websites, web apps &amp; systems that{" "}
-          <span className="inline-block px-2.5 sm:px-3.5 py-0.5 rounded-sm bg-white/[0.06] border border-white/[0.14] text-foreground shadow-sm align-baseline">
-            actually get used.
-          </span>
-        </h1>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
+          
+          {/* Left Column: Introduction & CTAs */}
+          <div className="lg:col-span-7 space-y-6">
+            
+            {/* Status indicator */}
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-900 border border-neutral-800 text-xs text-neutral-300">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 shrink-0" />
+              <span>Available for freelance projects &amp; remote roles</span>
+            </div>
 
-        {/* Subheadline */}
-        <p className="mt-6 sm:mt-7 text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto font-normal">
-          I help businesses and startups turn ideas, manual processes, and existing designs into reliable web applications — from first build to live production.
-        </p>
+            {/* Main Headline */}
+            <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-white leading-[1.15]">
+              Full-stack developer building reliable web applications &amp; systems.
+            </h1>
 
-        {/* Dual CTAs */}
-        <div
-          className="mt-9 sm:mt-11 flex flex-wrap items-center justify-center gap-4"
-          onMouseMove={magnet.handlers.onMouseMove}
-          onMouseLeave={magnet.handlers.onMouseLeave}
-        >
-          <Link to="/contact">
-            <motion.span
-              ref={magnet.ref}
-              style={{ x: magnet.x, y: magnet.y }}
-              whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-foreground text-background text-sm sm:text-base font-semibold tracking-tight hover:opacity-90 transition-opacity cursor-pointer shadow-md"
-            >
-              Start a Project
-              <ArrowUpRight className="w-4 h-4 stroke-[2.5]" />
-            </motion.span>
-          </Link>
+            {/* Subheadline */}
+            <p className="text-base sm:text-lg text-neutral-400 leading-relaxed max-w-xl">
+              Hi, I'm <strong className="text-neutral-200 font-medium">Meareg Teame</strong>. I'm a full-stack engineer based in Addis Ababa, Ethiopia. I help startups and businesses turn product ideas, designs, and manual operations into fast, production-ready software.
+            </p>
 
-          <Link
-            to="/work"
-            className="inline-flex items-center gap-1.5 px-6 py-3.5 rounded-full border border-border/80 text-foreground text-sm sm:text-base font-medium hover:border-foreground/40 transition-colors"
-          >
-            See My Work
-          </Link>
-        </div>
+            {/* Actions */}
+            <div className="pt-2 flex flex-wrap items-center gap-4">
+              <Link
+                to="/work"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-white text-neutral-950 text-sm font-medium hover:bg-neutral-200 transition-colors shadow-sm"
+              >
+                <span>View Projects</span>
+                <ArrowUpRight className="w-4 h-4" />
+              </Link>
 
-        {/* Proof line */}
-        <div className="mt-14 pt-8 border-t border-border/50 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs sm:text-sm text-muted-foreground">
-          <span className="text-foreground font-medium">10+ Shipped Applications</span>
-          <span className="text-border">•</span>
-          <span>2–4 Week MVP Turnaround</span>
-          <span className="text-border">•</span>
-          <span>Full-Stack Implementation</span>
-          <span className="text-border">•</span>
-          <span>Direct Communication</span>
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-neutral-800 bg-neutral-900/60 text-neutral-300 text-sm font-medium hover:text-white hover:border-neutral-700 hover:bg-neutral-900 transition-colors"
+              >
+                <span>Get in Touch</span>
+              </Link>
+
+              <a
+                href="mailto:hello.meareg@gmail.com"
+                className="inline-flex items-center gap-1.5 text-xs text-neutral-400 hover:text-neutral-200 transition-colors"
+              >
+                <Mail className="w-3.5 h-3.5" />
+                <span>hello.meareg@gmail.com</span>
+              </a>
+            </div>
+
+            {/* Quick Proof Strip */}
+            <div className="pt-6 border-t border-neutral-800/80 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-neutral-400">
+              <span className="text-neutral-300 font-medium">10+ Shipped Applications</span>
+              <span className="text-neutral-700">•</span>
+              <span>2–4 Week MVP Turnaround</span>
+              <span className="text-neutral-700">•</span>
+              <span>React, Next.js, Node &amp; Python</span>
+            </div>
+
+          </div>
+
+          {/* Right Column: Meareg's Photo (Classic, crisp, honest portrait) */}
+          <div className="lg:col-span-5 flex justify-center lg:justify-end">
+            <div className="relative w-full max-w-[280px] sm:max-w-[320px] aspect-[4/5] rounded-2xl overflow-hidden border border-neutral-800 bg-neutral-900 shadow-xl">
+              <img
+                src={mearegPhoto}
+                alt="Meareg Teame — Full-Stack Developer"
+                className="w-full h-full object-cover object-center"
+              />
+            </div>
+          </div>
+
         </div>
 
       </div>

@@ -1,7 +1,7 @@
 const groups = [
   {
     category: "Frontend",
-    items: "React · Next.js · TypeScript · Tailwind CSS · Motion",
+    items: "React · Next.js · TypeScript · Tailwind CSS · HTML5 / CSS3",
   },
   {
     category: "Backend & APIs",
@@ -9,41 +9,41 @@ const groups = [
   },
   {
     category: "Databases & Storage",
-    items: "PostgreSQL · Supabase · Redis · Row-Level Security",
+    items: "PostgreSQL · Supabase · Redis · Row-Level Security (RLS)",
   },
   {
     category: "DevOps & Cloud",
-    items: "Docker · Git · CI/CD Pipelines · Vercel · AWS",
+    items: "Docker · Git · GitHub Actions · CI/CD · Vercel · Render · AWS",
   },
   {
-    category: "AI & Automation",
-    items: "Gemini API · OpenAI API · Structured JSON Outputs · LLM Prompt Pipelines",
+    category: "AI & Integrations",
+    items: "Gemini API · OpenAI API · Prompt Engineering · Telebirr & Stripe APIs",
   },
 ];
 
 export const TechStack = () => {
   return (
-    <section className="py-20 sm:py-24 border-t border-border/60">
-      <div className="max-w-[1100px] mx-auto px-6 sm:px-8">
+    <section className="py-16 sm:py-20 border-t border-neutral-800/80">
+      <div className="max-w-5xl mx-auto px-6">
         
         {/* Section Header */}
-        <div className="max-w-2xl mb-12 sm:mb-16">
-          <h2 className="text-2xl sm:text-3xl font-bold font-bricolage text-foreground tracking-tight">
-            Tools &amp; technologies.
+        <div className="max-w-xl mb-10">
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-white">
+            Core Technologies.
           </h2>
-          <p className="mt-2 text-sm text-muted-foreground">
-            The technology is the mechanism; the business outcome is what you buy. Here are the core tools I build and deploy with every day.
+          <p className="mt-2 text-sm sm:text-base text-neutral-400">
+            The tools and frameworks I use to build reliable, maintainable software.
           </p>
         </div>
 
-        {/* Quiet, Clean Typographic Rows with Hairline Dividers (Zero Card Boxes) */}
-        <div className="border-t border-border/60 divide-y divide-border/60">
+        {/* Typographic List */}
+        <div className="border-t border-neutral-800/80 divide-y divide-neutral-800/70">
           {groups.map((g) => (
-            <div key={g.category} className="py-5 grid grid-cols-1 sm:grid-cols-12 gap-2 sm:gap-6 items-baseline">
-              <span className="sm:col-span-4 text-xs sm:text-sm font-semibold text-foreground">
+            <div key={g.category} className="py-4 sm:py-5 grid grid-cols-1 sm:grid-cols-12 gap-2 sm:gap-6 items-baseline">
+              <span className="sm:col-span-4 text-sm font-semibold text-white">
                 {g.category}
               </span>
-              <span className="sm:col-span-8 text-xs sm:text-sm text-muted-foreground leading-relaxed">
+              <span className="sm:col-span-8 text-sm text-neutral-400 font-mono text-xs sm:text-sm">
                 {g.items}
               </span>
             </div>

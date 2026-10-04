@@ -33,7 +33,7 @@ const principles = [
 export const About = () => {
   return (
     <section className="relative py-12 sm:py-20 overflow-hidden">
-      <div className="max-w-[1200px] mx-auto px-6 sm:px-8 relative z-10">
+      <div className="max-w-5xl mx-auto px-6 relative z-10">
         
         {/* Main Bio Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
@@ -141,7 +141,7 @@ export const About = () => {
         </div>
 
         {/* 4 Working Principles */}
-        <div className="mt-16 sm:mt-24 pt-16 border-t border-border/60">
+        <div className="mt-16 sm:mt-24 pt-16 border-t border-neutral-800">
           <div className="max-w-2xl mb-12">
             <span className="text-xs font-mono font-medium tracking-[0.2em] text-muted-foreground uppercase">
               Approach

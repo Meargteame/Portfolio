@@ -1,88 +1,88 @@
 export const HomeAudienceAndWhy = () => {
   return (
-    <section className="py-20 sm:py-28 border-t border-border/60">
-      <div className="max-w-[1100px] mx-auto px-6 sm:px-8">
+    <section className="py-16 sm:py-20 border-t border-neutral-800/80">
+      <div className="max-w-5xl mx-auto px-6">
 
-        {/* 2-Column Editorial Spread */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        {/* 2-Column Clean Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
           
-          {/* Column 1: Who should get in touch */}
-          <div className="lg:col-span-6 space-y-8">
+          {/* Column 1: Who I work with */}
+          <div className="lg:col-span-6 space-y-6">
             <div>
-              <h2 className="text-2xl sm:text-3xl font-bold font-bricolage text-foreground tracking-tight">
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-white">
                 Who I work with.
               </h2>
-              <p className="mt-2 text-sm text-muted-foreground">
+              <p className="mt-2 text-sm text-neutral-400">
                 I partner with founders, businesses, and designers who value speed and direct communication.
               </p>
             </div>
 
-            <div className="space-y-6 divide-y divide-border/60">
-              <div className="pt-6 first:pt-0 space-y-1.5">
-                <h3 className="text-base font-bold font-bricolage text-foreground">
+            <div className="space-y-5 divide-y divide-neutral-800/70">
+              <div className="pt-5 first:pt-0 space-y-1">
+                <h3 className="text-base font-semibold text-white">
                   Startup Founders
                 </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  You have an idea and need an MVP built quickly (2–4 weeks) so you can test market demand with real users instead of spending months in theoretical planning.
+                <p className="text-sm text-neutral-400 leading-relaxed">
+                  You have an idea and need an MVP built in 2–4 weeks so you can test market demand with real users instead of spending months in theoretical planning.
                 </p>
               </div>
 
-              <div className="pt-6 space-y-1.5">
-                <h3 className="text-base font-bold font-bricolage text-foreground">
+              <div className="pt-5 space-y-1">
+                <h3 className="text-base font-semibold text-white">
                   Growing Businesses
                 </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
+                <p className="text-sm text-neutral-400 leading-relaxed">
                   You need a website, customer portal, internal dashboard, booking system, or automation to replace messy spreadsheets and manual follow-ups.
                 </p>
               </div>
 
-              <div className="pt-6 space-y-1.5">
-                <h3 className="text-base font-bold font-bricolage text-foreground">
-                  Agencies &amp; UI/UX Designers
+              <div className="pt-5 space-y-1">
+                <h3 className="text-base font-semibold text-white">
+                  Agencies &amp; Designers
                 </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  You have client designs in Figma and need a dependable developer who implements them faithfully into responsive, performant React and Next.js code.
+                <p className="text-sm text-neutral-400 leading-relaxed">
+                  You have designs in Figma and need a dependable developer who implements them faithfully into responsive, performant React and Next.js code.
                 </p>
               </div>
             </div>
           </div>
 
           {/* Column 2: Why work with an independent developer */}
-          <div className="lg:col-span-6 space-y-8 lg:border-l lg:border-border/60 lg:pl-12">
+          <div className="lg:col-span-6 space-y-6 lg:border-l lg:border-neutral-800/80 lg:pl-10">
             <div>
-              <h2 className="text-2xl sm:text-3xl font-bold font-bricolage text-foreground tracking-tight">
-                Why work with an independent developer?
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-white">
+                Why work with an independent engineer?
               </h2>
-              <p className="mt-2 text-sm text-muted-foreground">
-                Working directly with the builder eliminates agency bloat, misaligned incentives, and long communication loops.
+              <p className="mt-2 text-sm text-neutral-400">
+                Working directly with the developer eliminates agency bloat, sales handoffs, and long communication delays.
               </p>
             </div>
 
-            <div className="space-y-6 divide-y divide-border/60">
-              <div className="pt-6 first:pt-0 space-y-1.5">
-                <h3 className="text-base font-bold font-bricolage text-foreground">
-                  Full-Stack Execution
+            <div className="space-y-5 divide-y divide-neutral-800/70">
+              <div className="pt-5 first:pt-0 space-y-1">
+                <h3 className="text-base font-semibold text-white">
+                  Direct Communication
                 </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  Frontend, backend, databases, payment gateways, and cloud deployment. One accountable engineer handles the entire build without coordinating multiple freelancers.
+                <p className="text-sm text-neutral-400 leading-relaxed">
+                  You talk directly with the engineer writing your code via Slack, Telegram, or Google Meet. No project managers translating your requirements.
                 </p>
               </div>
 
-              <div className="pt-6 space-y-1.5">
-                <h3 className="text-base font-bold font-bricolage text-foreground">
-                  Direct, Transparent Communication
+              <div className="pt-5 space-y-1">
+                <h3 className="text-base font-semibold text-white">
+                  Fast Turnaround
                 </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  No project managers or account executives. You speak directly with the developer writing your code, with regular progress demos and fast turnaround on feedback.
+                <p className="text-sm text-neutral-400 leading-relaxed">
+                  Without corporate meetings or layered approval chains, MVPs and core web applications ship in 2 to 4 weeks.
                 </p>
               </div>
 
-              <div className="pt-6 space-y-1.5">
-                <h3 className="text-base font-bold font-bricolage text-foreground">
-                  Product-First Thinking
+              <div className="pt-5 space-y-1">
+                <h3 className="text-base font-semibold text-white">
+                  Full Ownership &amp; Clean Code
                 </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  I care about whether your software actually solves the business problem and provides a smooth experience for your users, not just whether the code runs.
+                <p className="text-sm text-neutral-400 leading-relaxed">
+                  You receive 100% intellectual property, full GitHub repository ownership, clear documentation, and standard tech stacks (Next.js, Python, PostgreSQL).
                 </p>
               </div>
             </div>

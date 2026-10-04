@@ -1,4 +1,3 @@
-import { Navbar } from "../common/Navbar";
 import { Footer } from "../common/Footer";
 import { GlassCard } from "../effects/GlassCard";
 import { Globe, AppWindow, Cpu, Sparkles, CheckCircle2, Clock, ArrowUpRight, HelpCircle } from "lucide-react";
@@ -95,11 +94,10 @@ const servicesList = [
 
 export const ServicesPage = () => {
   return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
+    <div>
       <main>
         {/* Header */}
-        <section className="pt-32 sm:pt-40 pb-12 max-w-[1200px] mx-auto px-6 sm:px-8">
+        <section className="pt-12 sm:pt-16 pb-12 max-w-5xl mx-auto px-6">
           <span className="text-xs font-mono font-medium tracking-[0.2em] text-muted-foreground uppercase">
             Services &amp; Scope
           </span>
@@ -112,7 +110,7 @@ export const ServicesPage = () => {
         </section>
 
         {/* Services List */}
-        <section className="pb-24 max-w-[1200px] mx-auto px-6 sm:px-8 space-y-8">
+        <section className="pb-24 max-w-5xl mx-auto px-6 space-y-8">
           {servicesList.map((svc) => (
             <GlassCard key={svc.id} className="p-6 sm:p-9 lg:p-10" intensity={5}>
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
@@ -207,7 +205,7 @@ export const ServicesPage = () => {
         </section>
 
         {/* Bottom Callout */}
-        <section className="pb-24 max-w-[1200px] mx-auto px-6 sm:px-8 text-center">
+        <section className="pb-24 max-w-5xl mx-auto px-6 text-center">
           <div className="p-8 sm:p-12 rounded-3xl border border-border/70 bg-card/40 max-w-3xl mx-auto space-y-4">
             <h3 className="text-2xl sm:text-3xl font-bold font-bricolage text-foreground">
               Not sure which service your project fits into?

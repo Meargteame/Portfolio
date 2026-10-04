@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Navbar } from "../common/Navbar";
 import { Footer } from "../common/Footer";
 import { Mail, Send, Linkedin, Github, CheckCircle2, ArrowUpRight, CalendarDays } from "lucide-react";
 
@@ -69,11 +68,10 @@ export const ContactPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
+    <div>
       <main>
         {/* Page Header */}
-        <section className="pt-36 sm:pt-44 pb-12 max-w-[1100px] mx-auto px-6 sm:px-8">
+        <section className="pt-12 sm:pt-16 pb-12 max-w-5xl mx-auto px-6">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-foreground font-bricolage leading-tight">
             Tell me what you're building.
           </h1>
@@ -83,7 +81,7 @@ export const ContactPage = () => {
         </section>
 
         {/* Form & Direct Channels Grid (Clean Studio Layout, No Nested Glass Cards) */}
-        <section className="pb-28 max-w-[1100px] mx-auto px-6 sm:px-8">
+        <section className="pb-28 max-w-5xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             
             {/* Left: Project Inquiry Form */}

@@ -2,6 +2,7 @@ import { Route, Routes, useLocation } from "react-router";
 import { lazy, Suspense } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { Home } from "../components/common/Home";
+import { Navbar } from "../components/common/Navbar";
 
 // Lazy-load sub-pages for smaller initial bundle
 const AboutPage    = lazy(() => import("../components/pages/AboutPage").then(m => ({ default: m.AboutPage })));
@@ -32,17 +33,22 @@ export const AppRouter = () => {
 
   return (
     <Suspense fallback={<PageLoader />}>
-      <AnimatePresence mode="wait" initial={false}>
-        <Routes location={location} key={location.pathname}>
-          <Route path="/"         element={<PageTransition><Home /></PageTransition>} />
-          <Route path="/about"    element={<PageTransition><AboutPage /></PageTransition>} />
-          <Route path="/work"     element={<PageTransition><WorkPage /></PageTransition>} />
-          <Route path="/services" element={<PageTransition><ServicesPage /></PageTransition>} />
-          <Route path="/contact"  element={<PageTransition><ContactPage /></PageTransition>} />
-          {/* Legacy redirects */}
-          <Route path="/projects" element={<PageTransition><WorkPage /></PageTransition>} />
-        </Routes>
-      </AnimatePresence>
+      <div className="min-h-screen bg-neutral-950 text-neutral-100 flex flex-col">
+        <Navbar />
+        <div className="flex-1 min-w-0 lg:pl-64">
+          <AnimatePresence mode="wait" initial={false}>
+            <Routes location={location} key={location.pathname}>
+              <Route path="/"         element={<PageTransition><Home /></PageTransition>} />
+              <Route path="/about"    element={<PageTransition><AboutPage /></PageTransition>} />
+              <Route path="/work"     element={<PageTransition><WorkPage /></PageTransition>} />
+              <Route path="/services" element={<PageTransition><ServicesPage /></PageTransition>} />
+              <Route path="/contact"  element={<PageTransition><ContactPage /></PageTransition>} />
+              {/* Legacy redirects */}
+              <Route path="/projects" element={<PageTransition><WorkPage /></PageTransition>} />
+            </Routes>
+          </AnimatePresence>
+        </div>
+      </div>
     </Suspense>
   );
 };

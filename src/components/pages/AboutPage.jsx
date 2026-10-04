@@ -1,4 +1,3 @@
-import { Navbar } from "../common/Navbar";
 import { Footer } from "../common/Footer";
 import { About }  from "../common/About";
 import { TechStack } from "../common/TechStack";
@@ -36,11 +35,10 @@ const timezones = [
 
 export const AboutPage = () => {
   return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
+    <div>
       <main>
         {/* Page header */}
-        <section className="pt-32 sm:pt-40 pb-4 max-w-[1200px] mx-auto px-6 sm:px-8">
+        <section className="pt-12 sm:pt-16 pb-4 max-w-5xl mx-auto px-6">
           <span className="text-xs font-mono font-medium tracking-[0.2em] text-muted-foreground uppercase">
             About Meareg Teame
           </span>
@@ -64,8 +62,8 @@ export const AboutPage = () => {
         <About />
 
         {/* Global Remote Availability & Timezone Overlap */}
-        <section className="py-20 sm:py-24 border-t border-border/60">
-          <div className="max-w-[1200px] mx-auto px-6 sm:px-8">
+        <section className="py-20 sm:py-24 border-t border-neutral-800">
+          <div className="max-w-5xl mx-auto px-6">
             <div className="flex items-center gap-2 text-xs font-mono text-muted-foreground uppercase tracking-wider mb-2">
               <Globe className="w-4 h-4 text-emerald-500" />
               <span>Worldwide Collaboration</span>
@@ -100,7 +98,7 @@ export const AboutPage = () => {
         <TechStack />
 
         {/* Bottom CTA */}
-        <section className="py-20 max-w-[1200px] mx-auto px-6 sm:px-8 text-center border-t border-border/60">
+        <section className="py-20 max-w-5xl mx-auto px-6 text-center border-t border-neutral-800">
           <h2 className="text-2xl sm:text-3xl font-bold font-bricolage text-foreground mb-3">
             Interested in working together?
           </h2>

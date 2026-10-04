@@ -289,7 +289,7 @@ const MoreProjectCard = ({ project, index }) => (
 export const Projects = () => {
   return (
     <section id="projects" className="relative py-12 sm:py-16 overflow-hidden">
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-5xl mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

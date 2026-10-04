@@ -1,102 +1,80 @@
 import { Link } from "react-router";
-import { ArrowRight } from "lucide-react";
-import mearegPhoto from "../../assets/meareg-photo.webp";
-import { ContourWavesBackground } from "../effects/ContourWavesBackground";
+import { ArrowUpRight } from "lucide-react";
 
 const scenarios = [
   {
-    title: "Have an idea, but no working product yet",
-    solution: "0-to-1 MVP Development",
-    detail: "I scope and build a complete working MVP in 2 to 4 weeks so you can test market demand with real users and begin customer validation with real software.",
+    title: "0-to-1 MVP Development",
+    problem: "Have an idea, but need a working product to show users or investors.",
+    detail: "I scope, design, and build a complete functional MVP in 2 to 4 weeks so you can test real demand with real users and start generating traction.",
   },
   {
-    title: "Have Figma designs, but no developer to implement them",
-    solution: "Figma to React / Next.js",
-    detail: "I turn your designs into clean, responsive, fast-loading code. No cutting corners on mobile layouts, interactions, or typography.",
+    title: "Figma to Production Code",
+    problem: "Have designs, but need an engineer who implements them accurately.",
+    detail: "I convert your Figma designs into clean, responsive, fast-loading React or Next.js code — without cutting corners on mobile layouts or performance.",
   },
   {
-    title: "Still managing business processes on spreadsheets and chat",
-    solution: "Custom Business Portals & Dashboards",
-    detail: "I build dedicated internal tools, customer portals, and booking systems that automate repetitive tracking and save your team hours every week.",
+    title: "Custom Dashboards & Internal Systems",
+    problem: "Managing business operations on spreadsheets, chats, and manual steps.",
+    detail: "I build dedicated internal portals, booking tools, and customer dashboards that automate repetitive tracking and save hours each week.",
   },
   {
-    title: "Need an API, database system, or payment integration",
-    solution: "APIs, Backends & Integrations",
-    detail: "I build REST APIs in Python or Node.js, design PostgreSQL database schemas, and connect local and international payment gateways (Telebirr, CBE, Stripe).",
+    title: "APIs, Databases & Payments",
+    problem: "Need reliable backend services, database design, or payment integration.",
+    detail: "I build secure REST APIs in Python or Node.js, design scalable PostgreSQL schemas, and integrate local and international payment gateways (Telebirr, CBE, Stripe).",
   },
   {
-    title: "Want to add AI or smart automation to an existing product",
-    solution: "LLM Integrations & AI Workflows",
-    detail: "I integrate practical LLM capabilities — streaming UI assistants, automated data extraction, and document search — into your application without research overhead.",
+    title: "Practical AI & LLM Features",
+    problem: "Want to add intelligent automation or assistant features to an app.",
+    detail: "I integrate practical LLM capabilities — real-time streaming assistants, automated extraction, and document search — without research bloat.",
   },
 ];
 
 export const HomeProblems = () => {
   return (
-    <section className="relative py-20 sm:py-28 border-t border-border/60 overflow-hidden">
-      
-      {/* Ambient Topographic Contour Wave Animation */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden select-none -z-10">
-        <div className="absolute inset-0 w-full h-full opacity-60">
-          <ContourWavesBackground speed={0.45} className="w-full h-full" />
-        </div>
-        <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-b from-transparent via-background/60 to-background pointer-events-none" />
-      </div>
-
-      <div className="max-w-[1200px] mx-auto px-6 sm:px-8 relative z-10">
+    <section className="py-16 sm:py-20 border-t border-neutral-800/80">
+      <div className="max-w-5xl mx-auto px-6">
         
-        {/* Editorial Split: Left Title, Promise & Meareg's Photo, Right Typographic List */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
-          
-          {/* Left Column: Context, Promise & Portrait Photo */}
-          <div className="lg:col-span-5 lg:sticky lg:top-24">
-            <h2 className="text-3xl sm:text-4xl font-bold font-bricolage text-foreground tracking-tight leading-tight">
-              Where I step in.
-            </h2>
-            <p className="mt-4 text-sm sm:text-base text-muted-foreground leading-relaxed">
-              You don't need a technical spec or database diagram. You just need to explain what you're trying to solve — I handle the technical architecture, development, and live deployment.
-            </p>
-            <div className="mt-5">
-              <Link
-                to="/contact"
-                className="inline-flex items-center gap-1.5 text-xs font-semibold text-foreground hover:underline"
-              >
-                Tell me what you're building
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-            </div>
+        {/* Section Header */}
+        <div className="max-w-xl mb-12">
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-white">
+            What I help with.
+          </h2>
+          <p className="mt-2 text-sm sm:text-base text-neutral-400">
+            You don't need a detailed engineering spec. Explain the problem you're solving, and I handle the technical implementation from database to live deployment.
+          </p>
+        </div>
 
-            {/* Meareg's Photo in the Rectangle */}
-            <div className="mt-8 relative w-full max-w-[320px] sm:max-w-[360px] aspect-[4/5] rounded-3xl overflow-hidden border border-white/[0.12] bg-muted/20 shadow-2xl group">
-              <img
-                src={mearegPhoto}
-                alt="Meareg Teame — Full-Stack Developer"
-                loading="lazy"
-                decoding="async"
-                className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.02]"
-              />
-            </div>
-          </div>
-
-          {/* Right Column: Clean Typographic Rows with Hairline Dividers */}
-          <div className="lg:col-span-7 divide-y divide-border/60 pt-2 lg:pt-0">
-            {scenarios.map((item) => (
-              <div key={item.title} className="py-6 first:pt-0 last:pb-0 group">
-                <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-2">
-                  <h3 className="text-lg sm:text-xl font-bold font-bricolage text-foreground tracking-tight">
-                    {item.title}
-                  </h3>
-                  <span className="text-xs text-muted-foreground/80 sm:text-right shrink-0">
-                    {item.solution}
-                  </span>
-                </div>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  {item.detail}
-                </p>
+        {/* Clean Typographic Rows */}
+        <div className="divide-y divide-neutral-800/70">
+          {scenarios.map((item) => (
+            <div key={item.title} className="py-6 first:pt-0 last:pb-0">
+              <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-2">
+                <h3 className="text-lg font-semibold text-neutral-100">
+                  {item.title}
+                </h3>
+                <span className="text-xs text-neutral-400">
+                  {item.problem}
+                </span>
               </div>
-            ))}
-          </div>
+              <p className="text-sm text-neutral-400 leading-relaxed max-w-2xl">
+                {item.detail}
+              </p>
+            </div>
+          ))}
+        </div>
 
+        {/* Link to Contact */}
+        <div className="mt-10 pt-6 border-t border-neutral-800/60 flex items-center justify-between text-sm">
+          <span className="text-neutral-400">
+            Have a project in mind?
+          </span>
+          <Link
+            to="/contact"
+            className="inline-flex items-center gap-1 font-medium text-white hover:underline"
+          >
+            <span>Let's talk about your build</span>
+            <ArrowUpRight className="w-4 h-4" />
+          </Link>
         </div>
 
       </div>
