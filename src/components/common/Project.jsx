@@ -1,334 +1,98 @@
-import { motion, AnimatePresence } from "motion/react";
-import { useState } from "react";
-import { Github, ExternalLink, ChevronDown, Layers, ArrowUpRight } from "lucide-react";
-import { projects, moreProjects } from "../../data/projects";
-import { GlassCard } from "../effects/GlassCard";
+import { ExternalLink, Github } from "lucide-react";
+import { projects } from "../../data/projects";
 
-const IconLink = ({ href, label, children }) => (
-  <motion.a
-    href={href}
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label={label}
-    whileHover={{ scale: 1.08 }}
-    className="flex items-center justify-center w-8 h-8 rounded-full border border-border text-muted-foreground hover:text-foreground hover:border-foreground/40 transition-colors"
-  >
-    {children}
-  </motion.a>
-);
-
-const SystemSnippetVisual = ({ project }) => {
+export const Projects = () => {
   return (
-    <div className="w-full h-full bg-muted/40 p-6 font-mono text-xs text-muted-foreground flex flex-col justify-center border-l border-border">
-      <div className="flex items-center gap-2 mb-4 pb-2 border-b border-border text-[11px] text-foreground/70">
-        <Layers className="w-3.5 h-3.5 text-amber-400" />
-        <span>pipeline/engine.py</span>
-        <span className="ml-auto text-[10px] text-amber-400 font-mono">JSON Schema</span>
-      </div>
-      <pre className="text-[11px] leading-relaxed text-zinc-300 overflow-x-auto">
-        <code>{`async def decompose_topic(prompt: str) -> TopicTree:
-    schema = TopicDecompositionSchema.model_json_schema()
-    response = await gemini.generate_content(
-        contents=prompt,
-        generation_config={"response_mime_type": "application/json"}
-    )
-    return TopicTree.model_validate_json(response.text)`}</code>
-      </pre>
-    </div>
-  );
-};
-
-const ProjectCard = ({ project, index }) => {
-  const [open, setOpen] = useState(false);
-  const [hovered, setHovered] = useState(false);
-  const techList = (project.tech || "").split("·").map((t) => t.trim()).filter(Boolean);
-  const isOdd = index % 2 === 1;
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.1 }}
-      transition={{ duration: 0.5, delay: index * 0.08, ease: [0.25, 0, 0, 1] }}
-      onHoverStart={() => setHovered(true)}
-      onHoverEnd={() => setHovered(false)}
-      data-cursor="VIEW"
-      className="project-card"
-    >
-      <GlassCard className="overflow-hidden group" intensity={5}>
-        <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch min-h-[340px]">
-
-          {/* Visual side */}
-          <div
-            className={`lg:col-span-6 relative overflow-hidden min-h-[240px] sm:min-h-[300px] lg:min-h-[340px] ${
-              isOdd ? "lg:order-2 border-b lg:border-b-0 lg:border-l" : "border-b lg:border-b-0 lg:border-r"
-            } border-border`}
-          >
-            {project.image ? (
-              <>
+    <section id="projects" className="py-8 sm:py-12">
+      <div className="max-w-5xl mx-auto px-6">
+        
+        {/* Uniform 2-Column Grid (Same Sized Cards) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+          {projects.map((project) => (
+            <article
+              key={project.id}
+              className="flex flex-col h-full rounded-2xl border border-border bg-card overflow-hidden shadow-xs hover:border-foreground/30 transition-all duration-200 group"
+            >
+              {/* Image Preview with uniform aspect ratio */}
+              <div className="relative aspect-[16/10] overflow-hidden bg-muted/40 border-b border-border">
                 <img
                   src={project.image}
                   alt={`${project.name} preview`}
                   loading="lazy"
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                  className="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.03]"
                 />
-                {/* Hover overlay strip */}
-                <motion.div
-                  initial={{ y: "100%" }}
-                  animate={{ y: hovered ? "0%" : "100%" }}
-                  transition={{ duration: 0.3, ease: [0.25, 0, 0, 1] }}
-                  className="absolute bottom-0 left-0 right-0 h-14 bg-background/90 backdrop-blur-md border-t border-border/60 flex items-center justify-between px-5"
-                >
-                  <span className="text-xs font-mono tracking-widest text-muted-foreground">
-                    {project.tag}
-                  </span>
-                  {project.live && project.live !== "#" && (
+              </div>
+
+              {/* Card Body */}
+              <div className="p-6 flex flex-col flex-1 justify-between gap-6">
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="text-[11px] font-mono uppercase tracking-wider text-muted-foreground font-semibold">
+                      {project.tag}
+                    </span>
+                    {project.logo && (
+                      <div className="w-5 h-5 rounded border border-border bg-white p-0.5 overflow-hidden flex items-center justify-center shrink-0">
+                        <img src={project.logo} alt="" className="w-full h-full object-contain" />
+                      </div>
+                    )}
+                  </div>
+
+                  <div>
+                    <h3 className="text-xl font-bold font-bricolage text-foreground tracking-tight">
+                      {project.name}
+                    </h3>
+                    <p className="text-xs text-muted-foreground font-medium mt-0.5">
+                      {project.tagline}
+                    </p>
+                  </div>
+
+                  <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">
+                    {project.description}
+                  </p>
+
+                  {/* Tech Stack Badges */}
+                  <div className="flex flex-wrap gap-1.5 pt-1">
+                    {project.tech.map((t) => (
+                      <span
+                        key={t}
+                        className="px-2.5 py-0.5 rounded-md border border-border text-[11px] font-mono text-muted-foreground bg-muted/30"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Bottom Actions */}
+                <div className="pt-4 border-t border-border flex items-center gap-3">
+                  {project.live && (
                     <a
                       href={project.live}
                       target="_blank"
                       rel="noopener noreferrer"
-                      onClick={(e) => e.stopPropagation()}
-                      className="flex items-center gap-1.5 text-xs font-semibold text-foreground hover:text-foreground/70 transition-colors"
+                      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-foreground text-background text-xs font-semibold hover:opacity-90 transition-opacity shadow-xs"
                     >
-                      Visit live
-                      <ArrowUpRight className="w-3.5 h-3.5" />
+                      <span>Live Demo</span>
+                      <ExternalLink className="w-3.5 h-3.5" />
                     </a>
                   )}
-                </motion.div>
-              </>
-            ) : (
-              <SystemSnippetVisual project={project} />
-            )}
-          </div>
-
-          {/* Details side */}
-          <div
-            className={`p-6 sm:p-8 lg:p-10 flex flex-col justify-center lg:col-span-6 relative ${
-              isOdd ? "lg:order-1" : "lg:order-2"
-            }`}
-          >
-            {/* Animated left border accent */}
-            <motion.div
-              className="absolute left-0 top-8 bottom-8 w-[2px] bg-foreground/30 rounded-full origin-top"
-              initial={{ scaleY: 0 }}
-              animate={{ scaleY: hovered ? 1 : 0 }}
-              transition={{ duration: 0.35, ease: [0.25, 0, 0, 1] }}
-            />
-
-            <div className="flex items-start justify-between gap-4">
-              <div className="min-w-0 flex-1">
-                <div className="flex items-center gap-2.5 flex-wrap">
-                  {project.logo && (
-                    <div className="w-7 h-7 rounded-lg border border-border/80 bg-white p-0.5 overflow-hidden flex items-center justify-center flex-shrink-0 shadow-sm">
-                      <img src={project.logo} alt="" className="w-full h-full object-contain" />
-                    </div>
-                  )}
-                  <h3 className="text-xl md:text-2xl font-bold tracking-tight text-foreground font-bricolage">
-                    {project.name}
-                  </h3>
-                  {project.wip && (
-                    <span className="relative flex h-1.5 w-1.5">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-foreground opacity-40" />
-                      <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-foreground opacity-70" />
-                    </span>
-                  )}
-                </div>
-                <div className="mt-1 text-xs tracking-wider text-muted-foreground font-mono">
-                  {project.tag}
-                </div>
-              </div>
-              <div className="flex items-center gap-2 flex-shrink-0">
-                {project.live && project.live !== "#" && (
-                  <IconLink href={project.live} label={`${project.name} live site`}>
-                    <ExternalLink className="w-3.5 h-3.5" />
-                  </IconLink>
-                )}
-                {project.repo && project.repo !== "#" && (
-                  <IconLink href={project.repo} label={`${project.name} repository`}>
-                    <Github className="w-3.5 h-3.5" />
-                  </IconLink>
-                )}
-              </div>
-            </div>
-
-            <p className="mt-3.5 text-sm leading-relaxed text-muted-foreground">
-              {project.description}
-            </p>
-
-            {techList.length > 0 && (
-              <div className="mt-4 flex flex-wrap gap-1.5">
-                {techList.map((tech) => (
-                  <span
-                    key={tech}
-                    className="px-2.5 py-0.5 rounded-full border border-border text-[11px] text-muted-foreground font-mono tracking-wide bg-white/[0.02]"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            )}
-
-            {project.details && (
-              <>
-                <motion.button
-                  onClick={() => setOpen((v) => !v)}
-                  whileHover={{ x: 3 }}
-                  className="mt-5 inline-flex items-center gap-1.5 text-xs font-mono tracking-wide text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
-                >
-                  {open ? "HIDE ARCHITECTURE" : "ARCHITECTURE & DEEP DIVE"}
-                  <motion.span animate={{ rotate: open ? 180 : 0 }} transition={{ duration: 0.2 }}>
-                    <ChevronDown className="w-3 h-3" />
-                  </motion.span>
-                </motion.button>
-
-                <AnimatePresence initial={false}>
-                  {open && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.25, ease: [0.25, 0, 0, 1] }}
-                      className="overflow-hidden"
+                  {project.repo && (
+                    <a
+                      href={project.repo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg border border-border bg-card text-foreground text-xs font-medium hover:bg-muted transition-colors shadow-xs"
                     >
-                      <p className="mt-3 pl-3.5 border-l border-border text-xs leading-relaxed text-muted-foreground/90">
-                        {project.details}
-                      </p>
-                    </motion.div>
+                      <Github className="w-3.5 h-3.5" />
+                      <span>Source Code</span>
+                    </a>
                   )}
-                </AnimatePresence>
-              </>
-            )}
-          </div>
-        </div>
-      </GlassCard>
-    </motion.div>
-  );
-};
-
-const MoreProjectCard = ({ project, index }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, amount: 0.2 }}
-    transition={{ duration: 0.4, delay: index * 0.05, ease: [0.25, 0, 0, 1] }}
-    whileHover={{ y: -4 }}
-    data-cursor="VIEW"
-    className="project-card"
-  >
-    <GlassCard className={`overflow-hidden h-full flex flex-col ${project.image ? "" : "p-5"}`} intensity={4}>
-      {project.image && (
-        <div className="relative overflow-hidden h-36 border-b border-border/50 group">
-          <img
-            src={project.image}
-            alt={`${project.name} preview`}
-            loading="lazy"
-            className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.05]"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-        </div>
-      )}
-      <div className={`flex flex-col flex-1 ${project.image ? "p-4" : ""}`}>
-        <div className="flex items-start justify-between gap-3">
-          <div className="min-w-0">
-            <div className="text-sm font-semibold tracking-tight text-foreground truncate flex items-center gap-2">
-              {project.logo && (
-                <div className="w-5 h-5 rounded border border-border/80 bg-white p-0.5 overflow-hidden flex items-center justify-center flex-shrink-0">
-                  <img src={project.logo} alt="" className="w-full h-full object-contain" />
                 </div>
-              )}
-              <span className="truncate">{project.name}</span>
-            </div>
-            {project.tag && (
-              <div className="mt-0.5 text-[10px] font-mono text-muted-foreground tracking-wider">
-                {project.tag}
               </div>
-            )}
-          </div>
-          <div className="flex items-center gap-1.5 flex-shrink-0">
-            {project.live && project.live !== "#" && (
-              <IconLink href={project.live} label={`${project.name} live site`}>
-                <ExternalLink className="w-3 h-3" />
-              </IconLink>
-            )}
-            {project.repo && project.repo !== "#" && (
-              <IconLink href={project.repo} label={`${project.name} repository`}>
-                <Github className="w-3 h-3" />
-              </IconLink>
-            )}
-          </div>
-        </div>
-
-        {project.description && (
-          <p className="mt-2 text-xs leading-relaxed text-muted-foreground line-clamp-2">
-            {project.description}
-          </p>
-        )}
-
-        {project.tech && (
-          <div className="mt-auto pt-3 flex flex-wrap gap-1">
-            {project.tech
-              .split("·")
-              .map((t) => t.trim())
-              .filter(Boolean)
-              .slice(0, 3)
-              .map((tech) => (
-                <span
-                  key={tech}
-                  className="px-2 py-0.5 rounded-full border border-border text-[10px] text-muted-foreground font-mono"
-                >
-                  {tech}
-                </span>
-              ))}
-          </div>
-        )}
-      </div>
-    </GlassCard>
-  </motion.div>
-);
-
-export const Projects = () => {
-  return (
-    <section id="projects" className="relative py-12 sm:py-16 overflow-hidden">
-      <div className="max-w-5xl mx-auto px-6 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.5 }}
-          className="text-center flex flex-col items-center"
-        >
-          <span className="text-xs tracking-[0.2em] text-muted-foreground font-mono font-medium">
-            FEATURED ENGINEERING
-          </span>
-          <h2 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground font-bricolage leading-[1.1]">
-            Featured Applications.
-          </h2>
-          <p className="mt-3 text-sm text-muted-foreground max-w-xl">
-            Selected full-stack platforms, SaaS applications, and custom business systems built and deployed for real users.
-          </p>
-          <div className="mt-4 w-12 h-px bg-foreground/20" />
-        </motion.div>
-
-        {/* Alternating single column list */}
-        <div className="grid grid-cols-1 gap-6 lg:gap-8 mt-14">
-          {projects.map((project, index) => (
-            <ProjectCard key={project.id} project={project} index={index} />
+            </article>
           ))}
         </div>
 
-        <div className="mt-20">
-          <div className="flex items-center gap-4 mb-8">
-            <span className="text-xs tracking-[0.2em] text-muted-foreground font-mono font-medium">
-              ADDITIONAL PRODUCTION WORK &amp; CLIENT SYSTEMS
-            </span>
-            <div className="flex-1 h-px bg-border" />
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {moreProjects.map((project, index) => (
-              <MoreProjectCard key={project.id} project={project} index={index} />
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   );
