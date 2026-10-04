@@ -20,7 +20,7 @@ export const Navbar = () => {
   }, [location.pathname]);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur-md transition-colors duration-200">
+    <header className="fixed top-0 left-0 right-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur-md transition-colors duration-200">
       <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
         
         {/* Brand Name & Avatar */}

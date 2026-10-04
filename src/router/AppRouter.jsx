@@ -35,7 +35,7 @@ export const AppRouter = () => {
     <Suspense fallback={<PageLoader />}>
       <div className="min-h-screen bg-background text-foreground flex flex-col">
         <Navbar />
-        <div className="flex-1 min-w-0">
+        <div className="flex-1 min-w-0 pt-16">
           <AnimatePresence mode="wait" initial={false}>
             <Routes location={location} key={location.pathname}>
               <Route path="/"         element={<PageTransition><Home /></PageTransition>} />
