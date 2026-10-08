@@ -202,10 +202,11 @@ export const ContactSection = () => {
               </h4>
 
               <div>
-                <label className="block text-xs font-medium text-foreground mb-1.5">
+                <label htmlFor="contact-name" className="block text-xs font-medium text-foreground mb-1.5">
                   Your Name
                 </label>
                 <input
+                  id="contact-name"
                   type="text"
                   required
                   placeholder="Alex Smith"
@@ -216,10 +217,11 @@ export const ContactSection = () => {
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-foreground mb-1.5">
+                <label htmlFor="contact-email" className="block text-xs font-medium text-foreground mb-1.5">
                   Email Address
                 </label>
                 <input
+                  id="contact-email"
                   type="email"
                   required
                   placeholder="alex@company.com"
@@ -230,10 +232,11 @@ export const ContactSection = () => {
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-foreground mb-1.5">
+                <label htmlFor="contact-message" className="block text-xs font-medium text-foreground mb-1.5">
                   Message
                 </label>
                 <textarea
+                  id="contact-message"
                   required
                   rows={4}
                   placeholder="Hi Meareg, I'd like to discuss a project..."

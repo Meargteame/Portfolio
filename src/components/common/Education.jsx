@@ -69,7 +69,7 @@ export const Education = () => {
                 >
                   <img
                     src={edu.certificateImg}
-                    alt={`${edu.institution} Certificate`}
+                    alt={`Official ${edu.degree} credential issued by ${edu.institution}`}
                     loading="lazy"
                     className="w-full h-auto object-contain block transition-transform duration-300 group-hover/cert:scale-[1.005]"
                   />

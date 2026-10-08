@@ -12,10 +12,10 @@ import mearegPhoto from "../../assets/meareg-photo.webp";
 
 const navItems = [
   { id: "work",       label: "Work" },
+  { id: "about",      label: "About" },
   { id: "experience", label: "Experience" },
   { id: "education",  label: "Education" },
   { id: "stack",      label: "Tech Stack" },
-  { id: "about",      label: "About" },
   { id: "contact",    label: "Contact" },
 ];
 
@@ -81,6 +81,7 @@ export const Navbar = () => {
             <a
               href="/CV.pdf"
               download
+              aria-label="Download Résumé (PDF)"
               title="Download Résumé"
               className="p-2 rounded-lg border border-border bg-card text-foreground hover:bg-muted transition-colors shadow-xs"
             >
