@@ -3,7 +3,7 @@ import { projects } from "../../data/projects";
 
 export const Projects = () => {
   return (
-    <section id="work" className="scroll-mt-8 space-y-8">
+    <section id="work" className="scroll-mt-10 pt-2 sm:pt-4 space-y-8">
       {/* Section Header */}
       <div className="space-y-1">
         <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground font-bricolage">

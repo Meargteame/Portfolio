@@ -2,7 +2,7 @@ import { ArrowDown, ArrowUpRight } from "lucide-react";
 
 export const HeroSection = () => {
   return (
-    <section className="space-y-6 pb-12 sm:pb-16 border-b border-border/80">
+    <section className="space-y-6 pb-14 sm:pb-20 border-b border-border/80">
       {/* Availability Status */}
       <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-border bg-card/60 text-xs text-muted-foreground font-medium">
         <span className="w-2 h-2 rounded-full bg-emerald-600 dark:bg-emerald-400 animate-pulse" />

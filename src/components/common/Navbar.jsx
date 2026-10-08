@@ -11,8 +11,8 @@ import { ModeToggle } from "./mode-toggle";
 import mearegPhoto from "../../assets/meareg-photo.webp";
 
 const navItems = [
-  { id: "about",      label: "About" },
   { id: "work",       label: "Work" },
+  { id: "about",      label: "About" },
   { id: "experience", label: "Experience" },
   { id: "education",  label: "Education" },
   { id: "stack",      label: "Tech Stack" },
@@ -20,7 +20,7 @@ const navItems = [
 ];
 
 export const Navbar = () => {
-  const [activeSection, setActiveSection] = useState("about");
+  const [activeSection, setActiveSection] = useState("work");
 
   // Track active section on scroll with viewport-relative rects
   useEffect(() => {
@@ -31,7 +31,7 @@ export const Navbar = () => {
         return;
       }
 
-      let currentSection = "about";
+      let currentSection = "work";
       for (const item of navItems) {
         const el = document.getElementById(item.id);
         if (el) {

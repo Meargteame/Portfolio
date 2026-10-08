@@ -28,8 +28,8 @@ export const Home = () => {
           {/* Right Main Content Stream */}
           <main id="main-content" className="lg:flex-1 min-w-0 space-y-20 sm:space-y-28">
             <HeroSection />
-            <AboutSection />
             <Projects />
+            <AboutSection />
             <Experience />
             <Education />
             <TechStack />
