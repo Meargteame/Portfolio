@@ -23,7 +23,7 @@ export const Education = () => {
             {/* Header: Official Logo + Institution & Degree */}
             <div className="flex items-start gap-3.5 sm:gap-4">
               {edu.logo && (
-                <div className="w-11 h-11 rounded-xl border border-border bg-white p-1.5 shrink-0 overflow-hidden shadow-2xs flex items-center justify-center">
+                <div className="w-11 h-11 rounded-xl border border-border bg-white/90 dark:bg-card p-1.5 shrink-0 overflow-hidden shadow-2xs flex items-center justify-center">
                   <img
                     src={edu.logo}
                     alt={`${edu.institution} Logo`}

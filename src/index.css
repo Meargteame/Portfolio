@@ -26,36 +26,36 @@
 }
 
 :root {
-  --background: #d5c7ad;
-  --foreground: #1c1611;
-  --card: #dfd3ba;
-  --card-foreground: #1c1611;
-  --muted: #cbbea0;
-  --muted-foreground: #635442;
-  --border: #bfae91;
-  --ring: #1c1611;
+  --background: #e8dcce;
+  --foreground: #211812;
+  --card: #f5ebde;
+  --card-foreground: #211812;
+  --muted: #ded0be;
+  --muted-foreground: #614d3c;
+  --border: #c6b299;
+  --ring: #211812;
 }
 
 .light {
-  --background: #d5c7ad;
-  --foreground: #1c1611;
-  --card: #dfd3ba;
-  --card-foreground: #1c1611;
-  --muted: #cbbea0;
-  --muted-foreground: #635442;
-  --border: #bfae91;
-  --ring: #1c1611;
+  --background: #e8dcce;
+  --foreground: #211812;
+  --card: #f5ebde;
+  --card-foreground: #211812;
+  --muted: #ded0be;
+  --muted-foreground: #614d3c;
+  --border: #c6b299;
+  --ring: #211812;
 }
 
 .dark {
-  --background: #111215;
-  --foreground: #eeece8;
-  --card: #18191e;
-  --card-foreground: #eeece8;
-  --muted: #222329;
-  --muted-foreground: #94939a;
-  --border: #282a31;
-  --ring: #eeece8;
+  --background: #171311;
+  --foreground: #f2eae0;
+  --card: #221c17;
+  --card-foreground: #f2eae0;
+  --muted: #2c231d;
+  --muted-foreground: #9d8c7c;
+  --border: #3d3128;
+  --ring: #e09443;
 }
 
 @layer base {
@@ -80,13 +80,13 @@
   }
 
   ::selection {
-    background: #bfae91;
-    color: #1c1611;
+    background: #c6b299;
+    color: #211812;
   }
 
   .dark ::selection {
-    background: #2e3038;
-    color: #eeece8;
+    background: #3d3128;
+    color: #f2eae0;
   }
 
   input, textarea {
@@ -166,18 +166,3 @@
   animation-play-state: paused;
 }
 
-/* Lightweight Background Grid Mesh */
-.bg-grid-pattern {
-  background-size: 48px 48px;
-  background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-  mask-image: radial-gradient(circle at center, black 40%, transparent 85%);
-}
-
-.light .bg-grid-pattern {
-  background-image: 
-    linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
-  mask-image: radial-gradient(circle at center, black 40%, transparent 85%);
-}
