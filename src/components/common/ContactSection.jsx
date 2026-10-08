@@ -3,7 +3,8 @@ import { Mail, Send, Linkedin, Github, Check, Copy, ArrowUpRight, CheckCircle2, 
 
 export const ContactSection = () => {
   const [copied, setCopied] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState("idle"); // "idle" | "sending" | "success" | "error"
+  const [errorMessage, setErrorMessage] = useState("");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -16,22 +17,46 @@ export const ContactSection = () => {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const subject = encodeURIComponent(`Message from ${formData.name || "Portfolio Visitor"}`);
-  const body = encodeURIComponent(
-    `From: ${formData.name} (${formData.email})\n\n${formData.message}`
-  );
-
-  const mailtoUrl = `mailto:hello.meareg@gmail.com?subject=${subject}&body=${body}`;
-  const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=hello.meareg@gmail.com&su=${subject}&body=${body}`;
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
-    window.location.href = mailtoUrl;
+    setStatus("sending");
+    setErrorMessage("");
+
+    try {
+      const endpoint = import.meta.env.VITE_FORM_ENDPOINT || "https://formsubmit.co/ajax/hello.meareg@gmail.com";
+      const response = await fetch(endpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          _subject: `New Portfolio Message from ${formData.name}`,
+          _template: "table",
+        }),
+      });
+
+      if (response.ok) {
+        setStatus("success");
+      } else {
+        const data = await response.json().catch(() => ({}));
+        throw new Error(data.message || "Failed to send message");
+      }
+    } catch (err) {
+      console.error("Form submit error:", err);
+      setStatus("error");
+      setErrorMessage(
+        "Could not deliver automatically. You can reach out directly via hello.meareg@gmail.com or Telegram."
+      );
+    }
   };
 
   const handleReset = () => {
-    setSubmitted(false);
+    setStatus("idle");
+    setErrorMessage("");
     setFormData({ name: "", email: "", message: "" });
   };
 
@@ -128,58 +153,26 @@ export const ContactSection = () => {
           </div>
         </div>
 
-        {/* Right: Message Form with Multi-Channel Fallback */}
         <div className="md:col-span-7">
-          {submitted ? (
+          {status === "success" ? (
             <div className="rounded-xl border border-border bg-card/60 p-6 space-y-4 shadow-xs">
               <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
+                <div className="w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shrink-0">
                   <CheckCircle2 className="w-5 h-5" />
                 </div>
                 <div>
                   <h4 className="text-base font-bold font-bricolage text-foreground">
-                    Message Prepared!
+                    Message Sent Successfully!
                   </h4>
-                  <p className="text-xs text-muted-foreground">
-                    Your email client should launch with your details pre-filled.
+                  <p className="text-xs text-muted-foreground mt-0.5">
+                    Thank you. Your message has been sent directly to <span className="text-foreground font-medium">hello.meareg@gmail.com</span>.
                   </p>
                 </div>
               </div>
 
-              <div className="space-y-2 pt-2 text-xs">
-                <p className="text-muted-foreground">
-                  If your email client didn't open automatically:
-                </p>
-
-                <div className="flex flex-wrap gap-2 pt-1">
-                  <a
-                    href={gmailUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-foreground text-background text-xs font-semibold hover:opacity-90 transition-opacity shadow-xs"
-                  >
-                    <span>Open in Web Gmail</span>
-                    <ArrowUpRight className="w-3.5 h-3.5" />
-                  </a>
-
-                  <a
-                    href={mailtoUrl}
-                    className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg border border-border bg-card text-foreground text-xs font-medium hover:bg-muted transition-colors shadow-xs"
-                  >
-                    <Mail className="w-3.5 h-3.5 text-muted-foreground" />
-                    <span>Retry Mail Client</span>
-                  </a>
-
-                  <button
-                    type="button"
-                    onClick={copyEmail}
-                    className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg border border-border bg-card text-foreground text-xs font-medium hover:bg-muted transition-colors shadow-xs"
-                  >
-                    {copied ? <Check className="w-3.5 h-3.5 text-emerald-500" /> : <Copy className="w-3.5 h-3.5" />}
-                    <span>{copied ? "Copied!" : "Copy Email"}</span>
-                  </button>
-                </div>
-              </div>
+              <p className="text-xs text-muted-foreground leading-relaxed pt-1">
+                I review all inquiries promptly and will get back to you within 24 hours.
+              </p>
 
               <div className="pt-3 border-t border-border">
                 <button
@@ -200,6 +193,12 @@ export const ContactSection = () => {
               <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
                 Send a Message
               </h4>
+
+              {status === "error" && (
+                <div className="p-3 rounded-lg border border-rose-500/30 bg-rose-500/10 text-xs text-rose-700 dark:text-rose-300 leading-relaxed">
+                  {errorMessage}
+                </div>
+              )}
 
               <div>
                 <label htmlFor="contact-name" className="block text-xs font-medium text-foreground mb-1.5">
@@ -248,10 +247,20 @@ export const ContactSection = () => {
 
               <button
                 type="submit"
-                className="w-full py-2.5 rounded-lg bg-foreground text-background text-xs font-semibold hover:opacity-90 transition-opacity shadow-xs cursor-pointer flex items-center justify-center gap-1.5"
+                disabled={status === "sending"}
+                className="w-full py-2.5 rounded-lg bg-foreground text-background text-xs font-semibold hover:opacity-90 disabled:opacity-60 transition-opacity shadow-xs cursor-pointer flex items-center justify-center gap-1.5"
               >
-                <span>Send Message</span>
-                <ArrowUpRight className="w-3.5 h-3.5" />
+                {status === "sending" ? (
+                  <>
+                    <span className="w-3.5 h-3.5 border-2 border-background border-t-transparent rounded-full animate-spin" />
+                    <span>Sending Message...</span>
+                  </>
+                ) : (
+                  <>
+                    <span>Send Message</span>
+                    <ArrowUpRight className="w-3.5 h-3.5" />
+                  </>
+                )}
               </button>
             </form>
           )}
