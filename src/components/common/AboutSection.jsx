@@ -6,18 +6,15 @@ export const AboutSection = () => {
       {/* Section Header */}
       <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-4">
         <div className="space-y-1">
-          <span className="text-xs font-mono tracking-widest text-muted-foreground uppercase font-semibold">
-            05 // About
-          </span>
           <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground font-bricolage">
-            A bit about me.
+            About
           </h2>
         </div>
 
         <a
           href="/CV.pdf"
           download
-          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg border border-border bg-card text-xs font-mono text-muted-foreground hover:text-foreground hover:border-foreground/40 transition-colors shrink-0 shadow-xs"
+          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg border border-border bg-card text-xs font-medium text-muted-foreground hover:text-foreground hover:border-foreground/40 transition-colors shrink-0 shadow-xs"
         >
           <Download className="w-3.5 h-3.5" />
           <span>Download Résumé</span>
@@ -45,7 +42,7 @@ export const AboutSection = () => {
       </div>
 
       {/* Clean Quick Facts Bar */}
-      <div className="pt-6 border-t border-border grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs font-mono text-muted-foreground">
+      <div className="pt-6 border-t border-border grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs text-muted-foreground">
         <div>
           <span className="block text-foreground font-semibold text-[11px] uppercase tracking-wider">Location</span>
           <span className="text-muted-foreground mt-0.5 block">Dansha, Ethiopia</span>

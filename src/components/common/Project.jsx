@@ -3,22 +3,19 @@ import { projects } from "../../data/projects";
 
 export const Projects = () => {
   return (
-    <section id="work" className="scroll-mt-8 space-y-10">
+    <section id="work" className="scroll-mt-8 space-y-8">
       {/* Section Header */}
-      <div className="space-y-1.5">
-        <span className="text-xs font-mono tracking-widest text-muted-foreground uppercase font-semibold">
-          01 // Selected Work
-        </span>
+      <div className="space-y-1">
         <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground font-bricolage">
-          Featured Projects.
+          Projects
         </h2>
         <p className="text-sm text-muted-foreground leading-relaxed">
-          Production applications, client platforms, and SaaS products deployed to real users.
+          Production applications, client platforms, and SaaS products I have designed and shipped.
         </p>
       </div>
 
-      {/* Clean Vertical Project List */}
-      <div className="space-y-12 sm:space-y-16">
+      {/* Projects List */}
+      <div className="space-y-10 sm:space-y-12">
         {projects.map((project) => (
           <article
             key={project.id}
@@ -27,7 +24,7 @@ export const Projects = () => {
             {/* Top Bar: Title & Direct Links */}
             <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-3">
               <div>
-                <span className="text-[11px] font-mono text-muted-foreground tracking-wider uppercase">
+                <span className="text-[11px] font-medium text-muted-foreground tracking-wide uppercase">
                   {project.tag}
                 </span>
                 <h3 className="text-xl sm:text-2xl font-bold font-bricolage text-foreground tracking-tight mt-0.5">
@@ -74,26 +71,26 @@ export const Projects = () => {
               {project.tech.map((t) => (
                 <span
                   key={t}
-                  className="px-2.5 py-0.5 rounded-md border border-border text-xs font-mono text-muted-foreground bg-muted/30"
+                  className="px-2.5 py-0.5 rounded-md border border-border text-xs text-muted-foreground bg-muted/30 font-medium"
                 >
                   {t}
                 </span>
               ))}
             </div>
 
-            {/* Clean Screenshot Showcase — Fully Visible, Zero Cropping */}
+            {/* Screenshot Showcase */}
             <a
               href={project.live || "#"}
               target="_blank"
               rel="noopener noreferrer"
-              className="block overflow-hidden rounded-xl border border-border bg-background p-2 transition-colors group-hover:border-foreground/40"
+              className="block overflow-hidden rounded-xl border border-border bg-background transition-colors group-hover:border-foreground/40 shadow-xs"
               title={`View ${project.name}`}
             >
               <img
                 src={project.image}
                 alt={project.name}
                 loading="lazy"
-                className="w-full h-auto object-contain block rounded-lg transition-transform duration-300 group-hover:scale-[1.005]"
+                className="w-full h-auto object-contain block transition-transform duration-300 group-hover:scale-[1.005]"
               />
             </a>
           </article>

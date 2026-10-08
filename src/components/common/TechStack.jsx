@@ -14,15 +14,12 @@ export const TechStack = () => {
   return (
     <section id="stack" className="scroll-mt-8 space-y-8">
       {/* Section Header */}
-      <div className="space-y-1.5">
-        <span className="text-xs font-mono tracking-widest text-muted-foreground uppercase font-semibold">
-          04 // Tech Stack
-        </span>
+      <div className="space-y-1">
         <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground font-bricolage">
-          Core Technologies.
+          Tech Stack
         </h2>
         <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl">
-          Production-tested languages, frameworks, databases, and infrastructure tools I use to build scalable web products.
+          Languages, frameworks, databases, and tools I use to build and deploy web applications.
         </p>
       </div>
 
@@ -45,12 +42,12 @@ export const TechStack = () => {
                     <h3 className="font-bold font-bricolage text-sm sm:text-base text-foreground tracking-tight">
                       {cat.title}
                     </h3>
-                    <p className="text-[11px] text-muted-foreground font-mono">
+                    <p className="text-[11px] text-muted-foreground">
                       {cat.subtitle}
                     </p>
                   </div>
                 </div>
-                <span className="text-[10px] font-mono text-muted-foreground shrink-0 px-2 py-0.5 rounded-md border border-border bg-background/50">
+                <span className="text-[11px] text-muted-foreground shrink-0 px-2 py-0.5 rounded-md border border-border bg-background/50 font-medium">
                   {cat.items.length} tools
                 </span>
               </div>
@@ -69,7 +66,7 @@ export const TechStack = () => {
                       <p className="text-xs font-semibold text-foreground truncate tracking-tight">
                         {item.name}
                       </p>
-                      <p className="text-[10px] text-muted-foreground truncate font-mono">
+                      <p className="text-[11px] text-muted-foreground truncate font-normal">
                         {item.subtitle}
                       </p>
                     </div>

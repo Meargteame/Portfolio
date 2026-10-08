@@ -82,7 +82,7 @@ export const Navbar = () => {
               <h1 className="font-bold text-base tracking-tight font-bricolage text-foreground">
                 Meareg Teame
               </h1>
-              <p className="text-xs text-muted-foreground font-mono">Full-Stack Developer · Dansha</p>
+              <p className="text-xs text-muted-foreground font-medium">Full-Stack Developer · Dansha</p>
             </div>
           </div>
 
@@ -141,7 +141,7 @@ export const Navbar = () => {
               <p className="text-xs sm:text-sm font-medium text-foreground/80">
                 Full-Stack Software Developer
               </p>
-              <p className="text-xs text-muted-foreground font-mono mt-0.5">
+              <p className="text-xs text-muted-foreground mt-0.5">
                 Dansha, Ethiopia (UTC+3)
               </p>
             </div>
@@ -242,7 +242,7 @@ export const Navbar = () => {
             <a
               href="/CV.pdf"
               download
-              className="flex-1 inline-flex items-center justify-center gap-2 h-9 px-3 rounded-lg border border-border bg-card/70 text-xs font-mono font-medium text-foreground hover:bg-card hover:border-foreground/40 transition-colors shadow-xs"
+              className="flex-1 inline-flex items-center justify-center gap-2 h-9 px-3 rounded-lg border border-border bg-card/70 text-xs font-medium text-foreground hover:bg-card hover:border-foreground/40 transition-colors shadow-xs"
             >
               <Download className="w-3.5 h-3.5 text-muted-foreground" />
               <span>Résumé (PDF)</span>

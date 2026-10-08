@@ -1,5 +1,4 @@
 import { Navbar }         from "./Navbar";
-import { HeroSection }    from "./HeroSection";
 import { Projects }       from "./Project";
 import { Experience }     from "./Experience";
 import { Education }      from "./Education";
@@ -19,7 +18,6 @@ export const Home = () => {
 
           {/* Right Main Content Stream */}
           <main className="lg:flex-1 min-w-0 space-y-20 sm:space-y-28">
-            <HeroSection />
             <Projects />
             <Experience />
             <Education />

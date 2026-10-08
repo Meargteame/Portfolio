@@ -5,13 +5,13 @@ export const Experience = () => {
   return (
     <section id="experience" className="scroll-mt-8 space-y-6">
       {/* Section Header */}
-      <div className="space-y-1.5">
-        <span className="text-xs font-mono tracking-widest text-muted-foreground uppercase font-semibold">
-          02 // Experience
-        </span>
+      <div className="space-y-1">
         <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground font-bricolage">
-          Work History &amp; Roles.
+          Experience
         </h2>
+        <p className="text-sm text-muted-foreground leading-relaxed">
+          Contractual and engineering roles where I shipped production features and collaborated with teams.
+        </p>
       </div>
 
       <div className="space-y-4">
@@ -50,11 +50,11 @@ export const Experience = () => {
                         {exp.company}
                       </h3>
                     )}
-                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-full border border-border bg-muted/30 text-muted-foreground">
+                    <span className="text-[11px] px-2 py-0.5 rounded-md border border-border bg-muted/30 text-muted-foreground font-medium">
                       {exp.tag}
                     </span>
                   </div>
-                  <span className="text-xs font-mono text-muted-foreground shrink-0">
+                  <span className="text-xs text-muted-foreground shrink-0 font-medium">
                     {exp.date}
                   </span>
                 </div>
@@ -74,7 +74,7 @@ export const Experience = () => {
                 {exp.tech.map((t) => (
                   <span
                     key={t}
-                    className="px-2 py-0.5 rounded-md border border-border text-[11px] font-mono text-muted-foreground bg-muted/30"
+                    className="px-2 py-0.5 rounded-md border border-border text-[11px] text-muted-foreground bg-muted/30 font-medium"
                   >
                     {t}
                   </span>

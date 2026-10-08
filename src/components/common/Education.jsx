@@ -5,13 +5,13 @@ export const Education = () => {
   return (
     <section id="education" className="scroll-mt-8 space-y-6">
       {/* Section Header */}
-      <div className="space-y-1.5">
-        <span className="text-xs font-mono tracking-widest text-muted-foreground uppercase font-semibold">
-          03 // Education &amp; Credentials
-        </span>
+      <div className="space-y-1">
         <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground font-bricolage">
-          Degrees &amp; Certifications.
+          Education
         </h2>
+        <p className="text-sm text-muted-foreground leading-relaxed">
+          Engineering training, university studies, and verified credentials.
+        </p>
       </div>
 
       <div className="space-y-4">
@@ -35,14 +35,14 @@ export const Education = () => {
               <div className="flex-1 min-w-0">
                 <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
                   <div className="flex items-center gap-2 flex-wrap">
-                    <h4 className="text-base sm:text-lg font-bold font-bricolage text-foreground tracking-tight">
+                    <h3 className="text-base sm:text-lg font-bold font-bricolage text-foreground tracking-tight">
                       {edu.institution}
-                    </h4>
-                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-full border border-border bg-muted/30 text-muted-foreground">
+                    </h3>
+                    <span className="text-[11px] px-2 py-0.5 rounded-md border border-border bg-muted/30 text-muted-foreground font-medium">
                       {edu.tag}
                     </span>
                   </div>
-                  <span className="text-xs font-mono text-muted-foreground shrink-0">
+                  <span className="text-xs text-muted-foreground shrink-0 font-medium">
                     {edu.date}
                   </span>
                 </div>
@@ -64,17 +64,17 @@ export const Education = () => {
                   href={edu.certificateUrl || edu.certificateImg}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block group/cert overflow-hidden rounded-xl border border-border bg-background p-2 transition-all hover:border-foreground/50 shadow-xs"
+                  className="block group/cert overflow-hidden rounded-xl border border-border bg-background transition-all hover:border-foreground/50 shadow-xs"
                   title="Click to verify official certificate"
                 >
                   <img
                     src={edu.certificateImg}
                     alt={`${edu.institution} Certificate`}
                     loading="lazy"
-                    className="w-full h-auto object-contain block rounded-lg transition-transform duration-300 group-hover/cert:scale-[1.005]"
+                    className="w-full h-auto object-contain block transition-transform duration-300 group-hover/cert:scale-[1.005]"
                   />
                 </a>
-                <div className="flex items-center justify-between text-xs font-mono text-muted-foreground pt-0.5">
+                <div className="flex items-center justify-between text-xs text-muted-foreground pt-0.5">
                   <span>Issued Feb 2025 · ALX &amp; Holberton</span>
                   {edu.certificateUrl && (
                     <a

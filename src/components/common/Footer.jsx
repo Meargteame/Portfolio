@@ -13,11 +13,11 @@ export const Footer = () => {
   return (
     <footer className="pt-12 pb-8 border-t border-border text-xs text-muted-foreground space-y-4">
       <div className="flex flex-col sm:flex-row items-baseline justify-between gap-4">
-        <p className="font-mono">
+        <p className="font-medium">
           © {currentYear} Meareg Teame. Built with React &amp; Tailwind CSS.
         </p>
 
-        <div className="flex items-center gap-4 font-mono">
+        <div className="flex items-center gap-4 font-medium">
           {socialLinks.map((s) => (
             <a
               key={s.label}

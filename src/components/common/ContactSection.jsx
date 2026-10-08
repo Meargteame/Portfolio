@@ -38,15 +38,12 @@ export const ContactSection = () => {
   return (
     <section id="contact" className="scroll-mt-8 space-y-10">
       {/* Section Header */}
-      <div className="space-y-1.5">
-        <span className="text-xs font-mono tracking-widest text-muted-foreground uppercase font-semibold">
-          06 // Get In Touch
-        </span>
+      <div className="space-y-1">
         <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground font-bricolage">
-          Let's Connect.
+          Contact
         </h2>
         <p className="text-sm text-muted-foreground leading-relaxed">
-          I'm always open to discussing new projects, contract opportunities, or engineering collaborations.
+          Open for freelance projects, contract roles, and full-time engineering opportunities.
         </p>
       </div>
 
@@ -54,11 +51,11 @@ export const ContactSection = () => {
         {/* Left: Direct Links & Fast Copy */}
         <div className="md:col-span-5 space-y-4">
           <div className="rounded-xl border border-border bg-card/60 p-5 space-y-4 shadow-xs">
-            <h4 className="text-xs font-mono font-semibold text-muted-foreground uppercase tracking-wider">
+            <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
               Direct Contact
             </h4>
 
-            <div className="space-y-3 text-xs font-mono">
+            <div className="space-y-3 text-xs font-medium">
               {/* Email with copy button */}
               <div className="flex items-center justify-between p-2.5 rounded-lg border border-border bg-card">
                 <a
