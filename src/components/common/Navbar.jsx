@@ -178,7 +178,7 @@ export const Navbar = () => {
               href="mailto:hello.meareg@gmail.com"
               aria-label="Email"
               title="Email Me"
-              className="w-9 h-9 rounded-lg border border-border bg-card/70 flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-foreground/40 active:scale-95 transition-all shadow-xs focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-hidden"
+              className="w-9 h-9 rounded-lg border border-border bg-card/70 flex items-center justify-center text-muted-foreground hover:text-amber-600 dark:hover:text-amber-400 hover:border-amber-500/40 active:scale-95 transition-all shadow-xs focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-hidden"
             >
               <Mail className="w-4 h-4" />
             </a>
@@ -198,7 +198,7 @@ export const Navbar = () => {
               rel="noopener noreferrer"
               aria-label="LinkedIn"
               title="LinkedIn Profile"
-              className="w-9 h-9 rounded-lg border border-border bg-card/70 flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-foreground/40 active:scale-95 transition-all shadow-xs focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-hidden"
+              className="w-9 h-9 rounded-lg border border-border bg-card/70 flex items-center justify-center text-muted-foreground hover:text-[#0a66c2] hover:border-[#0a66c2]/40 active:scale-95 transition-all shadow-xs focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-hidden"
             >
               <Linkedin className="w-4 h-4" />
             </a>
@@ -208,7 +208,7 @@ export const Navbar = () => {
               rel="noopener noreferrer"
               aria-label="Telegram"
               title="Telegram Chat"
-              className="w-9 h-9 rounded-lg border border-border bg-card/70 flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-foreground/40 active:scale-95 transition-all shadow-xs focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-hidden"
+              className="w-9 h-9 rounded-lg border border-border bg-card/70 flex items-center justify-center text-muted-foreground hover:text-[#229ED9] hover:border-[#229ED9]/40 active:scale-95 transition-all shadow-xs focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-hidden"
             >
               <Send className="w-4 h-4" />
             </a>

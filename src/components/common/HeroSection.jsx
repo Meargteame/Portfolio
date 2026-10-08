@@ -4,8 +4,8 @@ export const HeroSection = () => {
   return (
     <section className="space-y-6 pb-14 sm:pb-20 border-b border-border/80">
       {/* Availability Status */}
-      <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-border bg-card/60 text-xs text-muted-foreground font-medium">
-        <span className="w-2 h-2 rounded-full bg-emerald-600 dark:bg-emerald-400 animate-pulse" />
+      <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-600/30 dark:border-emerald-500/30 bg-emerald-600/10 dark:bg-emerald-500/15 text-xs text-emerald-900 dark:text-emerald-200 font-medium">
+        <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
         <span>Available for new projects &amp; engineering roles</span>
       </div>
 
@@ -26,7 +26,7 @@ export const HeroSection = () => {
           className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-foreground text-background text-xs sm:text-sm font-semibold hover:opacity-90 active:scale-[0.98] transition-all shadow-xs focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-hidden"
         >
           <span>Explore Projects</span>
-          <ArrowDown className="w-3.5 h-3.5" />
+          <ArrowDown className="w-3.5 h-3.5 text-amber-500 dark:text-amber-400" />
         </a>
 
         <a

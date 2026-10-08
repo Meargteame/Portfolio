@@ -47,17 +47,17 @@ export const AboutSection = () => {
           <span className="block text-foreground font-semibold text-[11px] uppercase tracking-wider">Location</span>
           <span className="text-muted-foreground block">Dansha, Ethiopia</span>
         </div>
-        <div className="p-3 rounded-xl border border-border/80 bg-card/50 shadow-2xs space-y-1">
+        <div className="p-3 rounded-xl border border-amber-600/30 dark:border-amber-500/30 bg-amber-600/5 dark:bg-amber-500/10 shadow-2xs space-y-1">
           <span className="block text-foreground font-semibold text-[11px] uppercase tracking-wider">Timezone</span>
-          <span className="text-muted-foreground block">UTC+3 (East Africa)</span>
+          <span className="text-amber-900 dark:text-amber-300 block font-medium">UTC+3 (East Africa)</span>
         </div>
         <div className="p-3 rounded-xl border border-border/80 bg-card/50 shadow-2xs space-y-1">
           <span className="block text-foreground font-semibold text-[11px] uppercase tracking-wider">Education</span>
           <span className="text-muted-foreground block">ALX / Holberton &amp; BDU</span>
         </div>
-        <div className="p-3 rounded-xl border border-border/80 bg-card/50 shadow-2xs space-y-1">
+        <div className="p-3 rounded-xl border border-emerald-600/30 dark:border-emerald-500/30 bg-emerald-600/5 dark:bg-emerald-500/10 shadow-2xs space-y-1">
           <span className="block text-foreground font-semibold text-[11px] uppercase tracking-wider">Status</span>
-          <span className="text-emerald-700 dark:text-emerald-400 font-medium flex items-center gap-1.5">
+          <span className="text-emerald-800 dark:text-emerald-300 font-medium flex items-center gap-1.5">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
             Open for roles
           </span>

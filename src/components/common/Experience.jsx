@@ -1,6 +1,19 @@
 import { ArrowUpRight } from "lucide-react";
 import { experiences } from "../../data/experiences";
 
+const getExperienceBadgeStyle = (tag = "") => {
+  if (tag.includes("FOUNDING")) {
+    return "border-amber-500/30 bg-amber-500/10 text-amber-900 dark:text-amber-300";
+  }
+  if (tag.includes("CONTRACT")) {
+    return "border-indigo-500/30 bg-indigo-500/10 text-indigo-900 dark:text-indigo-300";
+  }
+  if (tag.includes("INTERNSHIP")) {
+    return "border-emerald-500/30 bg-emerald-500/10 text-emerald-900 dark:text-emerald-300";
+  }
+  return "border-border bg-card/60 text-muted-foreground";
+};
+
 export const Experience = () => {
   return (
     <section id="experience" className="scroll-mt-8 space-y-6">
@@ -50,7 +63,7 @@ export const Experience = () => {
                         {exp.company}
                       </h3>
                     )}
-                    <span className="text-[11px] px-2 py-0.5 rounded-md border border-border bg-card/60 text-muted-foreground font-medium">
+                    <span className={`text-[11px] px-2.5 py-0.5 rounded-md border font-medium ${getExperienceBadgeStyle(exp.tag)}`}>
                       {exp.tag}
                     </span>
                   </div>

@@ -109,13 +109,13 @@ export const ContactSection = () => {
                 href="https://t.me/meareg_official"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between p-2.5 rounded-lg border border-border bg-card text-foreground hover:border-foreground/40 active:scale-[0.99] transition-all focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-hidden"
+                className="group flex items-center justify-between p-2.5 rounded-lg border border-border bg-card text-foreground hover:border-[#229ED9]/50 active:scale-[0.99] transition-all focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-hidden"
               >
                 <div className="flex items-center gap-2">
-                  <Send className="w-3.5 h-3.5 text-muted-foreground" />
+                  <Send className="w-3.5 h-3.5 text-muted-foreground group-hover:text-[#229ED9] transition-colors" />
                   <span>@meareg_official</span>
                 </div>
-                <ArrowUpRight className="w-3 h-3 text-muted-foreground" />
+                <ArrowUpRight className="w-3 h-3 text-muted-foreground group-hover:text-[#229ED9] transition-colors" />
               </a>
 
               {/* LinkedIn */}
@@ -123,13 +123,13 @@ export const ContactSection = () => {
                 href="https://www.linkedin.com/in/meareg"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between p-2.5 rounded-lg border border-border bg-card text-foreground hover:border-foreground/40 active:scale-[0.99] transition-all focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-hidden"
+                className="group flex items-center justify-between p-2.5 rounded-lg border border-border bg-card text-foreground hover:border-[#0a66c2]/50 active:scale-[0.99] transition-all focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-hidden"
               >
                 <div className="flex items-center gap-2">
-                  <Linkedin className="w-3.5 h-3.5 text-muted-foreground" />
+                  <Linkedin className="w-3.5 h-3.5 text-muted-foreground group-hover:text-[#0a66c2] transition-colors" />
                   <span>LinkedIn Profile</span>
                 </div>
-                <ArrowUpRight className="w-3 h-3 text-muted-foreground" />
+                <ArrowUpRight className="w-3 h-3 text-muted-foreground group-hover:text-[#0a66c2] transition-colors" />
               </a>
 
               {/* GitHub */}
@@ -137,13 +137,13 @@ export const ContactSection = () => {
                 href="https://github.com/Meargteame"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between p-2.5 rounded-lg border border-border bg-card text-foreground hover:border-foreground/40 active:scale-[0.99] transition-all focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-hidden"
+                className="group flex items-center justify-between p-2.5 rounded-lg border border-border bg-card text-foreground hover:border-foreground/40 active:scale-[0.99] transition-all focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-hidden"
               >
                 <div className="flex items-center gap-2">
-                  <Github className="w-3.5 h-3.5 text-muted-foreground" />
+                  <Github className="w-3.5 h-3.5 text-muted-foreground group-hover:text-foreground transition-colors" />
                   <span>GitHub Repositories</span>
                 </div>
-                <ArrowUpRight className="w-3 h-3 text-muted-foreground" />
+                <ArrowUpRight className="w-3 h-3 text-muted-foreground group-hover:text-foreground transition-colors" />
               </a>
             </div>
 

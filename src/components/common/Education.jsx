@@ -1,5 +1,15 @@
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, CheckCircle2 } from "lucide-react";
 import { educations } from "../../data/education";
+
+const getEducationBadgeStyle = (tag = "") => {
+  if (tag.includes("SOFTWARE")) {
+    return "border-rose-500/30 bg-rose-500/10 text-rose-900 dark:text-rose-300";
+  }
+  if (tag.includes("HIGHER")) {
+    return "border-blue-500/30 bg-blue-500/10 text-blue-900 dark:text-blue-300";
+  }
+  return "border-border bg-card/60 text-muted-foreground";
+};
 
 export const Education = () => {
   return (
@@ -38,7 +48,7 @@ export const Education = () => {
                     <h3 className="text-base sm:text-lg font-bold font-bricolage text-foreground tracking-tight">
                       {edu.institution}
                     </h3>
-                    <span className="text-[11px] px-2 py-0.5 rounded-md border border-border bg-card/60 text-muted-foreground font-medium">
+                    <span className={`text-[11px] px-2.5 py-0.5 rounded-md border font-medium ${getEducationBadgeStyle(edu.tag)}`}>
                       {edu.tag}
                     </span>
                   </div>
@@ -75,7 +85,10 @@ export const Education = () => {
                   />
                 </a>
                 <div className="flex items-center justify-between text-xs text-muted-foreground pt-0.5">
-                  <span>Issued Feb 2025 · ALX &amp; Holberton</span>
+                  <span className="inline-flex items-center gap-1.5 text-emerald-800 dark:text-emerald-400 font-medium">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
+                    <span>Issued Feb 2025 · ALX &amp; Holberton</span>
+                  </span>
                   {edu.certificateUrl && (
                     <a
                       href={edu.certificateUrl}
