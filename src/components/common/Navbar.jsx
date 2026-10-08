@@ -22,30 +22,26 @@ const navItems = [
 export const Navbar = () => {
   const [activeSection, setActiveSection] = useState("work");
 
-  // Track active section on scroll
+  // Track active section on scroll with viewport-relative rects
   useEffect(() => {
     const handleScroll = () => {
       // If reached bottom of page, highlight contact
-      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 60) {
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 80) {
         setActiveSection("contact");
         return;
       }
 
-      const scrollPos = window.scrollY + 180;
+      let currentSection = "work";
       for (const item of navItems) {
         const el = document.getElementById(item.id);
         if (el) {
-          const top = el.offsetTop;
-          const height = el.offsetHeight;
-          if (scrollPos >= top && scrollPos < top + height) {
-            setActiveSection(item.id);
-            return;
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= 220) {
+            currentSection = item.id;
           }
         }
       }
-      if (window.scrollY < 120) {
-        setActiveSection("work");
-      }
+      setActiveSection(currentSection);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });

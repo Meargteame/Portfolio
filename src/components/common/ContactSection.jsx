@@ -211,7 +211,7 @@ export const ContactSection = () => {
                   placeholder="Alex Smith"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-lg border border-border bg-background text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-hidden focus:border-foreground/50 transition-colors"
+                  className="w-full px-3.5 py-2.5 rounded-lg border border-border bg-background text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-hidden focus:ring-1 focus:ring-foreground/30 focus:border-foreground/50 transition-colors"
                 />
               </div>
 
@@ -225,7 +225,7 @@ export const ContactSection = () => {
                   placeholder="alex@company.com"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-lg border border-border bg-background text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-hidden focus:border-foreground/50 transition-colors"
+                  className="w-full px-3.5 py-2.5 rounded-lg border border-border bg-background text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-hidden focus:ring-1 focus:ring-foreground/30 focus:border-foreground/50 transition-colors"
                 />
               </div>
 
@@ -239,7 +239,7 @@ export const ContactSection = () => {
                   placeholder="Hi Meareg, I'd like to discuss a project..."
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-lg border border-border bg-background text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-hidden focus:border-foreground/50 transition-colors resize-y"
+                  className="w-full px-3.5 py-2.5 rounded-lg border border-border bg-background text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-hidden focus:ring-1 focus:ring-foreground/30 focus:border-foreground/50 transition-colors resize-y"
                 />
               </div>
 

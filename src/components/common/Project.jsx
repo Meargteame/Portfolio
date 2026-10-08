@@ -24,13 +24,15 @@ export const Projects = () => {
             {/* Top Bar: Title & Direct Links */}
             <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-3">
               <div>
-                <span className="text-[11px] font-medium text-muted-foreground tracking-wide uppercase">
-                  {project.tag}
-                </span>
-                <h3 className="text-xl sm:text-2xl font-bold font-bricolage text-foreground tracking-tight mt-0.5">
-                  {project.name}
-                </h3>
-                <p className="text-xs sm:text-sm text-foreground/80 font-medium">
+                <div className="flex items-center gap-2.5 flex-wrap">
+                  <h3 className="text-xl sm:text-2xl font-bold font-bricolage text-foreground tracking-tight">
+                    {project.name}
+                  </h3>
+                  <span className="text-[11px] px-2 py-0.5 rounded-md border border-border bg-card/60 text-muted-foreground font-medium">
+                    {project.tag}
+                  </span>
+                </div>
+                <p className="text-xs sm:text-sm text-foreground/85 font-medium mt-1">
                   {project.tagline}
                 </p>
               </div>

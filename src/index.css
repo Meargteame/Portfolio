@@ -80,13 +80,17 @@
   }
 
   ::selection {
-    background: rgba(255, 255, 255, 0.15);
-    color: #ffffff;
+    background: #bfae91;
+    color: #1c1611;
   }
 
-  .light ::selection {
-    background: rgba(0, 0, 0, 0.12);
-    color: #0a0a0a;
+  .dark ::selection {
+    background: #2e3038;
+    color: #eeece8;
+  }
+
+  input, textarea {
+    caret-color: var(--foreground);
   }
 }
 
@@ -102,7 +106,8 @@
 }
 
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 7px;
+  height: 7px;
 }
 
 ::-webkit-scrollbar-track {
@@ -110,12 +115,12 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 3px;
+  background: var(--border);
+  border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--muted-foreground);
 }
 
 .no-scrollbar::-webkit-scrollbar {
