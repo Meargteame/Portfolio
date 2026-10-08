@@ -14,16 +14,16 @@ export const Education = () => {
         </p>
       </div>
 
-      <div className="space-y-4">
+      <div className="divide-y divide-border/60">
         {educations.map((edu) => (
           <div
             key={edu.id}
-            className="rounded-xl border border-border bg-card/60 p-5 sm:p-6 space-y-3 shadow-xs"
+            className="py-6 first:pt-0 last:pb-0 space-y-3"
           >
             {/* Header: Official Logo + Institution & Degree */}
             <div className="flex items-start gap-3.5 sm:gap-4">
               {edu.logo && (
-                <div className="w-12 h-12 rounded-xl border border-border bg-white p-1.5 shrink-0 overflow-hidden shadow-xs flex items-center justify-center">
+                <div className="w-11 h-11 rounded-xl border border-border bg-white p-1.5 shrink-0 overflow-hidden shadow-2xs flex items-center justify-center">
                   <img
                     src={edu.logo}
                     alt={`${edu.institution} Logo`}
@@ -38,7 +38,7 @@ export const Education = () => {
                     <h3 className="text-base sm:text-lg font-bold font-bricolage text-foreground tracking-tight">
                       {edu.institution}
                     </h3>
-                    <span className="text-[11px] px-2 py-0.5 rounded-md border border-border bg-muted/30 text-muted-foreground font-medium">
+                    <span className="text-[11px] px-2 py-0.5 rounded-md border border-border bg-card/60 text-muted-foreground font-medium">
                       {edu.tag}
                     </span>
                   </div>
@@ -47,24 +47,24 @@ export const Education = () => {
                   </span>
                 </div>
 
-                <p className="text-xs sm:text-sm font-medium text-foreground/80 mt-0.5">
+                <p className="text-xs sm:text-sm font-medium text-foreground/85 mt-0.5">
                   {edu.degree} · <span className="text-muted-foreground font-normal">{edu.location}</span>
                 </p>
               </div>
             </div>
 
-            <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed pt-0.5">
+            <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed pl-0 sm:pl-14">
               {edu.summary}
             </p>
 
             {/* Directly Embedded Certificate Image */}
             {edu.certificateImg && (
-              <div className="pt-2 space-y-2">
+              <div className="pl-0 sm:pl-14 pt-2 space-y-2">
                 <a
                   href={edu.certificateUrl || edu.certificateImg}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block group/cert overflow-hidden rounded-xl border border-border bg-background transition-all hover:border-foreground/50 shadow-xs"
+                  className="block group/cert overflow-hidden rounded-xl border border-border bg-card/40 transition-all hover:border-foreground/50 shadow-2xs"
                   title="Click to verify official certificate"
                 >
                   <img

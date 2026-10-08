@@ -1,10 +1,5 @@
 import { useState, useEffect } from "react";
 import {
-  FolderKanban,
-  Briefcase,
-  GraduationCap,
-  Layers,
-  User,
   Mail,
   Github,
   Linkedin,
@@ -16,12 +11,12 @@ import { ModeToggle } from "./mode-toggle";
 import mearegPhoto from "../../assets/meareg-photo.webp";
 
 const navItems = [
-  { id: "work",       label: "Work",        icon: FolderKanban },
-  { id: "experience", label: "Experience",  icon: Briefcase },
-  { id: "education",  label: "Education",   icon: GraduationCap },
-  { id: "stack",      label: "Tech Stack",  icon: Layers },
-  { id: "about",      label: "About",       icon: User },
-  { id: "contact",    label: "Contact",     icon: Mail },
+  { id: "work",       label: "Work" },
+  { id: "experience", label: "Experience" },
+  { id: "education",  label: "Education" },
+  { id: "stack",      label: "Tech Stack" },
+  { id: "about",      label: "About" },
+  { id: "contact",    label: "Contact" },
 ];
 
 export const Navbar = () => {
@@ -102,20 +97,18 @@ export const Navbar = () => {
         {/* Mobile Jump Links */}
         <nav className="mt-4 flex items-center gap-1.5 overflow-x-auto pb-1 no-scrollbar">
           {navItems.map((item) => {
-            const Icon = item.icon;
             const isActive = activeSection === item.id;
             return (
               <a
                 key={item.id}
                 href={`#${item.id}`}
                 onClick={(e) => scrollTo(e, item.id)}
-                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all shrink-0 ${
+                className={`inline-flex items-center px-3 py-1.5 rounded-lg text-xs font-medium transition-all shrink-0 ${
                   isActive
                     ? "bg-foreground text-background font-semibold shadow-xs"
                     : "bg-card border border-border text-muted-foreground hover:text-foreground"
                 }`}
               >
-                <Icon className="w-3.5 h-3.5" />
                 <span>{item.label}</span>
               </a>
             );
@@ -124,9 +117,9 @@ export const Navbar = () => {
       </header>
 
       {/* Desktop Left Sidebar (lg+) — Bespoke, Cohesive, Never Clipped */}
-      <aside className="hidden lg:flex lg:sticky lg:top-10 lg:h-[calc(100vh-5rem)] lg:max-h-[640px] lg:w-72 xl:w-80 shrink-0 flex-col justify-between py-1">
+      <aside className="hidden lg:flex lg:sticky lg:top-10 lg:h-[calc(100vh-5rem)] lg:max-h-[580px] lg:w-72 xl:w-80 shrink-0 flex-col justify-between py-1">
         
-        {/* Top: Photo, Status, Name, Bio */}
+        {/* Top: Photo, Name, Bio */}
         <div className="space-y-4">
           <div className="flex items-center gap-4">
             <img
@@ -151,42 +144,29 @@ export const Navbar = () => {
             Building reliable web applications, client portals, and production APIs with React, TypeScript, and Python.
           </p>
 
-          {/* Interactive Navigation Menu */}
-          <nav className="pt-2 space-y-1">
+          {/* Editorial Navigation Rail with Expanding Indicator */}
+          <nav className="pt-4 space-y-2.5">
             {navItems.map((item) => {
-              const Icon = item.icon;
               const isActive = activeSection === item.id;
               return (
                 <a
                   key={item.id}
                   href={`#${item.id}`}
                   onClick={(e) => scrollTo(e, item.id)}
-                  className={`group flex items-center justify-between px-3 py-2 rounded-xl text-sm transition-all duration-150 cursor-pointer ${
+                  className={`group flex items-center gap-3 py-1 text-xs uppercase tracking-widest transition-all cursor-pointer ${
                     isActive
-                      ? "bg-card border border-border text-foreground font-semibold shadow-xs"
-                      : "text-muted-foreground hover:text-foreground hover:bg-card/50 font-normal"
+                      ? "text-foreground font-bold"
+                      : "text-muted-foreground hover:text-foreground font-medium"
                   }`}
                 >
-                  <div className="flex items-center gap-2.5">
-                    <div
-                      className={`w-7 h-7 rounded-lg flex items-center justify-center transition-colors ${
-                        isActive
-                          ? "bg-foreground text-background"
-                          : "bg-muted/40 text-muted-foreground group-hover:text-foreground group-hover:bg-muted"
-                      }`}
-                    >
-                      <Icon className="w-3.5 h-3.5" />
-                    </div>
-                    <span className="text-[13px] tracking-tight">{item.label}</span>
-                  </div>
-
-                  <div
-                    className={`w-1.5 h-1.5 rounded-full transition-all duration-200 ${
+                  <span
+                    className={`h-[1.5px] transition-all duration-300 rounded-full ${
                       isActive
-                        ? "bg-foreground scale-100"
-                        : "scale-0 opacity-0 group-hover:opacity-40 group-hover:scale-75 bg-muted-foreground"
+                        ? "w-8 bg-foreground"
+                        : "w-3 bg-border group-hover:w-6 group-hover:bg-foreground/50"
                     }`}
                   />
+                  <span>{item.label}</span>
                 </a>
               );
             })}

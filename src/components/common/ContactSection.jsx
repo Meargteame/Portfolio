@@ -185,7 +185,7 @@ export const ContactSection = () => {
                 <button
                   type="button"
                   onClick={handleReset}
-                  className="inline-flex items-center gap-1.5 text-xs font-mono text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+                  className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
                 >
                   <RotateCcw className="w-3 h-3" />
                   <span>Send another message</span>
@@ -197,7 +197,7 @@ export const ContactSection = () => {
               onSubmit={handleSubmit}
               className="rounded-xl border border-border bg-card/60 p-5 sm:p-6 space-y-4 shadow-xs"
             >
-              <h4 className="text-xs font-mono font-semibold text-muted-foreground uppercase tracking-wider">
+              <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
                 Send a Message
               </h4>
 

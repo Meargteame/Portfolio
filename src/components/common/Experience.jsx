@@ -14,16 +14,16 @@ export const Experience = () => {
         </p>
       </div>
 
-      <div className="space-y-4">
+      <div className="divide-y divide-border/60">
         {experiences.map((exp) => (
           <div
             key={exp.id}
-            className="rounded-xl border border-border bg-card/60 p-5 sm:p-6 space-y-3 shadow-xs"
+            className="py-6 first:pt-0 last:pb-0 space-y-3"
           >
             {/* Header: Company Logo + Details */}
             <div className="flex items-start gap-3.5 sm:gap-4">
               {exp.logo && (
-                <div className="w-12 h-12 rounded-xl border border-border bg-white p-1.5 shrink-0 overflow-hidden shadow-xs flex items-center justify-center">
+                <div className="w-11 h-11 rounded-xl border border-border bg-card p-1.5 shrink-0 overflow-hidden shadow-2xs flex items-center justify-center">
                   <img
                     src={exp.logo}
                     alt={`${exp.company} Logo`}
@@ -50,7 +50,7 @@ export const Experience = () => {
                         {exp.company}
                       </h3>
                     )}
-                    <span className="text-[11px] px-2 py-0.5 rounded-md border border-border bg-muted/30 text-muted-foreground font-medium">
+                    <span className="text-[11px] px-2 py-0.5 rounded-md border border-border bg-card/60 text-muted-foreground font-medium">
                       {exp.tag}
                     </span>
                   </div>
@@ -59,22 +59,22 @@ export const Experience = () => {
                   </span>
                 </div>
 
-                <p className="text-xs sm:text-sm font-medium text-foreground/80 mt-0.5">
-                  {exp.role} · <span className="text-muted-foreground font-normal">{exp.location}</span>
+                <p className="text-xs sm:text-sm font-medium text-foreground/85 mt-0.5">
+                  {exp.role} <span className="text-muted-foreground font-normal">({exp.location})</span>
                 </p>
               </div>
             </div>
 
-            <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed pt-0.5">
+            <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed pl-0 sm:pl-14">
               {exp.description}
             </p>
 
             {exp.tech && (
-              <div className="flex flex-wrap gap-1.5 pt-1">
+              <div className="flex flex-wrap gap-1.5 pl-0 sm:pl-14 pt-0.5">
                 {exp.tech.map((t) => (
                   <span
                     key={t}
-                    className="px-2 py-0.5 rounded-md border border-border text-[11px] text-muted-foreground bg-muted/30 font-medium"
+                    className="px-2.5 py-0.5 rounded-md border border-border text-[11px] text-muted-foreground bg-card/40 font-medium"
                   >
                     {t}
                   </span>
