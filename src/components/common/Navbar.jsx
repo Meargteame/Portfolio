@@ -83,7 +83,7 @@ export const Navbar = () => {
               download
               aria-label="Download Résumé (PDF)"
               title="Download Résumé"
-              className="p-2 rounded-lg border border-border bg-card text-foreground hover:bg-muted transition-colors shadow-xs"
+              className="p-2 rounded-lg border border-border bg-card text-foreground hover:bg-muted active:scale-[0.97] transition-all shadow-xs focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-hidden"
             >
               <Download className="w-4 h-4" />
             </a>
@@ -100,7 +100,7 @@ export const Navbar = () => {
                 key={item.id}
                 href={`#${item.id}`}
                 onClick={(e) => scrollTo(e, item.id)}
-                className={`inline-flex items-center px-3 py-1.5 rounded-lg text-xs font-medium transition-all shrink-0 ${
+                className={`inline-flex items-center px-3 py-1.5 rounded-lg text-xs font-medium transition-all shrink-0 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-hidden ${
                   isActive
                     ? "bg-foreground text-background font-semibold shadow-xs"
                     : "bg-card border border-border text-muted-foreground hover:text-foreground"
@@ -150,7 +150,7 @@ export const Navbar = () => {
                   key={item.id}
                   href={`#${item.id}`}
                   onClick={(e) => scrollTo(e, item.id)}
-                  className={`group flex items-center gap-3 py-1 text-xs uppercase tracking-widest transition-all cursor-pointer ${
+                  className={`group flex items-center gap-3 py-1 text-xs uppercase tracking-widest transition-all cursor-pointer rounded-xs focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-hidden ${
                     isActive
                       ? "text-foreground font-bold"
                       : "text-muted-foreground hover:text-foreground font-medium"
@@ -178,7 +178,7 @@ export const Navbar = () => {
               href="mailto:hello.meareg@gmail.com"
               aria-label="Email"
               title="Email Me"
-              className="w-9 h-9 rounded-lg border border-border bg-card/70 flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-foreground/40 transition-colors shadow-xs"
+              className="w-9 h-9 rounded-lg border border-border bg-card/70 flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-foreground/40 active:scale-95 transition-all shadow-xs focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-hidden"
             >
               <Mail className="w-4 h-4" />
             </a>
@@ -188,7 +188,7 @@ export const Navbar = () => {
               rel="noopener noreferrer"
               aria-label="GitHub"
               title="GitHub Repositories"
-              className="w-9 h-9 rounded-lg border border-border bg-card/70 flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-foreground/40 transition-colors shadow-xs"
+              className="w-9 h-9 rounded-lg border border-border bg-card/70 flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-foreground/40 active:scale-95 transition-all shadow-xs focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-hidden"
             >
               <Github className="w-4 h-4" />
             </a>
@@ -198,7 +198,7 @@ export const Navbar = () => {
               rel="noopener noreferrer"
               aria-label="LinkedIn"
               title="LinkedIn Profile"
-              className="w-9 h-9 rounded-lg border border-border bg-card/70 flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-foreground/40 transition-colors shadow-xs"
+              className="w-9 h-9 rounded-lg border border-border bg-card/70 flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-foreground/40 active:scale-95 transition-all shadow-xs focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-hidden"
             >
               <Linkedin className="w-4 h-4" />
             </a>
@@ -208,7 +208,7 @@ export const Navbar = () => {
               rel="noopener noreferrer"
               aria-label="Telegram"
               title="Telegram Chat"
-              className="w-9 h-9 rounded-lg border border-border bg-card/70 flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-foreground/40 transition-colors shadow-xs"
+              className="w-9 h-9 rounded-lg border border-border bg-card/70 flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-foreground/40 active:scale-95 transition-all shadow-xs focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-hidden"
             >
               <Send className="w-4 h-4" />
             </a>
@@ -219,7 +219,7 @@ export const Navbar = () => {
             <a
               href="/CV.pdf"
               download
-              className="flex-1 inline-flex items-center justify-center gap-2 h-9 px-3 rounded-lg border border-border bg-card/70 text-xs font-medium text-foreground hover:bg-card hover:border-foreground/40 transition-colors shadow-xs"
+              className="flex-1 inline-flex items-center justify-center gap-2 h-9 px-3 rounded-lg border border-border bg-card/70 text-xs font-medium text-foreground hover:bg-card hover:border-foreground/40 active:scale-[0.98] transition-all shadow-xs focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-hidden"
             >
               <Download className="w-3.5 h-3.5 text-muted-foreground" />
               <span>Résumé (PDF)</span>

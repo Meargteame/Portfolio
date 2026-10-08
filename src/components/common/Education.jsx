@@ -42,7 +42,7 @@ export const Education = () => {
                       {edu.tag}
                     </span>
                   </div>
-                  <span className="text-xs text-muted-foreground shrink-0 font-medium">
+                  <span className="text-xs text-muted-foreground shrink-0 font-medium tabular-nums">
                     {edu.date}
                   </span>
                 </div>
@@ -64,7 +64,7 @@ export const Education = () => {
                   href={edu.certificateUrl || edu.certificateImg}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block group/cert overflow-hidden rounded-xl border border-border bg-card/40 transition-all hover:border-foreground/50 shadow-2xs"
+                  className="block group/cert overflow-hidden rounded-xl border border-border bg-card/40 transition-all hover:border-foreground/50 shadow-2xs focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-hidden"
                   title="Click to verify official certificate"
                 >
                   <img
@@ -81,7 +81,7 @@ export const Education = () => {
                       href={edu.certificateUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-foreground hover:underline font-medium"
+                      className="inline-flex items-center gap-1 text-foreground hover:underline font-medium focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-hidden rounded-xs"
                     >
                       <span>Verify Credential</span>
                       <ArrowUpRight className="w-3 h-3" />

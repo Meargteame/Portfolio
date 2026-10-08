@@ -85,7 +85,7 @@ export const ContactSection = () => {
               <div className="flex items-center justify-between p-2.5 rounded-lg border border-border bg-card">
                 <a
                   href="mailto:hello.meareg@gmail.com"
-                  className="flex items-center gap-2 text-foreground hover:underline truncate"
+                  className="flex items-center gap-2 text-foreground hover:underline truncate focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-hidden rounded-xs"
                 >
                   <Mail className="w-3.5 h-3.5 text-muted-foreground shrink-0" />
                   <span className="truncate">hello.meareg@gmail.com</span>
@@ -94,7 +94,7 @@ export const ContactSection = () => {
                   type="button"
                   onClick={copyEmail}
                   title="Copy email to clipboard"
-                  className="p-1 rounded hover:bg-muted text-muted-foreground hover:text-foreground transition-colors shrink-0"
+                  className="p-1 rounded hover:bg-muted text-muted-foreground hover:text-foreground active:scale-90 transition-all shrink-0 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-hidden"
                 >
                   {copied ? (
                     <Check className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
@@ -109,7 +109,7 @@ export const ContactSection = () => {
                 href="https://t.me/meareg_official"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between p-2.5 rounded-lg border border-border bg-card text-foreground hover:border-foreground/40 transition-colors"
+                className="flex items-center justify-between p-2.5 rounded-lg border border-border bg-card text-foreground hover:border-foreground/40 active:scale-[0.99] transition-all focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-hidden"
               >
                 <div className="flex items-center gap-2">
                   <Send className="w-3.5 h-3.5 text-muted-foreground" />
@@ -123,7 +123,7 @@ export const ContactSection = () => {
                 href="https://www.linkedin.com/in/meareg"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between p-2.5 rounded-lg border border-border bg-card text-foreground hover:border-foreground/40 transition-colors"
+                className="flex items-center justify-between p-2.5 rounded-lg border border-border bg-card text-foreground hover:border-foreground/40 active:scale-[0.99] transition-all focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-hidden"
               >
                 <div className="flex items-center gap-2">
                   <Linkedin className="w-3.5 h-3.5 text-muted-foreground" />
@@ -137,7 +137,7 @@ export const ContactSection = () => {
                 href="https://github.com/Meargteame"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between p-2.5 rounded-lg border border-border bg-card text-foreground hover:border-foreground/40 transition-colors"
+                className="flex items-center justify-between p-2.5 rounded-lg border border-border bg-card text-foreground hover:border-foreground/40 active:scale-[0.99] transition-all focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-hidden"
               >
                 <div className="flex items-center gap-2">
                   <Github className="w-3.5 h-3.5 text-muted-foreground" />
@@ -178,7 +178,7 @@ export const ContactSection = () => {
                 <button
                   type="button"
                   onClick={handleReset}
-                  className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+                  className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground active:scale-95 transition-all cursor-pointer focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-hidden rounded-xs"
                 >
                   <RotateCcw className="w-3 h-3" />
                   <span>Send another message</span>
@@ -211,7 +211,7 @@ export const ContactSection = () => {
                   placeholder="Alex Smith"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-lg border border-border bg-background text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-hidden focus:ring-1 focus:ring-foreground/30 focus:border-foreground/50 transition-colors"
+                  className="w-full px-3.5 py-2.5 rounded-lg border border-border bg-background/80 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-hidden focus:ring-2 focus:ring-ring/40 focus:border-foreground/50 transition-all"
                 />
               </div>
 
@@ -226,7 +226,7 @@ export const ContactSection = () => {
                   placeholder="alex@company.com"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-lg border border-border bg-background text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-hidden focus:ring-1 focus:ring-foreground/30 focus:border-foreground/50 transition-colors"
+                  className="w-full px-3.5 py-2.5 rounded-lg border border-border bg-background/80 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-hidden focus:ring-2 focus:ring-ring/40 focus:border-foreground/50 transition-all"
                 />
               </div>
 
@@ -241,14 +241,14 @@ export const ContactSection = () => {
                   placeholder="Hi Meareg, I'd like to discuss a project..."
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-lg border border-border bg-background text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-hidden focus:ring-1 focus:ring-foreground/30 focus:border-foreground/50 transition-colors resize-y"
+                  className="w-full px-3.5 py-2.5 rounded-lg border border-border bg-background/80 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-hidden focus:ring-2 focus:ring-ring/40 focus:border-foreground/50 transition-all resize-y"
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={status === "sending"}
-                className="w-full py-2.5 rounded-lg bg-foreground text-background text-xs font-semibold hover:opacity-90 disabled:opacity-60 transition-opacity shadow-xs cursor-pointer flex items-center justify-center gap-1.5"
+                className="w-full py-2.5 rounded-lg bg-foreground text-background text-xs font-semibold hover:opacity-90 active:scale-[0.99] disabled:opacity-60 transition-all shadow-xs cursor-pointer flex items-center justify-center gap-1.5 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-hidden"
               >
                 {status === "sending" ? (
                   <>

@@ -43,7 +43,7 @@ export const Projects = () => {
                     href={project.live}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-foreground text-background text-xs font-semibold hover:opacity-90 transition-opacity shadow-xs"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-foreground text-background text-xs font-semibold hover:opacity-90 active:scale-95 transition-all shadow-xs focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-hidden"
                   >
                     <span>Live Site</span>
                     <ExternalLink className="w-3 h-3" />
@@ -54,7 +54,7 @@ export const Projects = () => {
                     href={project.repo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border bg-card text-foreground text-xs font-medium hover:bg-muted transition-colors shadow-xs"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border bg-card text-foreground text-xs font-medium hover:bg-muted active:scale-95 transition-all shadow-xs focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-hidden"
                   >
                     <Github className="w-3 h-3" />
                     <span>Code</span>
@@ -73,7 +73,7 @@ export const Projects = () => {
               {project.tech.map((t) => (
                 <span
                   key={t}
-                  className="px-2.5 py-0.5 rounded-md border border-border text-xs text-muted-foreground bg-muted/30 font-medium"
+                  className="px-2.5 py-0.5 rounded-md border border-border/80 text-xs text-foreground/85 bg-muted/40 font-medium transition-colors"
                 >
                   {t}
                 </span>
@@ -85,7 +85,7 @@ export const Projects = () => {
               href={project.live || "#"}
               target="_blank"
               rel="noopener noreferrer"
-              className="block overflow-hidden rounded-xl border border-border bg-background transition-colors group-hover:border-foreground/40 shadow-xs"
+              className="block overflow-hidden rounded-xl border border-border bg-background transition-all group-hover:border-foreground/40 shadow-xs focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-hidden"
               title={`View ${project.name}`}
             >
               <img

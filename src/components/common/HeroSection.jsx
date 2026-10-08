@@ -23,7 +23,7 @@ export const HeroSection = () => {
       <div className="flex flex-wrap items-center gap-3 pt-2">
         <a
           href="#work"
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-foreground text-background text-xs sm:text-sm font-semibold hover:opacity-90 transition-opacity shadow-xs"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-foreground text-background text-xs sm:text-sm font-semibold hover:opacity-90 active:scale-[0.98] transition-all shadow-xs focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-hidden"
         >
           <span>Explore Projects</span>
           <ArrowDown className="w-3.5 h-3.5" />
@@ -31,7 +31,7 @@ export const HeroSection = () => {
 
         <a
           href="#contact"
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-border bg-card text-foreground text-xs sm:text-sm font-medium hover:bg-muted transition-colors shadow-xs"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-border bg-card text-foreground text-xs sm:text-sm font-medium hover:bg-muted active:scale-[0.98] transition-all shadow-xs focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-hidden"
         >
           <span>Get in Touch</span>
           <ArrowUpRight className="w-3.5 h-3.5 text-muted-foreground" />

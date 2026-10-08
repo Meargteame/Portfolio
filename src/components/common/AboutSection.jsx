@@ -14,7 +14,7 @@ export const AboutSection = () => {
         <a
           href="/CV.pdf"
           download
-          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg border border-border bg-card text-xs font-medium text-muted-foreground hover:text-foreground hover:border-foreground/40 transition-colors shrink-0 shadow-xs"
+          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg border border-border bg-card text-xs font-medium text-muted-foreground hover:text-foreground hover:border-foreground/40 active:scale-95 transition-all shrink-0 shadow-xs focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-hidden"
         >
           <Download className="w-3.5 h-3.5" />
           <span>Download Résumé</span>
@@ -23,7 +23,7 @@ export const AboutSection = () => {
       </div>
 
       {/* Human, authentic narrative */}
-      <div className="space-y-4 text-sm sm:text-base text-foreground/80 leading-relaxed font-normal">
+      <div className="space-y-4 text-sm sm:text-base text-foreground/85 leading-relaxed font-normal">
         <p>
           I started programming out of curiosity about how software actually works under the hood. That curiosity quickly turned into building real things: from low-level systems in C and Python during my intensive software engineering program at ALX and Holberton School, to shipping full-stack production platforms for clients.
         </p>
@@ -33,7 +33,7 @@ export const AboutSection = () => {
         </p>
 
         <p>
-          Over the past few years, I have built and deployed several live products, including a creator marketplace with Telebirr and CBE escrow payments (<span className="text-foreground font-medium">Create4Me</span>), a cryptographic verification wall using PostgreSQL Row-Level Security (<span className="text-foreground font-medium">TrustGrid</span>), and headless platforms for consultancies and real estate firms.
+          Over the past few years, I have built and deployed several live products, including a creator marketplace with Telebirr and CBE escrow payments (<span className="text-foreground font-semibold">Create4Me</span>), a cryptographic verification wall using PostgreSQL Row-Level Security (<span className="text-foreground font-semibold">TrustGrid</span>), and headless platforms for consultancies and real estate firms.
         </p>
 
         <p>
@@ -41,23 +41,23 @@ export const AboutSection = () => {
         </p>
       </div>
 
-      {/* Clean Quick Facts Bar */}
-      <div className="pt-6 border-t border-border grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs text-muted-foreground">
-        <div>
+      {/* Clean Quick Facts Architectural Tiles */}
+      <div className="pt-6 border-t border-border/80 grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+        <div className="p-3 rounded-xl border border-border/80 bg-card/50 shadow-2xs space-y-1">
           <span className="block text-foreground font-semibold text-[11px] uppercase tracking-wider">Location</span>
-          <span className="text-muted-foreground mt-0.5 block">Dansha, Ethiopia</span>
+          <span className="text-muted-foreground block">Dansha, Ethiopia</span>
         </div>
-        <div>
+        <div className="p-3 rounded-xl border border-border/80 bg-card/50 shadow-2xs space-y-1">
           <span className="block text-foreground font-semibold text-[11px] uppercase tracking-wider">Timezone</span>
-          <span className="text-muted-foreground mt-0.5 block">UTC+3 (East Africa)</span>
+          <span className="text-muted-foreground block">UTC+3 (East Africa)</span>
         </div>
-        <div>
+        <div className="p-3 rounded-xl border border-border/80 bg-card/50 shadow-2xs space-y-1">
           <span className="block text-foreground font-semibold text-[11px] uppercase tracking-wider">Education</span>
-          <span className="text-muted-foreground mt-0.5 block">ALX / Holberton &amp; BDU</span>
+          <span className="text-muted-foreground block">ALX / Holberton &amp; BDU</span>
         </div>
-        <div>
+        <div className="p-3 rounded-xl border border-border/80 bg-card/50 shadow-2xs space-y-1">
           <span className="block text-foreground font-semibold text-[11px] uppercase tracking-wider">Status</span>
-          <span className="text-emerald-700 dark:text-emerald-400 font-medium mt-0.5 flex items-center gap-1.5">
+          <span className="text-emerald-700 dark:text-emerald-400 font-medium flex items-center gap-1.5">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
             Open for roles
           </span>

@@ -14,7 +14,7 @@ export const TechStack = () => {
       </div>
 
       {/* Editorial Categories Index */}
-      <div className="divide-y divide-border/60">
+      <div className="divide-y divide-border/80">
         {techCategories.map((cat) => (
           <div
             key={cat.id}
@@ -35,7 +35,7 @@ export const TechStack = () => {
               {cat.items.map((item) => (
                 <div
                   key={item.name}
-                  className="flex items-center gap-3 p-2.5 rounded-lg border border-border/70 bg-card/40 hover:bg-card/70 hover:border-foreground/30 transition-all"
+                  className="flex items-center gap-3 p-2.5 rounded-xl border border-border/80 bg-card/60 hover:bg-card hover:border-foreground/30 transition-all shadow-2xs"
                 >
                   <span className="w-5 h-5 shrink-0 flex items-center justify-center">
                     {item.icon}

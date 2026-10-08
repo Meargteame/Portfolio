@@ -24,7 +24,7 @@ export const Footer = () => {
               href={s.href}
               target={s.href.startsWith("mailto") ? undefined : "_blank"}
               rel="noopener noreferrer"
-              className="hover:text-foreground transition-colors"
+              className="hover:text-foreground transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-hidden rounded-xs"
             >
               {s.label}
             </a>

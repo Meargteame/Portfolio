@@ -40,7 +40,7 @@ export const Experience = () => {
                         href={exp.website}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-base sm:text-lg font-bold font-bricolage text-foreground hover:underline tracking-tight"
+                        className="inline-flex items-center gap-1.5 text-base sm:text-lg font-bold font-bricolage text-foreground hover:underline tracking-tight focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-hidden rounded-xs"
                       >
                         <span>{exp.company}</span>
                         <ArrowUpRight className="w-3.5 h-3.5 text-muted-foreground" />
@@ -54,7 +54,7 @@ export const Experience = () => {
                       {exp.tag}
                     </span>
                   </div>
-                  <span className="text-xs text-muted-foreground shrink-0 font-medium">
+                  <span className="text-xs text-muted-foreground shrink-0 font-medium tabular-nums">
                     {exp.date}
                   </span>
                 </div>
@@ -74,7 +74,7 @@ export const Experience = () => {
                 {exp.tech.map((t) => (
                   <span
                     key={t}
-                    className="px-2.5 py-0.5 rounded-md border border-border text-[11px] text-muted-foreground bg-card/40 font-medium"
+                    className="px-2.5 py-0.5 rounded-md border border-border/80 text-[11px] text-foreground/80 bg-muted/40 font-medium"
                   >
                     {t}
                   </span>
