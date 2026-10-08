@@ -1,3 +1,4 @@
+import { HeroSection }    from "./HeroSection";
 import { Navbar }         from "./Navbar";
 import { Projects }       from "./Project";
 import { Experience }     from "./Experience";
@@ -12,7 +13,7 @@ export const Home = () => {
     <div className="min-h-screen bg-background text-foreground transition-colors duration-200">
       {/* Accessible keyboard skip link */}
       <a
-        href="#work"
+        href="#main-content"
         className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-foreground focus:text-background focus:rounded-lg focus:shadow-md focus:text-xs focus:font-semibold focus:outline-hidden"
       >
         Skip to content
@@ -26,6 +27,7 @@ export const Home = () => {
 
           {/* Right Main Content Stream */}
           <main id="main-content" className="lg:flex-1 min-w-0 space-y-20 sm:space-y-28">
+            <HeroSection />
             <Projects />
             <AboutSection />
             <Experience />
