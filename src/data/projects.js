@@ -1,3 +1,5 @@
+import betterformImg from "../assets/betterform.png";
+import betterformLogo from "../assets/betterform-logo.svg";
 import torraRealestateImg from "../assets/torra-realstate.webp";
 import yarichoHomeCareImg from "../assets/yaricho-senior-home-care.webp";
 import ensightImg from "../assets/egc.webp";
@@ -9,6 +11,36 @@ import ensightLogo from "../assets/ensight_global_consultancy.jpg";
 export const projects = [
   {
     id: 1,
+    name: "BetterForm",
+    logo: betterformLogo,
+    role: "Full-Stack Developer & Product Designer",
+    tagline: "Minimalist Job Application Builder & Applicant Tracking System",
+    description:
+      "A minimalist job application builder and applicant tracking system (ATS) inspired by Swiss editorial typography (Ink, Paper, Signal Green), engineered for modern hiring workflows.",
+    highlights: [
+      "Built a minimalist job application builder and applicant tracking system (ATS) inspired by Swiss editorial typography (Ink, Paper, Signal Green).",
+      "Designed a zero-friction applicant flow where candidates submit custom forms and CV attachments without mandatory account creation.",
+      "Implemented a dedicated 3-stage candidate pipeline (Applied, Shortlisted, Rejected) with status transitions, recruiter notes, and UTF-8 CSV spreadsheet exports.",
+      "Created an embeddable iframe code generator enabling companies to drop BetterForm applications directly onto Webflow, WordPress, or custom sites.",
+      "Engineered a resilient backend on Express and MongoDB Atlas supporting JWT auth, file upload validation, and webhook dispatching for external ATS/Slack integration.",
+    ],
+    repo: "https://github.com/Meargteame/jobform",
+    live: "https://betterform.leonslab.tech",
+    tag: "SAAS · ATS & FORM BUILDER",
+    image: betterformImg,
+    tech: [
+      "React",
+      "Vite",
+      "Node.js",
+      "Express",
+      "MongoDB Atlas",
+      "Tailwind CSS",
+      "Render",
+      "Vercel",
+    ],
+  },
+  {
+    id: 2,
     name: "Create4Me",
     logo: leonsLabLogo,
     tagline: "Creator Marketplace & Influencer Booking SaaS",
@@ -21,7 +53,7 @@ export const projects = [
     tech: ["React", "TypeScript", "Node.js", "Express", "Telebirr Escrow"],
   },
   {
-    id: 2,
+    id: 3,
     name: "TrustGrid",
     logo: leonsLabLogo,
     tagline: "Cryptographic Social Proof & Verification Wall",
@@ -34,7 +66,7 @@ export const projects = [
     tech: ["Next.js", "FastAPI", "PostgreSQL RLS", "Supabase", "Tailwind CSS"],
   },
   {
-    id: 3,
+    id: 4,
     name: "Torra Realestate",
     tagline: "Property Management & Real Estate Platform",
     description:
@@ -46,7 +78,7 @@ export const projects = [
     tech: ["Next.js", "TypeScript", "Tailwind CSS", "SEO"],
   },
   {
-    id: 4,
+    id: 5,
     name: "Ensight Global Consultancy",
     logo: ensightLogo,
     tagline: "Consultancy Website Rebuilt on Headless CMS",
@@ -59,7 +91,7 @@ export const projects = [
     tech: ["Next.js", "Headless WordPress", "Tailwind CSS", "SEO"],
   },
   {
-    id: 5,
+    id: 6,
     name: "Yaricho Senior Home Care",
     tagline: "Healthcare Services & Patient Inquiry Portal",
     description:

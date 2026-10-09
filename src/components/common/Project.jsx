@@ -2,6 +2,9 @@ import { ExternalLink, Github } from "lucide-react";
 import { projects } from "../../data/projects";
 
 const getProjectBadgeStyle = (tag = "") => {
+  if (tag.includes("ATS") || tag.includes("FORM")) {
+    return "border-emerald-500/30 bg-emerald-500/10 text-emerald-900 dark:text-emerald-300";
+  }
   if (tag.includes("SECURITY")) {
     return "border-indigo-500/30 bg-indigo-500/10 text-indigo-900 dark:text-indigo-300";
   }
@@ -15,7 +18,7 @@ const getProjectBadgeStyle = (tag = "") => {
     return "border-rose-500/30 bg-rose-500/10 text-rose-900 dark:text-rose-300";
   }
   if (tag.includes("HEADLESS") || tag.includes("CMS")) {
-    return "border-emerald-500/30 bg-emerald-500/10 text-emerald-900 dark:text-emerald-300";
+    return "border-teal-500/30 bg-teal-500/10 text-teal-900 dark:text-teal-300";
   }
   return "border-border bg-card/60 text-muted-foreground";
 };
@@ -43,13 +46,18 @@ export const Projects = () => {
             {/* Top Bar: Title & Direct Links */}
             <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-3">
               <div>
-                <div className="flex items-center gap-2.5 flex-wrap">
+                <div className="flex items-center gap-2 flex-wrap">
                   <h3 className="text-xl sm:text-2xl font-bold font-bricolage text-foreground tracking-tight">
                     {project.name}
                   </h3>
                   <span className={`text-[11px] px-2.5 py-0.5 rounded-md border font-medium ${getProjectBadgeStyle(project.tag)}`}>
                     {project.tag}
                   </span>
+                  {project.role && (
+                    <span className="text-[11px] px-2.5 py-0.5 rounded-md border border-border/80 bg-muted/50 text-foreground/80 font-medium">
+                      {project.role}
+                    </span>
+                  )}
                 </div>
                 <p className="text-xs sm:text-sm text-foreground/85 font-medium mt-1">
                   {project.tagline}
@@ -87,6 +95,18 @@ export const Projects = () => {
             <p className="text-sm text-muted-foreground leading-relaxed">
               {project.description}
             </p>
+
+            {/* Feature Highlights Bullets */}
+            {project.highlights && project.highlights.length > 0 && (
+              <ul className="space-y-1.5 text-xs sm:text-sm text-muted-foreground pl-0.5">
+                {project.highlights.map((highlight, idx) => (
+                  <li key={idx} className="flex items-start gap-2.5 leading-relaxed">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-2 shrink-0" aria-hidden="true" />
+                    <span>{highlight}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
 
             {/* Tech Stack Tags */}
             <div className="flex flex-wrap gap-1.5">

@@ -33,7 +33,7 @@ export const AboutSection = () => {
         </p>
 
         <p>
-          Over the past few years, I have built and deployed several live products, including a creator marketplace with Telebirr and CBE escrow payments (<span className="text-foreground font-semibold">Create4Me</span>), a cryptographic verification wall using PostgreSQL Row-Level Security (<span className="text-foreground font-semibold">TrustGrid</span>), and headless platforms for consultancies and real estate firms.
+          Over the past few years, I have built and deployed several live products, including a minimalist ATS and job application builder (<span className="text-foreground font-semibold">BetterForm</span>), a creator marketplace with Telebirr and CBE escrow payments (<span className="text-foreground font-semibold">Create4Me</span>), a cryptographic verification wall using PostgreSQL Row-Level Security (<span className="text-foreground font-semibold">TrustGrid</span>), and headless platforms for consultancies and real estate firms.
         </p>
 
         <p>
